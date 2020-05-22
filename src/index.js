@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
@@ -16,8 +16,10 @@ ReactDOM.render(
 
 
     {/* <App /> */}
+    <App />
+    {/* <Header/> */}
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
