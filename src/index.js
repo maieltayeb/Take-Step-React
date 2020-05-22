@@ -5,10 +5,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import HowITWork from "./Components/HowToWork/howtowork";
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    {/* <Header/> */}
+    <HowITWork />
   </React.StrictMode>,
   document.getElementById("root")
 );
