@@ -5,9 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import WelcomeNavBar from "./Layout/Navbar/navbar";
+import ModalPost from "./Components/Modal/AddPostModel/modal";
+import Post from './Components/post/post';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+  <WelcomeNavBar />
+    <ModalPost />
+    <Post/>
+
+
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
