@@ -5,9 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import SubscribeCard from './Components/Card/SubscribeCard/subscribeCard';
+import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <CreateTask /> */}
+    {/* <SubscribeCard/> */}
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
