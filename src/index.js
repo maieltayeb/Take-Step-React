@@ -7,13 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
-import Post from './Components/post/post';
+import Post from "./Components/post/post";
 ReactDOM.render(
   <React.StrictMode>
-  <WelcomeNavBar />
+    {/* <WelcomeNavBar />
     <ModalPost />
-    <Post/>
-
+    <Post/> */}
 
     {/* <App /> */}
     <App />

@@ -1,0 +1,11 @@
+.card {
+  border: none !important;
+  text-align: center;
+}
+img {
+  margin: 0 auto;
+  width: 50%;
+}
+.container {
+  max-width: 76% !important;
+}
