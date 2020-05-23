@@ -8,14 +8,16 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import Post from './Components/post/post';
+import ModalCreateTask from './Components/Modal/CreatTaskModal/modal'
 // import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 ReactDOM.render(
   <React.StrictMode>
+    <ModalCreateTask />
    {/* <CreateTask  /> */}
-  {/* <WelcomeNavBar />
-    <ModalPost />
-    <Post/> */}
+ {/* <WelcomeNavBar /> */}
+    {/* <ModalPost /> */}
+    {/* <Post/>  */}
   {/* <EducationSection />  */}
 
     {/* <App /> */}
