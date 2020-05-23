@@ -13,7 +13,7 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
 //---------------------------Mai--------------------------//
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-import FeedbackModel  from './Components/Modal/AddFeedbackModel/AddFeedbackModal';
+import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 //----------------------------------Mai------------------------//
