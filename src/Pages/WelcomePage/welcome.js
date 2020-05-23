@@ -7,15 +7,7 @@ const Welcome = () => {
     <div>
       <Container>
         <Row>
-          <Col>
-            <HowItWorkCard></HowItWorkCard>
-          </Col>
-          <Col>
-            <HowItWorkCard></HowItWorkCard>
-          </Col>
-          <Col>
-            <HowItWorkCard></HowItWorkCard>
-          </Col>
+          <HowItWorkCard></HowItWorkCard>
           <Footer></Footer>
         </Row>
       </Container>

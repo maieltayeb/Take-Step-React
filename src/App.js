@@ -6,6 +6,7 @@ import Welcome from "./Pages/WelcomePage/welcome";
 import Footer from "./Layout/Footer/footer";
 import HowItWorkCard from "./Components/Card/HowItWorkCard/howitworkcard";
 import HowITWork from "./Components/HowToWork/howtowork";
+import Example from "./Components/Card/InProgressTaskCard/inprogresstaskcard";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Container>
         <Row>
           {/* <HowITWork></HowITWork> */}
-          <HowItWorkCard></HowItWorkCard>
+          <Example />
+          {/* <HowItWorkCard></HowItWorkCard> */}
         </Row>
       </Container>
       <Footer></Footer>
