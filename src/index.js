@@ -10,10 +10,14 @@ import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
+//---------------------------nada--------------------------//
+
 // import Login from "./Pages/LoginPage/login";
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 // import SignUp from "./Pages/SignUpPage/sign-up";
+//---------------------------nada--------------------------//
+
 // import EducationSection from './Components/EducationSection/EducationSection';
 // import Header from "./Layout/Header/header";
 //  import WelcomeNavBar from "./Layout/Navbar/navbar";
