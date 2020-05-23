@@ -13,6 +13,7 @@ import Post from "./Components/post/post";
 import Login from "./Pages/LoginPage/login";
 import Portflio from "./Components/Portflio/Portflio";
 import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+import SignUp from "./Pages/SignUpPage/sign-up";
 // import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 ReactDOM.render(
@@ -39,6 +40,7 @@ ReactDOM.render(
     {/* <Login /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
+    <SignUp />
   </React.StrictMode>,
   document.getElementById("root")
 );
