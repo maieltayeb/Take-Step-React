@@ -26,22 +26,26 @@ return (
   <div className=" reactToPost clearfix">
   <div className=" ml-5 float-left" >
     <span className="mt-2 mr-2">4</span>
-    <img  className="mb-3" src="./img/smallLike.png"/>
+    <span><i class=" mb-3 fas fa-thumbs-up"></i></span>
+    {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
   </div>
   <div className=" ml-5 float-left">
     <span  className="mt-2 mr-2">5</span>
-    <img className=" d-inline mb-2"  src="./img/smallcomment.png"/>
+    <span><i class=" mb-3 fas fa-comment-alt"></i></span>
+    {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
   </div>
 </div>
 <div className="postCommentBody shadow-sm p-4 mb-4 bg-white">
 <div className=" reactToPost ml-2 clearfix">
   <div className=" ml-3 float-left" >
     <span>Like</span>
-    <img className="mb-3" src="./img/like.png"/>
+    <span><i class=" ml-3  mb-3 fas fa-thumbs-up"></i></span>
+    {/* <img className="mb-3" src="./img/like.png"/> */}
   </div>
   <div className=" ml-4 float-left">
     <span>Comment</span>
-    <img className="mb-2 d-inline"  src="./img/comment.png"/>
+    <span><i class=" ml-3  mb-3 fas fa-comment-alt"></i></span>
+    {/* <img className="mb-2 d-inline"  src="./img/comment.png"/> */}
   </div>
 </div>
 <div className="clearfix">
