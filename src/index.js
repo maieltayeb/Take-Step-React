@@ -14,11 +14,11 @@ import Post from './Components/post/post';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 ReactDOM.render(
   <React.StrictMode>
-  {/* <WelcomeNavBar />
-  <Header/>
-  <AddSkill/>
-  <ModalPost/>
-  <Post/> */}
+  {/* <WelcomeNavBar /> */}
+  {/* <Header/> */}
+  {/* <AddSkill/> */}
+  {/* <ModalPost/> */}
+  {/* <Post/>  */}
 
     {/* <App /> */}
     {/* <App /> */}
