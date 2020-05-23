@@ -10,25 +10,35 @@ import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
+import Login from "./Pages/LoginPage/login";
+import Portflio from "./Components/Portflio/Portflio";
+import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 // import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 ReactDOM.render(
   <React.StrictMode>
-    <WelcomeNavBar />
-    <Header />
-    <AddSkill />
-    <ModalPost />
-    {/* <Post />  */}
+    {/* <WelcomeNavBar />
+  <Header/>
+  <AddSkill/>
+  <ModalPost/>
+  <Post/> */}
+
     {/* <App /> */}
     {/* <App /> */}
+
     {/* <CreateTask  /> */}
     {/* <WelcomeNavBar />
     <ModalPost />
     <Post/> */}
     {/* <EducationSection />  */}
-    <App />
+
+    {/* <App /> */}
     {/* <App /> */}
     {/* <Header/> */}
+
+    {/* <Login /> */}
+    {/* <Portflio /> */}
+    {/* <OwnerProfileCard /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
