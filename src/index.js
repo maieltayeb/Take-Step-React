@@ -6,14 +6,16 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 // import Header from "./Layout/Header/header";
-// import WelcomeNavBar from "./Layout/Navbar/navbar";
+//  import WelcomeNavBar from "./Layout/Navbar/navbar";
 // import ModalPost from "./Components/Modal/AddPostModel/modal";
 // import Post from './Components/post/post';
 
+import WelcomePage from './Pages/WelcomePage/WelcomePage';
 
+import Navmai from './Layout/ournav';
 //---------------------------Mai--------------------------//
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
+//import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
 //----------------------------------Mai------------------------//
@@ -26,13 +28,15 @@ import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 
+import { Form } from 'reactstrap';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-
+     <WelcomePage />
     {/****************Mai***********************/ }
-    <FeedbackModel />
+    {/* <FeedbackModel /> */}
  {/* <EducationSection /> */}
    {/* <ModalCreateTask /> */}
    {/* <CreateTask  /> */}
@@ -40,12 +44,12 @@ ReactDOM.render(
 
      {/****************Mai***********************/ }
    
-
-    {/* <WelcomeNavBar />
-  <Header/>
+{/* 
+     <WelcomeNavBar /> */}
+  {/* <Header/>
   <AddSkill/>
   <ModalPost/>
-  <Post/> */}
+  <Post/> */} 
 
     {/* <App /> */}
     {/* <App /> */}
