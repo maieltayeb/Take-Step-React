@@ -1,0 +1,18 @@
+.modal-structure {
+  width: 936px !important;
+  border-radius: 35px 35px 0px 0px !important;
+}
+.modal-structure-header {
+  background-color: #494848;
+  color: #ebc010;
+  font-size: 18px !important;
+  width: 934px !important;
+  height: 57px;
+  border-radius: 35px 35px 0px 35px;
+  padding-left: 40%;
+}
+.modal-content {
+  width: 936px !important;
+  right: 25%;
+  border-radius: 39px 35px 0px 0px !important;
+}
