@@ -10,16 +10,13 @@ import HowITWork from "./Components/HowToWork/howtowork";
 function App() {
   return (
     <>
-      {/* <Footer></Footer>
-      <HowItWorkCard></HowItWorkCard> */}
       <Container>
         <Row>
-          <HowITWork></HowITWork>
-          {/* <HowItWorkCard></HowItWorkCard> */}
-
-          {/* <Footer></Footer> */}
+          {/* <HowITWork></HowITWork> */}
+          <HowItWorkCard></HowItWorkCard>
         </Row>
       </Container>
+      <Footer></Footer>
     </>
   );
 }
