@@ -1,0 +1,32 @@
+.btn {
+  margin-left: 6px;
+  margin: 40px auto;
+  border-radius: 58px;
+  height: 48px;
+  width: 200px;
+  font-size: 20px;
+  font-family: Tahoma, sans-serif;
+  display: block;
+}
+
+.card-border {
+  width: 60%;
+  margin: 15px auto;
+  border: 2px solid #ebc010;
+  border-radius: 10px;
+  padding: 30px;
+}
+.title {
+  padding-bottom: 30px;
+  font-size: 30px;
+  font-family: Tahoma, sans-serif;
+  margin: 10px auto;
+}
+p {
+  margin-top: 50px 0;
+  margin-left: 100px;
+}
+.input-style {
+  background-color: #f8f9fa;
+  width: 80%;
+}
