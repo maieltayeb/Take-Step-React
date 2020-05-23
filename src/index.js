@@ -10,16 +10,48 @@ import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
-import Login from "./Pages/LoginPage/login";
-import Portflio from "./Components/Portflio/Portflio";
-import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-import SignUp from "./Pages/SignUpPage/sign-up";
+// import Login from "./Pages/LoginPage/login";
+// import Portflio from "./Components/Portflio/Portflio";
+// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+// import SignUp from "./Pages/SignUpPage/sign-up";
 // import EducationSection from './Components/EducationSection/EducationSection';
+// import Header from "./Layout/Header/header";
+//  import WelcomeNavBar from "./Layout/Navbar/navbar";
+// import ModalPost from "./Components/Modal/AddPostModel/modal";
+// import Post from './Components/post/post';
+
+import WelcomePage from "./Pages/WelcomePage/WelcomePage";
+
+import Navmai from "./Layout/ournav";
+//---------------------------Mai--------------------------//
+// import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
+//import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
+//import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
+//----------------------------------Mai------------------------//
+
+// import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
+// import Post from "./Components/post/post";
+// import Login from "./Pages/LoginPage/login";
+// import Portflio from "./Components/Portflio/Portflio";
+// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+
+import { Form } from "reactstrap";
+
 ReactDOM.render(
   <React.StrictMode>
-    {/* <WelcomeNavBar />
-  <Header/>
+    <WelcomePage />
+    {/****************Mai***********************/}
+    {/* <FeedbackModel /> */}
+    {/* <EducationSection /> */}
+    {/* <ModalCreateTask /> */}
+    {/* <CreateTask  /> */}
+
+    {/****************Mai***********************/}
+
+    {/* 
+     <WelcomeNavBar /> */}
+    {/* <Header/>
   <AddSkill/>
   <ModalPost/>
   <Post/> */}
@@ -27,11 +59,9 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <App /> */}
 
-    {/* <CreateTask  /> */}
     {/* <WelcomeNavBar />
     <ModalPost />
     <Post/> */}
-    {/* <EducationSection />  */}
 
     {/* <App /> */}
     {/* <App /> */}
@@ -40,7 +70,7 @@ ReactDOM.render(
     {/* <Login /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    <SignUp />
+    {/* <SignUp /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

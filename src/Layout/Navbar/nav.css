@@ -1,12 +1,11 @@
 @import url("/node_modules/@fortawesome/fontawesome-free/css/all.min.css");
- 
 .logo{
    width:100px;
    height:70px;
 
 }
 .navbarStyle{
-   height:100px;
+ 
    /* max-height: fit-content; */
    background-color:#F8F8F4;
 }
@@ -51,7 +50,7 @@ input:focus {
 @media only screen and (max-width: 600px) {
 
  }
- body {
+ /* body {
    padding-top: 100px;
-}
+} */
 
