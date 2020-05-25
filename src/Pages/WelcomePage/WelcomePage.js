@@ -3,12 +3,19 @@ import SubscribeCardsSection from "./SubscribeCardSections/subscribeCardSection"
 import SubscribeCard from "../../Components/Card/SubscribeCard/subscribeCard";
 import HowItWorkCard from "../../Components/Card/HowItWorkCard/howitworkcard";
 import Footer from "../../Layout/Footer/footer";
-import { Row, Container, Jumbotron } from "reactstrap";
-import WelcomeNavBar from "../../Layout/Navbar/navbar";
+// import { Row, Container, Jumbotron } from "reactstrap";
+// import WelcomeNavBar from "../../Layout/Navbar/navbar";
 import Header from "../../Layout/Header/header";
 import Example from "../../Components/Card/InProgressTaskCard/inprogresstaskcard";
 import Login from "../LoginPage/login";
 import HowITWork from "../../Components/HowToWork/howtowork";
+
+// import SubscribeCardsSection from "./SubscribeCardSections/subscribeCardSection";
+import WelcomeNavBar from "../../Layout/Navbar/navbar";
+import Navmai from "../../Layout/ournav";
+import { Container, Row, Jumbotron } from "reactstrap";
+// import Header from "../../Layout/Header/header";
+import CardFrame from "../../Components/Card/CategoreyCard/CardFrame";
 class WelcomePage extends Component {
   state = {};
   render() {
@@ -66,6 +73,13 @@ class WelcomePage extends Component {
           </Row>
         </Container>
         <Footer></Footer>
+        <Container className="themed-container" fluid={true}>
+          <Navmai />
+          <Header />
+          <CardFrame />
+          {/* <WelcomeNavBar /> */}
+          {/* <SubscribeCardsSection /> */}
+        </Container>
       </>
     );
   }

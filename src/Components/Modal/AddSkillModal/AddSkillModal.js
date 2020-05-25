@@ -17,20 +17,10 @@ const AddSkill = props => {
 
   return (
     <div>
-      <Button
-        style={{
-          marginLeft: "6px",
-          backgroundColor: "#0E0D0D",
-          borderRadius: "58px",
-          height: "48px",
-          width: "138px",
-          fontSize: "20px",
-          fontFamily: "tahoma"
-        }}
-        onClick={toggle}
-      >
-        Add Skill
+      <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+        <i class=" d-inline-block p-10 fas fa-pen text-warning"></i>
       </Button>
+      {/* <div className="d-inline-block  bg-secondary"><span><i class=" d-inline-block p-10 fas fa-pen text-warning"></i></span></div> */}
       <Modal
         className="modalShapSkill"
         isOpen={modal}
@@ -43,46 +33,54 @@ const AddSkill = props => {
         <ModalBody className="bodyModalSkill">
           <div className="">
             <form className="mb-3">
-              <Input
-                placeholder="Skill (ex:Photoshop)"
-                type="text"
-                className=""
-                list="skillName"
-              ></Input>
-              <p className="ml-0 small text-secondary">
+              {/* <Input placeholder="Skill (ex:Photoshop)" type="text" className=""  ></Input> */}
+              <div class="input-group">
+                <Input
+                  class="form-control py-2 border-right-0 border"
+                  type="search"
+                  placeholder="Skill (ex:Photoshop)"
+                >
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <i class="fa fa-search"></i>
+                    </div>
+                  </div>
+                </Input>
+              </div>
+              <p class="ml-0 small text-secondary">
                 You can add more than one skill
               </p>
             </form>
-            <div className=" mt-2 d-inline">
-              <span className=" para mr-2 ">
-                Photoshop<i className="pl-2 fas fa-times"></i>
+            <div class=" mt-2 d-inline">
+              <span class=" para mr-2 ">
+                Photoshop<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
-              <span className=" para mr-2 ">
-                Illustrator<i className="pl-2 fas fa-times"></i>
+              <span class=" para mr-2 ">
+                Illustrator<i class="pl-2 fas fa-times"></i>
               </span>
             </div>
           </div>
