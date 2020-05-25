@@ -13,3 +13,7 @@
 .card:hover {
   transform: scale(1.2);
 }
+.all-categories {
+  padding-bottom: 40px;
+  text-align: center;
+}

@@ -58,6 +58,7 @@ class CardFrame extends Component {
     //});
     return (
       <div>
+        <h1 className="all-categories">ALL CATEGORIES</h1>
         <div className="categories">
           <CategoryCard
             title="Web Design"
