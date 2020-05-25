@@ -15,9 +15,10 @@ import WelcomePage from './Pages/WelcomePage/WelcomePage';
 import Navmai from './Layout/ournav';
 //---------------------------Mai--------------------------//
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-//import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
+import FeedbackModel  from './Components/Modal/AddFeedbackModel/AddFeedbackModal';
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
+import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
 
 
@@ -34,10 +35,11 @@ import { Form } from 'reactstrap';
 
 ReactDOM.render(
   <React.StrictMode>
-     <WelcomePage />
+     {/* <WelcomePage /> */}
     {/****************Mai***********************/ }
-    {/* <FeedbackModel /> */}
- {/* <EducationSection /> */}
+    <SubmittedTask />
+     {/* <FeedbackModel />  */}
+  {/* <EducationSection />  */}
    {/* <ModalCreateTask /> */}
    {/* <CreateTask  /> */}
 
