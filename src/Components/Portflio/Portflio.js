@@ -35,6 +35,7 @@ const Portflio = props => {
         See More
         <i class="fas fa-chevron-right mt-1" style={{ paddingLeft: "5px" }}></i>
       </div>
+      <div>hi</div>
     </div>
   );
 };
