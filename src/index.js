@@ -5,11 +5,24 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import Header from "./Layout/Header/header";
+import WelcomeNavBar from "./Layout/Navbar/navbar";
+import ModalPost from "./Components/Modal/AddPostModel/modal";
+import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
+import Post from "./Components/post/post";
+//---------------------------nada--------------------------//
+
+// import Login from "./Pages/LoginPage/login";
+import Portflio from "./Components/Portflio/Portflio";
+// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+// import SignUp from "./Pages/SignUpPage/sign-up";
+//---------------------------nada--------------------------//
+
+// import EducationSection from './Components/EducationSection/EducationSection';
 // import Header from "./Layout/Header/header";
 //  import WelcomeNavBar from "./Layout/Navbar/navbar";
 // import ModalPost from "./Components/Modal/AddPostModel/modal";
 // import Post from './Components/post/post';
-
 
 //---------------------------Mai--------------------------//
 // import WelcomePage from './Pages/WelcomePage/WelcomePage';
@@ -22,17 +35,13 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 // import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
 
-
-
 // import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 // import Post from "./Components/post/post";
 // import Login from "./Pages/LoginPage/login";
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 
-import { Form } from 'reactstrap';
-
-
+import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -49,19 +58,17 @@ ReactDOM.render(
    
 {/* 
      <WelcomeNavBar /> */}
-  {/* <Header/>
+    {/* <Header/>
   <AddSkill/>
   <ModalPost/>
-  <Post/> */} 
+  <Post/> */}
 
     {/* <App /> */}
     {/* <App /> */}
 
-    
     {/* <WelcomeNavBar />
     <ModalPost />
     <Post/> */}
-  
 
     {/* <App /> */}
     {/* <App /> */}
@@ -70,6 +77,7 @@ ReactDOM.render(
     {/* <Login /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
+    {/* <SignUp /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
