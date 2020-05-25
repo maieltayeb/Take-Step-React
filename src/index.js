@@ -44,7 +44,7 @@ import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <WelcomePage /> */}
+    <WelcomePage />
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -72,7 +72,7 @@ ReactDOM.render(
     {/* <Header/> */}
 
     {/* <Login /> */}
-    <Portflio />
+    {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
     {/* <SignUp /> */}
   </React.StrictMode>,
