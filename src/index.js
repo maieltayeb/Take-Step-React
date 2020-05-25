@@ -13,7 +13,7 @@ import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
 // import Login from "./Pages/LoginPage/login";
-// import Portflio from "./Components/Portflio/Portflio";
+import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 // import SignUp from "./Pages/SignUpPage/sign-up";
 //---------------------------nada--------------------------//
@@ -44,7 +44,7 @@ import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-    <WelcomePage />
+    {/* <WelcomePage /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -72,7 +72,7 @@ ReactDOM.render(
     {/* <Header/> */}
 
     {/* <Login /> */}
-    {/* <Portflio /> */}
+    <Portflio />
     {/* <OwnerProfileCard /> */}
     {/* <SignUp /> */}
   </React.StrictMode>,
