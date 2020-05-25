@@ -8,7 +8,7 @@ const HowItWorkCard = props => {
         <Card>
           <img width="100%" src="/img/find.svg" alt="Card image cap" />
           <CardBody>
-            <CardText>
+            <CardText className="text-center m-0">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </CardText>
@@ -19,7 +19,7 @@ const HowItWorkCard = props => {
         <Card>
           <img width="100%" src="/img/hire.svg" alt="Card image cap" />
           <CardBody>
-            <CardText>
+            <CardText className="text-center m-0">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </CardText>
@@ -30,7 +30,7 @@ const HowItWorkCard = props => {
         <Card>
           <img width="100%" src="/img/work.svg" alt="Card image cap" />
           <CardBody>
-            <CardText>
+            <CardText className="text-center m-0">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </CardText>
@@ -41,7 +41,7 @@ const HowItWorkCard = props => {
         <Card>
           <img width="100%" src="/img/pay.svg" alt="Card image cap" />
           <CardBody>
-            <CardText>
+            <CardText className="text-center m-0">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </CardText>
