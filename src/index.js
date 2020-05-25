@@ -10,15 +10,16 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 // import ModalPost from "./Components/Modal/AddPostModel/modal";
 // import Post from './Components/post/post';
 
-import WelcomePage from './Pages/WelcomePage/WelcomePage';
 
-import Navmai from './Layout/ournav';
 //---------------------------Mai--------------------------//
+// import WelcomePage from './Pages/WelcomePage/WelcomePage';
+
+// import Navmai from './Layout/ournav';
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-import FeedbackModel  from './Components/Modal/AddFeedbackModel/AddFeedbackModal';
+// import FeedbackModel  from './Components/Modal/AddFeedbackModel/AddFeedbackModal';
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
-import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
+// import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
 
 
@@ -35,15 +36,15 @@ import { Form } from 'reactstrap';
 
 ReactDOM.render(
   <React.StrictMode>
-     {/* <WelcomePage /> */}
+
     {/****************Mai***********************/ }
-    <SubmittedTask />
+    {/* <SubmittedTask /> */}
      {/* <FeedbackModel />  */}
   {/* <EducationSection />  */}
    {/* <ModalCreateTask /> */}
    {/* <CreateTask  /> */}
 
-
+     {/* <WelcomePage /> */}
      {/****************Mai***********************/ }
    
 {/* 
