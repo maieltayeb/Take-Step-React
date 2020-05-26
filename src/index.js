@@ -10,6 +10,7 @@ import WelcomeNavBar from "./Layout/Navbar/navbar";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
+import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 //---------------------------nada--------------------------//
 
 import Login from "./Pages/LoginPage/login";
@@ -51,26 +52,26 @@ ReactDOM.render(
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
 
-    {/****************Mai***********************/ }
+    {/****************Mai***********************/}
     {/* <SubmittedTask /> */}
-     {/* <FeedbackModel />  */}
-  {/* <EducationSection />  */}
-   {/* <ModalCreateTask /> */}
-   {/* <CreateTask  /> */}
+    {/* <FeedbackModel />  */}
+    {/* <EducationSection />  */}
+    {/* <ModalCreateTask /> */}
+    {/* <CreateTask  /> */}
 
-     {/* <WelcomePage /> */}
-     {/****************Mai***********************/ }
-   
-{/* 
+    {/* <WelcomePage /> */}
+    {/****************Mai***********************/}
+
+    {/* 
      <WelcomeNavBar /> */}
     {/* <Header/>
   <AddSkill/>
   <ModalPost/>
   <Post/> */}
 
-    <App />
     {/* <App /> */}
-
+    {/* <App /> */}
+    <TaskSubmittedFrame />
     {/* <WelcomeNavBar /> */}
     {/* <ModalPost /> */}
     {/* <Post/>  */}
