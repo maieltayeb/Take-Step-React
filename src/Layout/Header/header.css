@@ -45,12 +45,12 @@
   margin-left: 110px;
   /* margin-top: 160px; */
 }
-.lead1 {
+.leead1 {
   margin-top: 25px;
   width: 700px;
   font-size: 23px;
-  margin-left: 110px;
-  margin-bottom: 50px;
+  margin-left: 110px !important;
+  margin-bottom: 50px !important;
 }
 #arrow-ico {
   color: #ffffff;
