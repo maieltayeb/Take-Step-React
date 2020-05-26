@@ -4,9 +4,9 @@
      padding: 10px; 
     
      border-top: 10px solid #494848;
-   width:20%;
+    width:22%; 
    margin-left: 50px;
-   margin-top: 50px;
+   margin-top: 50px; 
 }
 /*********************top*******************************/
 .subscribeCard-top{
@@ -44,7 +44,7 @@
 
 .subscribeCard-middleCard{
     border-top: 10px solid #EBC010;
-    margin-top: 30px;
+    margin-top: 14px;
    
 
 }

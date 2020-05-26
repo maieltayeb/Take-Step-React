@@ -1,8 +1,11 @@
 .yel-dev {
   /* top: 100px !important;
   right: 158px !important; */
-   top: 60px !important;
-  right: 215px !important;
+   /* top: 60px !important;
+  right: 215px !important; */
+ top: 0rem !important;
+    /* right: 215px !important; */
+    left: 48.5rem;
 }
 .fluid1 {
   height:  422px;
@@ -14,9 +17,12 @@
 .yel-dev {
 
   /*********************/
-  margin-right: 68px;
-  width: 293px;
-  height: 421px;
+  /*margin-right: 4.15rem;*/
+  width: 18.3rem;
+  height: 26.5rem;
+  /* width: 2.93rem;
+   margin-right: 66px;
+  height: 422px; */
   /******************/
   /* top: 0px;
   right: 114px;
@@ -29,8 +35,13 @@
 }
 .pic {
   /******************/
-  height: 421px;
-  width: 263px;
+
+  
+  height:100%;
+    width:92%;
+  /* height: 422px; */
+ /* width: 263px;*/
+  
   /*************************/
   /* height: 637px;
   width: 500px; */

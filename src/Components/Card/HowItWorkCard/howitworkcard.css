@@ -1,8 +1,8 @@
-.card {
+.cardHowItWork {
   border: none !important;
   text-align: center;
 }
-img {
+.imgHowItWork {
   margin: 0 auto;
   width: 50%;
 }

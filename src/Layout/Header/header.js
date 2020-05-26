@@ -4,7 +4,7 @@ import "./header.css";
 const Header = props => {
   return (
     <div>
-      <Jumbotron fluid className="fluid1">
+      <Jumbotron fluid className="fluid1 mb-0">
         <Container fluid>
           <h1 className="display-4">Take your step</h1>
           <p className="leead1">
@@ -19,10 +19,11 @@ const Header = props => {
             </div>
           </button>{" "}
         </Container>
-      </Jumbotron>
-      <div className="yel-dev">
+        <div className="yel-dev">
         <div className="pic"></div>
       </div>
+      </Jumbotron>
+     
     </div>
   );
 };
