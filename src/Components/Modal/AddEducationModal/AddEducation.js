@@ -31,7 +31,7 @@ const AddEducation = (props) => {
         <ModalHeader className="modal-structure-header" toggle={toggle}>
           Add Education
         </ModalHeader>
-        <ModalBody style={{ width: "936px" }}>
+        <ModalBody style={{ width: "720px" }}>
           <Form>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -80,7 +80,7 @@ const AddEducation = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter style={{ width: "936px" }}>
+        <ModalFooter style={{ width: "720px" }}>
           <Button id="cancel-btn" onClick={toggle}>
             Cancel
           </Button>{" "}

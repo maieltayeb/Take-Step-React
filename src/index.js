@@ -53,7 +53,7 @@ import SkillSection from "./Components/SkillSection/SkillSec";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -75,7 +75,7 @@ ReactDOM.render(
     {/* <WelcomeNavBar /> */}
     {/* <Navmai /> */}
     {/* <Header /> */}
-    {/* <AddEducation /> */}
+    <AddEducation />
     {/* <SkillSection /> */}
     {/****************Malak end***********************/}
 
