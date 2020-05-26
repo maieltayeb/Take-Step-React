@@ -12,33 +12,47 @@ import HowITWork from "../../Components/HowToWork/howtowork";
 
 // import SubscribeCardsSection from "./SubscribeCardSections/subscribeCardSection";
 import WelcomeNavBar from "../../Layout/Navbar/navbar";
+
 import Navmai from "../../Layout/ournav";
 import { Container, Row, Jumbotron } from "reactstrap";
 // import Header from "../../Layout/Header/header";
-import CardFrame from "../../Components/Card/CategoreyCard/CardFrame";
+import OurCategoeyCard from "../../Components/Card/CategoreyCard/ourCategoryCard";
 class WelcomePage extends Component {
   state = {};
   render() {
     return (
       <>
-        <Container>
-          {/* <Row> */}
-          {/* <Example></Example> */}
+      <Navmai />
+  
+    
+          
+          <Header />
+         
 
-          {/* </Row> */}
-        </Container>
-        <Navmai></Navmai>
-        <Header></Header>
-        {/* <HowITWork></HowITWork>
-        <Container
-          className="bg-white shadow"
-          style={{ position: "absolute", top: "253px", left: "112px" }}
-        >
-          <Row style={{ padding: "36px 0" }}>
-            <HowItWorkCard></HowItWorkCard>
-          </Row>
-        </Container>
 
+          {/** ************************************/}
+
+        <Container >
+        <h3 className="text-center mt-5">All Categories</h3>
+          <Row style={{marginTop:"47px" ,"margin-left": "14px",
+    "justify-content": "center"}}>
+           
+         <OurCategoeyCard /> 
+          
+        </Row>
+        <Row style={{marginTop:"47px" ,"margin-left": "14px",
+    "justify-content": "center"}} className="mb-5">
+         <OurCategoeyCard /> 
+          
+        </Row> 
+      
+        </Container>  
+        
+        <HowITWork></HowITWork> 
+        {/*/////////////////mariaaaaaaaaaaam*/}
+        
+ {/*/////////////////mariaaaaaaaaaaam*/}
+  {/*/////////////////mariaaaaaaaaaaam*/}
         <Container>
           <div>
             <Jumbotron
@@ -67,20 +81,28 @@ class WelcomePage extends Component {
                 </p>
               </Container>
             </Jumbotron>
-          </div>
-
-          <Row>
+          </div> 
+          </Container>
+ {/*/////////////////mariaaaaaaaaaaam*/}
+ {/*/////////////////mai*/}
+ {/* <Row>
+ <SubscribeCard />
+ <SubscribeCard />
+ <SubscribeCard />
+ </Row> */}
+        
             <SubscribeCardsSection />
-          </Row>
-        </Container> */}
-        {/* <Footer></Footer>
-        <Container className="themed-container" fluid={true}>
-          <Navmai />
-          <Header />
-          <CardFrame /> */}
-        {/* <WelcomeNavBar /> */}
-        {/* <SubscribeCardsSection /> */}
-        {/* </Container> */}
+       
+        
+{/*/////////////////mai*/}
+{/*/////////////////mariaaaaaaaaaaam*/}
+        <Footer></Footer>
+        {/*/////////////////mariaaaaaaaaaaam*/}
+       
+     
+       
+       
+       
       </>
     );
   }

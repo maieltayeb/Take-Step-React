@@ -12,10 +12,11 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 // import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
-// import Login from "./Pages/LoginPage/login";
+import Login from "./Pages/LoginPage/login";
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-// import SignUp from "./Pages/SignUpPage/sign-up";
+import SignUp from "./Pages/SignUpPage/sign-up";
+// import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
 
 // import EducationSection from './Components/EducationSection/EducationSection';
@@ -27,10 +28,14 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 // import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 
 //---------------------------Mai--------------------------//
+// import WelcomePage from './Pages/WelcomePage/WelcomePage';
+
+// import Navmai from './Layout/ournav';
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
 // import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
+// import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
 //----------------------------------Malak start------------------------//
 import Navmai from "./Layout/ournav";
@@ -56,6 +61,14 @@ ReactDOM.render(
     {/* <CreateTask  /> */}
 
     {/****************Mai***********************/}
+    {/* <SubmittedTask /> */}
+    {/* <FeedbackModel />  */}
+    {/* <EducationSection />  */}
+    {/* <ModalCreateTask /> */}
+    {/* <CreateTask  /> */}
+
+    {/* <WelcomePage /> */}
+    {/****************Mai***********************/}
 
     {/****************Malak start***********************/}
 
@@ -63,7 +76,7 @@ ReactDOM.render(
     {/* <Navmai /> */}
     {/* <Header /> */}
     {/* <AddEducation /> */}
-    <SkillSection />
+    {/* <SkillSection /> */}
     {/****************Malak end***********************/}
 
     {/* <Login /> */}

@@ -18,11 +18,11 @@ class SubscribeCard extends Component {
     }
 
     return (
-      <Col>
-        <Container
-          style={{ width: "83%", padding: " 0px 33px" }}
+      <div  className={classes.join(" ")}  style={{ padding: " 0px 33px" }}>
+        {/* <Container
+          style={{ width: "70%", padding: " 0px 33px" }}
           className={classes.join(" ")}
-        >
+        > */}
           <div className="subscribeCard-top">
             <h3>{this.props.type}</h3>
             <h1>{this.props.price} $</h1>
@@ -47,8 +47,9 @@ class SubscribeCard extends Component {
               Select plan &#8594;
             </button>
           </div>
-        </Container>
-      </Col>
+        {/* </Container> */}
+      {/* </Col> */}
+      </div>
     );
   }
 }

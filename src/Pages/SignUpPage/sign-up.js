@@ -20,14 +20,14 @@ const SignUp = props => {
   return (
     <React.Fragment>
       <div>
-        <Card className="card-border" style={{ borderRadius: "50px" }}>
-          <CardTitle className="title">Sign Up</CardTitle>
+        <div className="card-border" style={{ borderRadius: "50px" }}>
+          <div className="title card-title">Sign Up</div>
           <Form>
             <Row form style={{ marginLeft: "45px" }}>
               <Col md={6}>
                 <FormGroup>
                   <Input
-                    className="card-border input-style"
+                    className="card-border input-style input-bg-style "
                     bsSize="lg"
                     type="email"
                     name="email"
@@ -39,7 +39,7 @@ const SignUp = props => {
               <Col md={6}>
                 <FormGroup style={{ marginLeft: "-43px", marginRight: "52px" }}>
                   <Input
-                    className="card-border input-style"
+                    className="card-border input-style input-bg-style"
                     bsSize="lg"
                     type="password"
                     name="password"
@@ -52,7 +52,7 @@ const SignUp = props => {
             <InputGroup row>
               <Col sm={12}>
                 <Input
-                  className="card-border input-style"
+                  className="card-border input-style input-bg-style"
                   bsSize="lg"
                   type="email"
                   name="email"
@@ -65,8 +65,7 @@ const SignUp = props => {
             <InputGroup row>
               <Col sm={12}>
                 <Input
-                  className="card-border input-style"
-                  // style={{ backgroundColor: "#f8f9fa" }}
+                  className="card-border input-style input-bg-style"
                   bsSize="lg"
                   type="password"
                   name="password"
@@ -78,7 +77,7 @@ const SignUp = props => {
             <InputGroup row>
               <Col sm={12}>
                 <Input
-                  className="card-border input-style"
+                  className="card-border input-style input-bg-style"
                   style={{ backgroundColor: "#f8f9fa" }}
                   bsSize="lg"
                   type="password"
@@ -123,16 +122,16 @@ const SignUp = props => {
             </div>
             <div className="row-comtainer">
               <img className="payment-img" src="./img/visa.png" />
-              <p className="signup-text or">
-                <strong>Or</strong>
-              </p>
+              <div className="or">
+                <b>Or</b>
+              </div>
               <img className="payment-img" src="./img/mastercard.png" />
             </div>
           </Form>
           <InputGroup row>
             <Col sm={12}>
               <Input
-                className="card-border input-style"
+                className="card-border input-style input-bg-style"
                 style={{ backgroundColor: "#f8f9fa" }}
                 bsSize="lg"
                 type="password"
@@ -145,7 +144,7 @@ const SignUp = props => {
           <InputGroup row>
             <Col sm={12}>
               <Input
-                className="card-border input-style"
+                className="card-border input-style input-bg-style"
                 style={{ backgroundColor: "#f8f9fa" }}
                 bsSize="lg"
                 type="password"
@@ -158,7 +157,7 @@ const SignUp = props => {
           <InputGroup row>
             <Col sm={12}>
               <Input
-                className="card-border input-style"
+                className="card-border input-style input-bg-style"
                 style={{ backgroundColor: "#f8f9fa" }}
                 bsSize="lg"
                 type="password"
@@ -171,7 +170,7 @@ const SignUp = props => {
           <InputGroup row>
             <Col sm={12}>
               <Input
-                className="card-border input-style"
+                className="card-border input-style input-bg-style"
                 style={{ backgroundColor: "#f8f9fa" }}
                 bsSize="lg"
                 type="password"
@@ -184,7 +183,7 @@ const SignUp = props => {
           <InputGroup row>
             <Col sm={12}>
               <Input
-                className="card-border input-style"
+                className="card-border input-style input-bg-style"
                 style={{ backgroundColor: "#f8f9fa" }}
                 bsSize="lg"
                 type="password"
@@ -229,11 +228,13 @@ const SignUp = props => {
             </Col>
           </InputGroup> */}
           <Button
-            className="btn2"
+            className="step-btn-form"
             style={{
               backgroundColor: "#0e0d0d",
               width: "250px",
-              height: "55px"
+              height: "55px",
+              borderRadius: "5rem",
+              display: "block"
             }}
           >
             Create My Account{" "}
@@ -243,7 +244,7 @@ const SignUp = props => {
               Already have an account? <a href="#">Login</a>{" "}
             </strong>{" "}
           </div>
-        </Card>
+        </div>
       </div>
     </React.Fragment>
   );
