@@ -34,8 +34,11 @@ const AddEducation = (props) => {
         <ModalBody style={{ width: "936px" }}>
           <Form>
             <FormGroup>
-              <Label for="exampleEmail">University</Label>
+              <Label className="lab-size" for="exampleEmail">
+                University
+              </Label>
               <Input
+                className="input-border"
                 type="university"
                 name="university"
                 placeholder="Ex: oxford university"
@@ -43,12 +46,17 @@ const AddEducation = (props) => {
             </FormGroup>
             <FormGroup>
               <Label for="examplePassword">Degree</Label>
-              <Input type="degree" placeholder="Ex: Bachelor's" />
+              <Input
+                className="input-border"
+                type="degree"
+                placeholder="Ex: Bachelor's"
+              />
             </FormGroup>
 
             <FormGroup>
               <Label for="exampleDate">Graduation Date</Label>
               <Input
+                className="input-border"
                 type="date"
                 name="date"
                 id="exampleDate"
@@ -58,7 +66,12 @@ const AddEducation = (props) => {
 
             <FormGroup>
               <Label for="gradeSelect">Grade</Label>
-              <Input type="select" name="select" id="gradeSelect">
+              <Input
+                className="input-border"
+                type="select"
+                name="select"
+                id="gradeSelect"
+              >
                 <option>Excellent</option>
                 <option>Very good</option>
                 <option>Good</option>
@@ -68,11 +81,11 @@ const AddEducation = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter style={{ width: "936px" }}>
-          <Button color="primary" onClick={toggle}>
-            Do Something
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          <Button id="cancel-btn" onClick={toggle}>
             Cancel
+          </Button>{" "}
+          <Button id="add-btn" onClick={toggle}>
+            Add
           </Button>
         </ModalFooter>
       </Modal>

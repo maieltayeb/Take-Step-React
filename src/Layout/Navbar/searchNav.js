@@ -12,21 +12,30 @@ import {
 } from 'reactstrap';
 // import Image from 'react-bootstrap/Image';
 // import { Form } from 'react-bootstrap';
+
 import "./nav.css";
 const SearchNav = (props) => {
 const [isOpen, setIsOpen] = useState(false);
 const toggle =() => setIsOpen(!isOpen);
 
   return (
-    <div >  
+    <div>  
        <Nav className="mR-auto  clearfix" navbar>
-        <NavItem>
-        <Input placeholder="search"className="searchInput float-left"></Input>
-        </NavItem> 
-        <NavItem>
-        <img  className="float-left d-inline" src="./img/search.png"/>
+      <NavItem>
+      <Input class="form-control py-2" placeholder="search" type="search" className="searchInput float-left mr-1">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+            <i class=" mt- fas fa-search"></i>
+        </button>
+      </span>
+      </Input>
+      </NavItem>
+      <NavItem>
+      <span>
+       <i class=" mt-2 fas fa-search"></i>
+        </span>
         </NavItem>
-        </Nav>
+      </Nav>
     </div>
   );
 }

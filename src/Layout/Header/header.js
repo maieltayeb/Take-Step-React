@@ -6,8 +6,8 @@ const Header = (props) => {
     <div>
       <Jumbotron fluid className="fluid1">
         <Container fluid>
-          <h1 className="display-4">Take your step</h1>
-          <p className="lead1">
+          <h1 className="big-title">Take your step</h1>
+          <p className="prag">
             This is a modified jumbotron that occupies the entire horizontal
             space of its parent.
           </p>

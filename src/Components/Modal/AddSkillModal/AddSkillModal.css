@@ -1,21 +1,26 @@
-.modaShap{
+.modalShapSkill{
     width:720px;
 
 } 
 .modal-content{
     width:720px;
+    border-radius: 39px 39px 0px 0px;
+    background-color:#F2F2F2;
 
 }
-.headerModal{
+.headerModalSkill{
     font-size:20px;
     font-family:tahoma;
-    color:#494848;
-    background-color:#EBC010;
+    color: #EBC010;
+    background-color:#494848;
     width:720px;
+    border-radius: 35px 35px 0px 35px;
 }
-.bodyModal{
+
+.bodyModalSkill{
    width:720px;
    background-color:#F2F2F2;
+
 }
 .cancelModal{
    /* margin-left:6px !important; */
@@ -37,4 +42,17 @@
     font-size:20px;
     font-family:tahoma;
     color:#EBC010;
+}
+.para {
+    background-color: #494848;
+    color: #EBC010;
+    border-radius: 33px;
+    padding: 10px;
+    padding-top: 2px;
+    width: fit-content;
+    height: 30px;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    display:inline-block;
+
 }

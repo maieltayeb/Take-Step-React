@@ -12,7 +12,25 @@
   padding-left: 40%;
 }
 .modal-content {
-  width: 936px !important;
-  right: 25%;
+  width: 935px !important;
+  margin-left: 0px !important;
   border-radius: 39px 35px 0px 0px !important;
+}
+.input-border {
+  border-color: #ebc010 !important;
+}
+.lab-size {
+  size: 18px !important;
+}
+#add-btn {
+  background-color: #494848 !important;
+  color: #ebc010 !important;
+  width: 150px !important;
+}
+#cancel-btn {
+  background-color: #f6f9f9;
+  border-color: #ebc010 !important;
+  color: #494848 !important;
+  margin-left: 600px !important;
+  width: 150px !important;
 }
