@@ -34,7 +34,7 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 //----------------------------------Mai------------------------//
 //----------------------------------Malak start------------------------//
 import Navmai from "./Layout/ournav";
-// import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
+import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
 
 // import HowITWork from "./Components/HowToWork/howtowork";
 import Header from "./Layout/Header/header";
@@ -44,10 +44,11 @@ import Header from "./Layout/Header/header";
 // import Post from "./Components/post/post";
 
 // import { Form } from "reactstrap";
+import SkillSection from "./Components/SkillSection/SkillSec";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <WelcomePage /> */}
+    <App />
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -59,9 +60,10 @@ ReactDOM.render(
     {/****************Malak start***********************/}
 
     {/* <WelcomeNavBar /> */}
-    <Navmai />
-    <Header />
+    {/* <Navmai /> */}
+    {/* <Header /> */}
     {/* <AddEducation /> */}
+    <SkillSection />
     {/****************Malak end***********************/}
 
     {/* <Login /> */}

@@ -16,11 +16,11 @@ function App() {
       {/* <Example /> */}
       {/* <Login></Login> */}
       {/* <OurLogin></OurLogin> */}
-      {/* <WelcomePage></WelcomePage> */}
+      <WelcomePage></WelcomePage>
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <Footer></Footer> */}
     </div>
   );

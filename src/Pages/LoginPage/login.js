@@ -42,7 +42,9 @@ const Login = props => {
                 />
               </Col>
             </FormGroup>
-            <p>Forgot your password?</p>
+            <p style={{ "margin-top": "50px 0", "margin-left": "100px" }}>
+              Forgot your password?
+            </p>
             <Button
               className="btn2"
               style={{

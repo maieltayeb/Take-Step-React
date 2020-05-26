@@ -27,8 +27,9 @@ class WelcomePage extends Component {
 
           {/* </Row> */}
         </Container>
-        {/* <Header></Header> */}
-        <HowITWork></HowITWork>
+        <Navmai></Navmai>
+        <Header></Header>
+        {/* <HowITWork></HowITWork>
         <Container
           className="bg-white shadow"
           style={{ position: "absolute", top: "253px", left: "112px" }}
@@ -71,15 +72,15 @@ class WelcomePage extends Component {
           <Row>
             <SubscribeCardsSection />
           </Row>
-        </Container>
-        <Footer></Footer>
+        </Container> */}
+        {/* <Footer></Footer>
         <Container className="themed-container" fluid={true}>
           <Navmai />
           <Header />
-          <CardFrame />
-          {/* <WelcomeNavBar /> */}
-          {/* <SubscribeCardsSection /> */}
-        </Container>
+          <CardFrame /> */}
+        {/* <WelcomeNavBar /> */}
+        {/* <SubscribeCardsSection /> */}
+        {/* </Container> */}
       </>
     );
   }
