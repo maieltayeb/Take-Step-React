@@ -44,7 +44,7 @@ const Login = props => {
             </FormGroup>
             <p>Forgot your password?</p>
             <Button
-              className="btn"
+              className="btn2"
               style={{
                 backgroundColor: "#EBC010",
                 borderColor: "#EBC010",
@@ -54,7 +54,7 @@ const Login = props => {
               Login{" "}
             </Button>
             <Button
-              className="btn"
+              className="btn2"
               style={{
                 backgroundColor: "#0e0d0d"
               }}

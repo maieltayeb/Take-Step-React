@@ -1,27 +1,28 @@
 import React from "react";
-// import logo from './logo.svg';
-
+import { Container, Row, Col } from "reactstrap";
+// import logo from "./logo.svg";
 import "./App.css";
+// import Example from "./Components/Card/InProgressTaskCard/inprogresstaskcard";
+
+import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
+import WelcomePage from "./Pages/WelcomePage/WelcomePage";
+import Login from "./Pages/LoginPage/login";
+import OurLogin from "./Pages/LoginPage/ourLogin";
 
 function App() {
   return (
-    <div></div>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <div>
+      {/* <Welcome></Welcome> */}
+      {/* <Example /> */}
+      {/* <Login></Login> */}
+      {/* <OurLogin></OurLogin> */}
+      {/* <WelcomePage></WelcomePage> */}
+      {/* <HowITWork></HowITWork> */}
+      {/* <Example /> */}
+      {/* <HowItWorkCard></HowItWorkCard> */}
+      <VolunteerProfile></VolunteerProfile>
+      {/* <Footer></Footer> */}
+    </div>
   );
 }
 
