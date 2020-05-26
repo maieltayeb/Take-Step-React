@@ -1,12 +1,9 @@
-.btn2 {
-  margin-left: 6px;
-  margin: 40px auto;
-  border-radius: 58px;
+.step-btn-form {
+  display: block;
+  margin: 2rem auto;
   height: 48px;
   width: 200px;
-  font-size: 20px;
   font-family: Tahoma, sans-serif;
-  display: block;
 }
 
 .card-border {
@@ -19,15 +16,22 @@
 .title {
   padding-top: 50px;
   padding-bottom: 30px;
-  font-size: 30px;
+  font-size: 20px;
   font-family: Tahoma, sans-serif;
   margin: 10px auto;
 }
-p {
+.step-form-text {
   margin-top: 50px 0;
   margin-left: 100px;
 }
-.input-style {
+.input-bg-style {
   background-color: #f8f9fa;
   width: 80%;
+  padding-bottom: 5px;
 }
+/* .btns-comtainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+} */
