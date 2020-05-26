@@ -43,16 +43,13 @@ import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-<<<<<<< HEAD
-=======
-    {/* <WelcomePage /> */}
+    {/* <WelcomePage />  */}
 
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
->>>>>>> 3776890e317fe2f633e6bf682bcfb1f74a441057
 
     {/****************Mai***********************/ }
     {/* <SubmittedTask /> */}
@@ -71,7 +68,7 @@ ReactDOM.render(
   <ModalPost/>
   <Post/> */}
 
-    {/* <App /> */}
+    <App />
     {/* <App /> */}
 
     {/* <WelcomeNavBar /> */}
@@ -82,10 +79,10 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <Header/> */}
 
-    <Login />
+    {/* <Login /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    <SignUp />
+    {/* <SignUp /> */}
     {/* <NotificationDropdown /> */}
   </React.StrictMode>,
   document.getElementById("root")
