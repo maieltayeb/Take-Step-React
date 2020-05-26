@@ -12,10 +12,11 @@ import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
-// import Login from "./Pages/LoginPage/login";
-import Portflio from "./Components/Portflio/Portflio";
+import Login from "./Pages/LoginPage/login";
+// import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-// import SignUp from "./Pages/SignUpPage/sign-up";
+import SignUp from "./Pages/SignUpPage/sign-up";
+// import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
 
 // import EducationSection from './Components/EducationSection/EducationSection';
@@ -37,14 +38,21 @@ import Portflio from "./Components/Portflio/Portflio";
 
 // import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 // import Post from "./Components/post/post";
-// import Login from "./Pages/LoginPage/login";
-// import Portflio from "./Components/Portflio/Portflio";
-// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 
 import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
+<<<<<<< HEAD
+=======
+    {/* <WelcomePage /> */}
+
+    {/****************Mai***********************/}
+    {/* <FeedbackModel /> */}
+    {/* <EducationSection /> */}
+    {/* <ModalCreateTask /> */}
+    {/* <CreateTask  /> */}
+>>>>>>> 3776890e317fe2f633e6bf682bcfb1f74a441057
 
     {/****************Mai***********************/ }
     {/* <SubmittedTask /> */}
@@ -66,18 +74,19 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <App /> */}
 
-    {/* <WelcomeNavBar />
-    <ModalPost />
-    <Post/> */}
+    {/* <WelcomeNavBar /> */}
+    {/* <ModalPost /> */}
+    {/* <Post/>  */}
 
     {/* <App /> */}
     {/* <App /> */}
     {/* <Header/> */}
 
-    {/* <Login /> */}
+    <Login />
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    {/* <SignUp /> */}
+    <SignUp />
+    {/* <NotificationDropdown /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

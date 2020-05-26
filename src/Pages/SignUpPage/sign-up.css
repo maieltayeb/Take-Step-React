@@ -12,7 +12,6 @@
 }
 
 .card-border {
-  width: 60%;
   margin: auto;
   border: 2px solid #ebc010;
   border-radius: 10px;
@@ -21,7 +20,7 @@
 .title {
   padding-top: 50px;
   padding-bottom: 30px;
-  font-size: 30px;
+  font-size: 20px;
   font-family: Tahoma, sans-serif;
   margin: 10px auto;
 }
@@ -29,19 +28,18 @@
   display: flex;
   justify-content: center;
 }
-.input-style {
+.input-bg-style {
   background-color: #f8f9fa;
   width: 80%;
+  margin-bottom: 15px;
 }
 .row-comtainer {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
 }
 .payment-img {
   width: 100px;
 }
 .or {
   color: #ebc010;
-  margin-right: 100px;
 }
