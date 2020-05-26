@@ -4,13 +4,13 @@ import {
   Card,
   CardTitle,
   Form,
-  FormGroup,
+  InputGroup,
   Col,
   Input,
   Row,
   InputGroupAddon,
-  InputGroup,
-  InputGroupText
+  InputGroupText,
+  FormGroup
 } from "reactstrap";
 import FontAwesomeIcon from "@fortawesome/fontawesome-free";
 import "./sign-up.css";
@@ -23,7 +23,7 @@ const SignUp = props => {
         <Card className="card-border" style={{ borderRadius: "50px" }}>
           <CardTitle className="title">Sign Up</CardTitle>
           <Form>
-            <Row form style={{ marginLeft: "34px" }}>
+            <Row form style={{ marginLeft: "45px" }}>
               <Col md={6}>
                 <FormGroup>
                   <Input
@@ -37,7 +37,7 @@ const SignUp = props => {
                 </FormGroup>
               </Col>
               <Col md={6}>
-                <FormGroup style={{ marginLeft: "-40px", marginRight: "39px" }}>
+                <FormGroup style={{ marginLeft: "-43px", marginRight: "52px" }}>
                   <Input
                     className="card-border input-style"
                     bsSize="lg"
@@ -49,7 +49,7 @@ const SignUp = props => {
                 </FormGroup>
               </Col>
             </Row>
-            <FormGroup row>
+            <InputGroup row>
               <Col sm={12}>
                 <Input
                   className="card-border input-style"
@@ -60,13 +60,13 @@ const SignUp = props => {
                   placeholder="Email or Username"
                 />
               </Col>
-            </FormGroup>
+            </InputGroup>
 
-            <FormGroup row>
+            <InputGroup row>
               <Col sm={12}>
                 <Input
                   className="card-border input-style"
-                  style={{ backgroundColor: "#f8f9fa" }}
+                  // style={{ backgroundColor: "#f8f9fa" }}
                   bsSize="lg"
                   type="password"
                   name="password"
@@ -74,8 +74,8 @@ const SignUp = props => {
                   placeholder="Password "
                 />
               </Col>
-            </FormGroup>
-            <FormGroup row>
+            </InputGroup>
+            <InputGroup row>
               <Col sm={12}>
                 <Input
                   className="card-border input-style"
@@ -94,7 +94,7 @@ const SignUp = props => {
                   <i class="fas fa-chevron-right mt-1"></i>
                 </InputGroupAddon> */}
               </Col>
-            </FormGroup>
+            </InputGroup>
             <div
               className="signup-text"
               style={{
@@ -129,7 +129,7 @@ const SignUp = props => {
               <img className="payment-img" src="./img/mastercard.png" />
             </div>
           </Form>
-          <FormGroup row>
+          <InputGroup row>
             <Col sm={12}>
               <Input
                 className="card-border input-style"
@@ -141,8 +141,8 @@ const SignUp = props => {
                 placeholder="Crad-num"
               />
             </Col>
-          </FormGroup>
-          <FormGroup row>
+          </InputGroup>
+          <InputGroup row>
             <Col sm={12}>
               <Input
                 className="card-border input-style"
@@ -154,8 +154,8 @@ const SignUp = props => {
                 placeholder="Expire-Date "
               />
             </Col>
-          </FormGroup>
-          <FormGroup row>
+          </InputGroup>
+          <InputGroup row>
             <Col sm={12}>
               <Input
                 className="card-border input-style"
@@ -167,8 +167,8 @@ const SignUp = props => {
                 placeholder="Secret num "
               />
             </Col>
-          </FormGroup>
-          <FormGroup row>
+          </InputGroup>
+          <InputGroup row>
             <Col sm={12}>
               <Input
                 className="card-border input-style"
@@ -180,8 +180,8 @@ const SignUp = props => {
                 placeholder="Phone"
               />
             </Col>
-          </FormGroup>
-          <FormGroup row>
+          </InputGroup>
+          <InputGroup row>
             <Col sm={12}>
               <Input
                 className="card-border input-style"
@@ -193,15 +193,43 @@ const SignUp = props => {
                 placeholder="Total"
               />
             </Col>
-          </FormGroup>
-          <InputGroup>
-            <InputGroupAddon addonType="prepend">
-              <InputGroupText>@</InputGroupText>
-            </InputGroupAddon>
-            <Input placeholder="username" />
           </InputGroup>
+          {/* <InputGroup>
+            <Col sm={12}>
+              <InputGroupAddon addonType="prepend">
+                <i class="fas fa-caret-down"></i>
+              </InputGroupAddon>
+              <Input
+                className="card-border input-style"
+                style={{ backgroundColor: "#f8f9fa" }}
+                bsSize="lg"
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="Total"
+              />
+            </Col>
+          </InputGroup> */}
+
+          {/* <InputGroup>
+            <Col sm={12}>
+              <Input
+                className="card-border input-style"
+                bsSize="lg"
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="Total"
+              />
+              <InputGroupAddon addonType="append">
+                <InputGroupText>
+                  <i class="fas fa-caret-down"></i>
+                </InputGroupText>
+              </InputGroupAddon>
+            </Col>
+          </InputGroup> */}
           <Button
-            className="btn"
+            className="btn2"
             style={{
               backgroundColor: "#0e0d0d",
               width: "250px",

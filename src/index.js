@@ -15,7 +15,7 @@ import Post from "./Components/post/post";
 // import Login from "./Pages/LoginPage/login";
 import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-// import SignUp from "./Pages/SignUpPage/sign-up";
+import SignUp from "./Pages/SignUpPage/sign-up";
 //---------------------------nada--------------------------//
 
 // import EducationSection from './Components/EducationSection/EducationSection';
@@ -36,9 +36,6 @@ import Navmai from "./Layout/ournav";
 
 // import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 // import Post from "./Components/post/post";
-// import Login from "./Pages/LoginPage/login";
-// import Portflio from "./Components/Portflio/Portflio";
-// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 
 import { Form } from "reactstrap";
 
@@ -72,9 +69,9 @@ ReactDOM.render(
     {/* <Header/> */}
 
     {/* <Login /> */}
-    <Portflio />
+    {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    {/* <SignUp /> */}
+    <SignUp />
   </React.StrictMode>,
   document.getElementById("root")
 );
