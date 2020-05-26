@@ -12,11 +12,11 @@
 }
 
 .card-border {
-  width: 60%;
-  margin: auto;
+  /* width: 60%; */
+  /* margin: auto; */
   border: 2px solid #ebc010;
   border-radius: 10px;
-  padding: 30px;
+  /* padding: 30px; */
 }
 .title {
   padding-top: 50px;
@@ -29,9 +29,9 @@
   display: flex;
   justify-content: center;
 }
-.input-style {
+.input-bg-style {
   background-color: #f8f9fa;
-  width: 80%;
+  /* width: 80%; */
 }
 .row-comtainer {
   display: flex;
