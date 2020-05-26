@@ -13,9 +13,10 @@ import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
 // import Login from "./Pages/LoginPage/login";
-import Portflio from "./Components/Portflio/Portflio";
+// import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-import SignUp from "./Pages/SignUpPage/sign-up";
+// import SignUp from "./Pages/SignUpPage/sign-up";
+// import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
 
 // import EducationSection from './Components/EducationSection/EducationSection';
@@ -41,7 +42,8 @@ import { Form } from "reactstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-    <WelcomePage />
+    {/* <WelcomePage /> */}
+
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -60,9 +62,9 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <App /> */}
 
-    {/* <WelcomeNavBar />
-    <ModalPost />
-    <Post/> */}
+    {/* <WelcomeNavBar /> */}
+    {/* <ModalPost /> */}
+    {/* <Post/>  */}
 
     {/* <App /> */}
     {/* <App /> */}
@@ -71,7 +73,8 @@ ReactDOM.render(
     {/* <Login /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    <SignUp />
+    {/* <SignUp /> */}
+    {/* <NotificationDropdown /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
