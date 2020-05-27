@@ -33,6 +33,7 @@ const InsideNav = (props) => {
           position: "fixed",
           zIndex: "5",
           width: "100%",
+          top: "0px",
         }}
         light
         expand="md"
