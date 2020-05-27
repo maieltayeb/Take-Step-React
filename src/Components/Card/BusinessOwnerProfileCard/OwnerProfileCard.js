@@ -6,10 +6,10 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
+  CardSubtitle,
 } from "reactstrap";
 
-const OwnerProfileCard = props => {
+const OwnerProfileCard = (props) => {
   return (
     <Card className="owner-card-container owner-card-border">
       <Card className="owner-inner-card">

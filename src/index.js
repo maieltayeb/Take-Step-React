@@ -15,7 +15,7 @@ import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-
 
 import Login from "./Pages/LoginPage/login";
 // import Portflio from "./Components/Portflio/Portflio";
-// import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import SignUp from "./Pages/SignUpPage/sign-up";
 // import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
@@ -55,13 +55,14 @@ import NavProf from "./Layout/Navbar/profileNav";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
+    {/* <OwnerProfileCard /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
-    <PersonalInfo />
+    {/* <PersonalInfo /> */}
     {/****************Mai***********************/}
     {/* <SubmittedTask /> */}
     {/* <FeedbackModel />  */}
@@ -79,7 +80,8 @@ ReactDOM.render(
     {/* <Header /> */}
     {/* <AddEducation /> */}
     {/* <SkillSection /> */}
-    <NavProf />
+    {/* <NavProf /> */}
+    {/* <PersonalInfo /> */}
     {/****************Malak end***********************/}
 
     {/* <Login /> */}

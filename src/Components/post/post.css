@@ -1,75 +1,78 @@
+.postContainer {
+  max-width: 700px;
+  height: 500px;
+  background-color: #f8f8f4 !important;
+  margin: auto;
+  color: #707070;
+  z-index: 0;
+  font-family: tahoma;
+  margin-top: 30px;
+  margin-bottom: 22rem !important;
 
-.postContainer{
-    width:700px;
-    height:500px;
-    background-color:#F8F8F4 !important;
-    margin:auto;
-    color:#707070;
-    z-index: 0;
-    font-family:tahoma;
- 
-
+  min-width: fit-content;
 }
-.postContainerHeader{
-    color:#707070;
+.post-space {
+  height: 10%;
 }
-.postOwnerNameStyle
-{
-    font-family:tahoma;
-    font-size:20px;
-    font-weight: bold;
-    color:#707070;
+.postContainerHeader {
+  color: #707070;
 }
-.applyBtn{
-     background-color:#EBC010;
-     border:1px solid #EBC010;
-     border-radius:58px;
-     height:48px;
-     width:138px;
-     font-size:20px;
-     font-family:tahoma;
-}
-.postCommentBody{
-  background-color:#FFFFFF;
-  width:700px;
-  height:400px;
-  z-index: 10;
-  border-radius:0px 0px 25px 25px ;
-  color:#707070;
-  
-}
-.reactToPost
-{
+.postOwnerNameStyle {
+  font-family: tahoma;
   font-size: 20px;
-  font-family:tahoma;
+  font-weight: bold;
+  color: #707070;
 }
-.commentArea{
- width:550px;
-  border:1px solid #EBC010;
+.applyBtn {
+  background-color: #ebc010;
+  border: 1px solid #ebc010;
+  border-radius: 58px;
+  height: 48px;
+  width: 138px;
+  font-size: 20px;
+  font-family: tahoma;
+}
+.postCommentBody {
+  background-color: #ffffff;
+  max-height: fit-content;
+  /* height: 400px; */
+  z-index: 10;
+  border-radius: 0px 0px 25px 25px;
+  color: #707070;
+  margin-top: 50px;
+  min-height: 200px;
+  margin-bottom: 22rem;
+  display: flex;
+  flex-direction: column;
+}
+.reactToPost {
+  font-size: 20px;
+  font-family: tahoma;
+}
+.commentArea {
+  width: 550px;
+  border: 1px solid #ebc010;
   border-radius: 50px;
   outline-offset: 0;
-  
 }
-::placeholder{
-  color: #EBC010;
+::placeholder {
+  color: #ebc010;
   opacity: 1;
 }
-.commentbody{
-  background-color:#F8F8F4;
+.commentbody {
+  background-color: #f8f8f4;
   border-radius: 0px 25px 25px 25px;
-  width:550px;
+  width: 550px;
   min-height: 100px;
-  max-height: fit-content;;
+  max-height: fit-content;
 }
- 
 
-.img{
+.img {
   width: 50px;
   height: 50px;
   border-radius: 25px;
 }
 
-
-input:focus{
+input:focus {
   outline: none;
 }
