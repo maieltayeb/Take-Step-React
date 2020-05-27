@@ -13,10 +13,10 @@ import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-
 // import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
-import Login from "./Pages/LoginPage/login";
+// import Login from "./Pages/LoginPage/login";
+// import SignUp from "./Pages/SignUpPage/sign-up";
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-import SignUp from "./Pages/SignUpPage/sign-up";
 // import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
 
@@ -56,6 +56,7 @@ import NavProf from "./Layout/Navbar/profileNav";
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <OwnerProfileCard /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
@@ -80,12 +81,14 @@ ReactDOM.render(
     {/* <AddEducation /> */}
     {/* <SkillSection /> */}
     {/* <NavProf /> */}
+    {/* <PersonalInfo /> */}
     {/****************Malak end***********************/}
 
     {/* <Login /> */}
+    {/* <SignUp /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    {/* <SignUp /> */}
+    {/* <NotificationDropdown /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -20,6 +20,7 @@ const VolunteerProfile = props => {
           {/* <Skills></Skills> */}
           <SkillSection></SkillSection>
           <div className="d-inline-block p-3 my-2 rounded ">
+<<<<<<< HEAD
         <Toast style={{ maxWidth: "837px" }}>
           <ToastHeader
             className="p-3 text-warning"
@@ -32,6 +33,24 @@ const VolunteerProfile = props => {
           </ToastBody>
         </Toast>
       </div>
+=======
+            <Toast style={{ maxWidth: "837px" }}>
+              <ToastHeader
+                className="p-3 text-warning"
+                style={{ backgroundColor: "#494848" }}
+              >
+                Portflio
+                <i
+                  class="fas fa-angle-down"
+                  style={{ fontSize: "25px" }}
+                ></i>{" "}
+              </ToastHeader>
+              <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
+                <Portflio></Portflio>
+              </ToastBody>
+            </Toast>
+          </div>
+>>>>>>> 70e77634cc91ac2ab1c68cfaa7e3c61c78a1075f
           <div className="d-inline-block p-3 my-2 rounded ">
             <Toast style={{ maxWidth: "837px" }}>
               <ToastHeader
@@ -40,7 +59,11 @@ const VolunteerProfile = props => {
               >
                 Progress
               </ToastHeader>
+<<<<<<< HEAD
               <ToastBody style={{ backgroundColor: "#F8F8F4" }}>
+=======
+              <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
+>>>>>>> 70e77634cc91ac2ab1c68cfaa7e3c61c78a1075f
                 <InProgressTaskCard></InProgressTaskCard>
               </ToastBody>
             </Toast>

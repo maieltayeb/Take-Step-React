@@ -15,12 +15,12 @@ import {
   NavbarText,
   Button,
   Container,
-  Input
+  Input,
 } from "reactstrap";
 import SearchBox from "../../Components/SearchBox/SearchBox";
 import NotificationDropdown from "../../Components/Dropdown/NotificationDropdown";
 
-const InsideNav = props => {
+const InsideNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -28,7 +28,13 @@ const InsideNav = props => {
   return (
     <div>
       <Navbar
-        style={{ backgroundColor: "#e9ecef" }}
+        style={{
+          backgroundColor: "#e9ecef",
+          position: "fixed",
+          zIndex: "5",
+          width: "100%",
+          top: "0px",
+        }}
         light
         expand="md"
         className="p-0 shadow"
@@ -68,7 +74,7 @@ const InsideNav = props => {
                 borderRadius: "35px",
                 color: "#fffff",
                 backgroundColor: "black",
-                padding: "4px 29px"
+                padding: "4px 29px",
               }}
             >
               {" "}

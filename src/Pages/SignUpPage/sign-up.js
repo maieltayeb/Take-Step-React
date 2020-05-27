@@ -21,7 +21,7 @@ const SignUp = props => {
     <React.Fragment>
       <div>
         <div className="card-border" style={{ borderRadius: "50px" }}>
-          <div className="title card-title">Sign Up</div>
+          <div className="card-title title">Sign Up</div>
           <Form>
             <Row form style={{ marginLeft: "45px" }}>
               <Col md={6}>

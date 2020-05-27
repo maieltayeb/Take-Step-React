@@ -26,7 +26,12 @@ const NavProf = (props) => {
   return (
     <div>
       <Navbar
-        style={{ backgroundColor: "#e9ecef" }}
+        style={{
+          backgroundColor: "#e9ecef",
+          position: "fixed",
+          zIndex: "5",
+          width: "100%",
+        }}
         light
         expand="md"
         className="p-0 shadow"
@@ -37,7 +42,7 @@ const NavProf = (props) => {
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav style={{ marginRight: "17.4rem" }} navbar>
+            <Nav style={{ marginLeft: "5.4rem", marginRight: "4rem" }} navbar>
               <NavItem>
                 <SearchBox />
                 {/* <Input className="p-3 mt-1"  placeholder="search ..." style={{height:"22px",borderRadius:"35px"}}type="text"/> */}
@@ -70,6 +75,7 @@ const NavProf = (props) => {
                 color: "#fffff",
                 backgroundColor: "black",
                 padding: "4px 29px",
+                right: "5px",
               }}
             >
               {" "}

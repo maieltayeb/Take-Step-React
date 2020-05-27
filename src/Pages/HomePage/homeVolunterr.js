@@ -8,7 +8,7 @@ import OurCategoeyCard from "./../../Components/Card/CategoreyCard/ourCategoryCa
 import OwnerProfileCard from "./../../Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import Ads from "../../Components/ads/ads";
 import InsideNav from "./../../Layout/Navbar/insidenav";
-class HomePageOwner extends Component {
+class HomePageVolunteer extends Component {
   state = {};
   render() {
     return (
@@ -26,40 +26,25 @@ class HomePageOwner extends Component {
         >
           <Row
             style={{
-              marginTop: "5rem",
+              marginTop: "4rem",
+
               marginLeft: "30px",
               marginRight: "30px",
-
-              //   "justify-content": "center",
             }}
           >
             <Col
               xs="3"
-              style={
-                {
-                  // marginBottom: "0px",
-                  // marginLeft: "30px",
-                  //   "justify-content": "center",
-                }
-              }
+              style={{
+                marginTop: "30px",
+              }}
             >
               <OwnerProfileCard />
             </Col>
             <Col xs="6">
-              <CreateTask />
               <Post></Post>
               <Post></Post>
             </Col>
-            <Col
-              xs="3"
-              style={
-                {
-                  // marginBottom: "0px",
-                  // paddingLeft: "15px",
-                  //   "justify-content": "center",
-                }
-              }
-            >
+            <Col xs="3">
               <Ads />
             </Col>
           </Row>
@@ -69,4 +54,4 @@ class HomePageOwner extends Component {
   }
 }
 
-export default HomePageOwner;
+export default HomePageVolunteer;
