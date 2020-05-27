@@ -20,7 +20,10 @@ const AddEducation = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}></Button>
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+        <i class="d-inline-block p-10 fas fa-plus text-warning"></i>
+        {/* <i class=" d-inline-block p-10 fas fa-pen text-warning"></i> */}
+      </Button>
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"

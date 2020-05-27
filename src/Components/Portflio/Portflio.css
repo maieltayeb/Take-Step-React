@@ -29,5 +29,6 @@
   color: #ebc010;
   display: flex;
   justify-content: flex-end;
-  margin: 40px;
+  /* margin: 40px; */
+  margin-right: 20px;
 }

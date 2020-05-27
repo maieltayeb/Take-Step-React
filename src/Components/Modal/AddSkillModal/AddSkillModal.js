@@ -5,10 +5,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Input
+  Input,
 } from "reactstrap";
 import "./AddSkillModal.css";
-const AddSkill = props => {
+const AddSkill = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -17,9 +17,17 @@ const AddSkill = props => {
 
   return (
     <div>
-      <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+
+      <i class="fas fa-plus" onClick={toggle}></i>
+      {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+=======
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+>>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
+=======
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+>>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
         <i class=" d-inline-block p-10 fas fa-pen text-warning"></i>
-      </Button>
+      </Button> */}
       {/* <div className="d-inline-block  bg-secondary"><span><i class=" d-inline-block p-10 fas fa-pen text-warning"></i></span></div> */}
       <Modal
         className="modalShapSkill"

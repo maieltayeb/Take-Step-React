@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./skillSec.css";
 
+import AddSkill  from "../Modal/AddSkillModal/AddSkillModal";
+
+
 class SkillSection extends Component {
   state = {};
   render() {
@@ -11,7 +14,8 @@ class SkillSection extends Component {
             <h6>Skills</h6>
           </div>
           <div className="skillSection-container-top-icon">
-            <i class="fas fa-pencil-alt"></i>{" "}
+            {/* <i class="fas fa-pencil-alt"></i>{" "} */}
+            <AddSkill ></AddSkill>
           </div>
         </div>
         <div className="skillSection-container-body">
@@ -23,7 +27,6 @@ class SkillSection extends Component {
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
-              <span className="dev">skill name</span>
             </div>
             <div className="skillSection-container-body-info-title">
               Information technology Instituit
@@ -31,7 +34,7 @@ class SkillSection extends Component {
             <div className="skillSection-devs">
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
-              <span className="dev">skill name</span>{" "}
+              <span className="dev">skill name</span>
             </div>
           </div>
           {/* <div className="body-space"></div>
