@@ -5,7 +5,7 @@ import "./App.css";
 // import Example from "./Components/Card/InProgressTaskCard/inprogresstaskcard";
 
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
- import WelcomePage from "./Pages/WelcomePage/WelcomePage";
+import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import Login from "./Pages/LoginPage/login";
 import OurLogin from "./Pages/LoginPage/ourLogin";
 
@@ -16,11 +16,11 @@ function App() {
       {/* <Example /> */}
       {/* <Login></Login> */}
       {/* <OurLogin></OurLogin> */}
-      <WelcomePage></WelcomePage>
+      {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      {/* <VolunteerProfile></VolunteerProfile> */}
+      <VolunteerProfile></VolunteerProfile>
       {/* <Footer></Footer> */}
     </div>
   );

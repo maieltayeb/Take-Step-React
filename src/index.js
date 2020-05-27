@@ -55,13 +55,13 @@ import NavProf from "./Layout/Navbar/profileNav";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
-    <PersonalInfo />
+    {/* <PersonalInfo /> */}
     {/****************Mai***********************/}
     {/* <SubmittedTask /> */}
     {/* <FeedbackModel />  */}
@@ -79,7 +79,7 @@ ReactDOM.render(
     {/* <Header /> */}
     {/* <AddEducation /> */}
     {/* <SkillSection /> */}
-    <NavProf />
+    {/* <NavProf /> */}
     {/****************Malak end***********************/}
 
     {/* <Login /> */}

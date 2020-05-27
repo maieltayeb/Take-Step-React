@@ -9,7 +9,7 @@ const PersonalInfo = props => {
     <div>
       <Container>
         <Row>
-          <Col lg="9">
+          <Col lg="8">
             <div className="first-profile-info">
               <div class="edit-icon">
                 <i class="fas fa-pencil-alt"></i>
@@ -38,7 +38,7 @@ const PersonalInfo = props => {
               </div>
             </div>
           </Col>
-          <Col lg="3">
+          <Col lg="4">
             <div className="col-profile-setting">
               <div className="profile-setting">
                 <p>Profile Setting</p>
