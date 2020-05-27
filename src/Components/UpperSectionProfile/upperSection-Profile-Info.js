@@ -7,19 +7,6 @@ import "./upperSection-Profile-Info.css";
 const PersonalInfo = props => {
   return (
     <div>
-<<<<<<< HEAD
-      <Container className="mt-5">
-        <Row>
-          <Col lg="8">
-            <div className="first-profile-info">
-              <div class="edit-icon">
-                <i class="fas fa-pencil-alt"></i>
-              </div>
-              <div class="upper-info">
-                <div className="profile-photo">
-                  <img src="./img/profilephoto.png" className="img" />
-                </div>
-=======
       <Container>
         <div className="upper-container">
           <Row>
@@ -32,7 +19,6 @@ const PersonalInfo = props => {
                       <i class="fas fa-pencil-alt"></i>
                     </div>
                   </div>
->>>>>>> 70e77634cc91ac2ab1c68cfaa7e3c61c78a1075f
 
                   <div className="username-location">
                     <span>User Name</span>
