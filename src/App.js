@@ -35,7 +35,7 @@ function App() {
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <Footer></Footer> */}
     </div>
   );
