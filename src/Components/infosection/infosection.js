@@ -1,25 +1,25 @@
 import React, { Component } from "react";
-import "./EducationSection.css";
+import "../EducationSection/EducationSection.css";
 
-class EducationSection extends Component {
+class InfoSection extends Component {
   state = {};
   render() {
     return (
-      <div className="EducationSection-container mt-4">
-        <div className="EducationSection-container-top">
-          <div className="EducationSection-container-top-h6">
-            <h6>Education</h6>
-          </div>
+      <div className="EducationSection-container">
+        <div
+          className="EducationSection-container-top"
+          style={{ "background-color": "rgb(243, 243, 243)" }}
+        >
           <div className="space"></div>
           <div className="EducationSection-container-top-icon">
-            <i class="fas fa-plus"></i>{" "}
+            <i class="fas fa-pencil-alt"></i>{" "}
           </div>
         </div>
         <div className="EducationSection-container-body">
           <div className="EducationSection-container-body-img">
             <img
               src="/img/itilogo.png"
-              style={{ "border-radius": "50%", width: "80%" }}
+              style={{ "border-radius": "50%", width: "80%", height: "80%" }}
             />
           </div>
           <div className="EducationSection-container-body-info">
@@ -53,4 +53,4 @@ class EducationSection extends Component {
   }
 }
 
-export default EducationSection;
+export default InfoSection;

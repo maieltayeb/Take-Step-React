@@ -5,13 +5,13 @@ class SkillSection extends Component {
   state = {};
   render() {
     return (
-      <div className="skillSection-container ">
+      <div className="skillSection-container mt-4">
         <div className="skillSection-container-top">
           <div className="skillSection-container-top-h6">
             <h6>Skills</h6>
           </div>
           <div className="skillSection-container-top-icon">
-            <i class="fas fa-plus"></i>{" "}
+            <i class="fas fa-pencil-alt"></i>{" "}
           </div>
         </div>
         <div className="skillSection-container-body">
@@ -34,7 +34,7 @@ class SkillSection extends Component {
               <span className="dev">skill name</span>{" "}
             </div>
           </div>
-          <div className="body-space"></div>
+          {/* <div className="body-space"></div>
           <div className="skillSection-container-body-icon">
             <div className="skillSection-container-body-icon-edit">
               <i class="fas fa-pencil-alt"></i>
@@ -42,7 +42,7 @@ class SkillSection extends Component {
             <div className="skillSection-container-body-icon-delete">
               <i class="fas fa-trash-alt"></i>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
