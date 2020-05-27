@@ -1,6 +1,8 @@
 .Portflio-container {
-  background-color: rgba(232, 238, 232, 0.308);
-  width: 60%;
+  /* background-color: rgba(232, 238, 232, 0.308); */
+  background-color: rgb(243, 243, 243);
+
+  width: 100%;
   margin: auto;
   border: 1px solid rgba(232, 238, 232, 0.308);
 }
@@ -14,8 +16,8 @@
   margin: 30px;
 }
 .Portflio-item-img {
-  width: 300px;
-  height: 250px;
+  width: 231px;
+  height: 171px;
   margin: 20px;
   box-shadow: 5px 10px 7px 3px rgba(153, 152, 152, 0.308);
 }
