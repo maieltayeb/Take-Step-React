@@ -75,6 +75,8 @@ ReactDOM.render(
 
     {/* <WelcomePage /> */}
     {/****************Mai***********************/}
+    {/* <TaskSubmittedFrame /> */}
+    {/* <AddEducation /> */}
 
     {/****************Malak start***********************/}
 
