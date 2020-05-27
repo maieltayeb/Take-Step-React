@@ -13,6 +13,8 @@ import Portflio from "./Components/Portflio/Portflio";
 import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 import HomePage from "./Pages/HomePage/Home";
+import HomePageOwner from "./Pages/HomePage/Home";
+import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
 
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
       {/* <NotificationDropdown /> */}
       {/* <OurLogin></OurLogin> */}
       {/* <HomePage></HomePage> */}
+      {/* <HomePageOwner></HomePageOwner> */}
+      {/* <HomePageVolunteer></HomePageVolunteer> */}
+
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
