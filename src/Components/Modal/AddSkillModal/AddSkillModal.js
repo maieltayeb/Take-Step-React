@@ -17,9 +17,12 @@ const AddSkill = (props) => {
 
   return (
     <div>
-<<<<<<< HEAD
+
       <i class="fas fa-plus" onClick={toggle}></i>
       {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+=======
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+>>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
 =======
       <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
 >>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1

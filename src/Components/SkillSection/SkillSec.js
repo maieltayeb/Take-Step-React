@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import "./skillSec.css";
-<<<<<<< HEAD
+
 import AddSkill  from "../Modal/AddSkillModal/AddSkillModal";
-=======
-import AddSkill from "./../Modal/AddSkillModal/AddSkillModal";
->>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
+
+
 class SkillSection extends Component {
   state = {};
   render() {
@@ -16,11 +15,7 @@ class SkillSection extends Component {
           </div>
           <div className="skillSection-container-top-icon">
             {/* <i class="fas fa-pencil-alt"></i>{" "} */}
-<<<<<<< HEAD
             <AddSkill ></AddSkill>
-=======
-            <AddSkill />
->>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
           </div>
         </div>
         <div className="skillSection-container-body">

@@ -28,14 +28,14 @@ function App() {
       {/* <NotificationDropdown /> */}
       {/* <OurLogin></OurLogin> */}
       {/* <HomePage></HomePage> */}
-      <HomePageOwner></HomePageOwner>
+      {/* <HomePageOwner></HomePageOwner> */}
       {/* <HomePageVolunteer></HomePageVolunteer> */}
 
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      {/* <VolunteerProfile></VolunteerProfile> */}
+      <VolunteerProfile></VolunteerProfile>
       {/* <Footer></Footer> */}
     </div>
   );
