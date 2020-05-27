@@ -1,12 +1,13 @@
 .first-profile-info {
   height: 300px;
+  width: 690px;
   background-color: #f8f8f4;
   box-shadow: 4px 4px 8px rgb(208, 202, 202);
 }
 .edit-icon {
   width: 30px;
   height: 30px;
-  margin-left: 780px;
+  margin-left: 650px;
   border-radius: 50%;
   background-color: #494848;
   text-align: center;
