@@ -12,10 +12,10 @@ import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
-import Login from "./Pages/LoginPage/login";
+// import Login from "./Pages/LoginPage/login";
+// import SignUp from "./Pages/SignUpPage/sign-up";
 // import Portflio from "./Components/Portflio/Portflio";
 // import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-import SignUp from "./Pages/SignUpPage/sign-up";
 // import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 //---------------------------nada--------------------------//
 
@@ -70,10 +70,10 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <Header/> */}
 
-    <Login />
+    {/* <Login /> */}
+    {/* <SignUp /> */}
     {/* <Portflio /> */}
     {/* <OwnerProfileCard /> */}
-    <SignUp />
     {/* <NotificationDropdown /> */}
   </React.StrictMode>,
   document.getElementById("root")
