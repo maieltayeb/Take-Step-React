@@ -20,20 +20,20 @@ class HomePage extends Component {
 
             paddingRight: "50px",
             paddingLeft: "50px",
-            paddingTop: "15px"
+            paddingTop: "15px",
           }}
         >
           <Row
             style={{
               marginTop: "30px",
               marginLeft: "30px",
-              marginRight: "30px"
+              marginRight: "30px",
 
               //   "justify-content": "center",
             }}
           >
             <Col
-              xs="2"
+              xs="3"
               style={
                 {
                   // marginBottom: "0px",
@@ -44,13 +44,13 @@ class HomePage extends Component {
             >
               <OwnerProfileCard />
             </Col>
-            <Col xs="8">
+            <Col xs="6">
               <CreateTask />
               <Post></Post>
               <Post></Post>
             </Col>
             <Col
-              xs="2"
+              xs="3"
               style={
                 {
                   // marginBottom: "0px",
