@@ -51,7 +51,7 @@ const OurLogin = props => {
           style={{
             margin: "20px auto",
             borderRadius: "1.5rem",
-            padding: ".7rem 5rem"
+            padding: ".7rem 4.5rem"
           }}
         >
           Sign Up

@@ -7,8 +7,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Row,
-  Col
+  Button
 } from "reactstrap";
 
 const NotificationDropdown = props => {
@@ -17,7 +16,9 @@ const NotificationDropdown = props => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle>Dropdown</DropdownToggle>
+      <DropdownToggle style={{ background: "none", border: "none" }}>
+        <i class="fas fa-bell text-warning"></i>
+      </DropdownToggle>
       <DropdownMenu
         className="notification-container"
         modifiers={{
