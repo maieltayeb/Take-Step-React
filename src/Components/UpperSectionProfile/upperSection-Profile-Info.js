@@ -28,6 +28,7 @@ const PersonalInfo = props => {
                   <span className="location">Location</span>
                 </div>
               </div>
+
               <div className="job">
                 <p className="job-title">Job title</p>
                 <p className="job-description">
