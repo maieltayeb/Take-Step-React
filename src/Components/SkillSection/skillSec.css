@@ -26,7 +26,7 @@
 /**********************middle**************************************/
 .skillSection-container-body {
   background-color: rgb(243, 243, 243);
-  height: 200px;
+  min-height: 200px;
   padding: 10px;
   margin: 10px;
   display: flex;
@@ -34,6 +34,7 @@
   margin-top: 20px;
   margin-bottom: 50px;
   padding-bottom: 30px;
+  max-height: fit-content;
 }
 
 /* .body-space {
@@ -54,9 +55,9 @@
   border: 1.5px solid #ebc010;
   padding: 5px;
   margin: 2.5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
   border-radius: 40px;
   font-family: thoma;
   font-size: 14px;

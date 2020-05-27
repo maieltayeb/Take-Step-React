@@ -23,7 +23,7 @@ import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-
 // import EducationSection from './Components/EducationSection/EducationSection';
 // import Header from "./Layout/Header/header";
 //  import WelcomeNavBar from "./Layout/Navbar/navbar";
-// import ModalPost from "./Components/Modal/AddPostModel/modal";
+import ModalPost from "./Components/Modal/AddPostModel/modal";
 // import Post from './Components/post/post';
 
 // import WelcomePage from "./Pages/WelcomePage/WelcomePage";
@@ -32,10 +32,10 @@ import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-
 // import WelcomePage from './Pages/WelcomePage/WelcomePage';
 
 // import Navmai from './Layout/ournav';
-// import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-// import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
-//import EducationSection from './Components/EducationSection/EducationSection';
-// import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
+import ModalCreateTask from "./Components/Modal/CreatTaskModal/modal";
+import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
+import EducationSection from "./Components/EducationSection/EducationSection";
+import CreateTask from "./Pages/HomePage/CreateTaskSection/createTask";
 // import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
 //----------------------------------Malak start------------------------//
@@ -52,6 +52,9 @@ import Header from "./Layout/Header/header";
 // import { Form } from "reactstrap";
 import SkillSection from "./Components/SkillSection/SkillSec";
 import NavProf from "./Layout/Navbar/profileNav";
+import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
+import ModalLink from "./Components/Modal/AddLink/AddLink-Modal";
+import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -66,7 +69,7 @@ ReactDOM.render(
     {/****************Mai***********************/}
     {/* <SubmittedTask /> */}
     {/* <FeedbackModel />  */}
-    {/* <EducationSection />  */}
+    {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
 
@@ -79,8 +82,14 @@ ReactDOM.render(
     {/* <Navmai /> */}
     {/* <Header /> */}
     {/* <AddEducation /> */}
+    {/* <AddSkill /> */}
     {/* <SkillSection /> */}
     {/* <NavProf /> */}
+    {/* <ModalLink /> */}
+    {/* <FeedbackModel /> */}
+    {/* <ProjectLink /> */}
+    {/* <CreateTask /> */}
+    {/* <ModalCreateTask /> */}
     {/* <PersonalInfo /> */}
     {/****************Malak end***********************/}
 

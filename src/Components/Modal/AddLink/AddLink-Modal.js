@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-const ModalLink = props => {
+const ModalLink = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -20,7 +20,7 @@ const ModalLink = props => {
           style={{
             paddingLeft: "210px",
             backgroundColor: "#EBC010",
-            color: "black"
+            color: "black",
           }}
         >
           Add Link
@@ -44,7 +44,7 @@ const ModalLink = props => {
             style={{
               width: "100%",
               border: "1px solid #EBC010",
-              marginBottom: "20px"
+              marginBottom: "20px",
             }}
           ></input>
           <br />
@@ -55,7 +55,7 @@ const ModalLink = props => {
             style={{
               width: "100%",
               border: "1px solid #EBC010",
-              marginBottom: "20px"
+              marginBottom: "20px",
             }}
           ></input>
         </ModalBody>
@@ -67,7 +67,7 @@ const ModalLink = props => {
               backgroundColor: "white",
               borderRadius: "20px",
               border: "1px solid #EBC010",
-              color: "black"
+              color: "black",
             }}
           >
             submit
@@ -78,7 +78,7 @@ const ModalLink = props => {
             style={{
               backgroundColor: "black",
               borderRadius: "20px",
-              color: "#EBC010"
+              color: "#EBC010",
             }}
           >
             Cancel

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "./post.css";
-const Post = props => {
+const Post = (props) => {
   return (
     <>
       <div className="postContainer">
@@ -65,7 +65,7 @@ const Post = props => {
           </div>
           <div className="clearfix">
             <div className=" float-left ">
-              <img className=" img rounded-circle" src="./img/people.png" />
+              <img className="mt-3 img rounded-circle" src="./img/people.png" />
             </div>
             <div className=" ml-2 float-left ">
               <Input

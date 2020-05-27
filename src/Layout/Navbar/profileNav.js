@@ -26,7 +26,12 @@ const NavProf = (props) => {
   return (
     <div>
       <Navbar
-        style={{ backgroundColor: "#e9ecef" }}
+        style={{
+          backgroundColor: "#e9ecef",
+          position: "fixed",
+          zIndex: "5",
+          width: "100%",
+        }}
         light
         expand="md"
         className="p-0 shadow"

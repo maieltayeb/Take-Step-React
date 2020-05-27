@@ -7,12 +7,13 @@ import React from "react";
 import OurCategoeyCard from "./../../Components/Card/CategoreyCard/ourCategoryCard";
 import OwnerProfileCard from "./../../Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import Ads from "../../Components/ads/ads";
+import InsideNav from "./../../Layout/Navbar/insidenav";
 class HomePageVolunteer extends Component {
   state = {};
   render() {
     return (
       <>
-        <NavProf />
+        <InsideNav />
 
         <Container
           style={{
@@ -25,6 +26,8 @@ class HomePageVolunteer extends Component {
         >
           <Row
             style={{
+              marginTop: "4rem",
+
               marginLeft: "30px",
               marginRight: "30px",
             }}
