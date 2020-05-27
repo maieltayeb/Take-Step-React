@@ -36,7 +36,9 @@ import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-
 // import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
-// import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
+// import SubmittedTask from "./Pages/HomePage/SubmittedTaskSection/submittedTask";
+// import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
+import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 //----------------------------------Mai------------------------//
 //----------------------------------Malak start------------------------//
 import Navmai from "./Layout/ournav";
@@ -51,7 +53,7 @@ import Header from "./Layout/Header/header";
 
 // import { Form } from "reactstrap";
 import SkillSection from "./Components/SkillSection/SkillSec";
-import NavProf from "./Layout/Navbar/profileNav";
+import InsideNav from "./Layout/Navbar/insidenav";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -72,6 +74,8 @@ ReactDOM.render(
 
     {/* <WelcomePage /> */}
     {/****************Mai***********************/}
+    {/* <TaskSubmittedFrame /> */}
+    {/* <AddEducation /> */}
 
     {/****************Malak start***********************/}
 
