@@ -17,19 +17,23 @@ const VolunteerProfile = props => {
           <EducationSection></EducationSection>
           {/* <Skills></Skills> */}
           <SkillSection></SkillSection>
-          {/* <div className="d-inline-block p-3 my-2 rounded ">
-        <Toast style={{ maxWidth: "837px" }}>
-          <ToastHeader
-            className="p-3 text-warning"
-            style={{ backgroundColor: "#494848" }}
-          >
-            Progress
-          </ToastHeader>
-          <ToastBody>
-            <Portflio></Portflio>
-          </ToastBody>
-        </Toast>
-      </div> */}
+          <div className="d-inline-block p-3 my-2 rounded ">
+            <Toast style={{ maxWidth: "837px" }}>
+              <ToastHeader
+                className="p-3 text-warning"
+                style={{ backgroundColor: "#494848" }}
+              >
+                Portflio
+                <i
+                  class="fas fa-angle-down"
+                  style={{ fontSize: "25px" }}
+                ></i>{" "}
+              </ToastHeader>
+              <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
+                <Portflio></Portflio>
+              </ToastBody>
+            </Toast>
+          </div>
           <div className="d-inline-block p-3 my-2 rounded ">
             <Toast style={{ maxWidth: "837px" }}>
               <ToastHeader

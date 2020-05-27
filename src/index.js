@@ -55,7 +55,7 @@ import NavProf from "./Layout/Navbar/profileNav";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <OwnerProfileCard /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}

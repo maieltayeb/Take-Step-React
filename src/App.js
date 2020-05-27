@@ -25,7 +25,7 @@ function App() {
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
       {/* <OurLogin></OurLogin> */}
-      <HomePage></HomePage>
+      {/* <HomePage></HomePage> */}
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
