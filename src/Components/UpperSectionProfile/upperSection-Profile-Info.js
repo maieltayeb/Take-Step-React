@@ -7,7 +7,7 @@ import "./upperSection-Profile-Info.css";
 const PersonalInfo = props => {
   return (
     <div>
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col lg="8">
             <div className="first-profile-info">

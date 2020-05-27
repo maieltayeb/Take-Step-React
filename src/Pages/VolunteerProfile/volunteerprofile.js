@@ -12,14 +12,14 @@ const VolunteerProfile = props => {
   return (
     <div>
       <InsideNav></InsideNav>
-      <NavProf></NavProf>
+      {/* <NavProf></NavProf> */}
       <PersonalInfo></PersonalInfo>
       <Container>
         <Row>
           <EducationSection></EducationSection>
           {/* <Skills></Skills> */}
           <SkillSection></SkillSection>
-          {/* <div className="d-inline-block p-3 my-2 rounded ">
+          <div className="d-inline-block p-3 my-2 rounded ">
         <Toast style={{ maxWidth: "837px" }}>
           <ToastHeader
             className="p-3 text-warning"
@@ -31,7 +31,7 @@ const VolunteerProfile = props => {
             <Portflio></Portflio>
           </ToastBody>
         </Toast>
-      </div> */}
+      </div>
           <div className="d-inline-block p-3 my-2 rounded ">
             <Toast style={{ maxWidth: "837px" }}>
               <ToastHeader
