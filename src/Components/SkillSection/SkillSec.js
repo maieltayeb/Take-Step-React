@@ -23,7 +23,6 @@ class SkillSection extends Component {
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
-              <span className="dev">skill name</span>
             </div>
             <div className="skillSection-container-body-info-title">
               Information technology Instituit
@@ -31,7 +30,7 @@ class SkillSection extends Component {
             <div className="skillSection-devs">
               <span className="dev">skill name</span>
               <span className="dev">skill name</span>
-              <span className="dev">skill name</span>{" "}
+              <span className="dev">skill name</span>
             </div>
           </div>
           {/* <div className="body-space"></div>
