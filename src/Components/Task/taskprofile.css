@@ -1,5 +1,5 @@
 .profile-postContainer {
-  width: 700px;
+  width: 640px;
   /* height:500px; */
   background-color: #f8f8f4 !important;
   /* margin:auto; */
@@ -27,7 +27,7 @@
 }
 .profile-postCommentBody {
   background-color: #ffffff;
-  width: 700px;
+  width: 640px;
   /* height: 400px; */
   z-index: 10;
   border-radius: 0px 0px 25px 25px;
