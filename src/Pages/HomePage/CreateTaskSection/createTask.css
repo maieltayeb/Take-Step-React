@@ -1,13 +1,13 @@
 .post-container {
   /* width: 40%; */
-  background-color: rgb(243, 243, 243);
+  background-color: #f8f8f4;
   /* margin-left: 20px; */
   min-width: fit-content !important;
 }
 /*****************top*****************************/
 .post-top {
   padding: 10px;
-  background-color: #000000;
+  background-color: #494848;
   color: #ebc010;
   text-align: left;
 }
@@ -17,7 +17,7 @@
 }
 /**********************middle**************************************/
 .post-middle {
-  background-color: rgb(243, 243, 243);
+  background-color: #f8f8f4;
   height: 70px;
   padding: 10px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "./post.css";
-const Post = (props) => {
+const Post = props => {
   return (
     <>
       <div className="postContainer">
@@ -72,6 +72,72 @@ const Post = (props) => {
                 placeholder="Add your comment"
                 className="mt-3 commentArea"
               ></Input>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
+            </div>
+          </div>
+          <div className="clearfix">
+            <div className=" float-left ">
+              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+            </div>
+            <div className=" ml-2 float-left ">
+              <div className="p-2 mt-2 commentbody">
+                <p className=" m-1">Aya Rabea</p>
+                <p className=" m-1 small">My comment here...</p>
+              </div>
             </div>
           </div>
           <div className="clearfix">

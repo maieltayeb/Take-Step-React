@@ -6,6 +6,7 @@ import { Component } from "react";
 import React from "react";
 import OurCategoeyCard from "./../../Components/Card/CategoreyCard/ourCategoryCard";
 import OwnerProfileCard from "./../../Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
+import Ads from "../../Components/ads/ads";
 class HomePage extends Component {
   state = {};
   render() {
@@ -19,14 +20,14 @@ class HomePage extends Component {
 
             paddingRight: "50px",
             paddingLeft: "50px",
-            paddingTop: "15px",
+            paddingTop: "15px"
           }}
         >
           <Row
             style={{
               marginTop: "30px",
               marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "30px"
 
               //   "justify-content": "center",
             }}
@@ -58,7 +59,7 @@ class HomePage extends Component {
                 }
               }
             >
-              <OwnerProfileCard />
+              <Ads />
             </Col>
           </Row>
         </Container>
