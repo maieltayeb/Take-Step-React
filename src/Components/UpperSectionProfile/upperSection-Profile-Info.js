@@ -12,12 +12,12 @@ const PersonalInfo = props => {
           <Row>
             <Col lg="8">
               <div className="first-profile-info">
-                <div class="edit-icon">
-                  <i class="fas fa-pencil-alt"></i>
-                </div>
                 <div class="upper-info">
                   <div className="profile-photo">
                     <img src="./img/profilephoto.png" className="img" />
+                    <div class="edit-icon">
+                      <i class="fas fa-pencil-alt"></i>
+                    </div>
                   </div>
 
                   <div className="username-location">
