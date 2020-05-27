@@ -17,9 +17,10 @@ const AddSkill = props => {
 
   return (
     <div>
-      <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+      <i class="fas fa-plus" onClick={toggle}></i>
+      {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
         <i class=" d-inline-block p-10 fas fa-pen text-warning"></i>
-      </Button>
+      </Button> */}
       {/* <div className="d-inline-block  bg-secondary"><span><i class=" d-inline-block p-10 fas fa-pen text-warning"></i></span></div> */}
       <Modal
         className="modalShapSkill"

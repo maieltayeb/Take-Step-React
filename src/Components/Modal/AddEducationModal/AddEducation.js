@@ -20,7 +20,8 @@ const AddEducation = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}></Button>
+         <i class="fas fa-plus" onClick={toggle} ></i>
+      {/* <Button color="danger" onClick={toggle}></Button> */}
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"

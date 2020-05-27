@@ -24,10 +24,10 @@ const VolunteerProfile = props => {
                 style={{ backgroundColor: "#494848" }}
               >
                 Portflio
-                <i
+                {/* <i
                   class="fas fa-angle-down"
                   style={{ fontSize: "25px" }}
-                ></i>{" "}
+                ></i>{" "} */}
               </ToastHeader>
               <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
                 <Portflio></Portflio>
