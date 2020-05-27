@@ -50,6 +50,7 @@ import Header from "./Layout/Header/header";
 
 // import { Form } from "reactstrap";
 import SkillSection from "./Components/SkillSection/SkillSec";
+import NavProf from "./Layout/Navbar/profileNav";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -75,8 +76,9 @@ ReactDOM.render(
     {/* <WelcomeNavBar /> */}
     {/* <Navmai /> */}
     {/* <Header /> */}
-    <AddEducation />
+    {/* <AddEducation /> */}
     {/* <SkillSection /> */}
+    <NavProf />
     {/****************Malak end***********************/}
 
     {/* <Login /> */}
