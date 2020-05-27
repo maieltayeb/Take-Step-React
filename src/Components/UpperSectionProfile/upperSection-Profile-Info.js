@@ -11,6 +11,9 @@ const PersonalInfo = props => {
         <Row>
           <Col lg="9">
             <div className="first-profile-info">
+              <div class="edit-icon">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
               <div class="upper-info">
                 <div className="profile-photo">
                   <img src="./img/profilephoto.png" className="img" />
