@@ -12,6 +12,7 @@ import SignUp from "./Pages/SignUpPage/sign-up";
 import Portflio from "./Components/Portflio/Portflio";
 import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
+import HomePage from "./Pages/HomePage/Home";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
       {/* <OurLogin></OurLogin> */}
+      <HomePage></HomePage>
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}

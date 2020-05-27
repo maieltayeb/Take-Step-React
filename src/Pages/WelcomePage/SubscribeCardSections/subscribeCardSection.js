@@ -46,7 +46,7 @@ class SubscribeCardsSection extends Component {
   render() {
     return (
       <>
-        {/* <div className="containerdiv"> */}
+        <div className="containerdiv"> 
         {this.state.SubscribeTypes.map(subCard => {
           return (
             <SubscribeCard
@@ -56,7 +56,7 @@ class SubscribeCardsSection extends Component {
             />
           );
         })}
-        {/* </div> */}
+        </div> 
       </>
     );
   }

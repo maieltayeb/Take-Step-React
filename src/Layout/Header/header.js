@@ -1,7 +1,7 @@
 import React from "react";
 import { Jumbotron, Container, Button } from "reactstrap";
 import "./header.css";
-const Header = props => {
+const Header = (props) => {
   return (
     <div>
       <Jumbotron fluid className="fluid1 mb-0">
@@ -18,11 +18,11 @@ const Header = props => {
               <i id="arrow-ico" className="fa fa-arrow-right"></i>
             </div>
           </button>{" "}
+          <div className="yel-dev">
+            <div className="pic"></div>
+          </div>
         </Container>
       </Jumbotron>
-      <div className="yel-dev">
-        <div className="pic"></div>
-      </div>
     </div>
   );
 };

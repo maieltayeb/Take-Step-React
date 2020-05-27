@@ -5,11 +5,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-import Header from "./Layout/Header/header";
-import WelcomeNavBar from "./Layout/Navbar/navbar";
-import ModalPost from "./Components/Modal/AddPostModel/modal";
-import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
-import Post from "./Components/post/post";
+import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-Info";
+
+// import WelcomeNavBar from "./Layout/Navbar/navbar";
+// import ModalPost from "./Components/Modal/AddPostModel/modal";
+// import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
+// import Post from "./Components/post/post";
 //---------------------------nada--------------------------//
 
 // import Login from "./Pages/LoginPage/login";
@@ -25,50 +26,63 @@ import Post from "./Components/post/post";
 // import ModalPost from "./Components/Modal/AddPostModel/modal";
 // import Post from './Components/post/post';
 
-import WelcomePage from "./Pages/WelcomePage/WelcomePage";
+// import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 
-import Navmai from "./Layout/ournav";
 //---------------------------Mai--------------------------//
+// import WelcomePage from './Pages/WelcomePage/WelcomePage';
+
+// import Navmai from './Layout/ournav';
 // import ModalCreateTask from './Components/Modal/CreatTaskModal/modal';
-//import FeedbackModel  from './Components/Modal/AddFeedbackModel/';
+// import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
 //import EducationSection from './Components/EducationSection/EducationSection';
 // import CreateTask from './Pages/HomePage/CreateTaskSection/createTask';
+// import SubmittedTask from './Pages/HomePage/SubmittedTaskSection/submittedTask';
 //----------------------------------Mai------------------------//
+//----------------------------------Malak start------------------------//
+import Navmai from "./Layout/ournav";
+import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
+
+// import HowITWork from "./Components/HowToWork/howtowork";
+import Header from "./Layout/Header/header";
+//----------------------------------Malak End------------------------//
 
 // import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 // import Post from "./Components/post/post";
 
-import { Form } from "reactstrap";
+// import { Form } from "reactstrap";
+import SkillSection from "./Components/SkillSection/SkillSec";
+import NavProf from "./Layout/Navbar/profileNav";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <WelcomePage /> */}
-
+    {/* <App /> */}
+    {/* <OwnerProfileCard /> */}
     {/****************Mai***********************/}
     {/* <FeedbackModel /> */}
     {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
+    {/* <PersonalInfo /> */}
+    {/****************Mai***********************/}
+    {/* <SubmittedTask /> */}
+    {/* <FeedbackModel />  */}
+    {/* <EducationSection />  */}
+    {/* <ModalCreateTask /> */}
+    {/* <CreateTask  /> */}
 
+    {/* <WelcomePage /> */}
     {/****************Mai***********************/}
 
-    {/* 
-     <WelcomeNavBar /> */}
-    {/* <Header/>
-  <AddSkill/>
-  <ModalPost/>
-  <Post/> */}
-
-    {/* <App /> */}
-    {/* <App /> */}
+    {/****************Malak start***********************/}
 
     {/* <WelcomeNavBar /> */}
-    {/* <ModalPost /> */}
-    {/* <Post/>  */}
-
-    {/* <App /> */}
-    {/* <App /> */}
-    {/* <Header/> */}
+    {/* <Navmai /> */}
+    {/* <Header /> */}
+    {/* <AddEducation /> */}
+    {/* <SkillSection /> */}
+    {/* <NavProf /> */}
+    {/* <PersonalInfo /> */}
+    {/****************Malak end***********************/}
 
     {/* <Login /> */}
     {/* <SignUp /> */}

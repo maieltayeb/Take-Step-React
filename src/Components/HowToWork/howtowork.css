@@ -4,13 +4,13 @@
   height: 400px;
   padding: 0px !important;
 }
-.black {
+.black-dev {
   margin-top: 0;
   height: 400px;
   background-color: rgba(64, 67, 70, 0.52) !important;
   /* opacity: 50%; */
 }
-.display {
+.Ques-title {
   display: inline-block;
   /* position: absolute;
   left: 45%;
@@ -28,7 +28,7 @@
   /* font-size: 16px; */
   padding: 10px 25px;
 }
-.leed {
+.Ques-ans {
   /* position: absolute; */
   color: #ffffff;
   /* margin-left: 35%; */

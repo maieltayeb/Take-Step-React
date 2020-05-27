@@ -11,10 +11,10 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button
+  Button,
 } from "reactstrap";
 
-const CategoryCard = props => {
+const CategoryCard = (props) => {
   return (
     <div className="card-container">
       <Card className="card">
