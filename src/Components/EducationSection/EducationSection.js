@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./EducationSection.css";
+import AddEducation from "../Modal/AddEducationModal/AddEducation";
 
 class EducationSection extends Component {
   state = {};
@@ -12,7 +13,7 @@ class EducationSection extends Component {
           </div>
           <div className="space"></div>
           <div className="EducationSection-container-top-icon">
-            <i class="fas fa-plus"></i>{" "}
+            <AddEducation />
           </div>
         </div>
         <div className="EducationSection-container-body">
