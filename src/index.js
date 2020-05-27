@@ -5,6 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import PersonalInfo from "./Components/UpperSectionProfile/upperSection-Profile-Info";
 
 // import WelcomeNavBar from "./Layout/Navbar/navbar";
 // import ModalPost from "./Components/Modal/AddPostModel/modal";
@@ -60,7 +61,7 @@ ReactDOM.render(
     {/* <EducationSection /> */}
     {/* <ModalCreateTask /> */}
     {/* <CreateTask  /> */}
-
+    <PersonalInfo />
     {/****************Mai***********************/}
     {/* <SubmittedTask /> */}
     {/* <FeedbackModel />  */}
