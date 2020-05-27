@@ -25,6 +25,8 @@ class HomePageVolunteer extends Component {
         >
           <Row
             style={{
+              marginTop: "5rem",
+
               marginLeft: "30px",
               marginRight: "30px",
             }}

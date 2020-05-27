@@ -2,7 +2,10 @@ import React from "react";
 
 const Ads = () => {
   return (
-    <div className="ads-container" style={{ marginTop: "50px" }}>
+    <div
+      className="ads-container"
+      style={{ marginTop: "50px", marginLeft: "50px" }}
+    >
       <div className="image-socialmedia" style={{ marginBottom: "60px" }}>
         <img
           src="./img/social-media.png"

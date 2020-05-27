@@ -25,7 +25,7 @@ class HomePageOwner extends Component {
         >
           <Row
             style={{
-              marginTop: "30px",
+              marginTop: "5rem",
               marginLeft: "30px",
               marginRight: "30px",
 
