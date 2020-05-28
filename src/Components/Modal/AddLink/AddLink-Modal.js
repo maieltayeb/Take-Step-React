@@ -42,7 +42,7 @@ const ModalLink = props => {
             <span aria-hidden="true">x</span>
           </button>
         </div> */}
-        <ModalBody>
+        <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
           <label style={{ fontSize: "13px" }}>add your link:</label>
           <br />
           <input
