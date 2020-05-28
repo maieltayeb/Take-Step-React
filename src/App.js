@@ -37,9 +37,9 @@ function App() {
       {/* <OurLogin></OurLogin> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
-      {/* <HomePageVolunteer></HomePageVolunteer> */}
+      <HomePageVolunteer></HomePageVolunteer>
 
-      <WelcomePage></WelcomePage>
+      {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
