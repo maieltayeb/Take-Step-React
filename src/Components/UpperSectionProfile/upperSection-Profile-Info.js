@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
 import "./upperSection-Profile-Info.css";
+import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 // import profilephoto from "./assets/profilephoto.png";
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 const PersonalInfo = props => {
@@ -16,7 +17,7 @@ const PersonalInfo = props => {
                   <div className="profile-photo">
                     <img src="./img/profilephoto.png" className="img" />
                     <div class="edit-icon">
-                      <i class="fas fa-pencil-alt"></i>
+                      <PersonalInfoModal />
                     </div>
                   </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-const AboutModal = props => {
+const PersonalInfoModal = props => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -10,8 +10,7 @@ const AboutModal = props => {
 
   return (
     <div>
-      <i class="fas fa-plus" onClick={toggle}></i>
-
+      <i class="fas fa-pencil-alt" onClick={toggle}></i>
       <Modal
         isOpen={modal}
         toggle={toggle}
@@ -28,22 +27,24 @@ const AboutModal = props => {
             paddingLeft: "320px"
           }}
         >
-          Descripe yourself
+          Edit Personal Info
         </ModalHeader>
         <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
-          <label style={{ fontSize: "13px" }}>add description:</label>
-          <br />
-          <input
-            type="text"
-            style={{
-              width: "100%",
-              height: "200px",
-              border: "1px solid #EBC010",
-              marginBottom: "40px"
-            }}
-          ></input>
-          {/* <br />
-          <label style={{ fontSize: "13px" }}>leave your comment:</label>
+          <div>
+            <img
+              src="./img/profilephoto.png"
+              style={{
+                width: "20%",
+                borderRadius: "50%",
+                marginLeft: "40%"
+              }}
+            />
+            <i
+              class="fas fa-pencil-alt"
+              style={{ display: "block", marginLeft: "55%", color: "#ebc010" }}
+            ></i>
+          </div>
+          <label style={{ fontSize: "13px" }}>Username</label>
           <br />
           <input
             type="text"
@@ -52,7 +53,40 @@ const AboutModal = props => {
               border: "1px solid #EBC010",
               marginBottom: "20px"
             }}
-          ></input> */}
+          ></input>
+          <br />
+          <label style={{ fontSize: "13px" }}>Job title</label>
+          <br />
+          <input
+            type="text"
+            style={{
+              width: "100%",
+              border: "1px solid #EBC010",
+              marginBottom: "20px"
+            }}
+          ></input>
+          <br /> <label style={{ fontSize: "13px" }}>Location</label>
+          <br />
+          <input
+            type="text"
+            style={{
+              width: "100%",
+              border: "1px solid #EBC010",
+              marginBottom: "20px"
+            }}
+          ></input>
+          <br />
+          <label style={{ fontSize: "13px" }}>add description:</label>
+          <br />
+          <input
+            type="text"
+            style={{
+              width: "100%",
+              height: "100px",
+              border: "1px solid #EBC010",
+              marginBottom: "40px"
+            }}
+          ></input>
         </ModalBody>
         <ModalFooter>
           <Button
@@ -86,4 +120,4 @@ const AboutModal = props => {
   );
 };
 
-export default AboutModal;
+export default PersonalInfoModal;
