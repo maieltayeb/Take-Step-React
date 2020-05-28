@@ -5,10 +5,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Input,
+  Input
 } from "reactstrap";
 import "./AddSkillModal.css";
-const AddSkill = (props) => {
+const AddSkill = props => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -17,7 +17,6 @@ const AddSkill = (props) => {
 
   return (
     <div>
-
       <i class="fas fa-plus" onClick={toggle}></i>
       {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
 =======
@@ -34,8 +33,13 @@ const AddSkill = (props) => {
         isOpen={modal}
         toggle={toggle}
         className={className}
+        style={{ marginLeft: "320px" }}
       >
-        <ModalHeader className="headerModalSkill" toggle={toggle}>
+        <ModalHeader
+          className="headerModalSkill"
+          toggle={toggle}
+          style={{ paddingLeft: "320px" }}
+        >
           Add Skill
         </ModalHeader>
         <ModalBody className="bodyModalSkill">
@@ -93,11 +97,30 @@ const AddSkill = (props) => {
             </div>
           </div>
         </ModalBody>
-        <ModalFooter className=" bodyModal">
-          <Button className=" mr-0 cancelModal" onClick={toggle}>
+        <ModalFooter>
+          <Button
+            color="primary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              border: "1px solid #EBC010",
+              color: "black",
+              width: "100px"
+            }}
+          >
             Cancel
-          </Button>
-          <Button className=" ml-2 mr-1 addModal" onClick={toggle}>
+          </Button>{" "}
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "#494848",
+              borderRadius: "20px",
+              color: "#EBC010",
+              width: "100px"
+            }}
+          >
             Add
           </Button>
         </ModalFooter>

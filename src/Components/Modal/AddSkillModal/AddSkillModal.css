@@ -1,17 +1,16 @@
-.close{
-  color: #EBC010;
+.close {
+  color: #ebc010;
 }
-.close:hover{
-  color: #EBC010;
-
+.close:hover {
+  color: #ebc010;
 }
 
 .modalShapSkill {
-  width: 720px;
+  /* width: 720px; */
 }
 .modal-content {
-  width: 720px;
-  border-radius: 39px 39px 0px 0px;
+  /* width: 720px; */
+  /* border-radius: 39px 39px 0px 0px; */
   background-color: #f2f2f2;
 }
 .headerModalSkill {
@@ -19,12 +18,12 @@
   font-family: tahoma;
   color: #ebc010;
   background-color: #494848;
-  width: 720px;
-  border-radius: 35px 35px 0px 35px;
+  /* width: 720px; */
+  /* border-radius: 35px 35px 0px 35px; */
 }
 
 .bodyModalSkill {
-  width: 720px;
+  /* width: 720px; */
   background-color: #f2f2f2;
 }
 .cancelModal {
@@ -63,4 +62,7 @@
 .bg-skill {
   background-color: #494848 !important;
   border: 0px !important;
+}
+button {
+  background-color: #494848;
 }
