@@ -7,11 +7,11 @@ import {
   ModalFooter,
   Form,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./AddFeedbackModal.css";
 import "../../ProjectLink/project-Link-Component.css";
-const FeedbackModel = (props) => {
+const FeedbackModel = props => {
   const { buttonLabel, modalShap } = props;
 
   const [modal, setModal] = useState(false);
@@ -25,10 +25,15 @@ const FeedbackModel = (props) => {
       <div className="feedback-button" onClick={toggle}>
         <p className="feedback-button-p">Feedback</p>
       </div>
-      <Modal isOpen={modal} toggle={toggle} className="feedback-modalShap">
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+        className="feedback-modalShap"
+        style={{ marginLeft: "320px" }}
+      >
         <ModalHeader
           className="feedback-headerModal"
-          style={{ paddingLeft: "170px" }}
+          style={{ paddingLeft: "170px", paddingLeft: "315px" }}
           toggle={toggle}
         >
           Add Feedback
@@ -50,11 +55,30 @@ const FeedbackModel = (props) => {
             <Input type="textarea" placeholder="write your feedback" Rows="4" />
           </Form>
         </ModalBody>
-        <ModalFooter className="feedback-bodyModal">
-          <Button className=" mr-0 feedback-cancelModal" onClick={toggle}>
+        <ModalFooter>
+          <Button
+            color="primary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              border: "1px solid #EBC010",
+              color: "black",
+              width: "100px"
+            }}
+          >
             Cancel
-          </Button>
-          <Button className=" ml-2 mr-1 feedback-addModal" onClick={toggle}>
+          </Button>{" "}
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "#494848",
+              borderRadius: "20px",
+              color: "#EBC010",
+              width: "100px"
+            }}
+          >
             Add
           </Button>
         </ModalFooter>
