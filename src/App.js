@@ -44,6 +44,7 @@ function App() {
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
       <AddSkill />
+      <ModalLink />
     </div>
   );
 }
