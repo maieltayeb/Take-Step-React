@@ -3,6 +3,10 @@ import { Container, Row, Col } from "reactstrap";
 // import logo from "./logo.svg";
 import "./App.css";
 // import Example from "./Components/Card/InProgressTaskCard/inprogresstaskcard";
+import ModalLink from "./Components/Modal/AddLink/AddLink-Modal";
+import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
+import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
+
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
@@ -35,9 +39,10 @@ function App() {
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
+      <AddEducation />
     </div>
   );
 }

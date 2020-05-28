@@ -8,11 +8,11 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./AddEducation.css";
 
-const AddEducation = (props) => {
+const AddEducation = props => {
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
 
@@ -30,8 +30,13 @@ const AddEducation = (props) => {
         isOpen={modal}
         toggle={toggle}
         className={className}
+        style={{ marginLeft: "320px" }}
       >
-        <ModalHeader className="modal-structure-header" toggle={toggle}>
+        <ModalHeader
+          className="modal-structure-header"
+          toggle={toggle}
+          style={{ paddingLeft: "310px" }}
+        >
           Add Education
         </ModalHeader>
         <ModalBody style={{ width: "720px" }}>
@@ -84,10 +89,10 @@ const AddEducation = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter style={{ width: "720px" }}>
-          <Button id="cancel-btn" onClick={toggle}>
+          <Button id="cancel-btn" onClick={toggle} style={{ fontSize: "20px" }}>
             Cancel
           </Button>{" "}
-          <Button id="add-btn" onClick={toggle}>
+          <Button id="add-btn" onClick={toggle} style={{ fontSize: "20px" }}>
             Add
           </Button>
         </ModalFooter>
