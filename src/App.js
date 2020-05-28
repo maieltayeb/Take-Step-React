@@ -42,7 +42,7 @@ function App() {
       {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
-      {/* <AddEducation /> */}
+      <AddEducation />
       <AddSkill />
       <ModalLink />
     </div>

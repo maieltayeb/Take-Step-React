@@ -39,7 +39,7 @@ const AddEducation = props => {
         >
           Add Education
         </ModalHeader>
-        <ModalBody style={{ width: "720px" }}>
+        <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
           <Form>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -88,11 +88,30 @@ const AddEducation = props => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter style={{ width: "720px" }}>
-          <Button id="cancel-btn" onClick={toggle} style={{ fontSize: "20px" }}>
+        <ModalFooter>
+          <Button
+            color="primary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              border: "1px solid #EBC010",
+              color: "black",
+              width: "100px"
+            }}
+          >
             Cancel
           </Button>{" "}
-          <Button id="add-btn" onClick={toggle} style={{ fontSize: "20px" }}>
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "#494848",
+              borderRadius: "20px",
+              color: "#EBC010",
+              width: "100px"
+            }}
+          >
             Add
           </Button>
         </ModalFooter>
