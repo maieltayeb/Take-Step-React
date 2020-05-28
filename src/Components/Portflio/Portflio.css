@@ -1,10 +1,10 @@
 .Portflio-container {
   /* background-color: rgba(232, 238, 232, 0.308); */
-  background-color: rgb(243, 243, 243);
+  background-color: #f8f8f4;
 
   width: 100%;
   margin: auto;
-  border: 1px solid rgba(232, 238, 232, 0.308);
+  border: 1px solid #f8f8f4;
 }
 .Portflio-items {
   /* padding: 30px; */
@@ -19,7 +19,7 @@
   width: 231px;
   height: 171px;
   margin: 20px;
-  box-shadow: 5px 10px 7px 3px rgba(153, 152, 152, 0.308);
+  box-shadow: 5px 10px 7px 3px #f8f8f4;
 }
 .Portflio-item-title {
   display: flex;
