@@ -21,10 +21,11 @@ const NotificationDropdown = props => {
       </DropdownToggle>
 
       <DropdownMenu
+        right
         modifiers={{
           setMaxHeight: {
             enabled: true,
-            order: 890,
+            // order: 890,
             fn: data => {
               return {
                 ...data,
@@ -39,7 +40,7 @@ const NotificationDropdown = props => {
           }
         }}
       >
-        <DropdownItem style={{ maxWidth: "520px" }}>
+        <DropdownItem style={{ maxWidth: "600px", minWidth: "530px" }}>
           <img
             className="rounded-circle m-1 dropdown-img"
             src="./img/people.png"

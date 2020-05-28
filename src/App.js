@@ -16,6 +16,7 @@ import SignUp from "./Pages/SignUpPage/sign-up";
 import Portflio from "./Components/Portflio/Portflio";
 import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
+import AboutModal from "./Components/Modal/AboutModal/AboutModal";
 import HomePage from "./Pages/HomePage/Home";
 import HomePageOwner from "./Pages/HomePage/Home";
 import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
@@ -43,9 +44,10 @@ function App() {
       {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
-      <AddEducation />
-      <AddSkill />
-      <ModalLink />
+      {/* <AddEducation /> */}
+      {/* <AddSkill /> */}
+      {/* <ModalLink /> */}
+      {/* <AboutModal /> */}
     </div>
   );
 }
