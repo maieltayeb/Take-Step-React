@@ -39,11 +39,11 @@ function App() {
       {/* <HomePageOwner></HomePageOwner> */}
       {/* <HomePageVolunteer></HomePageVolunteer> */}
 
-      {/* <WelcomePage></WelcomePage> */}
+      <WelcomePage></WelcomePage>
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}

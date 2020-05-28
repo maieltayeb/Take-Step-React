@@ -99,6 +99,7 @@ const AddSkill = props => {
         </ModalBody>
         <ModalFooter>
           <Button
+            className="skill-button"
             color="primary"
             onClick={toggle}
             style={{
@@ -112,6 +113,7 @@ const AddSkill = props => {
             Cancel
           </Button>{" "}
           <Button
+            className="skill-button"
             color="secondary"
             onClick={toggle}
             style={{
