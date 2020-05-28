@@ -45,14 +45,14 @@ const ModalPost = props => {
           <Button
             className=" mr-0 cancelModal"
             onClick={toggle}
-            style={{ color: "#ebc010" }}
+            style={{ color: "#ebc010", backgroundColor: "#494848" }}
           >
             Cancel
           </Button>
           <Button
             className=" ml-2 mr-1 addModal"
             onClick={toggle}
-            style={{ color: "#ebc010" }}
+            style={{ color: "#ebc010", backgroundColor: "#494848" }}
           >
             Add
           </Button>
