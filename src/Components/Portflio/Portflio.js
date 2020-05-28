@@ -16,6 +16,16 @@ const Portflio = props => {
             />
           </div>
           <div className="Portflio-item-title">Card title</div>
+          <div>
+            <i
+              className="fas fa-star feedback-icon"
+              style={{ marginLeft: "80px" }}
+            ></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+          </div>
         </div>
 
         <div className="Portflio-item">
@@ -31,6 +41,16 @@ const Portflio = props => {
           />
 
           <div className="Portflio-item-title">Card title</div>
+          <div>
+            <i
+              className="fas fa-star feedback-icon"
+              style={{ marginLeft: "80px" }}
+            ></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+            <i className="fas fa-star feedback-icon"></i>
+          </div>
         </div>
       </div>
       <div className="Portflio-title">

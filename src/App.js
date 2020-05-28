@@ -22,6 +22,7 @@ import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 import HomePage from "./Pages/HomePage/Home";
 import HomePageOwner from "./Pages/HomePage/Home";
 import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
+import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 
 function App() {
   return (
@@ -37,13 +38,14 @@ function App() {
       {/* <OurLogin></OurLogin> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
-      <HomePageVolunteer></HomePageVolunteer>
+      {/* <HomePageVolunteer></HomePageVolunteer> */}
+      {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      {/* <VolunteerProfile></VolunteerProfile> */}
+      <VolunteerProfile></VolunteerProfile>
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
