@@ -60,7 +60,7 @@ function App() {
       <ModalCreateTask />
       <FeedbackModel /> */}
       {/* <TaskDetails /> */}
-      <TaskSubmittedFrame />
+      {/* <TaskSubmittedFrame /> */}
     </div>
   );
 }
