@@ -33,12 +33,14 @@ class TaskDetails extends Component {
               //   "justify-content": "center",
             }}
           >
-            <Col xs="3" style={{}}></Col>
+            <Col xs="2" style={{}}></Col>
             <Col xs="6">
               <Post></Post>
               {/* <Post></Post> */}
             </Col>
-            <Col xs="3" style={{}}></Col>
+            <Col xs="3" style={{ marginLeft: "50px" }}>
+              <Ads />
+            </Col>
           </Row>
         </Container>
       </>
