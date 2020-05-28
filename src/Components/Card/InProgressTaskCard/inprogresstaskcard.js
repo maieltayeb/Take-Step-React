@@ -12,8 +12,16 @@ const InProgressTaskCard = props => {
               <ToastBody>
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   <Toast>
-                    <ToastHeader>Task Title</ToastHeader>
-                    <ToastBody className=" bg-success m-3  rounded">
+                    <Row className="p-2">
+                      <Col sm={9}>
+                        {" "}
+                        <ToastHeader className="p-1">Task Title</ToastHeader>
+                      </Col>
+                      <Col className="pl-1">
+                        <i class="fas fa-upload text-danger"></i>
+                      </Col>
+                    </Row>
+                    {/* <ToastBody className=" bg-success m-3  rounded">
                       <Row>
                         {" "}
                         <Col>Done</Col>
@@ -22,7 +30,7 @@ const InProgressTaskCard = props => {
                           <img className="w-25 ml-3" src="/img/ok.png" />
                         </Col>
                       </Row>
-                    </ToastBody>
+                    </ToastBody> */}
                     <ToastBody className=" bg-warning m-3  rounded">
                       <Row>
                         {" "}
@@ -43,13 +51,13 @@ const InProgressTaskCard = props => {
                         <Col>DeadLine</Col>
                         <Col>
                           27/5
-                          <img className="w-25 ml-3" src="/img/schedule.png" />
+                          <img className="w-25 ml-4" src="/img/schedule.png" />
                         </Col>
                       </Row>
                     </ToastBody>
                   </Toast>
                   <Toast>
-                    <ToastHeader>Task Title</ToastHeader>
+                    <ToastHeader className="p-2">Task Title</ToastHeader>
                     <ToastBody
                       outline
                       color="danger"
@@ -87,7 +95,7 @@ const InProgressTaskCard = props => {
                         <Col>DeadLine</Col>
                         <Col>
                           27/5{" "}
-                          <img className="w-25 ml-3" src="/img/schedule.png" />
+                          <img className="w-25 ml-4" src="/img/schedule.png" />
                         </Col>
                       </Row>
                     </ToastBody>

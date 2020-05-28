@@ -1,6 +1,6 @@
 .skillSection-container {
   width: 60%;
-  background-color: rgb(243, 243, 243);
+  background-color: #f8f8f4;
   margin-left: 20px;
   height: auto;
 }
@@ -25,7 +25,7 @@
 }
 /**********************middle**************************************/
 .skillSection-container-body {
-  background-color: rgb(243, 243, 243);
+  background-color: #f8f8f4;
   min-height: 100px;
   padding: 10px;
   margin: 10px;

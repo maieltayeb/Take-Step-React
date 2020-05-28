@@ -22,6 +22,7 @@ import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 import HomePage from "./Pages/HomePage/Home";
 import HomePageOwner from "./Pages/HomePage/Home";
 import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
+import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 
 function App() {
@@ -58,6 +59,8 @@ function App() {
       <ModalPost />
       <ModalCreateTask />
       <FeedbackModel /> */}
+      {/* <TaskDetails /> */}
+      <TaskSubmittedFrame />
     </div>
   );
 }
