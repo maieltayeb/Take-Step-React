@@ -45,7 +45,7 @@ function App() {
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
