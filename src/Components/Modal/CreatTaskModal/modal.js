@@ -10,12 +10,12 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  FormText
 } from "reactstrap";
 
 import "./modal.css";
 import CreateTask from "../../../Pages/HomePage/CreateTaskSection/createTask";
-const ModalCreateTask = (props) => {
+const ModalCreateTask = props => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -26,8 +26,17 @@ const ModalCreateTask = (props) => {
 
       <p onClick={toggle}> What's your Task ?</p>
 
-      <Modal className="modalShap" isOpen={modal} toggle={toggle}>
-        <ModalHeader className="headerModal" toggle={toggle}>
+      <Modal
+        className="modalShap"
+        isOpen={modal}
+        toggle={toggle}
+        style={{ marginLeft: "320px" }}
+      >
+        <ModalHeader
+          className="headerModal"
+          toggle={toggle}
+          style={{ paddingLeft: "320px" }}
+        >
           Create Task
         </ModalHeader>
         <ModalBody className="bodyModal">
@@ -104,11 +113,22 @@ const ModalCreateTask = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter className=" bodyModal">
-          <Button className=" mr-0 cancelModal" onClick={toggle}>
+        <ModalFooter
+          className=" bodyModal"
+          style={{ backgroundColor: "white" }}
+        >
+          <Button
+            className=" mr-0 cancelModal"
+            onClick={toggle}
+            style={{ color: "#ebc010", backgroundColor: "#494848" }}
+          >
             Cancel
           </Button>
-          <Button className=" ml-2 mr-1 addModal" onClick={toggle}>
+          <Button
+            className=" ml-2 mr-1 addModal"
+            onClick={toggle}
+            style={{ color: "#ebc010", backgroundColor: "#494848" }}
+          >
             Add
           </Button>
         </ModalFooter>

@@ -6,6 +6,9 @@ import "./App.css";
 import ModalLink from "./Components/Modal/AddLink/AddLink-Modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
+import ModalPost from "./Components/Modal/AddPostModel/modal";
+import ModalCreateTask from "./Components/Modal/CreatTaskModal/modal";
+import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
 
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
@@ -48,6 +51,12 @@ function App() {
       {/* <AddSkill /> */}
       {/* <ModalLink /> */}
       {/* <AboutModal /> */}
+      <AddEducation />
+      <AddSkill />
+      <ModalLink />
+      <ModalPost />
+      <ModalCreateTask />
+      <FeedbackModel />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .modal-structure {
-  width: 936px !important;
+  /* width: 936px !important; */
   border-radius: 35px 35px 0px 0px !important;
 }
 .modal-structure-header {
@@ -12,7 +12,7 @@
   padding-left: 40%;
 }
 .modal-content {
-  width: 720px !important;
+  width: 722px !important;
   margin-left: 0px !important;
   border-radius: 39px 35px 0px 0px !important;
 }
