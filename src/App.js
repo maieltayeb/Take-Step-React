@@ -21,7 +21,7 @@ function App() {
     <div>
       {/* <Welcome></Welcome> */}
       {/* <Example /> */}
-      <NotificationDropdown />
+      {/* <NotificationDropdown /> */}
       {/* <Login></Login> */}
       {/* <SignUp /> */}
       {/* <Portflio /> */}
