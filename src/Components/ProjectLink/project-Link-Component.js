@@ -3,8 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./project-Link-Component.css";
 // import feedback from "../../../public/img/feedback.png";
+import FeedbackModel from "./../Modal/AddFeedbackModel/AddFeedbackModal";
 
-const ProjectLink = props => {
+const ProjectLink = (props) => {
   return (
     <div className="project-link-container">
       <div className="project-link-text">
@@ -18,9 +19,11 @@ const ProjectLink = props => {
             Lorem Ispum dolor sign lorem ispm
           </span>
         </div>
-        <div className="feedback-button">
+        {/* <div className="feedback-button">
           <p className="feedback-button-p">Feedback</p>
-        </div>
+        </div> */}
+
+        <FeedbackModel />
       </div>
     </div>
   );

@@ -13,14 +13,20 @@ const ModalLink = props => {
       <Button color="danger" onClick={toggle}>
         {buttonLabel}
       </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className} style={{}}>
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+        className={className}
+        style={{ marginLeft: "320px" }}
+      >
         <ModalHeader
           toggle={toggle}
           className="text-center"
           style={{
             paddingLeft: "210px",
-            backgroundColor: "#EBC010",
-            color: "black"
+            backgroundColor: "#494848",
+            color: "#ebc010",
+            paddingLeft: "320px"
           }}
         >
           Add Link
@@ -36,7 +42,7 @@ const ModalLink = props => {
             <span aria-hidden="true">x</span>
           </button>
         </div> */}
-        <ModalBody>
+        <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
           <label style={{ fontSize: "13px" }}>add your link:</label>
           <br />
           <input
@@ -67,21 +73,23 @@ const ModalLink = props => {
               backgroundColor: "white",
               borderRadius: "20px",
               border: "1px solid #EBC010",
-              color: "black"
+              color: "#494848",
+              width: "100px"
             }}
           >
-            submit
+            Cancel
           </Button>{" "}
           <Button
             color="secondary"
             onClick={toggle}
             style={{
-              backgroundColor: "black",
+              backgroundColor: "#494848",
               borderRadius: "20px",
-              color: "#EBC010"
+              color: "#EBC010",
+              width: "100px"
             }}
           >
-            Cancel
+            Add
           </Button>
         </ModalFooter>
       </Modal>

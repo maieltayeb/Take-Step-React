@@ -8,7 +8,7 @@
   font-size: 18px !important;
   width: 720px !important;
   height: 57px;
-  border-radius: 35px 35px 0px 35px;
+  /* border-radius: 35px 35px 0px 35px; */
   padding-left: 40%;
 }
 .modal-content {

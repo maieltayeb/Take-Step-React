@@ -7,10 +7,12 @@ import EducationSection from "../../Components/EducationSection/EducationSection
 import Portflio from "../../Components/Portflio/Portflio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
+import NavProf from "../../Layout/Navbar/profileNav";
 const VolunteerProfile = props => {
   return (
     <div>
       <InsideNav></InsideNav>
+      {/* <NavProf></NavProf> */}
       <PersonalInfo></PersonalInfo>
       <Container>
         <Row>
@@ -24,10 +26,10 @@ const VolunteerProfile = props => {
                 style={{ backgroundColor: "#494848" }}
               >
                 Portflio
-                <i
+                {/* <i
                   class="fas fa-angle-down"
                   style={{ fontSize: "25px" }}
-                ></i>{" "}
+                ></i>{" "} */}
               </ToastHeader>
               <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
                 <Portflio></Portflio>
@@ -42,7 +44,7 @@ const VolunteerProfile = props => {
               >
                 Progress
               </ToastHeader>
-              <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
+              <ToastBody style={{ backgroundColor: "#F8F8F4" }}>
                 <InProgressTaskCard></InProgressTaskCard>
               </ToastBody>
             </Toast>

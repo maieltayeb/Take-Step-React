@@ -17,17 +17,29 @@ const AddSkill = props => {
 
   return (
     <div>
-      <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+      <i class="fas fa-plus" onClick={toggle}></i>
+      {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
+=======
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+>>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
+=======
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+>>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
         <i class=" d-inline-block p-10 fas fa-pen text-warning"></i>
-      </Button>
+      </Button> */}
       {/* <div className="d-inline-block  bg-secondary"><span><i class=" d-inline-block p-10 fas fa-pen text-warning"></i></span></div> */}
       <Modal
         className="modalShapSkill"
         isOpen={modal}
         toggle={toggle}
         className={className}
+        style={{ marginLeft: "320px" }}
       >
-        <ModalHeader className="headerModalSkill" toggle={toggle}>
+        <ModalHeader
+          className="headerModalSkill"
+          toggle={toggle}
+          style={{ paddingLeft: "320px" }}
+        >
           Add Skill
         </ModalHeader>
         <ModalBody className="bodyModalSkill">
@@ -85,11 +97,30 @@ const AddSkill = props => {
             </div>
           </div>
         </ModalBody>
-        <ModalFooter className=" bodyModal">
-          <Button className=" mr-0 cancelModal" onClick={toggle}>
+        <ModalFooter>
+          <Button
+            color="primary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              border: "1px solid #EBC010",
+              color: "black",
+              width: "100px"
+            }}
+          >
             Cancel
-          </Button>
-          <Button className=" ml-2 mr-1 addModal" onClick={toggle}>
+          </Button>{" "}
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "#494848",
+              borderRadius: "20px",
+              color: "#EBC010",
+              width: "100px"
+            }}
+          >
             Add
           </Button>
         </ModalFooter>

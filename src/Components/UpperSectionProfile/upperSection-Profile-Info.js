@@ -21,7 +21,7 @@ const PersonalInfo = props => {
                   </div>
 
                   <div className="username-location">
-                    <span>User Name</span>
+                    <span>Job title </span>
                     <br />
                     <span className="map-icon">
                       <i class="fas fa-map-marker-alt"></i>
@@ -31,7 +31,7 @@ const PersonalInfo = props => {
                 </div>
 
                 <div className="job">
-                  <p className="job-title">Job title</p>
+                  <p className="job-title">User Name</p>
                   <p className="job-description">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been the industry's

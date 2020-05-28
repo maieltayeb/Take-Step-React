@@ -8,11 +8,11 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./AddEducation.css";
 
-const AddEducation = (props) => {
+const AddEducation = props => {
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
 
@@ -20,18 +20,26 @@ const AddEducation = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}></Button>
+      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
+        <i class="d-inline-block p-10 fas fa-plus text-warning"></i>
+        {/* <i class=" d-inline-block p-10 fas fa-pen text-warning"></i> */}
+      </Button>
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"
         isOpen={modal}
         toggle={toggle}
         className={className}
+        style={{ marginLeft: "320px" }}
       >
-        <ModalHeader className="modal-structure-header" toggle={toggle}>
+        <ModalHeader
+          className="modal-structure-header"
+          toggle={toggle}
+          style={{ paddingLeft: "310px" }}
+        >
           Add Education
         </ModalHeader>
-        <ModalBody style={{ width: "720px" }}>
+        <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
           <Form>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -80,11 +88,30 @@ const AddEducation = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter style={{ width: "720px" }}>
-          <Button id="cancel-btn" onClick={toggle}>
+        <ModalFooter>
+          <Button
+            color="primary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              border: "1px solid #EBC010",
+              color: "black",
+              width: "100px"
+            }}
+          >
             Cancel
           </Button>{" "}
-          <Button id="add-btn" onClick={toggle}>
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              backgroundColor: "#494848",
+              borderRadius: "20px",
+              color: "#EBC010",
+              width: "100px"
+            }}
+          >
             Add
           </Button>
         </ModalFooter>

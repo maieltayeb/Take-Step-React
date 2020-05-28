@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "./post.css";
-const Post = (props) => {
+const Post = props => {
   return (
     <>
       <div className="postContainer">
@@ -167,5 +167,4 @@ const Post = (props) => {
     </>
   );
 };
-
 export default Post;
