@@ -6,12 +6,12 @@ const Post = props => {
     <>
       <div className="postContainer">
         <div className=" pl-5 pt-5 pr-5 clearfix">
-          <p className="ml-0 mt-5  postOwnerNameStyle float-left">
+          <p className="ml-0 mt-3  postOwnerNameStyle float-left">
             Front End Developer
           </p>
           <Button className=" applyBtn float-right">Apply</Button>
         </div>
-        <div className=" ml-5  clearfix">
+        <div className=" ml-5  clearfix mt-3">
           <div className=" float-left">
             <span className=" font-weight-bold">Time : </span>
             <span className=""> 3 Days</span>
@@ -47,7 +47,7 @@ const Post = props => {
           </div>
         </div>
         <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
-          <div className=" reactToPost ml-2 clearfix">
+          <div className=" reactToPost ml-2 mb-0 clearfix">
             <div className=" ml-3 float-left">
               <span>Like</span>
               <span>
@@ -63,7 +63,7 @@ const Post = props => {
               {/* <img className="mb-2 d-inline"  src="./img/comment.png"/> */}
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix comment-container">
             <div className=" float-left ">
               <img className="mt-3 img rounded-circle" src="./img/people.png" />
             </div>
