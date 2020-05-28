@@ -1,20 +1,7 @@
 .dropdown-img {
   width: 12%;
 }
-.dropdown-item-container {
-  max-width: 520px;
-}
-.dropdown-item-text {
-  display: inline-block;
-}
+
 .notification-divider {
-  border-top: 2px solid #e9ecef;
-}
-.notification-container {
-  border: 2px solid #e9ecef;
-}
-.notification-footer {
-  color: #ebc010;
-  display: flex;
-  justify-content: center;
+  border-bottom: 2px solid #e9ecef;
 }

@@ -19,8 +19,8 @@ const NotificationDropdown = props => {
       <DropdownToggle style={{ background: "none", border: "none" }}>
         <i class="fas fa-bell text-warning"></i>
       </DropdownToggle>
+
       <DropdownMenu
-        className="notification-container"
         modifiers={{
           setMaxHeight: {
             enabled: true,
@@ -31,16 +31,20 @@ const NotificationDropdown = props => {
                 styles: {
                   ...data.styles,
                   overflow: "auto",
-                  maxHeight: "400px"
+                  maxHeight: "350px",
+                  border: "2px solid #e9ecef"
                 }
               };
             }
           }
         }}
       >
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -48,15 +52,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
         <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -64,15 +71,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
         <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -80,15 +90,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -96,15 +109,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -112,15 +128,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -128,15 +147,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -144,15 +166,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -160,15 +185,18 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
-        <DropdownItem divider className="notification-divider" />
-        <DropdownItem className="dropdown-item-container">
-          <img className="rounded-circle dropdown-img" src="./img/people.png" />
-          <div className="dropdown-item-text">
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
             <div>
               {" "}
               <b>YourTask</b>
@@ -176,14 +204,51 @@ const NotificationDropdown = props => {
 
             <div>UserName, 1 new task for front-end development</div>
           </div>
-          <div className="dropdown-item-text">
+          <div style={{ display: "inline-block" }}>
+            <div> ...</div>
+            <div>1h</div>
+          </div>
+        </DropdownItem>
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
+            <div>
+              {" "}
+              <b>YourTask</b>
+            </div>
+
+            <div>UserName, 1 new task for front-end development</div>
+          </div>
+          <div style={{ display: "inline-block" }}>
+            <div> ...</div>
+            <div>1h</div>
+          </div>
+        </DropdownItem>
+        <DropdownItem divider className="notification-divider" />{" "}
+        <DropdownItem style={{ maxWidth: "520px" }}>
+          <img
+            className="rounded-circle m-1 dropdown-img"
+            src="./img/people.png"
+          />
+          <div className="m-3" style={{ display: "inline-block" }}>
+            <div>
+              {" "}
+              <b>YourTask</b>
+            </div>
+
+            <div>UserName, 1 new task for front-end development</div>
+          </div>
+          <div style={{ display: "inline-block" }}>
             <div> ...</div>
             <div>1h</div>
           </div>
         </DropdownItem>
         <DropdownItem divider className="notification-divider" />
-
-        <DropdownItem className="notification-footer">
+        <DropdownItem style={{ color: "#ebc010", textAlign: "center" }}>
           {" "}
           <b>See All </b>
         </DropdownItem>
