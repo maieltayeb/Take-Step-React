@@ -65,7 +65,10 @@ const Post = props => {
           </div>
           <div className="clearfix comment-container">
             <div className=" float-left ">
-              <img className="mt-3 img rounded-circle" src="./img/people.png" />
+              <img
+                className="mt-3 post-img rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <Input

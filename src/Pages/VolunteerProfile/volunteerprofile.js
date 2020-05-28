@@ -44,7 +44,14 @@ const VolunteerProfile = props => {
               >
                 Progress
               </ToastHeader>
-              <ToastBody style={{ backgroundColor: "#F8F8F4" }}>
+              <ToastBody
+                className="p-0"
+                style={{
+                  overflow: "auto",
+                  height: "24rem",
+                  backgroundColor: "#F8F8F4"
+                }}
+              >
                 <InProgressTaskCard></InProgressTaskCard>
               </ToastBody>
             </Toast>
