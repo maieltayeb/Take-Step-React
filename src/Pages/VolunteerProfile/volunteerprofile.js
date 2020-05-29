@@ -31,7 +31,7 @@ const VolunteerProfile = props => {
                   style={{ fontSize: "25px" }}
                 ></i>{" "} */}
               </ToastHeader>
-              <ToastBody style={{ backgroundColor: "rgb(243, 243, 243)" }}>
+              <ToastBody style={{ backgroundColor: "#f8f8f4" }}>
                 <Portflio></Portflio>
               </ToastBody>
             </Toast>
