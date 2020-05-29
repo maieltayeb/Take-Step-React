@@ -22,37 +22,40 @@ class WelcomePage extends Component {
   render() {
     return (
       <>
-      <Navmai />
-  
-    
-          
-          <Header />
-         
+        <Navmai />
 
+        <Header />
 
-          {/** ************************************/}
+        {/** ************************************/}
 
-        <Container >
-        <h3 className="text-center mt-5">All Categories</h3>
-          <Row style={{marginTop:"47px" ,"margin-left": "14px",
-    "justify-content": "center"}}>
-           
-         <OurCategoeyCard /> 
-          
-        </Row>
-        <Row style={{marginTop:"47px" ,"margin-left": "14px",
-    "justify-content": "center"}} className="mb-5">
-         <OurCategoeyCard /> 
-          
-        </Row> 
-      
-        </Container>  
-        
-        <HowITWork></HowITWork> 
+        <Container>
+          <h3 className="text-center mt-5">All Categories</h3>
+          <Row
+            style={{
+              marginTop: "47px",
+              "margin-left": "14px",
+              "justify-content": "center"
+            }}
+          >
+            <OurCategoeyCard />
+          </Row>
+          <Row
+            style={{
+              marginTop: "47px",
+              "margin-left": "14px",
+              "justify-content": "center"
+            }}
+            className="mb-5"
+          >
+            <OurCategoeyCard />
+          </Row>
+        </Container>
+
+        <HowITWork></HowITWork>
         {/*/////////////////mariaaaaaaaaaaam*/}
-        
- {/*/////////////////mariaaaaaaaaaaam*/}
-  {/*/////////////////mariaaaaaaaaaaam*/}
+
+        {/*/////////////////mariaaaaaaaaaaam*/}
+        {/*/////////////////mariaaaaaaaaaaam*/}
         <Container>
           <div>
             <Jumbotron
@@ -81,28 +84,22 @@ class WelcomePage extends Component {
                 </p>
               </Container>
             </Jumbotron>
-          </div> 
-          </Container>
- {/*/////////////////mariaaaaaaaaaaam*/}
- {/*/////////////////mai*/}
- {/* <Row>
+          </div>
+        </Container>
+        {/*/////////////////mariaaaaaaaaaaam*/}
+        {/*/////////////////mai*/}
+        {/* <Row>
  <SubscribeCard />
  <SubscribeCard />
  <SubscribeCard />
  </Row> */}
-        
-            <SubscribeCardsSection />
-       
-        
-{/*/////////////////mai*/}
-{/*/////////////////mariaaaaaaaaaaam*/}
+
+        <SubscribeCardsSection />
+
+        {/*/////////////////mai*/}
+        {/*/////////////////mariaaaaaaaaaaam*/}
         <Footer></Footer>
         {/*/////////////////mariaaaaaaaaaaam*/}
-       
-     
-       
-       
-       
       </>
     );
   }
