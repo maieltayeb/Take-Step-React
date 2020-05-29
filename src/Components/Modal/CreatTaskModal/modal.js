@@ -23,8 +23,8 @@ const ModalCreateTask = props => {
   return (
     <div>
       {/* <CreateTask onClick={toggle}></CreateTask> */}
-
-      <p onClick={toggle}> What's your Task ?</p>
+      <h6 onClick={toggle}>Create Task</h6>
+      {/* <p > What's your Task ?</p> */}
 
       <Modal
         className="modalShap"
@@ -93,6 +93,7 @@ const ModalCreateTask = props => {
                   <option>20</option>
                 </Input>
               </Col>
+              <Label for="Time">Days</Label>
             </FormGroup>
 
             <FormGroup row>
