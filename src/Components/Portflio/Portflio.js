@@ -6,15 +6,6 @@ const Portflio = props => {
     <div className="Portflio-container">
       <div className="Portflio-items">
         <div className="Portflio-item">
-          <div>
-            <img
-              className="Portflio-item-img"
-              top
-              width="100%"
-              src="./img/watch.jpg"
-              alt="Card image cap"
-            />
-          </div>
           <div className="Portflio-item-title">Card title</div>
           <div>
             <i
@@ -26,9 +17,21 @@ const Portflio = props => {
             <i className="fas fa-star feedback-icon"></i>
             <i className="fas fa-star feedback-icon"></i>
           </div>
+          <div>
+            <img
+              className="Portflio-item-img"
+              top
+              width="100%"
+              src="./img/watch.jpg"
+              alt="Card image cap"
+            />
+            <i class="fas fa-trash-alt feedback-icon ml-2"></i>
+          </div>
         </div>
 
         <div className="Portflio-item">
+          <i class="fas fa-trash-alt feedback-icon ml-2"></i>
+
           <img
             className="Portflio-item-img"
             style={{
