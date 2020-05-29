@@ -10,7 +10,7 @@
   margin-top: 30px;
   /* margin-bottom: 22rem !important; */
 
-  min-width: fit-content;
+  /* min-width: fit-content; */
   display: block;
 }
 .comment-container {
@@ -55,7 +55,7 @@
   font-family: tahoma;
 }
 .commentArea {
-  width: 550px;
+  width: 474px;
   border: 1px solid #ebc010;
   border-radius: 50px;
   outline-offset: 0;
@@ -67,12 +67,12 @@
 .commentbody {
   background-color: #f8f8f4;
   border-radius: 0px 25px 25px 25px;
-  width: 550px;
+  width: 480px;
   min-height: 50px;
   max-height: fit-content;
 }
 
-.img {
+.post-img {
   width: 30px;
   height: 30px;
   border-radius: 15px;

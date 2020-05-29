@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Col
+} from "reactstrap";
 
 const ModalLink = props => {
   const { buttonLabel, className } = props;
@@ -10,8 +17,13 @@ const ModalLink = props => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        {buttonLabel}
+      <Button
+        onClick={toggle}
+        style={{ background: "none", border: "none", outline: "none" }}
+      >
+        <Col className="pl-1">
+          <i class="fas fa-upload text-danger"></i>
+        </Col>
       </Button>
       <Modal
         isOpen={modal}

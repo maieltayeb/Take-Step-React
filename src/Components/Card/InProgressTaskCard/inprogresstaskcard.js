@@ -1,5 +1,6 @@
 import React from "react";
 import { Toast, ToastBody, ToastHeader, Col, Row, Button } from "reactstrap";
+import ModalLink from "../../Modal/AddLink/AddLink-Modal";
 
 const InProgressTaskCard = props => {
   return (
@@ -17,9 +18,7 @@ const InProgressTaskCard = props => {
                         {" "}
                         <ToastHeader className="p-1">Task Title</ToastHeader>
                       </Col>
-                      <Col className="pl-1">
-                        <i class="fas fa-upload text-danger"></i>
-                      </Col>
+                      <ModalLink></ModalLink>
                     </Row>
                     {/* <ToastBody className=" bg-success m-3  rounded">
                       <Row>
@@ -57,24 +56,13 @@ const InProgressTaskCard = props => {
                     </ToastBody>
                   </Toast>
                   <Toast>
-                    <ToastHeader className="p-2">Task Title</ToastHeader>
-                    <ToastBody
-                      outline
-                      color="danger"
-                      className="border border-danger m-3  rounded"
-                    >
-                      <Row>
+                    <Row className="p-2">
+                      <Col sm={9}>
                         {" "}
-                        <Col className="text-danger">
-                          <img
-                            className=" mr-3"
-                            src="/img/warning.png"
-                            style={{ width: "8%" }}
-                          />
-                          you didnt upload task
-                        </Col>
-                      </Row>
-                    </ToastBody>
+                        <ToastHeader className="p-1">Task Title</ToastHeader>
+                      </Col>
+                      <ModalLink></ModalLink>
+                    </Row>
                     <ToastBody className=" bg-warning m-3  rounded">
                       <Row>
                         {" "}
@@ -109,79 +97,55 @@ const InProgressTaskCard = props => {
         <Col>
           <div className="p-3 my-2 rounded">
             <Toast>
-              <ToastHeader>Done</ToastHeader>
+              <ToastHeader>Missed Tasks</ToastHeader>
               <ToastBody>
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   <Toast>
-                    <ToastHeader>
-                      <img
-                        className=" m-2"
-                        src="/img/ok.png"
-                        style={{ width: "17%" }}
-                      />
-                      Task Title
-                    </ToastHeader>
+                    <ToastHeader>Task Title</ToastHeader>
                     <ToastBody outline color="danger" className=" m-3 ">
                       <Row>
                         {" "}
                         <Col className="text-danger">
-                          <Button outline color="danger m-0">
-                            <i
-                              className="fas fa-plus"
-                              style={{ margin: "5px" }}
-                            ></i>
-                            Add your Portfolio
-                          </Button>
+                          <img
+                            className=" mr-3"
+                            src="/img/warning.png"
+                            style={{ width: "8%" }}
+                          />
+                          you didnt upload this task
                         </Col>
                       </Row>
                     </ToastBody>
                   </Toast>
 
                   <Toast>
-                    <ToastHeader>
-                      <img
-                        className=" m-2"
-                        src="/img/ok.png"
-                        style={{ width: "17%" }}
-                      />
-                      Task Title
-                    </ToastHeader>
+                    <ToastHeader>Task Title</ToastHeader>
                     <ToastBody outline color="danger" className=" m-3">
                       <Row>
                         {" "}
                         <Col className="text-danger">
-                          <Button outline color="danger m-0">
-                            <i
-                              className="fas fa-plus"
-                              style={{ margin: "5px" }}
-                            ></i>
-                            Add your Portfolio
-                          </Button>
+                          <img
+                            className=" mr-3"
+                            src="/img/warning.png"
+                            style={{ width: "8%" }}
+                          />
+                          you didnt upload this task
                         </Col>
                       </Row>
                     </ToastBody>
                   </Toast>
 
                   <Toast>
-                    <ToastHeader>
-                      <img
-                        className=" m-2"
-                        src="/img/ok.png"
-                        style={{ width: "17%" }}
-                      />
-                      Task Title
-                    </ToastHeader>
+                    <ToastHeader>Task Title</ToastHeader>
                     <ToastBody outline color="danger" className=" m-3">
                       <Row>
                         {" "}
                         <Col className="text-danger">
-                          <Button outline color="danger m-0">
-                            <i
-                              className="fas fa-plus"
-                              style={{ margin: "5px" }}
-                            ></i>
-                            Add your Portfolio
-                          </Button>
+                          <img
+                            className=" mr-3"
+                            src="/img/warning.png"
+                            style={{ width: "8%" }}
+                          />
+                          you didnt upload this task
                         </Col>
                       </Row>
                     </ToastBody>

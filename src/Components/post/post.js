@@ -4,7 +4,7 @@ import "./post.css";
 const Post = props => {
   return (
     <>
-      <div className="postContainer">
+      <div className="postContainer shadow">
         <div className=" pl-5 pt-5 pr-5 clearfix">
           <p className="ml-0 mt-3  postOwnerNameStyle float-left">
             Front End Developer
@@ -77,9 +77,12 @@ const Post = props => {
               ></Input>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -88,9 +91,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -99,9 +105,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -110,9 +119,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -121,9 +133,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -132,9 +147,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -143,9 +161,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
@@ -154,9 +175,12 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img
+                className="post-img mt-2 rounded-circle"
+                src="./img/people.png"
+              />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 commentbody">
