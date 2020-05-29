@@ -62,10 +62,10 @@ class WelcomePage extends Component {
             >
               <Container fluid className="text-center ">
                 <div
-                  className="display  m-5  "
+                  className=" m-5  "
                   style={{
-                    backgroundColor: " #F0F0F0",
-                    border: "none"
+                    backgroundColor: "#F0F0F0",
+                    border: "none",display:"inline-block",borderRadius:"39px",padding:"10px 25px"
                   }}
                 >
                   <p className="m-0 text-warning"> PRICING PLANS</p>
