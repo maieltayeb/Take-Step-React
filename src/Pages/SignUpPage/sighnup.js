@@ -9,8 +9,8 @@ import {
   Col,
   Row
 } from "reactstrap";
-import "./oursignup.css";
-const OurSignUp = props => {
+import "./signup.css";
+const SignUp = props => {
   return (
     <Container>
       <Form
@@ -181,4 +181,4 @@ const OurSignUp = props => {
   );
 };
 
-export default OurSignUp;
+export default SignUp;
