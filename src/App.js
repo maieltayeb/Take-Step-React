@@ -37,7 +37,7 @@ function App() {
       {/* <NotificationDropdown /> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
-      <HomePageVolunteer></HomePageVolunteer>
+      {/* <HomePageVolunteer></HomePageVolunteer> */}
       {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
@@ -57,7 +57,7 @@ function App() {
       <ModalPost />
       <ModalCreateTask />
       <FeedbackModel /> */}
-      {/* <TaskDetails /> */}
+      <TaskDetails />
       {/* <TaskSubmittedFrame /> */}
     </div>
   );
