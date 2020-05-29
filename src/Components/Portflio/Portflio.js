@@ -7,11 +7,6 @@ const Portflio = props => {
       <div className="Portflio-items">
         <div className="Portflio-item">
           <div>
-            <i
-              class="fas fa-trash-alt feedback-icon ml-2"
-              style={{ display: "flex", justifyContent: "flex-end" }}
-            ></i>
-
             <img
               className="Portflio-item-img"
               top
@@ -34,10 +29,6 @@ const Portflio = props => {
         </div>
 
         <div className="Portflio-item">
-          <i
-            class="fas fa-trash-alt feedback-icon ml-2"
-            style={{ display: "flex", justifyContent: "flex-end" }}
-          ></i>
           <img
             className="Portflio-item-img"
             style={{

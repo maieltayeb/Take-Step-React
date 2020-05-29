@@ -37,14 +37,14 @@ function App() {
       {/* <NotificationDropdown /> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
-      {/* <HomePageVolunteer></HomePageVolunteer> */}
+      <HomePageVolunteer></HomePageVolunteer>
       {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
       {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
-      <VolunteerProfile></VolunteerProfile>
+      {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
