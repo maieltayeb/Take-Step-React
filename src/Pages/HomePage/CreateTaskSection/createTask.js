@@ -8,12 +8,12 @@ class CreateTask extends Component {
     return (
       <div className="post-container shadow">
         <div className="post-top">
-        <ModalCreateTask />
+       <h6>Creat Task</h6>
          
         </div>
         <div className="post-middle">
-          <p> What's your Task ?</p>
-       
+          {/* <p> What's your Task ?</p> */}
+          <ModalCreateTask />
         </div>
         <div className="post-line"></div>
         <div className="post-bottom">

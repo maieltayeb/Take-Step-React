@@ -23,8 +23,8 @@ const ModalCreateTask = props => {
   return (
     <div>
       {/* <CreateTask onClick={toggle}></CreateTask> */}
-      <h6 onClick={toggle}>Create Task</h6>
-      {/* <p > What's your Task ?</p> */}
+
+      <p onClick={toggle}> What's your Task ?</p>
 
       <Modal
         className="modalShap"
