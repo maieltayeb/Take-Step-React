@@ -6,9 +6,10 @@ class CreateTask extends Component {
   state = {};
   render() {
     return (
-      <div className="post-container">
+      <div className="post-container shadow">
         <div className="post-top">
-          <h6>Create Task</h6>
+       <h6>Creat Task</h6>
+         
         </div>
         <div className="post-middle">
           {/* <p> What's your Task ?</p> */}

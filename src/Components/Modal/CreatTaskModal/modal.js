@@ -93,6 +93,7 @@ const ModalCreateTask = props => {
                   <option>20</option>
                 </Input>
               </Col>
+              <Label for="Time">Days</Label>
             </FormGroup>
 
             <FormGroup row>

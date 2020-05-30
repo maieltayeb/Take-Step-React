@@ -13,9 +13,8 @@ import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal"
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
-import OurLogin from "./Pages/LoginPage/ourLogin";
 import Login from "./Pages/LoginPage/login";
-import SignUp from "./Pages/SignUpPage/sign-up";
+import SignUp from "./Pages/SignUpPage/sighnup";
 import Portflio from "./Components/Portflio/Portflio";
 import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
@@ -24,7 +23,7 @@ import HomePageOwner from "./Pages/HomePage/Home";
 import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
 import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
-
+import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 function App() {
   return (
     <div>
@@ -36,10 +35,10 @@ function App() {
       {/* <Portflio /> */}
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
-      {/* <OurLogin></OurLogin> */}
       {/* <HomePage></HomePage> */}
       <HomePageOwner></HomePageOwner>
       {/* <HomePageVolunteer></HomePageVolunteer> */}
+      {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
@@ -60,6 +59,7 @@ function App() {
       <FeedbackModel /> */}
       {/* <TaskDetails /> */}
       {/* <TaskSubmittedFrame /> */}
+      {/* <ProjectLink></ProjectLink> */}
     </div>
   );
 }

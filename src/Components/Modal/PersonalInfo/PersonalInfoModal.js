@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
 
 const PersonalInfoModal = props => {
   const { buttonLabel, className } = props;
@@ -43,6 +52,10 @@ const PersonalInfoModal = props => {
               class="fas fa-pencil-alt"
               style={{ display: "block", marginLeft: "55%", color: "#ebc010" }}
             ></i>
+            {/* <FormGroup>
+              <Label for="exampleFile">upload Photo</Label>
+              <Input type="file" name="file" id="exampleFile" />
+            </FormGroup> */}
           </div>
           <label style={{ fontSize: "13px" }}>Username</label>
           <br />
