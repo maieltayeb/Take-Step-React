@@ -31,7 +31,6 @@ const Post = props => {
               <DropdownItem>Delete</DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          {/* <div className=" float-right post-ortions">...</div> */}
           <div style={{ display: "flex" }}>
             <img
               className="post-img mt-3 rounded-circle"
