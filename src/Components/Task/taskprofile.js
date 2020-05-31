@@ -62,7 +62,7 @@ const TaskProfile = props => {
               {/* <img className="mb-2 d-inline"  src="./img/comment.png"/> */}
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
               <img className=" img rounded-circle" src="./img/people.png" />
             </div>
@@ -73,7 +73,7 @@ const TaskProfile = props => {
               ></Input>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
               <img className="img mt-2 rounded-circle" src="./img/people.png" />
             </div>
