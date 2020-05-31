@@ -1,21 +1,47 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Button,
+  Dropdown,
+  Input,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  FormText
+} from "reactstrap";
 import "./post.css";
 const Post = props => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   return (
     <>
       <div className="postContainer shadow">
         <div className=" pl-5 pt-5 pr-5 clearfix">
-          <div>
+          <Dropdown
+            isOpen={dropdownOpen}
+            toggle={toggle}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
+            <DropdownToggle style={{ background: "none", border: "none" }}>
+              <div className="post-ortions">...</div>
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>Edit</DropdownItem>
+              <DropdownItem>Delete</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          {/* <div className=" float-right post-ortions">...</div> */}
+          <div style={{ display: "flex" }}>
             <img
-              className="post-img mt-3 rounded-circle username-post"
+              className="post-img mt-3 rounded-circle"
               src="./img/people.png"
             />
-            <p className=" m-2 postOwnerNameStyle username-post">Aya Rabea</p>
+            <div className="username-post ml-3">
+              <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
+              <div className="ml-0 postOwnerNameStyle">Front End Developer</div>
+            </div>
           </div>
-          <p className="ml-0 mt-3  postOwnerNameStyle float-left">
-            Front End Developer
-          </p>
           <Button className=" applyBtn float-right">Apply</Button>
         </div>
         <div className=" ml-5  clearfix mt-3">
