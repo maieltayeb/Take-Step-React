@@ -6,6 +6,13 @@ const Post = props => {
     <>
       <div className="postContainer shadow">
         <div className=" pl-5 pt-5 pr-5 clearfix">
+          <div>
+            <img
+              className="post-img mt-3 rounded-circle username-post"
+              src="./img/people.png"
+            />
+            <p className=" m-2 postOwnerNameStyle username-post">Aya Rabea</p>
+          </div>
           <p className="ml-0 mt-3  postOwnerNameStyle float-left">
             Front End Developer
           </p>

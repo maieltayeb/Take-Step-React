@@ -8,6 +8,7 @@ import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import ModalCreateTask from "./Components/Modal/CreatTaskModal/modal";
 import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
+import Post from "./Components/post/post";
 
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
@@ -26,17 +27,17 @@ import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 function App() {
   return (
     <React.Fragment>
+      {/* <Post /> */}
       {/* <Welcome></Welcome> */}
       {/* <Example /> */}
       {/* <NotificationDropdown /> */}
       {/* <Login></Login> */}
-      {/* <SignUp /> */}
       {/* <Portflio /> */}
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
-      {/* <HomePageVolunteer></HomePageVolunteer> */}
+      <HomePageVolunteer></HomePageVolunteer>
       {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
@@ -44,6 +45,7 @@ function App() {
       {/* <HowItWorkCard></HowItWorkCard> */}
       {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
+      {/* <SignUp /> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
       {/* <AddSkill /> */}
@@ -58,12 +60,12 @@ function App() {
       {/* <TaskDetails /> */}
       {/* <TaskSubmittedFrame /> */}
       {/* <ProjectLink></ProjectLink> */}
-      <Switch>
+      {/* <Switch>
         <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
         <Redirect from="/" exact to="/wlcomePage" />
-      </Switch>
+      </Switch> */}
     </React.Fragment>
   );
 }
