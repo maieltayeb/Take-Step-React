@@ -13,7 +13,8 @@ import HowITWork from "../../Components/HowToWork/howtowork";
 // import SubscribeCardsSection from "./SubscribeCardSections/subscribeCardSection";
 import WelcomeNavBar from "../../Layout/Navbar/navbar";
 
-import Navmai from "../../Layout/ournav";
+// import Navmai from "../../Layout/ournav";
+import NavWelcome from "../../Layout/navWelcome";
 import { Container, Row, Jumbotron } from "reactstrap";
 // import Header from "../../Layout/Header/header";
 import OurCategoeyCard from "../../Components/Card/CategoreyCard/ourCategoryCard";
@@ -22,7 +23,7 @@ class WelcomePage extends Component {
   render() {
     return (
       <>
-        <Navmai />
+        <NavWelcome />
 
         <Header />
 
@@ -68,7 +69,10 @@ class WelcomePage extends Component {
                   className=" m-5  "
                   style={{
                     backgroundColor: "#F0F0F0",
-                    border: "none",display:"inline-block",borderRadius:"39px",padding:"10px 25px"
+                    border: "none",
+                    display: "inline-block",
+                    borderRadius: "39px",
+                    padding: "10px 25px"
                   }}
                 >
                   <p className="m-0 text-warning"> PRICING PLANS</p>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Toast, ToastBody, ToastHeader, Container, Row, Col } from "reactstrap";
 import InProgressTaskCard from "../../Components/Card/InProgressTaskCard/inprogresstaskcard";
-import Navmai from "../../Layout/ournav";
+
 import InsideNav from "../../Layout/Navbar/insidenav";
 import EducationSection from "../../Components/EducationSection/EducationSection";
 import Portflio from "../../Components/Portflio/Portflio";

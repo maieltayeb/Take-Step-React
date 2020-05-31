@@ -81,3 +81,6 @@
 input:focus {
   outline: none;
 }
+.username-post {
+  display: inline-block;
+}
