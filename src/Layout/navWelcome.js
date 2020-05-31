@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink as RRNavLink } from "react-router-dom";
 import SearchBox from "../Components/SearchBox/SearchBox";
 import {
   Collapse,
@@ -15,10 +16,10 @@ import {
   NavbarText,
   Button,
   Container,
-  Input,
+  Input
 } from "reactstrap";
 
-const Navmai = (props) => {
+const NavWelcome = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -50,14 +51,20 @@ const Navmai = (props) => {
               style={{
                 marginRight: "3.5rem",
                 backgroundColor: "#EBC010",
-                padding: "10px 75px 10px 32px",
+                padding: "10px 75px 10px 32px"
               }}
             >
               <NavItem>
                 <NavLink style={{ cursor: "pointer" }}>About Us</NavLink>
               </NavItem>
               <NavItem className="ml-2 ">
-                <NavLink style={{ cursor: "pointer" }}>Sign In</NavLink>
+                <NavLink
+                  style={{ cursor: "pointer", color: "black" }}
+                  to="logIn"
+                  tag={RRNavLink}
+                >
+                  Sign In
+                </NavLink>
               </NavItem>
             </Nav>
 
@@ -66,11 +73,16 @@ const Navmai = (props) => {
                 borderRadius: "35px",
                 color: "#fffff",
                 backgroundColor: "black",
-                padding: "4px 29px",
+                padding: "4px 29px"
               }}
             >
-              {" "}
-              Sign Up
+              <NavLink
+                style={{ cursor: "pointer", color: "White" }}
+                to="signUp"
+                tag={RRNavLink}
+              >
+                Sign Up
+              </NavLink>
             </Button>
           </Collapse>
         </Container>
@@ -79,4 +91,4 @@ const Navmai = (props) => {
   );
 };
 
-export default Navmai;
+export default NavWelcome;

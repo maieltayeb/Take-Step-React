@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-// import logo from "./logo.svg";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
-// import Example from "./Components/Card/InProgressTaskCard/inprogresstaskcard";
 import ModalLink from "./Components/Modal/AddLink/AddLink-Modal";
 import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
 import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
@@ -26,7 +25,7 @@ import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 function App() {
   return (
-    <div>
+    <React.Fragment>
       {/* <Welcome></Welcome> */}
       {/* <Example /> */}
       {/* <NotificationDropdown /> */}
@@ -36,13 +35,12 @@ function App() {
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
       {/* <HomePage></HomePage> */}
-      <HomePageOwner></HomePageOwner>
+      {/* <HomePageOwner></HomePageOwner> */}
       {/* <HomePageVolunteer></HomePageVolunteer> */}
       {/* <TaskSubmittedFrame /> */}
 
       {/* <WelcomePage></WelcomePage> */}
       {/* <HowITWork></HowITWork> */}
-      {/* <Example /> */}
       {/* <HowItWorkCard></HowItWorkCard> */}
       {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
@@ -60,7 +58,13 @@ function App() {
       {/* <TaskDetails /> */}
       {/* <TaskSubmittedFrame /> */}
       {/* <ProjectLink></ProjectLink> */}
-    </div>
+      <Switch>
+        <Route path="/signUp" component={SignUp} />
+        <Route path="/logIn" component={Login} />
+        <Route path="/wlcomePage" exact component={WelcomePage} />
+        <Redirect from="/" exact to="/wlcomePage" />
+      </Switch>
+    </React.Fragment>
   );
 }
 
