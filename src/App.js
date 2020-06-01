@@ -61,12 +61,23 @@ function App() {
       {/* <TaskDetails /> */}
       {/* <TaskSubmittedFrame /> */}
       {/* <ProjectLink></ProjectLink> */}
-      {/* <Switch>
-        <Route path="/signUp" component={SignUp} />
+      <Switch>
+        //anonymous user
+        {/* <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
-        <Redirect from="/" exact to="/wlcomePage" />
-      </Switch> */}
+        <Redirect from="/" exact to="/wlcomePage" /> */}
+        //business owner user
+        {/* <Route path="/home" component={HomePageOwner} />
+        <Route path="/profile" component={BussinessOwnerProfile} />
+        <Route path="/jobDetails" component={TaskSubmittedFrame} /> */}
+        //volnteer user
+        <Route path="/home" component={HomePageVolunteer} />
+        <Route path="/profile" component={VolunteerProfile} />
+        <Route path="/taskDetails" component={TaskDetails} />
+        // both users
+        <Redirect from="/" exact to="home" />
+      </Switch>
     </React.Fragment>
   );
 }
