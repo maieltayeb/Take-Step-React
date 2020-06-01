@@ -37,6 +37,7 @@ function App() {
       {/* <NotificationDropdown /> */}
       {/* <HomePage></HomePage> */}
       {/* <HomePageOwner></HomePageOwner> */}
+      <HomePageOwner></HomePageOwner>
       {/* <HomePageVolunteer></HomePageVolunteer> */}
       {/* <TaskSubmittedFrame /> */}
 
