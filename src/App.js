@@ -62,20 +62,20 @@ function App() {
       {/* <ProjectLink></ProjectLink> */}
       <Switch>
         //anonymous user
-        {/* <Route path="/signUp" component={SignUp} />
+        <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
-        <Redirect from="/" exact to="/wlcomePage" /> */}
+        <Redirect from="/" exact to="/wlcomePage" />
         //business owner user
         {/* <Route path="/home" component={HomePageOwner} />
         <Route path="/profile" component={BussinessOwnerProfile} />
         <Route path="/jobDetails" component={TaskSubmittedFrame} /> */}
         //volnteer user
-        <Route path="/home" component={HomePageVolunteer} />
+        {/* <Route path="/home" component={HomePageVolunteer} />
         <Route path="/profile" component={VolunteerProfile} />
         <Route path="/taskDetails" component={TaskDetails} />
         // both users
-        <Redirect from="/" exact to="home" />
+        <Redirect from="/" exact to="home" /> */}
       </Switch>
     </React.Fragment>
   );
