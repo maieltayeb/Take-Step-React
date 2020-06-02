@@ -16,8 +16,6 @@ const TaskSubmittedFrame = props => {
         </div>
 
         <TaskSubmit />
-        <TaskSubmit />
-        <TaskSubmit />
       </div>
     </div>
   );

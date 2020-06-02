@@ -19,7 +19,7 @@ const BussinessOwnerProfile = props => {
                   className="p-3 text-warning"
                   style={{ backgroundColor: "#494848" }}
                 >
-                  My Posts
+                  My Jobs
                 </ToastHeader>
                 <ToastBody className="p-0">
                   <TaskProfile></TaskProfile>

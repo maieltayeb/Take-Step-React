@@ -24,8 +24,8 @@
 }
 .postOwnerNameStyle {
   font-family: tahoma;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 15px;
+  /* font-weight: bold; */
   color: #707070;
 }
 .applyBtn {
@@ -73,11 +73,18 @@
 }
 
 .post-img {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 15px;
 }
 
 input:focus {
   outline: none;
+}
+.username-post {
+  display: inline-block;
+}
+.post-ortions {
+  cursor: pointer;
+  color: black;
 }

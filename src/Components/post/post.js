@@ -1,17 +1,55 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Button,
+  Dropdown,
+  Input,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import "./post.css";
 const Post = props => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   return (
     <>
       <div className="postContainer shadow">
-        <div className=" pl-5 pt-5 pr-5 clearfix">
-          <p className="ml-0 mt-3  postOwnerNameStyle float-left">
-            Front End Developer
-          </p>
-          <Button className=" applyBtn float-right">Apply</Button>
+        <div className=" pl-5 pt-3 pr-5 clearfix">
+          {/* <div className=" float-right post-ortions">...</div> */}
+          <div style={{ display: "flex", "justify-content": "space-between" }}>
+            <div>
+              <img
+                className="post-img  rounded-circle"
+                src="./img/people.png"
+              />
+              <div className="username-post ml-3">
+                <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
+                <div className="ml-0 postOwnerNameStyle">
+                  Front End Developer
+                </div>
+              </div>
+            </div>
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={toggle}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <DropdownToggle style={{ background: "none", border: "none" }}>
+                <div className="post-ortions">...</div>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         </div>
-        <div className=" ml-5  clearfix mt-3">
+        <div
+          className=" ml-5  clearfix mt-3 d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
           <div className=" float-left">
             <span className=" font-weight-bold">Time : </span>
             <span className=""> 3 Days</span>
@@ -20,9 +58,10 @@ const Post = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className=""> 4</span>
           </div>
+          <Button className=" applyBtn float-right">Apply</Button>
         </div>
-        <div className="postBody">
-          <p className="p-5 m-0  text-justify">
+        <div className="postBody pt-3 pr-5 pl-5  m-0">
+          <p className="text-justify">
             {" "}
             is simply dummy text of the printing and typesetting industry. Lorem
             Ipsum has been the industry's standard dummy text ever since the
@@ -74,6 +113,11 @@ const Post = props => {
               <Input
                 placeholder="Add your comment"
                 className="mt-3 commentArea"
+                style={{
+                  width: " 474px",
+                  border: " 1px solid #ebc010",
+                  "border-radius": " 50px"
+                }}
               ></Input>
             </div>
           </div>

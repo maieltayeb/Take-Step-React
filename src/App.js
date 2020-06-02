@@ -8,6 +8,7 @@ import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
 import ModalPost from "./Components/Modal/AddPostModel/modal";
 import ModalCreateTask from "./Components/Modal/CreatTaskModal/modal";
 import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
+import Post from "./Components/post/post";
 
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
@@ -26,11 +27,11 @@ import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 function App() {
   return (
     <React.Fragment>
+      {/* <Post /> */}
       {/* <Welcome></Welcome> */}
       {/* <Example /> */}
       {/* <NotificationDropdown /> */}
       {/* <Login></Login> */}
-      {/* <SignUp /> */}
       {/* <Portflio /> */}
       {/* <OwnerProfileCard /> */}
       {/* <NotificationDropdown /> */}
@@ -44,6 +45,7 @@ function App() {
       {/* <HowItWorkCard></HowItWorkCard> */}
       {/* <VolunteerProfile></VolunteerProfile> */}
       {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
+      {/* <SignUp /> */}
       {/* <Footer></Footer> */}
       {/* <AddEducation /> */}
       {/* <AddSkill /> */}
@@ -59,10 +61,21 @@ function App() {
       {/* <TaskSubmittedFrame /> */}
       {/* <ProjectLink></ProjectLink> */}
       <Switch>
+        //anonymous user
         <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
         <Redirect from="/" exact to="/wlcomePage" />
+        //business owner user
+        {/* <Route path="/home" component={HomePageOwner} />
+        <Route path="/profile" component={BussinessOwnerProfile} />
+        <Route path="/jobDetails" component={TaskSubmittedFrame} /> */}
+        //volnteer user
+        {/* <Route path="/home" component={HomePageVolunteer} />
+        <Route path="/profile" component={VolunteerProfile} />
+        <Route path="/taskDetails" component={TaskDetails} />
+        // both users
+        <Redirect from="/" exact to="home" /> */}
       </Switch>
     </React.Fragment>
   );

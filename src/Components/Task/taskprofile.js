@@ -1,14 +1,50 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Input,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import "./taskprofile.css";
 const TaskProfile = props => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
   return (
     <>
       <div className="profile-postContainer m-4 rounded">
         <div className=" pl-5 p-3  clearfix">
-          <p className="ml-0 mt-3  profile-postOwnerNameStyle float-left">
+          {/* <p className="ml-0 mt-3  profile-postOwnerNameStyle float-left">
             Front End Developer
-          </p>
+          </p> */}
+          <div style={{ display: "flex", "justify-content": "space-between" }}>
+            <div>
+              <img
+                className="post-img  rounded-circle"
+                src="./img/people.png"
+              />
+              <div className="username-post ml-3">
+                <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
+                <div className="ml-0 postOwnerNameStyle">
+                  Front End Developer
+                </div>
+              </div>
+            </div>
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={toggle}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <DropdownToggle style={{ background: "none", border: "none" }}>
+                <div className="post-ortions">...</div>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         </div>
         <div className=" ml-5  clearfix">
           <div className=" float-left">
@@ -62,7 +98,7 @@ const TaskProfile = props => {
               {/* <img className="mb-2 d-inline"  src="./img/comment.png"/> */}
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
               <img className=" img rounded-circle" src="./img/people.png" />
             </div>
@@ -73,7 +109,7 @@ const TaskProfile = props => {
               ></Input>
             </div>
           </div>
-          <div className="clearfix">
+          <div className="clearfix d-flex">
             <div className=" float-left ">
               <img className="img mt-2 rounded-circle" src="./img/people.png" />
             </div>

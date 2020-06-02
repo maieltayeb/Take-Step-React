@@ -68,6 +68,17 @@ const PersonalInfoModal = props => {
             }}
           ></input>
           <br />
+          <label style={{ fontSize: "13px" }}>Company Name</label>
+          <br />
+          <input
+            type="text"
+            style={{
+              width: "100%",
+              border: "1px solid #EBC010",
+              marginBottom: "20px"
+            }}
+          ></input>
+          <br />
           <label style={{ fontSize: "13px" }}>Job title</label>
           <br />
           <input
