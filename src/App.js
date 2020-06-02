@@ -27,55 +27,22 @@ import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 function App() {
   return (
     <React.Fragment>
-      {/* <Post /> */}
-      {/* <Welcome></Welcome> */}
-      {/* <Example /> */}
-      {/* <NotificationDropdown /> */}
-      {/* <Login></Login> */}
-      {/* <Portflio /> */}
-      {/* <OwnerProfileCard /> */}
-      {/* <NotificationDropdown /> */}
-      {/* <HomePage></HomePage> */}
-      {/* <HomePageOwner></HomePageOwner> */}
-      {/* <HomePageVolunteer></HomePageVolunteer> */}
-      {/* <TaskSubmittedFrame /> */}
-
-      {/* <WelcomePage></WelcomePage> */}
-      {/* <HowITWork></HowITWork> */}
-      {/* <HowItWorkCard></HowItWorkCard> */}
-      {/* <VolunteerProfile></VolunteerProfile> */}
-      {/* <BussinessOwnerProfile></BussinessOwnerProfile> */}
-      {/* <SignUp /> */}
-      {/* <Footer></Footer> */}
-      {/* <AddEducation /> */}
-      {/* <AddSkill /> */}
-      {/* <ModalLink /> */}
-      {/* <AboutModal /> */}
-      {/* <AddEducation />
-      <AddSkill />
-      <ModalLink />
-      <ModalPost />
-      <ModalCreateTask />
-      <FeedbackModel /> */}
-      {/* <TaskDetails /> */}
-      {/* <TaskSubmittedFrame /> */}
-      {/* <ProjectLink></ProjectLink> */}
       <Switch>
         //anonymous user
-        <Route path="/signUp" component={SignUp} />
+        {/* <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
-        <Redirect from="/" exact to="/wlcomePage" />
+        <Redirect from="/" exact to="/wlcomePage" /> */}
         //business owner user
-        {/* <Route path="/home" component={HomePageOwner} />
+        <Route path="/home" component={HomePageOwner} />
         <Route path="/profile" component={BussinessOwnerProfile} />
-        <Route path="/jobDetails" component={TaskSubmittedFrame} /> */}
+        <Route path="/jobDetails" component={TaskSubmittedFrame} />
         //volnteer user
         {/* <Route path="/home" component={HomePageVolunteer} />
         <Route path="/profile" component={VolunteerProfile} />
-        <Route path="/taskDetails" component={TaskDetails} />
+        <Route path="/taskDetails" component={TaskDetails} /> */}
         // both users
-        <Redirect from="/" exact to="home" /> */}
+        <Redirect from="/" exact to="home" />
       </Switch>
     </React.Fragment>
   );

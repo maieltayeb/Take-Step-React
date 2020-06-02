@@ -21,14 +21,14 @@ class HomePageOwner extends Component {
 
             paddingRight: "50px",
             paddingLeft: "50px",
-            paddingTop: "15px",
+            paddingTop: "15px"
           }}
         >
           <Row
             style={{
               marginTop: "5rem",
               marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "30px"
 
               //   "justify-content": "center",
             }}
