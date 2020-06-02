@@ -94,8 +94,10 @@ const InsideNav = props => {
                 padding: "4px 29px"
               }}
             >
-              {" "}
-              Log Out
+              <RRNavLink className="userLink" to="wlcomePage">
+                {" "}
+                Log Out
+              </RRNavLink>
             </Button>
           </Collapse>
         </Container>

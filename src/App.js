@@ -29,10 +29,10 @@ function App() {
     <React.Fragment>
       <Switch>
         //anonymous user
-        {/* <Route path="/signUp" component={SignUp} />
+        <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
-        <Redirect from="/" exact to="/wlcomePage" /> */}
+        {/* <Redirect from="/" exact to="/wlcomePage" /> */}
         //business owner user
         <Route path="/home" component={HomePageOwner} />
         <Route path="/profile" component={BussinessOwnerProfile} />
@@ -43,6 +43,7 @@ function App() {
         <Route path="/taskDetails" component={TaskDetails} /> */}
         // both users
         <Redirect from="/" exact to="home" />
+        {/* <Redirect from="logOut" to="wlcomePage" /> */}
       </Switch>
     </React.Fragment>
   );
