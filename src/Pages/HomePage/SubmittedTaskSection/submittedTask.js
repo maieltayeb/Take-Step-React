@@ -10,13 +10,13 @@ class SubmittedTask extends Component {
         </div>
         <div className="SubmittedTask-container-body">
           <div className="SubmittedTask-container-body-pro">
-            <NavLink to="/taskDetails">project-title</NavLink>
+            <NavLink to="/jobDetails">project-title</NavLink>
           </div>
           <div className="SubmittedTask-container-body-pro">
-            <NavLink to="/taskDetails">project-title</NavLink>
+            <NavLink to="/jobDetails">project-title</NavLink>
           </div>
           <div className="SubmittedTask-container-body-pro">
-            <NavLink to="/taskDetails">project-title</NavLink>
+            <NavLink to="/jobDetails">project-title</NavLink>
           </div>
         </div>
       </div>
