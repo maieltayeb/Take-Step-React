@@ -49,7 +49,7 @@ const ModalCreateTask = props => {
               }} />
             <a>username</a>
               </div>
-              <div style={{marginLeft:"60px",marginTop:"10px"}}> 
+              <div style={{marginLeft:"60px",marginTop:"20px"}}> 
           <Form style={{width:"100%"}}>
             <FormGroup row>
               <Label for="TaskTitle" >
