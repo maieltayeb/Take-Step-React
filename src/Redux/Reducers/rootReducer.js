@@ -1,3 +1,5 @@
 import { combineReducers } from "redux";
-
-export default combineReducers({});
+import bussinessOwnerReducer from "./bussinessOwnerReducer";
+export default combineReducers({
+  bussinessOwnerUsers: bussinessOwnerReducer
+});
