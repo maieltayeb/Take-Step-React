@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 import { useSelector } from "react-redux";
-// import { getOwnerUserById } from "../../Redux/actions/ownerInfoActionCreator";
-// import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
-// import profilephoto from "./assets/profilephoto.png";
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 const PersonalInfo = props => {
   const ownerUser = useSelector(state => state.ownerPersonalInfo);
@@ -22,7 +19,7 @@ const PersonalInfo = props => {
                 <div className="upper-info">
                   <div className="profile-photo">
                     <img
-                      src="./img/profilephoto.png"
+                      src="/img/profilephoto.png"
                       className="img"
                       alt="personal pic"
                     />
