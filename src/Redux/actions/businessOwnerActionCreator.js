@@ -22,9 +22,12 @@ export const getAllUsers = () => dispatch => {
       // handle error dipatch();
     });
 };
+
 const getAllUsersSuccess = newUsers => {
   return { type: Get_BussinessUsers, payload: newUsers };
 };
+
+
 export const Signup = newUser => dispatch => {
   axios
     .post(
@@ -39,9 +42,37 @@ export const Signup = newUser => dispatch => {
     .catch(console.log);
 };
 
+
 const SignUpSuccess = user => {
   return { type: post_SignUp, payload: user };
 };
+
+// export const login=async(currentUser) =>{
+// //  const loginEndPoint = `${userEndPoint}/login`;
+//   const response =await Axios.post("http://localhost:4402/user/login",currentUser).catch(err=>console.log(err));
+//   console.log(response.data);
+//   const {token ,user} = response.data;
+//   localStorage.setItem("token",token);
+//   localStorage.setItem("user",JSON.stringify(user));
+//   // axios.defaults.headers.common["Authorization"]=token;
+//   console.log(response.data);
+  
+//   return response.data;
+// }
+// export const logIn = () => dispatch => {
+//   axios
+//     .post(
+//       "https://take-a-step-9ca1d.firebaseio.com/bussinessowner.json"
+      
+//     )
+//     .then(response => {
+//       const { data } = response;
+//       newUser.id = data.name;
+//       if (response.status === 200) dispatch(SignUpSuccess(newUser));
+//     })
+//     .catch(console.log);
+// };
+
 export const getAllCountries = () => dispatch => {
   axios
     .get("https://take-a-step-9ca1d.firebaseio.com/Countries.json")

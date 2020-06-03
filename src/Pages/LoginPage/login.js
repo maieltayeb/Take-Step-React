@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import "./login.css";
 import InsideNav from "../../Layout/Navbar/insidenav";
 const Login = props => {
@@ -22,17 +23,27 @@ const Login = props => {
     //   [e.target.id]: e.target.value
     // });
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(state.email);
-    console.log(state.password);
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+
+  //   console.log(state.email);
+  //   console.log(state.password);
+  // };
+
+  const  handleValidSubmit=(event,values) =>{
+    console.log("click login ",values)
+     event.preventDefault();
+    //console.log("state",state)
+    // dispatch(Signup(state));
+ 
+  }
+
   return (
     <>
       <InsideNav></InsideNav>
       <Container>
-        <Form
-          onSubmit={handleSubmit}
+       <AvForm 
+        onValidSubmit={handleValidSubmit}
           className="border-warning  p-5"
           style={{
             width: "50%",
@@ -44,7 +55,9 @@ const Login = props => {
           <h3 className="text-center m-3 mb-5"> Login</h3>
           <FormGroup className="input-icons">
             <i class="fa fa-envelope icon text-warning"></i>
-            <Input
+           <AvField
+             errorMessage="Invalid email"
+             validate={{email: true}}
               type="email"
               name="email"
               id="email"
@@ -56,7 +69,12 @@ const Login = props => {
           </FormGroup>{" "}
           <FormGroup className="input-icons">
             <i class="fas fa-lock icon text-warning"></i>
-            <Input
+            <AvField
+               errorMessage="Invalid password must be 4  numbers/charchters at least " validate={{
+                required: {value: true},
+                pattern: {value: '^[A-Za-z0-9]+$'},
+                minLength: {value:4}
+             }}
               type="password"
               name="password"
               id="password"
@@ -86,7 +104,7 @@ const Login = props => {
           >
             Sign Up
           </Button>
-        </Form>
+        </AvForm >
       </Container>
     </>
   );
