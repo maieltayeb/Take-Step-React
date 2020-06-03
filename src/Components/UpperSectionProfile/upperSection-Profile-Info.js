@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
+import { useSelector } from "react-redux";
+// import { getOwnerUserById } from "../../Redux/actions/ownerInfoActionCreator";
+// import { useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
 // import profilephoto from "./assets/profilephoto.png";
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 const PersonalInfo = props => {
+  const ownerUser = useSelector(state => state.ownerPersonalInfo);
+  console.log(ownerUser.email);
   return (
     <div>
       <Container>
@@ -13,30 +19,33 @@ const PersonalInfo = props => {
           <Row>
             <Col lg="8">
               <div className="first-profile-info">
-                <div class="upper-info">
+                <div className="upper-info">
                   <div className="profile-photo">
-                    <img src="./img/profilephoto.png" className="img" />
-                    <div class="edit-icon">
+                    <img
+                      src="./img/profilephoto.png"
+                      className="img"
+                      alt="personal pic"
+                    />
+                    <div className="edit-icon">
                       <PersonalInfoModal />
                     </div>
                   </div>
 
                   <div className="username-location">
-                    <span>Job title </span>
+                    <span>{ownerUser.jobTitle} </span>
                     <br />
                     <span className="map-icon">
-                      <i class="fas fa-map-marker-alt"></i>
+                      <i className="fas fa-map-marker-alt"></i>
                     </span>
-                    <span className="location">Location</span>
+                    <span className="location">{ownerUser.location}</span>
                   </div>
                 </div>
 
                 <div className="job">
-                  <p className="job-title">User Name</p>
-                  <p className="job-description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
+                  <p className="job-title">
+                    {ownerUser.firstName} {ownerUser.lastName}{" "}
                   </p>
+                  <p className="job-description">{ownerUser.description}</p>
                 </div>
               </div>
             </Col>
@@ -71,4 +80,4 @@ const PersonalInfo = props => {
   );
 };
 
-export default PersonalInfo;
+export default withRouter(PersonalInfo);

@@ -30,12 +30,9 @@ const OwnerProfileCard = props => {
           </CardSubtitle>
         </CardBody>
       </Card>
+
       <CardBody className="owner-card-lower-text">
-        <CardSubtitle>Proposals</CardSubtitle>
-        <CardSubtitle>4</CardSubtitle>
-      </CardBody>
-      <CardBody className="owner-card-lower-text">
-        <CardSubtitle>All Tasks</CardSubtitle>
+        <CardSubtitle>All Jobs</CardSubtitle>
         <CardSubtitle>10</CardSubtitle>
       </CardBody>
     </Card>

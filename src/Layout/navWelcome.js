@@ -9,14 +9,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
   Button,
-  Container,
-  Input
+  Container
 } from "reactstrap";
 
 const NavWelcome = props => {

@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import "./AddSkillModal.css";
 const AddSkill = props => {
-  const { buttonLabel, className } = props;
+  const { className } = props;
 
   const [modal, setModal] = useState(false);
 

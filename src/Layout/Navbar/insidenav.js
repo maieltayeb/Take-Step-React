@@ -36,7 +36,7 @@ const InsideNav = props => {
         className="p-0 shadow"
       >
         <Container className="themed-container" fluid={true}>
-          <NavbarBrand href="/" style={{ "margin-left": "93px" }}>
+          <NavbarBrand href="/" style={{ marginLeft: "93px" }}>
             <img width="50%" src="/img/logo.png" />
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />

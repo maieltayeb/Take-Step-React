@@ -19,7 +19,7 @@ const PersonalInfoModal = props => {
 
   return (
     <div>
-      <i class="fas fa-pencil-alt" onClick={toggle}></i>
+      <i className="fas fa-pencil-alt" onClick={toggle}></i>
       <Modal
         isOpen={modal}
         toggle={toggle}

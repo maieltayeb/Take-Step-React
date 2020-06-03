@@ -35,7 +35,7 @@ function App() {
         {/* <Redirect from="/" exact to="/wlcomePage" /> */}
         //business owner user
         <Route path="/home" component={HomePageOwner} />
-        <Route path="/profile" component={BussinessOwnerProfile} />
+        <Route path="/profile/:id" component={BussinessOwnerProfile} />
         <Route path="/jobDetails" component={TaskSubmittedFrame} />
         //volnteer user
         {/* <Route path="/home" component={HomePageVolunteer} />
