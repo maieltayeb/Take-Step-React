@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { NavLink as RRNavLink } from "react-router-dom";
+import "./nav.css";
 
 import {
   Collapse,
@@ -8,14 +10,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
   Button,
-  Container,
-  Input
+  Container
 } from "reactstrap";
 import SearchBox from "../../Components/SearchBox/SearchBox";
 import NotificationDropdown from "../../Components/Dropdown/NotificationDropdown";
@@ -56,13 +52,34 @@ const InsideNav = props => {
             </Nav>
             <Nav style={{ marginRight: "3.5rem" }}>
               <NavItem>
-                <NavLink style={{ cursor: "pointer" }}>Home</NavLink>
+                <NavLink
+                  className="userLink"
+                  // style={{ cursor: "pointer" }}
+                  tag={RRNavLink}
+                  to="/home"
+                >
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink style={{ cursor: "pointer" }}>About Us</NavLink>
+                <NavLink
+                  className="userLink"
+                  // tag={RRNavLink}
+
+                  //  style={{ cursor: "pointer", color: "unset" }}
+                >
+                  About Us
+                </NavLink>
               </NavItem>
               <NavItem className="ml-2 ">
-                <NavLink style={{ cursor: "pointer" }}>My Profile</NavLink>
+                <NavLink
+                  className="userLink"
+                  // style={{ cursor: "pointer", color: "unset" }}
+                  tag={RRNavLink}
+                  to="/profile"
+                >
+                  My Profile
+                </NavLink>
               </NavItem>
               <NavItem className="ml-2 ">
                 <NotificationDropdown></NotificationDropdown>
@@ -77,8 +94,10 @@ const InsideNav = props => {
                 padding: "4px 29px"
               }}
             >
-              {" "}
-              Log Out
+              <RRNavLink className="userLink" to="wlcomePage">
+                {" "}
+                Log Out
+              </RRNavLink>
             </Button>
           </Collapse>
         </Container>

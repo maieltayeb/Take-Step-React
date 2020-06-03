@@ -21,7 +21,7 @@ class HomePageVolunteer extends Component {
 
             paddingRight: "50px",
             paddingLeft: "50px",
-            paddingTop: "15px",
+            paddingTop: "15px"
           }}
         >
           <Row
@@ -29,13 +29,13 @@ class HomePageVolunteer extends Component {
               marginTop: "4rem",
 
               marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "30px"
             }}
           >
             <Col
               xs="3"
               style={{
-                marginTop: "30px",
+                marginTop: "30px"
               }}
             >
               <OwnerProfileCard />

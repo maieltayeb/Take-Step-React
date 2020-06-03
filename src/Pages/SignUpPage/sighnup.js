@@ -86,10 +86,9 @@ const SignUp = props => {
           onSubmit={handleSubmit}
           className="border-warning  p-5"
           style={{
-            width: "50%",
-            margin: "110px auto",
-            border: "1px solid",
-            borderRadius: "1.5rem"
+            marginLeft: "4rem ",
+            backgroundColor: "#F2F2F2",
+            padding: ".7rem 1rem"
           }}
         >
           <h3 className="text-center m-3 mb-5"> Sign Up</h3>

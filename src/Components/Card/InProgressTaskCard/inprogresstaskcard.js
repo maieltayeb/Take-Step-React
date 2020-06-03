@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "./inprogresstaskcard.css";
 import { Toast, ToastBody, ToastHeader, Col, Row, Button } from "reactstrap";
 import ModalLink from "../../Modal/AddLink/AddLink-Modal";
 
@@ -16,7 +18,9 @@ const InProgressTaskCard = props => {
                     <Row className="p-2">
                       <Col sm={9}>
                         {" "}
-                        <ToastHeader className="p-1">Task Title</ToastHeader>
+                        <ToastHeader className="p-1 taskTitle">
+                          <NavLink to="/taskDetails">Task Title</NavLink>
+                        </ToastHeader>
                       </Col>
                       <ModalLink></ModalLink>
                     </Row>
@@ -59,7 +63,10 @@ const InProgressTaskCard = props => {
                     <Row className="p-2">
                       <Col sm={9}>
                         {" "}
-                        <ToastHeader className="p-1">Task Title</ToastHeader>
+                        <ToastHeader className="p-1">
+                          {/* Task Title */}
+                          <NavLink to="/taskDetails">Task Title</NavLink>
+                        </ToastHeader>
                       </Col>
                       <ModalLink></ModalLink>
                     </Row>
@@ -101,7 +108,9 @@ const InProgressTaskCard = props => {
               <ToastBody>
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   <Toast>
-                    <ToastHeader>Task Title</ToastHeader>
+                    <ToastHeader>
+                      <NavLink to="/taskDetails">Task Title</NavLink>
+                    </ToastHeader>
                     <ToastBody outline color="danger" className=" m-3 ">
                       <Row>
                         {" "}
@@ -118,7 +127,9 @@ const InProgressTaskCard = props => {
                   </Toast>
 
                   <Toast>
-                    <ToastHeader>Task Title</ToastHeader>
+                    <ToastHeader>
+                      <NavLink to="/taskDetails">Task Title</NavLink>
+                    </ToastHeader>
                     <ToastBody outline color="danger" className=" m-3">
                       <Row>
                         {" "}
@@ -135,7 +146,9 @@ const InProgressTaskCard = props => {
                   </Toast>
 
                   <Toast>
-                    <ToastHeader>Task Title</ToastHeader>
+                    <ToastHeader>
+                      <NavLink to="/taskDetails">Task Title</NavLink>
+                    </ToastHeader>
                     <ToastBody outline color="danger" className=" m-3">
                       <Row>
                         {" "}

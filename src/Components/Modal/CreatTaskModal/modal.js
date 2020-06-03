@@ -39,11 +39,20 @@ const ModalCreateTask = props => {
         >
           Create Task
         </ModalHeader>
+      
         <ModalBody className="bodyModal">
-          <FormGroup row></FormGroup>
-          <Form>
+          <div>
+            <img src="./img/profilephoto.png"alt="userimg" style={{
+                width: "10%",
+                borderRadius: "50%",
+              marginRight:"20px"
+              }} />
+            <a>username</a>
+              </div>
+              <div style={{marginLeft:"60px",marginTop:"20px"}}> 
+          <Form style={{width:"100%"}}>
             <FormGroup row>
-              <Label for="TaskTitle" sm={2}>
+              <Label for="TaskTitle" >
                 Task Title &nbsp;&nbsp;&nbsp;:
               </Label>
               <Col sm={10}>
@@ -57,7 +66,7 @@ const ModalCreateTask = props => {
             </FormGroup>
 
             <FormGroup row>
-              <Label for="Proposals" sm={2}>
+              <Label for="Proposals" >
                 Proposals &nbsp;&nbsp;:
               </Label>
               <Col sm={4}>
@@ -65,39 +74,20 @@ const ModalCreateTask = props => {
                   type="number"
                   name="Proposals"
                   id="Proposals"
-                  placeholder="Proposals num "
+                  placeholder="Proposals num "  min="1" max="20"
                 />
               </Col>
-              <Label for="Time">Time :</Label>
+              <Label for="Time">Task Duration:</Label>
               <Col sm={2}>
-                <Input type="select" name="Time" id="Time">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                  <option>13</option>
-                  <option>14</option>
-                  <option>15</option>
-                  <option>16</option>
-                  <option>17</option>
-                  <option>18</option>
-                  <option>19</option>
-                  <option>20</option>
+                <Input type="number" name="Time" id="Time"  min="1" max="20">
+                 
                 </Input>
               </Col>
               <Label for="Time">Days</Label>
             </FormGroup>
 
             <FormGroup row>
-              <Label for="Description" sm={2}>
+              <Label for="Description" >
                 Description :
               </Label>
               <Col sm={10}>
@@ -105,14 +95,15 @@ const ModalCreateTask = props => {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="exampleFile" sm={2}>
+              <Label for="exampleFile" >
                 File /Image :
               </Label>
               <Col sm={10}>
                 <Input type="file" name="file" id="exampleFile" />
               </Col>
             </FormGroup>
-          </Form>
+          </Form></div>
+        
         </ModalBody>
         <ModalFooter
           className=" bodyModal"
