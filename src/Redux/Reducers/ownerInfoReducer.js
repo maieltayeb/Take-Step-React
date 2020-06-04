@@ -1,11 +1,15 @@
-import { GET_OwnerUser } from "../actionTypes";
+import { GET_OwnerUser, EDIT_OwnerUser } from "../actionTypes";
 
-const initialState = [];
+const initialState = null;
 export default (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
     case GET_OwnerUser:
+      newState = action.payload;
+      break;
+
+    case EDIT_OwnerUser:
       newState = action.payload;
       break;
 

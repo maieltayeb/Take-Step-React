@@ -8,10 +8,10 @@ import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Prof
 
 import TaskProfile from "../../Components/Task/taskprofile";
 import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
+
 const BussinessOwnerProfile = props => {
   const dispatch = useDispatch();
   const userId = props.match.params.id;
-  // console.log(props);
   console.log(userId);
   useEffect(() => {
     dispatch(getOwnerUserById(userId));
