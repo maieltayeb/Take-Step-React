@@ -48,7 +48,7 @@ const Post = props => {
         </div>
         <div
           className=" ml-5  clearfix mt-3 d-flex"
-          style={{ justifyContent: "space-between" }}
+          style={{ justifyContent: "space-between"  }}
         >
           <div className=" float-left">
             <span className=" font-weight-bold">Time : </span>

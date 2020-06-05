@@ -9,13 +9,13 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import myStore from "./Redux/store";
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={myStore}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={myStore}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

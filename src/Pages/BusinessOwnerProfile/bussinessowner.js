@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getOwnerUserById } from "../../Redux/actions/ownerInfoActionCreator";
+import { useDispatch } from "react-redux";
+
 import { Toast, ToastBody, ToastHeader, Container, Row, Col } from "reactstrap";
 import InsideNav from "../../Layout/Navbar/insidenav";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 
 import TaskProfile from "../../Components/Task/taskprofile";
 import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
+
 const BussinessOwnerProfile = props => {
+  const dispatch = useDispatch();
+  const userId = props.match.params.id;
+  console.log(userId);
+  useEffect(() => {
+    dispatch(getOwnerUserById(userId));
+  }, [dispatch]);
   return (
     <div>
       <InsideNav></InsideNav>
