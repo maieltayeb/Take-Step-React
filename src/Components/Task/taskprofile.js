@@ -20,10 +20,7 @@ const TaskProfile = props => {
           </p> */}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>
-              <img
-                className="post-img  rounded-circle"
-                src="./img/people.png"
-              />
+              <img className="post-img  rounded-circle" src="/img/people.png" />
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
                 <div className="ml-0 postOwnerNameStyle">
@@ -100,7 +97,7 @@ const TaskProfile = props => {
           </div>
           <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className=" img rounded-circle" src="./img/people.png" />
+              <img className=" img rounded-circle" src="/img/people.png" />
             </div>
             <div className=" ml-2 float-left ">
               <Input
@@ -111,7 +108,7 @@ const TaskProfile = props => {
           </div>
           <div className="clearfix d-flex">
             <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="./img/people.png" />
+              <img className="img mt-2 rounded-circle" src="/img/people.png" />
             </div>
             <div className=" ml-2 float-left ">
               <div className="p-2 mt-2 profile-commentbody">

@@ -9,7 +9,11 @@ import {
   ModalHeader,
   ModalBody,
   Form,
-  ModalFooter
+  ModalFooter,
+  Label,
+  Input,
+  FormGroup,
+  Col
 } from "reactstrap";
 
 const PersonalInfoModal = props => {
@@ -91,19 +95,38 @@ const PersonalInfoModal = props => {
               <Input type="file" name="file" id="exampleFile" />
             </FormGroup> */}
               </div>
-              <label style={{ fontSize: "13px" }}>Username</label>
-              <br />
-              <input
-                type="text"
-                name="firstName"
-                value={newUser.firstName}
-                onChange={changeHandler}
-                style={{
-                  width: "100%",
-                  border: "1px solid #EBC010",
-                  marginBottom: "20px"
-                }}
-              ></input>
+              <div>
+                <div>
+                  <label style={{ fontSize: "13px" }}>first Name</label>
+                  <br />
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={newUser.firstName}
+                    onChange={changeHandler}
+                    style={{
+                      width: "50%",
+                      border: "1px solid #EBC010",
+                      marginBottom: "20px"
+                    }}
+                  ></input>
+                </div>
+                <div>
+                  <label style={{ fontSize: "13px" }}>last Name</label>
+                  <br />
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={newUser.lastName}
+                    onChange={changeHandler}
+                    style={{
+                      width: "50%",
+                      border: "1px solid #EBC010",
+                      marginBottom: "20px"
+                    }}
+                  ></input>
+                </div>
+              </div>
               <br />
               <label style={{ fontSize: "13px" }}>Company Name</label>
               <br />
@@ -191,7 +214,7 @@ const PersonalInfoModal = props => {
             </ModalFooter>
           </Form>
         ) : (
-          "loading..."
+          <h4>loading...</h4>
         )}
       </Modal>
     </div>

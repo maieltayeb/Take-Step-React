@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 import { useSelector } from "react-redux";
@@ -49,7 +49,9 @@ const PersonalInfo = props => {
                   </div>
                 </div>
               ) : (
-                "loading ..."
+                <div className="loading">
+                  <Spinner style={{ width: "3rem", height: "3rem" }} />
+                </div>
               )}
             </Col>
             <Col lg="4">
