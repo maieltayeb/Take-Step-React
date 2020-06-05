@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import bussinessOwnerReducer from "./bussinessOwnerReducer";
+import usersReducer from "./usersReducer";
 import ownerInfoReducer from "./ownerInfoReducer";
 
 export default combineReducers({
-  bussinessOwnerUsers: bussinessOwnerReducer,
+  bussinessOwneUsers: usersReducer,
   ownerPersonalInfo: ownerInfoReducer
 });
