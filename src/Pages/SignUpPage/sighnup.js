@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Container,
-  Col,
-  Row
-} from "reactstrap";
+import { Button, FormGroup, Input, Container, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./signup.css";
 import InsideNav from "../../Layout/Navbar/insidenav";
@@ -23,9 +15,9 @@ const SignUp = props => {
     password: "",
     firstName: "",
     lastName: "",
-    country: "-M8q-QJgtfbIqI-VZP47",
-    isBussines: false
+    country: "-M8q-QJgtfbIqI-VZP47"
   });
+  const [stateStatus, setSatateStatus] = useState(false);
   const handleChange = e => {
     const { name, value } = e.target;
     setState(prevState => ({
@@ -44,19 +36,10 @@ const SignUp = props => {
     }));
   };
   const handleClick = e => {
-    // console.log(e.target.textContent);
     if (e.target.textContent === "Bussiness Owner") {
-      setState(prevState => ({
-        ...prevState,
-        isBussines: true
-      }));
-      // console.log(state.isBussines);
+      setSatateStatus(true);
     } else {
-      setState(prevState => ({
-        ...prevState,
-        isBussines: false
-      }));
-      // console.log(state.isBussines);
+      setSatateStatus(false);
     }
   };
   const handleValidSubmit = (event, values) => {
@@ -192,7 +175,7 @@ const SignUp = props => {
           >
             Volunteer
           </Button>
-          {state.isBussines && (
+          {stateStatus && (
             <>
               <div style={{ display: "inline-block", "text-align": "center" }}>
                 <img width="20%" className="mr-3" src="./img/visa.png" />
