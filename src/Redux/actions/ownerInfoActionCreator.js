@@ -46,3 +46,24 @@ export const getOwnerUserById = id => dispatch => {
 const getOwnerUserSuccess = OwnerUser => {
   return { type: GET_OwnerUser, payload: OwnerUser };
 };
+
+export const editOwnerUser = (id, newUser) => dispatch => {
+  axios
+    .patch(
+      `https://take-a-step-9ca1d.firebaseio.com/bussinessowner/${id}.json`,
+      newUser
+    )
+    .then(res => {
+      const { data } = res;
+      console.log(data);
+
+      dispatch(editOwnerUserSuccess(data));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+const editOwnerUserSuccess = newUser => {
+  return { type: EDIT_OwnerUser, payload: newUser };
+};
