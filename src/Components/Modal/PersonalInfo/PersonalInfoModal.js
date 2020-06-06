@@ -10,7 +10,11 @@ import {
   ModalHeader,
   ModalBody,
   Form,
-  ModalFooter
+  ModalFooter,
+  Label,
+  Input,
+  FormGroup,
+  Col
 } from "reactstrap";
 
 const PersonalInfoModal = props => {

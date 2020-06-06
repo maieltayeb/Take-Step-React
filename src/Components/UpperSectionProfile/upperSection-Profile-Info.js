@@ -1,7 +1,7 @@
 import React ,{ useState, useEffect } from "react";
 import { useDispatch, connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 //import { useSelector } from "react-redux";
