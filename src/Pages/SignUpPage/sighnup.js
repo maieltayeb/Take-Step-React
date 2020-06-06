@@ -145,8 +145,8 @@ const SignUp = props => {
                 onChange={handleChange}
               >
                 {props.countries.map(item => (
-                  <option key={item.id} value={item.id}>
-                    {item.en}
+                  <option key={item.id} value={item._id}>
+                    {item.countryName}
                   </option>
                 ))}
               </Input>
@@ -285,7 +285,7 @@ const SignUp = props => {
 };
 const mapStateToProps = reduxState => {
   return {
-    countries: reduxState.bussinessOwnerUsers.countries
+    countries: reduxState.Users.countries
   };
 };
 export default connect(mapStateToProps)(SignUp);

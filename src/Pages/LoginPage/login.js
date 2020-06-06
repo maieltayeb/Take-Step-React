@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, connect } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import "./login.css";
 import InsideNav from "../../Layout/Navbar/insidenav";
 import { Link } from "react-router-dom";
+import { logIn } from "../../Redux/actions/businessOwnerActionCreator";
+import { useHistory } from "react-router-dom";
+
 const Login = props => {
+  const history = useHistory();
+ const dispatch = useDispatch();
   const [state, setState] = useState({
     email: "",
     password: ""
@@ -35,7 +41,13 @@ const Login = props => {
     console.log("click login ", values);
     event.preventDefault();
     //console.log("state",state)
-    // dispatch(Signup(state));
+    dispatch(logIn(state));
+    let currentuserJson=localStorage.getItem("user")
+  
+   let currentUser=JSON.parse(currentuserJson);
+  //  history.push("/profile");
+   history.push(`/profile/${currentUser.id}`);
+    
   };
 
   return (
@@ -121,5 +133,11 @@ const Login = props => {
     </>
   );
 };
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState
+  };
+};
 
-export default Login;
+
+export default connect(mapStateToProps)(Login);

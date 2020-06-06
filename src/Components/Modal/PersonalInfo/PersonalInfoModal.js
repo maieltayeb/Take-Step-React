@@ -3,6 +3,7 @@ import { editOwnerUser } from "../../../Redux/actions/ownerInfoActionCreator";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+import {edit}from "../../../Redux/actions/businessOwnerActionCreator"
 import {
   Button,
   Modal,
@@ -16,33 +17,52 @@ const PersonalInfoModal = props => {
   const { className } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  // const [currentUserState,setStatecurrentUser]=useState(
 
-  const ownerPersonalInfo = useSelector(state => state.ownerPersonalInfo);
-  const [newUser, setNewUser] = useState(ownerPersonalInfo);
-  console.log(newUser);
-  useEffect(() => {
-    setNewUser(ownerPersonalInfo);
-  }, [ownerPersonalInfo]);
+  //   currentUser
+  //     )
+  let currentuserJson=localStorage.getItem("user");
+  let currentUser=JSON.parse(currentuserJson);
+  
+  // const ownerPersonalInfo = useSelector(state => state.ownerPersonalInfo);
+  const [state, setState] = useState({
+    firstName:currentUser.firstName
+    ,lastName:currentUser.lastName,
+    companyName:currentUser.companyName,
+    description:currentUser.description,
+    countryName:currentUser.country.countryName,
+    jobTitle:currentUser.jobTitle
+  });
+  
+
+  // console.log(currentUser);
+  // useEffect(() => {
+  //   setcurrentUser(ownerPersonalInfo);
+  // }, [ownerPersonalInfo]);
 
   const dispatch = useDispatch();
-  const userId = props.match.params.id;
-  // console.log(props);
-  // console.log(userId);
+  // const userId = props.match.params.id;
+  useEffect(() => {
+    setState(state);
+  }, [currentUser]);
 
   const changeHandler = e => {
     //collect data
-    const updatedUser = { ...newUser };
-    updatedUser[e.target.name] = e.target.value;
-    setNewUser(updatedUser);
-    // console.log(e.target.name);
-    // console.log(e.target.value);
-    // console.log(updatedUser);
+    // const updatedUser = { ...currentUser };
+    // updatedUser[e.target.name] = e.target.value;
+    // setcurrentUser(updatedUser);
+    const { name, value } = e.target;
+    setState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
-  const submitHandler = async e => {
+  const submitHandler = e => {
     e.preventDefault();
-    console.log("submitted");
-    //dispatch id , newUser using editOwnerUser
-    dispatch(editOwnerUser(userId, newUser));
+     console.log("submitted");
+   
+     dispatch(edit(currentUser.id,state));
+     console.log(state)
   };
 
   return (
@@ -66,7 +86,6 @@ const PersonalInfoModal = props => {
         >
           Edit Info
         </ModalHeader>
-        {newUser ? (
           <Form onSubmit={submitHandler}>
             <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
               <div>
@@ -91,12 +110,26 @@ const PersonalInfoModal = props => {
               <Input type="file" name="file" id="exampleFile" />
             </FormGroup> */}
               </div>
-              <label style={{ fontSize: "13px" }}>Username</label>
+              <label style={{ fontSize: "13px" }}>first name</label>
               <br />
               <input
                 type="text"
                 name="firstName"
-                value={newUser.firstName}
+                value={state.firstName}
+                onChange={changeHandler}
+                style={{
+                  width: "100%",
+                  border: "1px solid #EBC010",
+                  marginBottom: "20px"
+                }}
+              ></input>
+              <br />
+              <label style={{ fontSize: "13px" }}>last name</label>
+              <br />
+              <input
+                type="text"
+                name="lastName"
+                value={state.lastName}
                 onChange={changeHandler}
                 style={{
                   width: "100%",
@@ -110,7 +143,7 @@ const PersonalInfoModal = props => {
               <input
                 type="text"
                 name="companyName"
-                value={newUser.companyName}
+                value={state.companyName}
                 onChange={changeHandler}
                 style={{
                   width: "100%",
@@ -124,7 +157,7 @@ const PersonalInfoModal = props => {
               <input
                 type="text"
                 name="jobTitle"
-                value={newUser.jobTitle}
+                value={state.jobTitle}
                 onChange={changeHandler}
                 style={{
                   width: "100%",
@@ -136,8 +169,8 @@ const PersonalInfoModal = props => {
               <br />
               <input
                 type="text"
-                name="location"
-                value={newUser.location}
+                name="countryName"
+                value={state.countryName}
                 onChange={changeHandler}
                 style={{
                   width: "100%",
@@ -151,7 +184,7 @@ const PersonalInfoModal = props => {
               <textarea
                 type="text"
                 name="description"
-                value={newUser.description}
+                value={state.description}
                 onChange={changeHandler}
                 style={{
                   width: "100%",
@@ -190,9 +223,7 @@ const PersonalInfoModal = props => {
               </Button>
             </ModalFooter>
           </Form>
-        ) : (
-          "loading..."
-        )}
+       
       </Modal>
     </div>
   );

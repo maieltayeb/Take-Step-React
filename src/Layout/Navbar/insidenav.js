@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { NavLink as RRNavLink, Link } from "react-router-dom";
 import "./nav.css";
 
 import {
@@ -9,6 +9,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+ 
   NavLink,
   Button,
   Container
@@ -20,6 +21,11 @@ const InsideNav = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  let currentuserJson=localStorage.getItem("user")
+  
+  let currentUser=JSON.parse(currentuserJson);
+
+   
 
   return (
     <div>
@@ -56,8 +62,16 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer" }}
                   tag={RRNavLink}
-                  to="/home"
-                >
+                  to='/home'
+                  // {{
+                  //   pathname:'/home',
+                  //   search:`?id=${currentUser.id}`,
+                  
+                  //       }}
+                        >
+                  
+                
+             
                   Home
                 </NavLink>
               </NavItem>
@@ -76,7 +90,12 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer", color: "unset" }}
                   tag={RRNavLink}
-                  to="/profile"
+                  to='/profile'
+                  // {{
+                  //   pathname:'/profile',
+                  //   search:`?id=${currentUser.id}`,
+                  
+                  //       }}
                 >
                   My Profile
                 </NavLink>
