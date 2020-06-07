@@ -54,7 +54,7 @@ const NavWelcome = props => {
               <NavItem className="ml-2 ">
                 <NavLink
                   style={{ cursor: "pointer", color: "black" }}
-                  to="logIn"
+                  to="/logIn"
                   tag={RRNavLink}
                 >
                   Sign In

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import "./App.css";
 import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
 import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
@@ -13,16 +13,27 @@ import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 import {
-  getAllUsers,
+  getAllUsersBussinessOwner,
   getAllCountries
 } from "./Redux/actions/businessOwnerActionCreator";
-function App() {
+// import { getAllVolunteers } from "./Redux/actions/volunteerActionCreator";
+function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(getAllUsersBussinessOwner());
     dispatch(getAllCountries());
   }, [dispatch]);
+  //  let currentuserJson = localStorage.getItem("user");
 
+  //   let currentUser = JSON.parse(currentuserJson);
+  let profileName;
+  // debugger;
+
+  // if (props.currentUser.paymentData) {
+  //   profileName = BussinessOwnerProfile;
+  // } else {
+  //   profileName = VolunteerProfile;
+  // }
   return (
     <React.Fragment>
       <Switch>
@@ -31,13 +42,17 @@ function App() {
         <Route path="/logIn" component={Login} />
         <Route path="/wlcomePage" exact component={WelcomePage} />
         {/* <Redirect from="/" exact to="/wlcomePage" /> */}
-        //business owner user
-        <Route path="/home" component={HomePageOwner} />
-        <Route path="/profile/:id" component={BussinessOwnerProfile} />
+        //profile
+        {/* <Route path="/profile/:id" component={profileName} /> */}
+        {/* {props.currentUser.paymentData ? (
+          ) : (
+          )} */}
+        <Route path="/BussinessProfile/:id" component={BussinessOwnerProfile} />
+        <Route path="/VolunteerProfile/:id" component={VolunteerProfile} />
         <Route path="/jobDetails" component={TaskSubmittedFrame} />
-        //volnteer user
+        //home
+        <Route path="/home" component={HomePageOwner} />
         {/* <Route path="/home" component={HomePageVolunteer} />
-        <Route path="/profile" component={VolunteerProfile} />
         <Route path="/taskDetails" component={TaskDetails} /> */}
         // both users
         <Redirect from="/" exact to="home" />
@@ -46,5 +61,9 @@ function App() {
     </React.Fragment>
   );
 }
-
-export default App;
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser
+  };
+};
+export default connect(mapStateToProps)(App);

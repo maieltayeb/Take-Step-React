@@ -9,7 +9,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
- 
   NavLink,
   Button,
   Container
@@ -21,11 +20,12 @@ const InsideNav = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  let currentuserJson=localStorage.getItem("user")
-  
-  let currentUser=JSON.parse(currentuserJson);
+  let currentuserJson = localStorage.getItem("user");
 
-   
+  let currentUser = JSON.parse(currentuserJson);
+  const handleClick = () => {
+    localStorage.clear();
+  };
 
   return (
     <div>
@@ -62,16 +62,12 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer" }}
                   tag={RRNavLink}
-                  to='/home'
-                  // {{
-                  //   pathname:'/home',
-                  //   search:`?id=${currentUser.id}`,
-                  
-                  //       }}
-                        >
-                  
-                
-             
+                  to=// "/home"
+                  {{
+                    pathname: "/home",
+                    search: `?id=${currentUser.id}`
+                  }}
+                >
                   Home
                 </NavLink>
               </NavItem>
@@ -90,12 +86,11 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer", color: "unset" }}
                   tag={RRNavLink}
-                  to='/profile'
-                  // {{
-                  //   pathname:'/profile',
-                  //   search:`?id=${currentUser.id}`,
-                  
-                  //       }}
+                  to=// "/profile"
+                  {{
+                    pathname: "/profile",
+                    search: `?id=${currentUser.id}`
+                  }}
                 >
                   My Profile
                 </NavLink>
@@ -113,7 +108,11 @@ const InsideNav = props => {
                 padding: "4px 29px"
               }}
             >
-              <RRNavLink className="userLink" to="wlcomePage">
+              <RRNavLink
+                onClick={handleClick}
+                className="userLink"
+                to="/wlcomePage"
+              >
                 {" "}
                 Log Out
               </RRNavLink>

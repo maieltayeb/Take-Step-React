@@ -5,8 +5,16 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Button, FormGroup, Input, Container, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./signup.css";
-import InsideNav from "../../Layout/Navbar/insidenav";
-import { Signup } from "../../Redux/actions/businessOwnerActionCreator";
+import NavWelcome from "../../Layout/navWelcome";
+import {
+  SignupBussinessOwner,
+  getAllUsersBussinessOwner
+} from "../../Redux/actions/businessOwnerActionCreator";
+import {
+  SignupVolunteers,
+  getAllVolunteers
+} from "../../Redux/actions/volunteerActionCreator";
+
 const SignUp = props => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,7 +23,7 @@ const SignUp = props => {
     password: "",
     firstName: "",
     lastName: "",
-    country: "-M8q-QJgtfbIqI-VZP47"
+    country: "5edab5034b7a063de0203607"
   });
   const [stateStatus, setSatateStatus] = useState(false);
   const handleChange = e => {
@@ -46,12 +54,19 @@ const SignUp = props => {
     console.log("values", values);
     event.preventDefault();
     console.log("state", state);
-    dispatch(Signup(state));
+    if (stateStatus) {
+      dispatch(getAllUsersBussinessOwner());
+      dispatch(SignupBussinessOwner(state));
+    } else {
+      dispatch(SignupVolunteers(state));
+      dispatch(getAllVolunteers());
+    }
+
     history.push("/logIn");
   };
   return (
     <>
-      <InsideNav></InsideNav>
+      <NavWelcome></NavWelcome>
       <Container>
         <AvForm
           onValidSubmit={handleValidSubmit}
