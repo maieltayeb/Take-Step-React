@@ -1,57 +1,59 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import { connect } from "react-redux";
+import Axios from "axios";
 import "./EducationSection.css";
-import AddEducation  from "../Modal/AddEducationModal/AddEducation";
-class EducationSection extends Component {
-  state = {};
-  render() {
-    return (
-      <div className="EducationSection-container mt-4">
-        <div className="EducationSection-container-top">
-          <div className="EducationSection-container-top-h6">
-            <h6>Education</h6>
-          </div>
-          <div className="space"></div>
-          <div className="EducationSection-container-top-icon">
-            {/* <i class="fas fa-plus"></i>{" "} */}
-            <AddEducation ></AddEducation>
-          </div>
+import AddEducation from "../Modal/AddEducationModal/AddEducation";
+import EducationData from "./EducationData";
+// import { GET_EDU } from "../../Redux/actionTypes";
+import { getAllEducation } from "../../Redux/actions/educationActionCreator";
+import { useDispatch } from "react-redux";
+
+const EducationSection = props => {
+  // const { edus } = props;
+  console.log(props.educations);
+  const { educations } = props;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    Axios.get("https://take-a-step-9ca1d.firebaseio.com/educationSection.json")
+      .then(response => {
+        const educations = response.data;
+        const newEducations = [];
+        for (const key in educations) {
+          newEducations.push({ id: key, ...educations[key] });
+        }
+        dispatch(getAllEducation(newEducations));
+
+        console.log(newEducations);
+      })
+      .catch(console.log);
+  }, [dispatch]);
+  console.log("component", educations);
+  return (
+    <div className="EducationSection-container mt-4">
+      <div className="EducationSection-container-top">
+        <div className="EducationSection-container-top-h6">
+          <h6>Education</h6>
         </div>
-        <div className="EducationSection-container-body">
-          <div className="EducationSection-container-body-img">
-            <img
-              src="/img/itilogo.png"
-              style={{ "border-radius": "50%", width: "80%" }}
-            />
-          </div>
-          <div className="EducationSection-container-body-info">
-            <div className="EducationSection-container-body-info-title">
-              Information technology Instituit
-            </div>
-            <div className="EducationSection-container-body-info-dgree">
-              Diploma 9 month
-            </div>
-            <div className="EducationSection-container-body-info-date">
-              <p className="EducationSection-container-body-info-Startdate">
-                2019 -
-              </p>
-              <p className="EducationSection-container-body-info-Startdate">
-                2020
-              </p>
-            </div>
-          </div>
-          <div className="body-space"></div>
-          <div className="EducationSection-container-body-icon">
-            <div className="EducationSection-container-body-icon-edit">
-              <i class="fas fa-pencil-alt"></i>
-            </div>
-            <div className="EducationSection-container-body-icon-delete">
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
+        <div className="space"></div>
+        <div className="EducationSection-container-top-icon">
+          {/* <i class="fas fa-plus"></i>{" "} */}
+
+          <AddEducation></AddEducation>
         </div>
       </div>
-    );
-  }
-}
+      {educations.length ? (
+        educations.map(edu => <EducationData key={edu.id} {...edu} edu={edu} />)
+      ) : (
+        <div>No items added yet</div>
+      )}
+      {/* <EducationData /> */}
+    </div>
+  );
+};
+const mapStateToProps = state => {
+  return {
+    educations: state.educations
+  };
+};
 
-export default EducationSection;
+export default connect(mapStateToProps)(EducationSection);
