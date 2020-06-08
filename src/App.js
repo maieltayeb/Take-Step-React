@@ -38,6 +38,7 @@ function App(props) {
         // both users
         <Redirect from="/" exact to="welcome" />
       </Switch>
+      {/* <VolunteerProfile /> */}
     </React.Fragment>
   );
 }
