@@ -46,16 +46,20 @@ const SignUpSuccess = user => {
 };
 ///----------------------login--------------------------////////
 export const logInBussinessOwner = currentUser => dispatch => {
-  axios
+   return axios
     .post("http://localhost:4402/bussinessOwner/login", currentUser)
     .then(response => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       // newUser.id = data.name;
+      console.log("datafrom database",user);
+      console.log('stopone')
       if (response.status === 200) dispatch(loginSuccess(user));
+      return user;
     })
     .catch(console.log);
+    
 };
 
 const loginSuccess = user => {
@@ -63,7 +67,7 @@ const loginSuccess = user => {
 };
 ///////////////////////getall countries***************//////////////////
 export const getAllCountries = () => dispatch => {
-  axios
+  return axios
     .get("http://localhost:4402/country/getAllcountries")
     .then(response => {
       const countries = response.data;
@@ -82,8 +86,8 @@ const getAllCountriesSuccess = newCounties => {
   return { type: Get_Countries, payload: newCounties };
 };
 /***********edit bussinessowner */
-export const edit = (id, newUser) => dispatch => {
-  axios
+export const editbussinessOwner = (id, newUser) => dispatch => {
+  return axios
     .patch(`http://localhost:4402/bussinessOwner/Edit/${id}`, newUser, {
       headers: { authorization: localStorage.getItem("token") }
     })
@@ -98,5 +102,6 @@ export const edit = (id, newUser) => dispatch => {
 };
 
 const EditSuccess = user => {
+  console.log({user})
   return { type: Edit_BussinessUsers, payload: user };
 };

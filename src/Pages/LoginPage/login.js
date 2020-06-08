@@ -24,28 +24,37 @@ const Login = props => {
       [name]: value
     }));
   };
-  console.log("props", props.currentUser);
+
+  let currentuserJson = localStorage.getItem("user");
+
+  let currentUser = JSON.parse(currentuserJson);
+  console.log("currentUserBeforeHadelSubmit",currentUser);
+
   const handleValidSubmit = async (event, values) => {
     console.log("click login ", values);
     event.preventDefault();
     //console.log("state",state)
-    let currentuserJson = localStorage.getItem("user");
-
-    var currentUser = JSON.parse(currentuserJson);
-    var loginUser = props.users.filter(function(user) {
+   
+    let bussinesslogin = props.users.filter(function(user) {
       return user.email == state.email;
     });
     // debugger;
-    if (loginUser.length == 0) {
-      await dispatch(logInVolunteers(state));
-      // console.log;
+    if (bussinesslogin.length == 0) {
+      let response = await dispatch(logInVolunteers(state));
+      currentUser = response;
+      console.log(currentUser)
+      history.push(`/VolunteerProfile/${currentUser.id}`);
     } else {
-      dispatch(logInBussinessOwner(state));
-      // history.push(`/BussinessProfile/${currentUser.id}`);
+      let response = await dispatch(logInBussinessOwner(state));
+      console.log('after promise')
+      currentUser = response;
+          
+     console.log("currentuserAfterDispatch",currentUser,{response});
+       history.push(`/BussinessProfile/${currentUser.id}`);
     }
-    history.push(`/VolunteerProfile/${currentUser.id}`);
-    console.log("login", loginUser);
-    console.log("user", currentUser);
+  
+    console.log("login", bussinesslogin);
+   
 
     // let currentUser = JSON.parse(props.currentUser);
     //  history.push("/profile");

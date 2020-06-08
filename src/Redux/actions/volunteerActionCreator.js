@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   post_Login_VolunteerUsers,
   post_SignUp_VolunteerUsers,
-  Get_VolunteerUsers
+  Get_VolunteerUsers,
+  Edit_VolunteerUsers
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllVolunteers = () => dispatch => {
@@ -44,7 +45,7 @@ const SignUpSuccess = user => {
 };
 ///----------------------login--------------------------////////
 export const logInVolunteers = currentUser => dispatch => {
-  axios
+  return  axios
     .post("http://localhost:4402/volunteer/login", currentUser)
     .then(response => {
       const { token, user } = response.data;
@@ -54,6 +55,7 @@ export const logInVolunteers = currentUser => dispatch => {
       //   debugger;
       // console.log("user", user);
       if (response.status === 200) dispatch(loginSuccess(user));
+      return user;
     })
     .catch(console.log);
 };
@@ -63,28 +65,21 @@ const loginSuccess = user => {
 };
 
 /***********edit bussinessowner */
-// export const edit = (id,newUser)=> dispatch => {
-//   axios
-//     .patch(
-//       `http://localhost:4402/bussinessOwner/Edit/${id}`,
-//      {newUser},
-//       { headers: { authorization: `Bearer ${localStorage.getItem("token")}` } }
-//       //  {headers: {
-//       //     Authorization: token.toString()
-//       //   }
-//       //  }
-//     )
-//     .then(response => {
-//       const { data } = response;
-//       console.log("userafter update",data);
+export const volunteeredit = (id, newUser) => dispatch => {
+  return axios
+    .patch(`http://localhost:4402/volunteer/Edit/${id}`, newUser, {
+      headers: { authorization: localStorage.getItem("token") }
+    })
+    .then(response => {
+      const { data } = response;
+      localStorage.setItem("user", JSON.stringify(data));
+      console.log("userafter update", data);
 
-//       if (response.status === 200) dispatch(EditSuccess(data)
+      if (response.status === 200) dispatch(EditSuccess(data));
+    })
+    .catch(console.log);
+};
 
-//       );
-//     })
-//     .catch(console.log);
-// };
-
-// const EditSuccess = user => {
-//   return { type: Edit_BussinessUsers , payload: user };
-// };
+const EditSuccess = user => {
+  return { type:Edit_VolunteerUsers , payload: user };
+};

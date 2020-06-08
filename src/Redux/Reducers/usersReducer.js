@@ -6,12 +6,13 @@ import {
   Get_VolunteerUsers,
   post_Login_BussinessUsers,
   post_Login_VolunteerUsers,
-  Edit_BussinessUsers
+  Edit_BussinessUsers,
+  Edit_VolunteerUsers
 } from "../actionTypes";
 const initialState = {
   users: [],
   countries: [],
-  currentUser: localStorage.getItem("user")
+  currentUser: JSON.parse(localStorage.getItem("user"))
   //   token: "jksjlkjl"
 };
 export default (state = initialState, action) => {
@@ -42,12 +43,15 @@ export default (state = initialState, action) => {
 
       break;
 
-    case Edit_BussinessUsers:
+     case Edit_BussinessUsers:
+      case Edit_VolunteerUsers:
       newState = { ...state };
-      newState.currentUser = { ...state.currentUser };
+      
       newState.currentUser = action.payload;
 
-    default:
+      break;
+     default:
+      
       newState = state;
       break;
   }

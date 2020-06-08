@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { editOwnerUser } from "../../../Redux/actions/ownerInfoActionCreator";
-import { useDispatch } from "react-redux";
+import { useDispatch,connect } from "react-redux";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {edit}from "../../../Redux/actions/businessOwnerActionCreator"
+import {editbussinessOwner}from "../../../Redux/actions/businessOwnerActionCreator";
+import {volunteeredit}from "../../../Redux/actions/volunteerActionCreator";
 import {
   Button,
   Modal,
@@ -21,51 +22,73 @@ const PersonalInfoModal = props => {
   const { className } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  // const [currentUserState,setStatecurrentUser]=useState(
+  // const [props.currentUserState,setStateprops.currentUser]=useState(
 
-  //   currentUser
+  //   props.currentUser
   //     )
-  let currentuserJson=localStorage.getItem("user");
-  let currentUser=JSON.parse(currentuserJson);
+  // let props.currentuserJson=localStorage.getItem("user");
+  // let props.currentUser=JSON.parse(props.currentuserJson);
   
   // const ownerPersonalInfo = useSelector(state => state.ownerPersonalInfo);
   const [state, setState] = useState({
-    firstName:currentUser.firstName
-    ,lastName:currentUser.lastName,
-    companyName:currentUser.companyName,
-    description:currentUser.description,
-    countryName:currentUser.country.countryName,
-    jobTitle:currentUser.jobTitle
+    firstName:props.currentUser.firstName
+    ,lastName:props.currentUser.lastName,
+    companyName:props.currentUser.companyName,
+    description:props.currentUser.description,
+    countryName:props.currentUser.country.countryName,
+    jobTitle:props.currentUser.jobTitle,
+    email:props.currentUser.email,
+    countryId:props.currentUser.country._id
   });
+  // const [state, setState] = useState({
+  //   firstName:props.currentUser.firstName
+  //   ,lastName:props.currentUser.lastName,
+  //   companyName:props.currentUser.companyName,
+  //   description:props.currentUser.description,
+  //   countryName:props.currentUser.country.countryName,
+  //   jobTitle:props.currentUser.jobTitle,
+  //   email:props.currentUser.email
+    
+  // });
   
 
-  // console.log(currentUser);
+  // console.log(props.currentUser);
   // useEffect(() => {
-  //   setcurrentUser(ownerPersonalInfo);
+  //   setprops.currentUser(ownerPersonalInfo);
   // }, [ownerPersonalInfo]);
 
   const dispatch = useDispatch();
   // const userId = props.match.params.id;
   useEffect(() => {
     setState(state);
-  }, [currentUser]);
+  }, [props.currentUser]);
 
   const changeHandler = e => {
     //collect data
-    // const updatedUser = { ...currentUser };
+    // const updatedUser = { ...props.currentUser };
     // updatedUser[e.target.name] = e.target.value;
-    // setcurrentUser(updatedUser);
+    // setprops.currentUser(updatedUser);
     const { name, value } = e.target;
     setState(prevState => ({
       ...prevState,
       [name]: value
     }));
   };
-  const submitHandler = e => {
+ 
+
+  const submitHandler = async (e)=> {
     e.preventDefault();
      console.log("submitted");
+     let bussinesslogin = props.users.filter(function(user) {
+      return user.email == props.currentUser.email;
+    });
+   //  debugger;
+    if (bussinesslogin.length == 0){
+      await   dispatch(volunteeredit(props.currentUser.id,state));
+    }else{
+      await dispatch(editbussinessOwner(props.currentUser.id,state));
+    }
    
-     dispatch(edit(currentUser.id,state));
      console.log(state)
   };
 
@@ -171,7 +194,23 @@ const PersonalInfoModal = props => {
               ></input>
               <br /> <label style={{ fontSize: "13px" }}>Location</label>
               <br />
-              <input
+              <FormGroup row>
+            <Col>
+              <Input
+                type="select"
+                name="country"
+                id="exampleSelect"
+                onChange={changeHandler}
+              >
+                {props.countries.map(item => (
+                  <option key={item.id} value={state.countryId}>
+                    {item.countryName}
+                  </option>
+                ))}
+              </Input>
+            </Col>
+          </FormGroup>
+              {/* <input
                 type="text"
                 name="countryName"
                 value={state.countryName}
@@ -181,7 +220,7 @@ const PersonalInfoModal = props => {
                   border: "1px solid #EBC010",
                   marginBottom: "20px"
                 }}
-              ></input>
+              ></input> */}
               <br />
               <label style={{ fontSize: "13px" }}>add description:</label>
               <br />
@@ -232,5 +271,12 @@ const PersonalInfoModal = props => {
     </div>
   );
 };
+const mapStateToProps = reduxState => {
+  return {
+    users: reduxState.Users.users,
+     currentUser: reduxState.Users.currentUser,
+     countries: reduxState.Users.countries
+  };
+};
 
-export default withRouter(PersonalInfoModal);
+export default connect(mapStateToProps)(withRouter(PersonalInfoModal));

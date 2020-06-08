@@ -15,6 +15,8 @@ const PersonalInfo = props => {
 //   currentUser
 //     )
  console.log("props",props);
+ let currentcountry=Object.values(props.currentUser.country);
+ console.log(currentcountry[1])
 //   const [state, setState] = useState({
 //     firstName:currentUser.firstName
 //     ,lastName:currentUser.lastName,
@@ -46,7 +48,7 @@ const PersonalInfo = props => {
                         alt="personal pic"
                       />
                       <div className="edit-icon">
-                        <PersonalInfoModal />
+                        <PersonalInfoModal/>
                       </div>
                     </div>
                     <div className="username-location">
@@ -70,17 +72,17 @@ const PersonalInfo = props => {
 
                       {/* {Object.keys(props.currentUser.country).map((keyName, i) => (
     
-        <span>key: {i} {props.currentUser.country[keyName]}</span>
+        <span>{props.currentUser.country[keyName]}</span>
     
 ))} */}
 
 
 
-{/* 
-                        {props.currentUser.country?(
-                      <span>{props.currentUser.country} </span>)
-                    :(<span>country-Title </span>)} */}
-                        </span>
+
+                        {currentcountry[1]?(
+                      <span>{currentcountry[1]} </span>)
+                    :(<span>country-Title </span>)}
+                        </span> 
                     </div> 
                   </div>
 
@@ -128,6 +130,7 @@ const PersonalInfo = props => {
   );
 };
 const mapStateToProps = reduxState => {
+  console.log('test map state propes')
   return {
     currentUser: reduxState.Users.currentUser
   };
