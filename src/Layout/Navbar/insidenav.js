@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
 import "./nav.css";
-import BussinessProfile from "../../Pages/BusinessOwnerProfile/bussinessowner";
-import VolunteerProfile from "../../Pages/VolunteerProfile/volunteerprofile";
 import {
   Collapse,
   Navbar,
@@ -24,12 +22,7 @@ const InsideNav = props => {
   let currentuserJson = localStorage.getItem("user");
   // debugger;
   let currentUser = JSON.parse(currentuserJson);
-  let profileName;
-  if (currentUser.paymentData) {
-    profileName = "BussinessProfile";
-  } else {
-    profileName = "VolunteerProfile";
-  }
+
   const handleClick = () => {
     localStorage.clear();
   };
@@ -94,9 +87,9 @@ const InsideNav = props => {
                   // style={{ cursor: "pointer", color: "unset" }}
                   tag={RRNavLink}
                   to={{
-                    // "/profile"
-                    pathname: `/${profileName}`,
-                    search: `?id=${currentUser.id}`
+                    // "/home"
+                    pathname: "/profile",
+                    search: `/${currentUser.id}`
                   }}
                 >
                   My Profile
@@ -118,7 +111,7 @@ const InsideNav = props => {
               <RRNavLink
                 onClick={handleClick}
                 className="userLink"
-                to="/wlcomePage"
+                to="/welcomePage"
               >
                 {" "}
                 Log Out

@@ -31,7 +31,9 @@ const PersonalInfo = props => {
                     {props.currentUser.companyName ? (
                       <span>{props.currentUser.companyName} </span>
                     ) : (
-                      <span>company-Name </span>
+                      props.currentUser.paymentData && (
+                        <span>company-Name </span>
+                      )
                     )}
                     <br />
                     <span className="font-smaller">

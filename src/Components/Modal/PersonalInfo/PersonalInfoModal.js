@@ -132,21 +132,25 @@ const PersonalInfoModal = props => {
                 marginBottom: "20px"
               }}
             ></input>
-            <br />
-            <label style={{ fontSize: "13px" }}>Company Name</label>
-            <br />
-            <input
-              type="text"
-              name="companyName"
-              value={state.companyName}
-              onChange={changeHandler}
-              style={{
-                width: "100%",
-                border: "1px solid #EBC010",
-                marginBottom: "20px"
-              }}
-            ></input>
-            <br />
+            {props.currentUser.paymentData && (
+              <>
+                <br />
+                <label style={{ fontSize: "13px" }}>Company Name</label>
+                <br />
+                <input
+                  type="text"
+                  name="companyName"
+                  value={state.companyName}
+                  onChange={changeHandler}
+                  style={{
+                    width: "100%",
+                    border: "1px solid #EBC010",
+                    marginBottom: "20px"
+                  }}
+                ></input>
+                <br />
+              </>
+            )}
             <label style={{ fontSize: "13px" }}>Job title</label>
             <br />
             <input

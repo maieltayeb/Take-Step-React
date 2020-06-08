@@ -1,5 +1,6 @@
 import {
   Get_Countries,
+  Get_timeDurationTypes,
   post_SignUp_BussinessUsers,
   post_SignUp_VolunteerUsers,
   Get_BussinessUsers,
@@ -7,12 +8,15 @@ import {
   post_Login_BussinessUsers,
   post_Login_VolunteerUsers,
   Edit_BussinessUsers,
-  Edit_VolunteerUsers
+  Edit_VolunteerUsers,
+  ADD_Job
 } from "../actionTypes";
 const initialState = {
   users: [],
+  currentUser: JSON.parse(localStorage.getItem("user")),
+  jobs: [],
   countries: [],
-  currentUser: JSON.parse(localStorage.getItem("user"))
+  timeDurationTypes: []
   //   token: "jksjlkjl"
 };
 export default (state = initialState, action) => {
@@ -29,6 +33,11 @@ export default (state = initialState, action) => {
       newState.countries = action.payload;
       //   console.log(newState.countries);
       break;
+    case Get_timeDurationTypes:
+      newState = { ...state };
+      newState.timeDurationTypes = action.payload;
+      //   console.log(newState.countries);
+      break;
     case post_SignUp_BussinessUsers:
     case post_SignUp_VolunteerUsers:
       newState = { ...state };
@@ -40,18 +49,17 @@ export default (state = initialState, action) => {
       newState = { ...state };
       newState.currentUser = { ...state.currentUser };
       newState.currentUser = action.payload;
-
       break;
-
-     case Edit_BussinessUsers:
-      case Edit_VolunteerUsers:
+    case Edit_BussinessUsers:
+    case Edit_VolunteerUsers:
       newState = { ...state };
-      
       newState.currentUser = action.payload;
-
       break;
-     default:
-      
+    case ADD_Job:
+      newState = { ...state };
+      newState.jobs = [...state.jobs, action.payload];
+      break;
+    default:
       newState = state;
       break;
   }

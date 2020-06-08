@@ -4,7 +4,9 @@ import {
   post_SignUp_BussinessUsers,
   post_Login_BussinessUsers,
   Edit_BussinessUsers,
-  Get_Countries
+  Get_Countries,
+  Get_timeDurationTypes,
+  ADD_Job
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => dispatch => {
@@ -46,20 +48,19 @@ const SignUpSuccess = user => {
 };
 ///----------------------login--------------------------////////
 export const logInBussinessOwner = currentUser => dispatch => {
-   return axios
+  return axios
     .post("http://localhost:4402/bussinessOwner/login", currentUser)
     .then(response => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       // newUser.id = data.name;
-      console.log("datafrom database",user);
-      console.log('stopone')
+      console.log("datafrom database", user);
+      console.log("stopone");
       if (response.status === 200) dispatch(loginSuccess(user));
       return user;
     })
     .catch(console.log);
-    
 };
 
 const loginSuccess = user => {
@@ -102,6 +103,44 @@ export const editbussinessOwner = (id, newUser) => dispatch => {
 };
 
 const EditSuccess = user => {
-  console.log({user})
+  console.log({ user });
   return { type: Edit_BussinessUsers, payload: user };
+};
+
+///////////////////////get all timeDurationTypes***************//////////////////
+export const getTimeDurationTypes = () => dispatch => {
+  return axios
+    .get("https://take-a-step-9ca1d.firebaseio.com/timeDurationType.json")
+    .then(response => {
+      const timeDurationTypes = response.data;
+
+      const newtimeDurationTypes = [];
+      for (const key in timeDurationTypes) {
+        newtimeDurationTypes.push({ id: key, ...timeDurationTypes[key] });
+      }
+      dispatch(getAlltimeDurationTypesSuccess(newtimeDurationTypes));
+    })
+    .catch(err => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getAlltimeDurationTypesSuccess = newtimeDurationTypes => {
+  return { type: Get_timeDurationTypes, payload: newtimeDurationTypes };
+};
+////////////////////////add job////////////////////////////////////
+export const addJob = newJob => dispatch => {
+  axios
+    .post("https://sd-todo.firebaseio.com/jobs.json", newJob)
+    .then(response => {
+      const { data } = response;
+      newJob.id = data.name;
+      if (response.status === 200) dispatch(addJobSuccess(newJob));
+    })
+    .catch(console.log);
+};
+
+const addJobSuccess = job => {
+  return { type: ADD_Job, payload: job };
 };
