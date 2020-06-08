@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { NavLink as RRNavLink, Link } from "react-router-dom";
+import { NavLink as RRNavLink } from "react-router-dom";
 import "./nav.css";
-
+import BussinessProfile from "../../Pages/BusinessOwnerProfile/bussinessowner";
+import VolunteerProfile from "../../Pages/VolunteerProfile/volunteerprofile";
 import {
   Collapse,
   Navbar,
@@ -21,8 +22,14 @@ const InsideNav = props => {
 
   const toggle = () => setIsOpen(!isOpen);
   let currentuserJson = localStorage.getItem("user");
-
+  // debugger;
   let currentUser = JSON.parse(currentuserJson);
+  let profileName;
+  if (currentUser.paymentData) {
+    profileName = "BussinessProfile";
+  } else {
+    profileName = "VolunteerProfile";
+  }
   const handleClick = () => {
     localStorage.clear();
   };
@@ -62,10 +69,10 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer" }}
                   tag={RRNavLink}
-                  to=// "/home"
-                  {{
+                  to={{
+                    // "/home"
                     pathname: "/home",
-                    search: `?id=${currentUser.id}`
+                    search: `/${currentUser.id}`
                   }}
                 >
                   Home
@@ -86,9 +93,9 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer", color: "unset" }}
                   tag={RRNavLink}
-                  to=// "/profile"
-                  {{
-                    pathname: "/profile",
+                  to={{
+                    // "/profile"
+                    pathname: `/${profileName}`,
                     search: `?id=${currentUser.id}`
                   }}
                 >

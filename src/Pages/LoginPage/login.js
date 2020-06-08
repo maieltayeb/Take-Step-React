@@ -28,13 +28,13 @@ const Login = props => {
   let currentuserJson = localStorage.getItem("user");
 
   let currentUser = JSON.parse(currentuserJson);
-  console.log("currentUserBeforeHadelSubmit",currentUser);
+  console.log("currentUserBeforeHadelSubmit", currentUser);
 
   const handleValidSubmit = async (event, values) => {
     console.log("click login ", values);
     event.preventDefault();
     //console.log("state",state)
-   
+
     let bussinesslogin = props.users.filter(function(user) {
       return user.email == state.email;
     });
@@ -42,19 +42,18 @@ const Login = props => {
     if (bussinesslogin.length == 0) {
       let response = await dispatch(logInVolunteers(state));
       currentUser = response;
-      console.log(currentUser)
+      console.log(currentUser);
       history.push(`/VolunteerProfile/${currentUser.id}`);
     } else {
       let response = await dispatch(logInBussinessOwner(state));
-      console.log('after promise')
+      console.log("after promise");
       currentUser = response;
-          
-     console.log("currentuserAfterDispatch",currentUser,{response});
-       history.push(`/BussinessProfile/${currentUser.id}`);
+
+      console.log("currentuserAfterDispatch", currentUser, { response });
+      history.push(`/BussinessProfile/${currentUser.id}`);
     }
-  
+
     console.log("login", bussinesslogin);
-   
 
     // let currentUser = JSON.parse(props.currentUser);
     //  history.push("/profile");
