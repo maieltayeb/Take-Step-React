@@ -14,7 +14,8 @@ import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 import {
   getAllUsersBussinessOwner,
   getAllCountries,
-  getTimeDurationTypes
+  getTimeDurationTypes,
+  getAllJobs
 } from "./Redux/actions/businessOwnerActionCreator";
 // import { getAllVolunteers } from "./Redux/actions/volunteerActionCreator";
 function App(props) {
@@ -23,6 +24,7 @@ function App(props) {
     dispatch(getAllUsersBussinessOwner());
     dispatch(getAllCountries());
     dispatch(getTimeDurationTypes());
+    dispatch(getAllJobs());
   }, [dispatch]);
   return (
     <React.Fragment>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import {
   Button,
   Modal,
@@ -12,37 +12,38 @@ import {
   Label,
   Input
 } from "reactstrap";
-
+import { addJob } from "../../../Redux/actions/businessOwnerActionCreator";
 import "./modal.css";
 
 const ModalCreateTask = props => {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
+  const dispatch = useDispatch();
   const [state, setState] = useState({
-    jobTitle:"",
-    proposals:0,
-    timeDurationNumber:0,
-    timeDurationTypes:"",
-    description:"",
-    userId:props.currentUser.id
+    jobTitle: "",
+    proposals: 0,
+    timeDurationNumber: 0,
+    timeDurationType: "-M9KPxn7IdfbVJRO2I0p",
+    description: "",
+    userId: props.currentUser.id
   });
-const handleChange=(e)=>{
-  const { name, value } = e.target;
-  setState(prevState => ({
-    ...prevState,
-    [name]: value,
-    
-  }));
-}
-const handleSubmit=(e)=>{
-e.preventDefault();
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+  console.log("type", props.timeDurationTypes);
 
-}
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("submit");
+    dispatch(addJob(state));
+  };
   return (
     <div>
       <p onClick={toggle}> What's your Task ?</p>
-
       <Modal
         className="modalShap"
         isOpen={modal}
@@ -74,14 +75,13 @@ e.preventDefault();
             </a>
           </div>
           <div style={{ marginLeft: "60px", marginTop: "20px" }}>
-            <Form style={{ width: "100%" }}>
+            <Form style={{ width: "100%" }} onSubmit={handleSubmit} id="form">
               <FormGroup row>
                 <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
                 <Col sm={10}>
                   <Input
                     type="text"
                     name="jobTitle"
-                    
                     placeholder="write task title "
                     onChange={handleChange}
                   />
@@ -96,8 +96,8 @@ e.preventDefault();
                     name="proposals"
                     id="Proposals"
                     placeholder="Proposals num "
-                    min="1"
-                    max="20"
+                    min="5"
+                    max="15"
                     onChange={handleChange}
                   />
                 </Col>
@@ -117,7 +117,7 @@ e.preventDefault();
                     type="select"
                     name="timeDurationType"
                     id="exampleSelect"
-                     onChange={handleChange}
+                    onChange={handleChange}
                   >
                     {props.timeDurationTypes.map(item => (
                       <option key={item.id} value={item.id}>
@@ -131,15 +131,23 @@ e.preventDefault();
               <FormGroup row>
                 <Label for="Description">Description :</Label>
                 <Col sm={10}>
-                  <Input type="textarea" name="description" id="Description"
-                  onChange={handleChange} />
+                  <Input
+                    type="textarea"
+                    name="description"
+                    id="Description"
+                    onChange={handleChange}
+                  />
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Label for="exampleFile">File /Image :</Label>
                 <Col sm={10}>
-                  <Input type="file" name="file" id="exampleFile"
-                  onChange={handleChange} />
+                  <Input
+                    type="file"
+                    name="file"
+                    id="exampleFile"
+                    onChange={handleChange}
+                  />
                 </Col>
               </FormGroup>
             </Form>
@@ -159,6 +167,9 @@ e.preventDefault();
           <Button
             className=" ml-2 mr-1 addModal"
             onClick={toggle}
+            type="submit"
+            form="form"
+            // onSubmit={handleSubmit}
             style={{ color: "#ebc010", backgroundColor: "#494848" }}
           >
             Add

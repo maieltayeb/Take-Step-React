@@ -5,6 +5,8 @@ import {
   post_SignUp_VolunteerUsers,
   Get_BussinessUsers,
   Get_VolunteerUsers,
+  Get_BussinessUsersById,
+  Get_Jobs,
   post_Login_BussinessUsers,
   post_Login_VolunteerUsers,
   Edit_BussinessUsers,
@@ -16,7 +18,8 @@ const initialState = {
   currentUser: JSON.parse(localStorage.getItem("user")),
   jobs: [],
   countries: [],
-  timeDurationTypes: []
+  timeDurationTypes: [],
+  bussinessOwnerUsers: []
   //   token: "jksjlkjl"
 };
 export default (state = initialState, action) => {
@@ -28,9 +31,18 @@ export default (state = initialState, action) => {
       newState = { ...state };
       newState.users = action.payload;
       break;
+    case Get_BussinessUsersById:
+      newState = { ...state };
+      newState.bussinessOwnerUsers = action.payload;
+      break;
     case Get_Countries:
       newState = { ...state };
       newState.countries = action.payload;
+      //   console.log(newState.countries);
+      break;
+    case Get_Jobs:
+      newState = { ...state };
+      newState.jobs = action.payload;
       //   console.log(newState.countries);
       break;
     case Get_timeDurationTypes:

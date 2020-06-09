@@ -6,7 +6,9 @@ import {
   Edit_BussinessUsers,
   Get_Countries,
   Get_timeDurationTypes,
-  ADD_Job
+  ADD_Job,
+  Get_Jobs,
+  Get_BussinessUsersById
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => dispatch => {
@@ -30,7 +32,26 @@ export const getAllUsersBussinessOwner = () => dispatch => {
 const getAllUsersSuccess = newUsers => {
   return { type: Get_BussinessUsers, payload: newUsers };
 };
+//////////////////////////////////////get user by id/////////////////////////////////
+export const getUserById = id => dispatch => {
+  axios
+    .get(`http://localhost:4402/bussinessOwner/${id}`)
+    .then(response => {
+      const user = response.data;
+      // console.log("user", user);
 
+      dispatch(getUserByIdSuccess(user));
+      //   console.log("all user", newUsers);
+    })
+    .catch(err => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getUserByIdSuccess = user => {
+  return { type: Get_BussinessUsersById, payload: user };
+};
 ////////////////////////signup/////////////////////////////
 export const SignupBussinessOwner = newUser => dispatch => {
   axios
@@ -94,7 +115,7 @@ export const editbussinessOwner = (id, newUser) => dispatch => {
     })
     .then(response => {
       const { data } = response;
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data)); ///??
       console.log("userafter update", data);
 
       if (response.status === 200) dispatch(EditSuccess(data));
@@ -132,7 +153,7 @@ const getAlltimeDurationTypesSuccess = newtimeDurationTypes => {
 ////////////////////////add job////////////////////////////////////
 export const addJob = newJob => dispatch => {
   axios
-    .post("https://sd-todo.firebaseio.com/jobs.json", newJob)
+    .post("https://take-a-step-9ca1d.firebaseio.com/jobs.json", newJob)
     .then(response => {
       const { data } = response;
       newJob.id = data.name;
@@ -143,4 +164,26 @@ export const addJob = newJob => dispatch => {
 
 const addJobSuccess = job => {
   return { type: ADD_Job, payload: job };
+};
+///////////////////////////////////get all jobs////////////////////
+export const getAllJobs = () => dispatch => {
+  return axios
+    .get("https://take-a-step-9ca1d.firebaseio.com/jobs.json")
+    .then(response => {
+      const jobs = response.data;
+
+      const newJobs = [];
+      for (const key in jobs) {
+        newJobs.push({ id: key, ...jobs[key] });
+      }
+      dispatch(getAllJobsSuccess(newJobs));
+    })
+    .catch(err => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getAllJobsSuccess = newJobs => {
+  return { type: Get_Jobs, payload: newJobs };
 };
