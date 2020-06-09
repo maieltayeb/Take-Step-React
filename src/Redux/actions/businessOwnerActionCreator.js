@@ -115,7 +115,7 @@ export const editbussinessOwner = (id, newUser) => dispatch => {
     })
     .then(response => {
       const { data } = response;
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data)); ///??
       console.log("userafter update", data);
 
       if (response.status === 200) dispatch(EditSuccess(data));

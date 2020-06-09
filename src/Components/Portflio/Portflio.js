@@ -11,7 +11,7 @@ const Portflio = props => {
               className="Portflio-item-img"
               top
               width="100%"
-              src="./img/watch.jpg"
+              src="/img/watch.jpg"
               alt="Card image cap"
             />
           </div>
@@ -36,7 +36,7 @@ const Portflio = props => {
             }}
             top
             width="100%"
-            src="./img/watch.jpg"
+            src="/img/watch.jpg"
             alt="Card image cap"
           />
 
