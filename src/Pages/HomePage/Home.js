@@ -1,5 +1,4 @@
 import React from "react";
-import { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import CreateTask from "./CreateTaskSection/createTask";
@@ -46,8 +45,11 @@ const HomePageOwner = props => {
           </Col>
           <Col xs="6">
             {props.currentUser.paymentData && <CreateTask />}
-            <Post></Post>
-            <Post></Post>
+
+            {props.jobs.map(item => (
+              <Post></Post>
+            ))}
+            {/* <Post></Post>  */}
           </Col>
           <Col
             xs="3"
@@ -69,7 +71,8 @@ const HomePageOwner = props => {
 
 const mapStateToProps = reduxState => {
   return {
-    currentUser: reduxState.Users.currentUser
+    currentUser: reduxState.Users.currentUser,
+    jobs: reduxState.Users.jobs
   };
 };
 export default connect(mapStateToProps)(HomePageOwner);
