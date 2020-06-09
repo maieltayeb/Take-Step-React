@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, connect } from "react-redux";
 import "./App.css";
-import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
-import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
+// import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
+import Profile from "./Pages/Profile/profile";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import Login from "./Pages/LoginPage/login";
 import SignUp from "./Pages/SignUpPage/sighnup";
@@ -13,7 +13,9 @@ import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
 import {
   getAllUsersBussinessOwner,
-  getAllCountries
+  getAllCountries,
+  getTimeDurationTypes,
+  getAllJobs
 } from "./Redux/actions/businessOwnerActionCreator";
 // import { getAllVolunteers } from "./Redux/actions/volunteerActionCreator";
 function App(props) {
@@ -21,6 +23,8 @@ function App(props) {
   useEffect(() => {
     dispatch(getAllUsersBussinessOwner());
     dispatch(getAllCountries());
+    dispatch(getTimeDurationTypes());
+    dispatch(getAllJobs());
   }, [dispatch]);
   return (
     <React.Fragment>
@@ -30,14 +34,14 @@ function App(props) {
         <Route path="/logIn" component={Login} />
         <Route path="/welcomePage" exact component={WelcomePage} />
         //profile
-        <Route path="/BussinessProfile/:id" component={BussinessOwnerProfile} />
-        <Route path="/VolunteerProfile/:id" component={VolunteerProfile} />
+        <Route path="/profile" component={Profile} />
         <Route path="/jobDetails" component={TaskSubmittedFrame} />
         //home
         <Route path="/home" component={HomePage} />
         // both users
-        <Redirect from="/" exact to="welcome" />
+        <Redirect from="/" exact to="welcomePage" />
       </Switch>
+      {/* <VolunteerProfile /> */}
     </React.Fragment>
   );
 }

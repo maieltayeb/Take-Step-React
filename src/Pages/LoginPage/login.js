@@ -43,15 +43,15 @@ const Login = props => {
       let response = await dispatch(logInVolunteers(state));
       currentUser = response;
       console.log(currentUser);
-      history.push(`/VolunteerProfile/${currentUser.id}`);
+      // history.push(`/VolunteerProfile/${currentUser.id}`);
     } else {
       let response = await dispatch(logInBussinessOwner(state));
       console.log("after promise");
       currentUser = response;
 
       console.log("currentuserAfterDispatch", currentUser, { response });
-      history.push(`/BussinessProfile/${currentUser.id}`);
     }
+    history.push(`/profile/${currentUser.id}`);
 
     console.log("login", bussinesslogin);
 
