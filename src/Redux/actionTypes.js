@@ -7,3 +7,6 @@ export const GET_OwnerUser = "GET_OwnerUser";
 export const ADD_OwnerUser = "ADD_OwnerUser";
 export const EDIT_OwnerUser = "EDIT_OwnerUser";
 export const DELETE_OwnerUser = "DELETE_OwnerUser";
+/////////Malak Start//////
+export const ADD_SKILL = "ADD_SKILL";
+/////////Malak End//////
