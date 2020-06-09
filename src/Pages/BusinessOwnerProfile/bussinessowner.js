@@ -12,7 +12,7 @@ import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
 const BussinessOwnerProfile = props => {
   const dispatch = useDispatch();
   const userId = props.match.params.id;
-  console.log(userId);
+  // console.log(userId);
   useEffect(() => {
     dispatch(getOwnerUserById(userId));
   }, [dispatch]);
