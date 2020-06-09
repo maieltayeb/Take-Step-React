@@ -17,8 +17,12 @@ import {
 import "./AddEducation.css";
 
 const AddEducation = props => {
+  const{users}=props
+  const CurrentVolunteerId=users.currentUser.id;
+  console.log("currentVolunteerId",CurrentVolunteerId)
   const initialFieldValues = {
-    university: "",
+    volunteerId:"",
+    facultyName: "",
     degree: "",
     graduationYear: "",
     grade: ""
@@ -26,33 +30,42 @@ const AddEducation = props => {
   let [values, setValues] = useState(initialFieldValues);
   const handleInputChange = e => {
     var { name, value } = e.target;
+
     setValues({
       ...values,
       [name]: value
     });
   };
+
+  // const {id}=props.match.params.id
   const handleSubmit = async e => {
     e.preventDefault();
     console.log("kkkkkkkkkkkk");
-
+     console.log("currentVolunteerId",CurrentVolunteerId)
     const newEdu = {
-      university: values.university,
+      volunteerId:CurrentVolunteerId,
+      facultyName: values.facultyName,
       degree: values.degree,
       graduationYear: values.graduationYear,
       grade: values.grade
     };
-
-    const response = await axios.post(
-      "https://take-a-step-9ca1d.firebaseio.com/educationSection.json",
-      newEdu
-    );
+    console.log(newEdu);
+    const token = localStorage.getItem("token");
+    // const response = await axios.post(
+    //   "https://take-a-step-9ca1d.firebaseio.com/educationSection.json"
+    const response = await axios.post("http://localhost:4402/volunteer/add-education",newEdu,{
+      headers:{
+          'authorization':token
+      }
+  });
     const { data } = response;
+    console.log(response)
     newEdu.id = data.name;
     if (response.status === 200) {
       props.dispatch(addEducation(newEdu));
       // toggle();
       setValues({
-        university: "",
+        facultyName: "",
         degree: "",
         graduationYear: "",
         grade: ""
@@ -87,7 +100,7 @@ const AddEducation = props => {
         >
           Add Education
         </ModalHeader>
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form autoComplete="off" onSubmit={handleSubmit} onInvalid>
           <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -96,10 +109,10 @@ const AddEducation = props => {
               <Input
                 className="input-border"
                 type="select"
-                name="university"
+                // name="university"
                 placeholder="Ex: oxford university"
-                value={values.university}
-                name="university"
+                value={values.facultyName}
+                name="facultyName"
                 onChange={handleInputChange}
               >
                 <option>Harvard University</option>
@@ -131,12 +144,15 @@ const AddEducation = props => {
                 value={values.degree}
                 name="degree"
                 onChange={handleInputChange}
+                required
               />
             </FormGroup>
 
             <FormGroup>
               <Label for="exampleDate">Graduation Date</Label>
-              <Input
+              <Input 
+                min= '1990-01-1'
+                max= '2020-01-1' 
                 className="input-border"
                 type="date"
                 // name="date"
@@ -189,8 +205,9 @@ const AddEducation = props => {
                 borderRadius: "20px",
                 color: "#EBC010",
                 width: "100px"
+              
               }}
-
+              onInvalid
               // onClick={handleSubmit}
             >
               Add
@@ -201,7 +218,12 @@ const AddEducation = props => {
     </div>
   );
 };
+const mapStateToProps = state => {
+  return {
+    users:state.Users
+  };
+};
 const mapDispatchToProps = dispatch => {
   return { dispatch: dispatch };
 };
-export default connect(null, mapDispatchToProps)(AddEducation);
+export default connect(mapStateToProps, mapDispatchToProps)(AddEducation);

@@ -4,17 +4,26 @@ import EditEducation from "../../Components/Modal/EditEducationModal/EditEducati
 import { useDispatch } from "react-redux";
 import { deleteEducation } from "../../Redux/actions/educationActionCreator";
 import "./EducationData.css";
+import { connect } from "react-redux";
 const EducationData = props => {
-  const { edu } = props;
-  const { id } = edu;
+  const { edu,users } = props;
+  // const { id } = edu;
+  console.log("users",props.edu._id)
+  console.log(props)
+  // console.log("eduId",id)
+  const id=props.edu._id;
+  console.log(id)
   const dispatch = useDispatch();
   const handleDelete = event => {
     if (window.confirm("Are You Sure To Delete This")) {
       event.stopPropagation();
-      axios
-        .delete(
-          `https://take-a-step-9ca1d.firebaseio.com/educationSection/${id}.json`
-        )
+      const token = localStorage.getItem("token");
+      // axios.delete(`https://take-a-step-9ca1d.firebaseio.com/educationSection/${id}.json`)
+      axios.delete(`http://localhost:4402/volunteer/deleteEdu/${id}`,{
+            headers:{
+                'authorization':token
+            }
+          })
         .then(response => {
           if (response.status === 200) dispatch(deleteEducation(id));
         })
@@ -33,7 +42,7 @@ const EducationData = props => {
         </div>
         <div className="EducationSection-container-body-info">
           <div className="EducationSection-container-body-info-title">
-            {props.university}
+            {props.facultyName}
           </div>
           <div className="EducationSection-container-body-info-dgree">
             {props.degree}
@@ -58,7 +67,7 @@ const EducationData = props => {
         <div className="body-space"></div>
         <div className="EducationSection-container-body-icon">
           <div className="EducationSection-container-body-icon-edit">
-            <EditEducation />
+            <EditEducation/>
           </div>
           <div className="EducationSection-container-body-icon-delete">
             <i
@@ -72,4 +81,10 @@ const EducationData = props => {
     </div>
   );
 };
-export default EducationData;
+const mapStateToProps = state => {
+  return {
+    users:state.Users
+
+  };
+};
+export default connect(mapStateToProps) (EducationData);
