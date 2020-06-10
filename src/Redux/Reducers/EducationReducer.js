@@ -15,7 +15,7 @@ const EducationReducer = (state = initialState, action) => {
       // console.log("component", newState);
       break;
     case REMOVE_EDU:
-      newState = state.filter(edu => edu.id !== action.payload);
+      newState = state.filter(edu => edu._id !== action.payload);
       break;
 
     default:
