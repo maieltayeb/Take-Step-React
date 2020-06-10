@@ -58,10 +58,15 @@ export const SignupBussinessOwner = newUser => dispatch => {
     .post("http://localhost:4402/bussinessOwner/register", newUser)
     .then(response => {
       const { data } = response;
-      newUser.id = data.name;
-      if (response.status === 200) dispatch(SignUpSuccess(newUser));
+  console.log("data",data)
+      if (response.status === 200)
+       dispatch(SignUpSuccess(data.user));
+   
     })
-    .catch(console.log);
+    .catch((error)=>{
+     console.log("error message",error.message)
+
+    });
 };
 
 const SignUpSuccess = user => {

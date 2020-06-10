@@ -83,7 +83,11 @@ const SignUp = props => {
             <i class="fa fa-envelope icon text-warning"></i>
             <AvField
               errorMessage="Invalid email"
-              validate={{ email: true }}
+              validate={{
+                 email: true ,
+                required: true 
+              
+              }}
               onChange={handleChange}
               type="email"
               name="email"
@@ -181,10 +185,10 @@ const SignUp = props => {
           </Button>
           <Button
             onClick={handleClick}
-            className="  border-warning text-dark"
+            className="  border-warning text-dark "
             style={{
               margin: "20px ",
-
+  backgroundColor:"rgb(235, 192, 16)",
               padding: ".7rem 2rem"
             }}
           >
@@ -219,7 +223,8 @@ const SignUp = props => {
               </FormGroup>
 
               <FormGroup className="input-icons">
-                <i class="fa fa-envelope icon text-warning"></i>
+              <i class="fas fa-key icon text-warning"></i>
+                {/* <i class="fa fa-envelope icon text-warning"></i> */}
                 <AvField
                   errorMessage="Invalid secret num must be 3  numbers "
                   validate={{

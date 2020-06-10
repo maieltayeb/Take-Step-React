@@ -8,7 +8,11 @@ class SubmittedTask extends Component {
         <div className="SubmittedTask-container-top">
           <h6>Tasks Submitted</h6>
         </div>
-        <div className="SubmittedTask-container-body">
+        <div className="SubmittedTask-container-body"  style={{
+                      overflow: "auto",
+                      height: "14rem",
+                      backgroundColor: "#F8F8F4"
+                    }}>
           <div className="SubmittedTask-container-body-pro">
             <NavLink to="/jobDetails">project-title</NavLink>
           </div>
@@ -18,6 +22,13 @@ class SubmittedTask extends Component {
           <div className="SubmittedTask-container-body-pro">
             <NavLink to="/jobDetails">project-title</NavLink>
           </div>
+          <div className="SubmittedTask-container-body-pro">
+            <NavLink to="/jobDetails">project-title</NavLink>
+          </div>
+          <div className="SubmittedTask-container-body-pro">
+            <NavLink to="/jobDetails">project-title</NavLink>
+          </div>
+
         </div>
       </div>
     );
