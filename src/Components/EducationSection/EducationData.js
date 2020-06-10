@@ -8,18 +8,19 @@ import { connect } from "react-redux";
 const EducationData = props => {
   const { edu,users } = props;
   // const { id } = edu;
+  const volunteerId=users.currentUser.id
   console.log("users",props.edu._id)
-  console.log(props)
+  console.log("props",users.currentUser.id)
   // console.log("eduId",id)
   const id=props.edu._id;
-  console.log(id)
+  // console.log(id)
   const dispatch = useDispatch();
   const handleDelete = event => {
     if (window.confirm("Are You Sure To Delete This")) {
       event.stopPropagation();
       const token = localStorage.getItem("token");
       // axios.delete(`https://take-a-step-9ca1d.firebaseio.com/educationSection/${id}.json`)
-      axios.delete(`http://localhost:4402/volunteer/deleteEdu/${id}`,{
+      axios.delete(`http://localhost:4402/volunteer/deleteEducation/${volunteerId}/${id}`,{
             headers:{
                 'authorization':token
             }

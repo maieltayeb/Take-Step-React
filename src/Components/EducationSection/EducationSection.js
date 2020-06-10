@@ -51,7 +51,7 @@ const EducationSection = props => {
 
     const id=users.currentUser.id
     const token = localStorage.getItem("token");
-    Axios.get(`http://localhost:4402/volunteer/getEdu/${id}`,{
+    Axios.get(`http://localhost:4402/volunteer/getEduWithVol/${id}`,{
       headers:{
           'authorization':token
       }
