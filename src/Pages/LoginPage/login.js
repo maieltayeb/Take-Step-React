@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, connect } from "react-redux";
-import { Button, FormGroup, Container } from "reactstrap";
+import { Button, FormGroup, Container, Alert } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import "./login.css";
 import NavWelcome from "../../Layout/navWelcome";
@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom";
 const Login = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [stateError,setStateError]=useState(false)
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -30,10 +32,12 @@ const Login = (props) => {
   let currentUser = JSON.parse(currentuserJson);
   console.log("currentUserBeforeHadelSubmit", currentUser);
 
+
+  let response;
   const handleValidSubmit = async (event, values) => {
     console.log("click login ", values);
     event.preventDefault();
-    //console.log("state",state)
+   
 
     let bussinesslogin = props.users.filter(function (user) {
       return user.email == state.email;
@@ -41,22 +45,26 @@ const Login = (props) => {
     // debugger;
     if (bussinesslogin.length == 0) {
       let response = await dispatch(logInVolunteers(state));
+    
+      if(response=="wrong email or password"){
+        setStateError(true)
+      }else{
       currentUser = response;
-      console.log(currentUser);
-      // history.push(`/VolunteerProfile/${currentUser.id}`);
+      history.push(`/profile/${currentUser.id}`);
+      }
+    
     } else {
       let response = await dispatch(logInBussinessOwner(state));
-      console.log("after promise");
+
+      if(response=="wrong email or password"){
+        setStateError(true)
+      }else{
       currentUser = response;
-
-      console.log("currentuserAfterDispatch", currentUser, { response });
+      history.push(`/profile/${currentUser.id}`);
+      }
+     
     }
-    history.push(`/profile/${currentUser.id}`);
-
-    console.log("login", bussinesslogin);
-
-    // let currentUser = JSON.parse(props.currentUser);
-    //  history.push("/profile");
+ 
   };
 
   return (
@@ -105,6 +113,10 @@ const Login = (props) => {
               style={{ paddingLeft: "3rem" }}
             />
             <p className="m-3">Forgot your Password ?</p>
+
+            {stateError&& (
+              <Alert color="danger"> worng email or passwoed !!</Alert>
+            )}
           </FormGroup>{" "}
           <Button
             className="d-block bg-warning border-warning  text-dark"

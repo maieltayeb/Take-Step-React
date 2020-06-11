@@ -33,9 +33,10 @@ const SignUp = props => {
     firstName: "",
     lastName: "",
     country: "5edab5034b7a063de0203607",
-    error: props.error
+   
   });
   const [stateStatus, setSatateStatus] = useState(false);
+  const [stateError,setStateError]=useState(false)
   const handleChange = e => {
     const { name, value } = e.target;
     setState(prevState => ({
@@ -53,6 +54,8 @@ const SignUp = props => {
       }
     }));
   };
+
+  /*******handel click*************** */
   const handleClick = e => {
     if (e.target.textContent === "Bussiness Owner") {
       setSatateStatus(true);
@@ -60,29 +63,41 @@ const SignUp = props => {
       setSatateStatus(false);
     }
   };
+let response;
 
-  const handleValidSubmit = async (event, values) => {
+/*******handel submit*************** */
+   const handleValidSubmit = async (event, values) => {
     console.log("values", values);
     event.preventDefault();
     console.log("state", state);
     debugger;
     if (stateStatus) {
       dispatch(getAllUsersBussinessOwner());
-      await dispatch(SignupBussinessOwner(state));
-      if (state.error == "") {
+    response= await dispatch(SignupBussinessOwner(state));
+   
+      if (response !=" email already exist!" ) {
         history.push("/logIn");
+      }else if(response==" email already exist!" ){
+      
+       
+          
+        setStateError(true)
       }
-      console.log("error state", state.error);
+     
     } else if (!stateStatus) {
-      dispatch(SignupVolunteers(state));
       dispatch(getAllVolunteers());
-      history.push("/logIn");
-      if (state.error == "") {
+      response= await  dispatch(SignupVolunteers(state));
+      if (response !=" email already exist!" ) {
         history.push("/logIn");
-      }
+      }else if(response==" email already exist!" ){
+      
+        setStateError(true)
+
+      } 
     }
   };
-  console.log("error", props.error);
+
+
   return (
     <>
       <NavWelcome></NavWelcome>
@@ -114,7 +129,7 @@ const SignUp = props => {
               className="input-field"
               style={{ paddingLeft: "3rem" }}
             />
-            {props.error && (
+            {stateError&& (
               <Alert color="danger">this email Already exist !!</Alert>
             )}
           </FormGroup>{" "}
@@ -167,7 +182,7 @@ const SignUp = props => {
                 pattern: { value: "^[A-Za-z0-9]+$" },
                 minLength: { value: 4 }
               }}
-              ///^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
+           
               onChange={handleChange}
               type="password"
               name="password"
@@ -245,7 +260,7 @@ const SignUp = props => {
 
               <FormGroup className="input-icons">
                 <i class="fas fa-key icon text-warning"></i>
-                {/* <i class="fa fa-envelope icon text-warning"></i> */}
+            
                 <AvField
                   errorMessage="Invalid secret num must be 3  numbers "
                   validate={{
