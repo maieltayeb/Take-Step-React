@@ -8,7 +8,8 @@ import {
   Get_timeDurationTypes,
   ADD_Job,
   Get_Jobs,
-  Get_BussinessUsersById
+  Get_BussinessUsersById,
+  GET_Error
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => dispatch => {
@@ -58,19 +59,21 @@ export const SignupBussinessOwner = newUser => dispatch => {
     .post("http://localhost:4402/bussinessOwner/register", newUser)
     .then(response => {
       const { data } = response;
-  console.log("data",data)
-      if (response.status === 200)
-       dispatch(SignUpSuccess(data.user));
-   
+      console.log("data", data);
+      if (response.status === 200) dispatch(SignUpSuccess(data.user));
     })
-    .catch((error)=>{
-     console.log("error message",error.message)
-
+    .catch(err => {
+      console.log(err.response.data.message);
+      // if (response.status === 422)
+      dispatch(SignUpFailed(err.response.data.message));
     });
 };
 
 const SignUpSuccess = user => {
   return { type: post_SignUp_BussinessUsers, payload: user };
+};
+const SignUpFailed = errMsg => {
+  return { type: GET_Error, payload: errMsg };
 };
 ///----------------------login--------------------------////////
 export const logInBussinessOwner = currentUser => dispatch => {

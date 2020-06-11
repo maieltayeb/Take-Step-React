@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import { Button, FormGroup, Input, Container, Col, Row } from "reactstrap";
+import {
+  Button,
+  FormGroup,
+  Input,
+  Container,
+  Col,
+  Row,
+  Alert
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import "./signup.css";
 import NavWelcome from "../../Layout/navWelcome";
@@ -18,12 +26,14 @@ import {
 const SignUp = props => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const [state, setState] = useState({
     email: "",
     password: "",
     firstName: "",
     lastName: "",
-    country: "5edab5034b7a063de0203607"
+    country: "5edab5034b7a063de0203607",
+    error: props.error
   });
   const [stateStatus, setSatateStatus] = useState(false);
   const handleChange = e => {
@@ -50,20 +60,29 @@ const SignUp = props => {
       setSatateStatus(false);
     }
   };
-  const handleValidSubmit = (event, values) => {
+
+  const handleValidSubmit = async (event, values) => {
     console.log("values", values);
     event.preventDefault();
     console.log("state", state);
+    debugger;
     if (stateStatus) {
       dispatch(getAllUsersBussinessOwner());
-      dispatch(SignupBussinessOwner(state));
-    } else {
+      await dispatch(SignupBussinessOwner(state));
+      if (state.error == "") {
+        history.push("/logIn");
+      }
+      console.log("error state", state.error);
+    } else if (!stateStatus) {
       dispatch(SignupVolunteers(state));
       dispatch(getAllVolunteers());
+      history.push("/logIn");
+      if (state.error == "") {
+        history.push("/logIn");
+      }
     }
-
-    history.push("/logIn");
   };
+  console.log("error", props.error);
   return (
     <>
       <NavWelcome></NavWelcome>
@@ -84,9 +103,8 @@ const SignUp = props => {
             <AvField
               errorMessage="Invalid email"
               validate={{
-                 email: true ,
-                required: true 
-              
+                email: true,
+                required: true
               }}
               onChange={handleChange}
               type="email"
@@ -96,6 +114,9 @@ const SignUp = props => {
               className="input-field"
               style={{ paddingLeft: "3rem" }}
             />
+            {props.error && (
+              <Alert color="danger">this email Already exist !!</Alert>
+            )}
           </FormGroup>{" "}
           <Row>
             <Col md={6}>
@@ -188,7 +209,7 @@ const SignUp = props => {
             className="  border-warning text-dark "
             style={{
               margin: "20px ",
-  backgroundColor:"rgb(235, 192, 16)",
+              backgroundColor: "rgb(235, 192, 16)",
               padding: ".7rem 2rem"
             }}
           >
@@ -223,7 +244,7 @@ const SignUp = props => {
               </FormGroup>
 
               <FormGroup className="input-icons">
-              <i class="fas fa-key icon text-warning"></i>
+                <i class="fas fa-key icon text-warning"></i>
                 {/* <i class="fa fa-envelope icon text-warning"></i> */}
                 <AvField
                   errorMessage="Invalid secret num must be 3  numbers "
@@ -305,7 +326,8 @@ const SignUp = props => {
 };
 const mapStateToProps = reduxState => {
   return {
-    countries: reduxState.Users.countries
+    countries: reduxState.Users.countries,
+    error: reduxState.Users.errorMessg
   };
 };
 export default connect(mapStateToProps)(SignUp);
