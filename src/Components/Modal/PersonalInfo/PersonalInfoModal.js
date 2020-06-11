@@ -3,6 +3,7 @@ import { useDispatch, connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { editbussinessOwner } from "../../../Redux/actions/businessOwnerActionCreator";
 import { volunteeredit } from "../../../Redux/actions/volunteerActionCreator";
+import ImageUploader from "react-images-upload";
 import {
   Button,
   Modal,
@@ -10,7 +11,6 @@ import {
   ModalBody,
   Form,
   ModalFooter,
-  Label,
   Input,
   FormGroup,
   Col
@@ -20,6 +20,18 @@ const PersonalInfoModal = props => {
   const { className } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+
+  const onDrop = picture => {
+    // this.setState({
+    //   pictures: this.state.pictures.concat(picture)
+    // });
+    console.log(picture);
+  };
+  const imageUploadHandler = e => {
+    e.preventDefault();
+    console.log("uploaded!");
+  };
+
   const [state, setState] = useState({
     firstName: props.currentUser.firstName,
     lastName: props.currentUser.lastName,
@@ -81,10 +93,10 @@ const PersonalInfoModal = props => {
         >
           Edit Info
         </ModalHeader>
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} onSubmit={imageUploadHandler}>
           <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
             <div>
-              <img
+              {/* <img
                 src="/img/profilephoto.png"
                 style={{
                   width: "20%",
@@ -99,14 +111,38 @@ const PersonalInfoModal = props => {
                   marginLeft: "55%",
                   color: "#ebc010"
                 }}
-              ></i>
-              {/* <FormGroup>
-              <Label for="exampleFile">upload Photo</Label>
-              <Input type="file" name="file" id="exampleFile" />
-            </FormGroup> */}
+              ></i> */}
+              <div className="App">
+                <div
+                  style={{
+                    width: "40%",
+                    borderRadius: "50%",
+                    margin: "auto"
+                  }}
+                >
+                  <ImageUploader
+                    withIcon={false}
+                    withPreview={true}
+                    label=""
+                    buttonText="Pick Image"
+                    onChange={onDrop}
+                    imgExtension={[
+                      ".jpg",
+                      ".gif",
+                      ".png",
+                      ".jpeg",
+                      ".gif",
+                      ".svg"
+                    ]}
+                    singleImage={true}
+                    maxFileSize={1048576}
+                    fileSizeError=" file size is too big"
+                  />
+                </div>
+              </div>
             </div>
             <label style={{ fontSize: "13px" }}>first name</label>
-            <br />
+
             <input
               type="text"
               name="firstName"
@@ -118,9 +154,9 @@ const PersonalInfoModal = props => {
                 marginBottom: "20px"
               }}
             ></input>
-            <br />
+
             <label style={{ fontSize: "13px" }}>last name</label>
-            <br />
+
             <input
               type="text"
               name="lastName"
@@ -134,9 +170,8 @@ const PersonalInfoModal = props => {
             ></input>
             {props.currentUser.paymentData && (
               <>
-                <br />
                 <label style={{ fontSize: "13px" }}>Company Name</label>
-                <br />
+
                 <input
                   type="text"
                   name="companyName"
@@ -148,11 +183,10 @@ const PersonalInfoModal = props => {
                     marginBottom: "20px"
                   }}
                 ></input>
-                <br />
               </>
             )}
             <label style={{ fontSize: "13px" }}>Job title</label>
-            <br />
+
             <input
               type="text"
               name="jobTitle"
@@ -164,8 +198,8 @@ const PersonalInfoModal = props => {
                 marginBottom: "20px"
               }}
             ></input>
-            <br /> <label style={{ fontSize: "13px" }}>Location</label>
-            <br />
+            <label style={{ fontSize: "13px" }}>Location</label>
+
             <FormGroup row>
               <Col>
                 <Input
@@ -207,9 +241,9 @@ const PersonalInfoModal = props => {
                   marginBottom: "20px"
                 }}
               ></input> */}
-            <br />
+
             <label style={{ fontSize: "13px" }}>add description:</label>
-            <br />
+
             <textarea
               type="text"
               name="description"
