@@ -20,7 +20,7 @@ export const EDIT_OwnerUser = "EDIT_OwnerUser";
 export const DELETE_OwnerUser = "DELETE_OwnerUser";
 /////////Malak Start SKILLS//////
 export const ADD_SKILL = "ADD_SKILL";
-export const ADD_SKILL__ONLY_SEC = "ADD_SKILL__ONLY_SEC";
+export const ADD_SKILL__SEC_UPDATE = " ADD_SKILL__SEC_UPDATE";
 
 export const GET_SKILL_BY_ID = " GET_SKILL_BY_ID";
 export const GET_SKILL_USER_SKILLS = "GET_SKILL_USER_SKILLS";

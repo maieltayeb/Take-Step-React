@@ -4,7 +4,7 @@ import {
   GET_SKILL_USER_SKILLS,
   GET_SKILL_BY_ID,
   ADD_SKILL,
-  ADD_SKILL__ONLY_SEC,
+  ADD_SKILL__SEC_UPDATE,
   DELETE_SKILL,
   EDIT_SKILL,
 } from "../actionTypes";
@@ -29,9 +29,6 @@ const getSkill = (skill) => {
   return { type: GET_SKILL_BY_ID, payload: skill };
 };
 
-export const getSkillsInSec = (skilNAme) => {
-  return { type: ADD_SKILL__ONLY_SEC, payload: skilNAme };
-};
 export const getUserSkills = (id) => (dispatch) => {
   axios
     .get(`http://localhost:4402/volunteer/getUserSkills/${id}`, {
@@ -51,6 +48,7 @@ export const getUserSkills = (id) => (dispatch) => {
 const getUserAllSkills = (skills) => {
   return { type: GET_SKILL_USER_SKILLS, payload: skills };
 };
+
 export const AddSkills = (skillsAdded) => (dispatch) => {
   axios
     .post(`http://localhost:4402/volunteer/addSkill`, skillsAdded, {
@@ -69,6 +67,10 @@ export const AddSkills = (skillsAdded) => (dispatch) => {
 
 const AddSkillToUser = (skillAdded) => {
   return { type: ADD_SKILL, payload: skillAdded };
+};
+////////////////////////////////
+export const addSkillsInSec = (NewDataInSec) => {
+  return { type: ADD_SKILL__SEC_UPDATE, payload: NewDataInSec };
 };
 export const DeletSkills = (volunteerId, skillId) => (dispatch) => {
   axios

@@ -1,7 +1,7 @@
 import * as actionTypes from "../actionTypes";
 import {
   GET_SKILL_USER_SKILLS,
-  ADD_SKILL__ONLY_SEC,
+  ADD_SKILL__SEC_UPDATE,
   ADD_SKILL,
   EDIT_SKILL,
   DELETE_SKILL,
@@ -20,11 +20,11 @@ const SkillReducer = (state = initialState, action) => {
       newState = [...state, action.payload];
 
       break;
-      // case ADD_SKILL__ONLY_SEC:
-      //   newState = [...secState, action.payload];
-      //   console.log(newState);
-      //   break;
-      debugger;
+    case ADD_SKILL__SEC_UPDATE:
+      newState = [...action.payload];
+      console.log(newState);
+      break;
+    // debugger;
 
     case DELETE_SKILL:
       debugger;

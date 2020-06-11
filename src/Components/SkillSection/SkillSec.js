@@ -1,23 +1,21 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./skillSec.css";
-import {
-  getUserSkills,
-  getCollecSkills,
-} from "../../Redux/actions/userSkillCreator";
-import { useDispatch, useSelector, connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { getUserSkills } from "../../Redux/actions/userSkillCreator";
+import { useDispatch, connect } from "react-redux";
 import AddSkill from "../Modal/AddSkillModal/AddSkillModal";
+import { addSkillsInSec } from "./../../Redux/actions/userSkillCreator";
 const SkillSection = (props) => {
-  const { state } = props;
+  const { userSkills } = props;
   const dispatch = useDispatch();
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user).id;
-  const usersillData = useSelector((state) => state.Skills);
-
+  // const usersillData = useSelector((state) => state.Skills);
+  // const [newSkill, SetState] = useState(userSkills);
   useEffect(() => {
     dispatch(getUserSkills(userId));
+    // SetState(userSkills);
   }, [dispatch]);
-  console.log(usersillData);
+  // console.log(newSkill);
   return (
     <div className="skillSection-container mt-4">
       <div className="skillSection-container-top">
@@ -35,8 +33,8 @@ const SkillSection = (props) => {
             Your skills
           </div>
           <div className="skillSection-devs">
-            {state.length ? (
-              state.map((obj) => {
+            {userSkills.length ? (
+              userSkills.map((obj) => {
                 return (
                   <React.Fragment>
                     <span className="dev">{obj.skillName}</span>
@@ -54,7 +52,7 @@ const SkillSection = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    state: state.Skills,
+    userSkills: state.Skills,
   };
 };
 export default connect(mapStateToProps)(SkillSection);

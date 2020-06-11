@@ -11,7 +11,7 @@ import "./AddSkillModal.css";
 import { useDispatch, useSelector, connect } from "react-redux";
 import {
   DeletSkills,
-  getSkillsInSec,
+  getUserSkills,
   AddSkills,
 } from "../../../Redux/actions/userSkillCreator";
 
@@ -25,14 +25,15 @@ const AddSkill = (props) => {
   const userSkills = useSelector((state) => state.Skills);
   const [newSkills, setNewSkill] = useState(userSkills);
   console.log(newSkills);
-  useEffect(() => {
-    setNewSkill(userSkills);
-  }, [userSkills]);
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
+  useEffect(() => {
+    dispatch(getUserSkills(volunteerId));
+
+    setNewSkill(userSkills);
+  }, [dispatch]);
 
   console.log(newSkills);
-  // console.log(userId);
   const changeHandler = (e) => {
     const updatedUser = { ...newSkills };
     updatedUser[e.target.name] = e.target.value;
@@ -52,10 +53,9 @@ const AddSkill = (props) => {
     dispatch(DeletSkills(volunteerId, id));
   };
   const submitHandler = async (e) => {
-    // e.preventDefault();
     console.log("submitted");
     //dispatch id , newUser using editOwnerUser
-    // dispatch(editOwnerUser(userId, newUser));
+    // dispatch(addSkillsInSec(userId, newUser));
     return false;
   };
   return (
@@ -123,7 +123,7 @@ const AddSkill = (props) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button
+          {/* <Button
             className="skill-button"
             color="primary"
             onClick={toggle}
@@ -136,7 +136,7 @@ const AddSkill = (props) => {
             }}
           >
             Cancel
-          </Button>{" "}
+          </Button>{" "} */}
           <Button
             className="skill-button"
             color="secondary"
@@ -149,7 +149,7 @@ const AddSkill = (props) => {
               width: "100px",
             }}
           >
-            Add
+            Ok
           </Button>
         </ModalFooter>
       </Modal>
