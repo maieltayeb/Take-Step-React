@@ -22,11 +22,11 @@ export const getAllUsersBussinessOwner = () => dispatch => {
         newUsers.push({ id: key, ...users[key] });
       }
       dispatch(getAllUsersSuccess(newUsers));
-      //   console.log("all user", newUsers);
+    
     })
     .catch(err => {
       console.log(err);
-      // handle error dipatch();
+   
     });
 };
 
@@ -39,14 +39,14 @@ export const getUserById = id => dispatch => {
     .get(`http://localhost:4402/bussinessOwner/${id}`)
     .then(response => {
       const user = response.data;
-      // console.log("user", user);
+      
 
       dispatch(getUserByIdSuccess(user));
-      //   console.log("all user", newUsers);
+    
     })
     .catch(err => {
       console.log(err);
-      // handle error dipatch();
+   
     });
 };
 
@@ -55,17 +55,19 @@ const getUserByIdSuccess = user => {
 };
 ////////////////////////signup/////////////////////////////
 export const SignupBussinessOwner = newUser => dispatch => {
-  axios
+ return axios
     .post("http://localhost:4402/bussinessOwner/register", newUser)
     .then(response => {
       const { data } = response;
       console.log("data", data);
       if (response.status === 200) dispatch(SignUpSuccess(data.user));
+      return data.user
     })
     .catch(err => {
       console.log(err.response.data.message);
-      // if (response.status === 422)
+      
       dispatch(SignUpFailed(err.response.data.message));
+      return err.response.data.message
     });
 };
 
@@ -83,13 +85,20 @@ export const logInBussinessOwner = currentUser => dispatch => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      // newUser.id = data.name;
+     
       console.log("datafrom database", user);
       console.log("stopone");
       if (response.status === 200) dispatch(loginSuccess(user));
       return user;
     })
-    .catch(console.log);
+    .catch(err => {
+     
+       dispatch(LoginFailed(err.response.data.message));
+       return err.response.data.message
+     });
+};
+const LoginFailed = errMsg => {
+  return { type: GET_Error, payload: errMsg };
 };
 
 const loginSuccess = user => {
@@ -109,7 +118,7 @@ export const getAllCountries = () => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      // handle error dipatch();
+     
     });
 };
 const getAllCountriesSuccess = newCounties => {

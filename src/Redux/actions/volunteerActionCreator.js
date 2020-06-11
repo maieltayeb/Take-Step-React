@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   post_Login_VolunteerUsers,
   post_SignUp_VolunteerUsers,
-  Get_VolunteerUsers,
+  Get_VolunteerUsers, GET_Error,
   Edit_VolunteerUsers
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
@@ -16,11 +16,11 @@ export const getAllVolunteers = () => dispatch => {
         newUsers.push({ id: key, ...users[key] });
       }
       dispatch(getAllUsersSuccess(newUsers));
-      //   console.log("all user", newUsers);
+      
     })
     .catch(err => {
       console.log(err);
-      // handle error dipatch();
+      
     });
 };
 
@@ -30,18 +30,29 @@ const getAllUsersSuccess = newUsers => {
 
 ////////////////////////signup/////////////////////////////
 export const SignupVolunteers = newUser => dispatch => {
-  axios
+ return axios
     .post("http://localhost:4402/volunteer/register", newUser)
     .then(response => {
       const { data } = response;
-    
+      console.log("data", data);
       if (response.status === 200) dispatch(SignUpSuccess(data.user));
+      return data.user
     })
-    .catch(console.log);
+    .catch(err => {
+      console.log(err.response.data.message);
+      // if (response.status === 422)
+      dispatch(SignUpFailed(err.response.data.message));
+      return err.response.data.message
+    });
+    //////////////////////////////////////////////////
+ 
 };
 
 const SignUpSuccess = user => {
   return { type: post_SignUp_VolunteerUsers, payload: user };
+};
+const SignUpFailed = errMsg => {
+  return { type: GET_Error, payload: errMsg };
 };
 ///----------------------login--------------------------////////
 export const logInVolunteers = currentUser => dispatch => {
@@ -51,19 +62,24 @@ export const logInVolunteers = currentUser => dispatch => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      // newUser.id = data.name;
-      //   debugger;
-      // console.log("user", user);
+     
       if (response.status === 200) dispatch(loginSuccess(user));
       return user;
     })
-    .catch(console.log);
+    .catch(err => {
+   
+      dispatch(LoginFailed(err.response.data.message));
+      return err.response.data.message
+    });
+    
 };
 
 const loginSuccess = user => {
   return { type: post_Login_VolunteerUsers, payload: user };
 };
-
+const LoginFailed = errMsg => {
+  return { type: GET_Error, payload: errMsg };
+};
 /***********edit bussinessowner */
 export const volunteeredit = (id, newUser) => dispatch => {
   return axios
