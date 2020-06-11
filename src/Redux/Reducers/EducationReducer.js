@@ -1,5 +1,5 @@
 import * as actionTypes from "../actionTypes";
-import { GET_EDU, REMOVE_EDU, ADD_EDUCATION } from "../actionTypes";
+import { GET_EDU, REMOVE_EDU, ADD_EDUCATION ,  EDIT_EDUCATION} from "../actionTypes";
 
 const initialState = [];
 
@@ -17,6 +17,12 @@ const EducationReducer = (state = initialState, action) => {
     case REMOVE_EDU:
       newState = state.filter(edu => edu._id !== action.payload);
       break;
+      case EDIT_EDUCATION:
+        // newState = state.map(edu => edu.id === action.payload.id);
+        newState = state.map(edu =>
+          edu.id === action.payload.id ? action.payload : edu
+        );
+        break;
 
     default:
       break;

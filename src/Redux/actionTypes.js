@@ -36,3 +36,5 @@ export const DELETE_SKILL = "DELETE_SKILL";
 export const ADD_EDUCATION = "ADD_EDUCATION";
 export const REMOVE_EDU = "REMOVE_EDU";
 export const GET_EDU = "GET_EDU";
+export const EDIT_EDUCATION = "EDIT_EDUCATION";
+////////////////////////////////////////////////

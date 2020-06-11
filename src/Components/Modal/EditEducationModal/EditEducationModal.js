@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import { withRouter } from "react-router-dom";
 
-//import { editOwnerUser } from "../../../Redux/actions/educationActionCreator";
-
+import { editEducation } from "../../../Redux/actions/educationActionCreator";
 import {
   Button,
   Modal,
@@ -19,34 +20,36 @@ import {
 import "./EditEducationModal.css";
 
 const EditEducation = props => {
-  const { buttonLabel, className } = props;
+  const { buttonLabel, className, eduId, educations } = props;
+  console.log("eduId", eduId);
   const [modal, setModal] = useState(false);
-
+  // const { educations } = props;
+  // console.log("education from edit", educations[0].degree);
   const toggle = () => setModal(!modal);
+  const [selectedEducation, setSelectedEducation] = useState(
+    educations.find(education => education._id === eduId)
+  );
 
-  // const educations = useSelector(state => state.educations);
-
-  // const [newUser, setNewUser] = useState(educations);
-
-  // useEffect(() => {
-  //   setNewUser(newUser);
-  // }, [newUser]);
-  // console.log("hhhhh", newUser);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const userId = props.match.params.id;
+  // useEffect(() => {
+  //   setState(state);
+  // }, [props.educations]);
 
-  // const changeHandler = e => {
-  //   const updatedUser = { ...newUser };
-  //   updatedUser[e.target.name] = e.target.value;
-  //   setNewUser(updatedUser);
-  // };
-  // const submitHandler = async e => {
-  //   e.preventDefault();
-  //   console.log("submitted");
+  const changeHandler = e => {
+    const { name, value } = e.target;
+    setSelectedEducation(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+  const submitHandler = async e => {
+    e.preventDefault();
+    console.log("submitted");
 
-  //   dispatch(editOwnerUser(userId, newUser));
-  //   console.log("id", userId);
-  // };
+    await dispatch(editEducation(selectedEducation.id, selectedEducation));
+  };
+  // const educations = useSelector(state => state.educations);
 
   return (
     <div>
@@ -55,6 +58,7 @@ const EditEducation = props => {
         onClick={toggle}
         style={{ cursor: "pointer" }}
       ></i>
+
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"
@@ -71,7 +75,7 @@ const EditEducation = props => {
           Add Education
         </ModalHeader>
 
-        <Form>
+        <Form onSubmit={submitHandler}>
           <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -91,7 +95,9 @@ const EditEducation = props => {
                 className="input-border"
                 type="degree"
                 name="degree"
-                placeholder="Ex: Bachelor's"
+                // placeholder="Ex: Bachelor's"
+                value={selectedEducation.degree}
+                onChange={changeHandler}
                 // value={newUser.degree}
                 // onChange={changeHandler}
                 // value={newUser.degree}
@@ -104,9 +110,11 @@ const EditEducation = props => {
               <Input
                 className="input-border"
                 type="date"
-                name="date"
+                name="graduationYear"
                 id="exampleDate"
                 placeholder="date placeholder"
+                value={selectedEducation.graduationYear}
+                onChange={changeHandler}
               />
             </FormGroup>
 
@@ -115,8 +123,10 @@ const EditEducation = props => {
               <Input
                 className="input-border"
                 type="select"
-                name="select"
+                name="grade"
                 id="gradeSelect"
+                value={selectedEducation.grade}
+                onChange={changeHandler}
               >
                 <option>Excellent</option>
                 <option>Very good</option>
@@ -158,8 +168,12 @@ const EditEducation = props => {
     </div>
   );
 };
-
-export default withRouter(EditEducation);
+const mapStateToProps = reduxstate => {
+  return {
+    educations: reduxstate.educations
+  };
+};
+export default connect(mapStateToProps)(withRouter(EditEducation));
 
 // const educations = useSelector(state => state.educations);
 // const [newEdu, setNewEdu] = useState(educations);

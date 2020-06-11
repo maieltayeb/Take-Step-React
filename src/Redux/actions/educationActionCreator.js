@@ -1,6 +1,13 @@
 import axios from "axios";
 
-import { GET_EDU, REMOVE_EDU, ADD_EDUCATION } from "../actionTypes";
+// import { GET_EDU, REMOVE_EDU, ADD_EDUCATION } from "../actionTypes";
+import {
+  GET_EDU,
+  REMOVE_EDU,
+  ADD_EDUCATION,
+  GET_OwnerUser,
+  EDIT_EDUCATION
+} from "../actionTypes";
 
 export const getAllEducation = newEducations => {
   return { type: GET_EDU, payload: newEducations };
@@ -34,3 +41,31 @@ export const addEducation = education => {
 // const editOwnerUserSuccess = newUser => {
 //   return { type: EDIT_OwnerUser, payload: newUser };
 // };
+/////----------------------------------------------------------//////
+export const editEducation = (volunteerId, eduId,newUser) => dispatch => {
+  axios
+    .patch(
+      `http://localhost:4402/volunteer/EditEducation/${volunteerId}/${eduId}`,
+      newUser
+    )
+    .then(res => {
+
+      const { data } = res;
+      // const user = {
+      //   ...data,
+      //   id: data.name
+      // };
+      // console.log("user//////////////////////////////", user, data);
+      dispatch(editEducationSuccess(data));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+const editEducationSuccess = User => {
+  return { type: EDIT_EDUCATION, payload: User };
+};
+
+
+

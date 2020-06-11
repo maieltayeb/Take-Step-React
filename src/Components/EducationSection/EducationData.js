@@ -66,7 +66,8 @@ const EducationData = props => {
         <div className="body-space"></div>
         <div className="EducationSection-container-body-icon">
           <div className="EducationSection-container-body-icon-edit">
-            <EditEducation/>
+          <EditEducation eduId={_id} />
+
           </div>
           <div className="EducationSection-container-body-icon-delete">
             <i
