@@ -33,7 +33,6 @@ const OwnerProfileCard = props => {
           </CardSubtitle>
         </CardBody>
       </Card>
-
       <CardBody className="owner-card-lower-text">
         <CardSubtitle>All Jobs</CardSubtitle>
         <CardSubtitle>{users.jobs.length}</CardSubtitle>
@@ -44,7 +43,6 @@ const OwnerProfileCard = props => {
  const mapStateToProps=state=>({
    users:state.Users
  })
-
 
 
 export default connect(mapStateToProps) (OwnerProfileCard);

@@ -9,19 +9,19 @@ import { logInBussinessOwner } from "../../Redux/actions/businessOwnerActionCrea
 import { logInVolunteers } from "../../Redux/actions/volunteerActionCreator";
 import { useHistory } from "react-router-dom";
 
-const Login = props => {
+const Login = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [state, setState] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   // const [statePassword, setStatePassword] = useState("");
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -35,7 +35,7 @@ const Login = props => {
     event.preventDefault();
     //console.log("state",state)
 
-    let bussinesslogin = props.users.filter(function(user) {
+    let bussinesslogin = props.users.filter(function (user) {
       return user.email == state.email;
     });
     // debugger;
@@ -70,7 +70,7 @@ const Login = props => {
             width: "50%",
             margin: "110px auto",
             border: "1px solid",
-            borderRadius: "1.5rem"
+            borderRadius: "1.5rem",
           }}
         >
           <h3 className="text-center m-3 mb-5"> Login</h3>
@@ -95,7 +95,7 @@ const Login = props => {
               validate={{
                 required: { value: true },
                 pattern: { value: "^[A-Za-z0-9]+$" },
-                minLength: { value: 4 }
+                minLength: { value: 4 },
               }}
               type="password"
               name="password"
@@ -111,7 +111,7 @@ const Login = props => {
             style={{
               margin: "20px auto",
               borderRadius: "1.5rem",
-              padding: ".7rem 5rem"
+              padding: ".7rem 5rem",
             }}
           >
             Login
@@ -122,7 +122,7 @@ const Login = props => {
             style={{
               margin: "20px 125px",
               borderRadius: "1.5rem",
-              padding: ".7rem 4.5rem"
+              padding: ".7rem 4.5rem",
             }}
           >
             Sign Up
@@ -132,9 +132,9 @@ const Login = props => {
     </>
   );
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
-    users: reduxState.Users.users
+    users: reduxState.Users.users,
     // currentUser: reduxState.Users.currentUser
   };
 };

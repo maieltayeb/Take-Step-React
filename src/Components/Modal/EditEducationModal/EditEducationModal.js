@@ -55,7 +55,6 @@ const EditEducation = props => {
         onClick={toggle}
         style={{ cursor: "pointer" }}
       ></i>
-
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"

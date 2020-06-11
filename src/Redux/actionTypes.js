@@ -11,12 +11,25 @@ export const Edit_VolunteerUsers = "Edit_VolunteerUsers";
 export const Get_timeDurationTypes = "Get_timeDurationTypes";
 export const Get_Jobs = "Get_Jobs";
 export const ADD_Job = "ADD_Job";
+export const GET_Error = "GET_Error";
 /////business owner personal info
 export const GET_OwnerUsers = "GET_OwnerUsers";
 export const GET_OwnerUser = "GET_OwnerUser";
 export const ADD_OwnerUser = "ADD_OwnerUser";
 export const EDIT_OwnerUser = "EDIT_OwnerUser";
 export const DELETE_OwnerUser = "DELETE_OwnerUser";
+/////////Malak Start SKILLS//////
+export const ADD_SKILL = "ADD_SKILL";
+export const ADD_SKILL__ONLY_SEC = "ADD_SKILL__ONLY_SEC";
+
+export const GET_SKILL_BY_ID = " GET_SKILL_BY_ID";
+export const GET_SKILL_USER_SKILLS = "GET_SKILL_USER_SKILLS";
+export const GET_Array_OF_SKILLS = "GET_Array_OF_SKILLS";
+
+export const EDIT_SKILL = "EDIT_SKILL";
+export const DELETE_SKILL = "DELETE_SKILL";
+
+/////////Malak End SKILLS//////
 ////comments
 ////////////////////////education///////////////
 
