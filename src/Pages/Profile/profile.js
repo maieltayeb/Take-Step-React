@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Toast, ToastBody, ToastHeader, Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import InProgressTaskCard from "../../Components/Card/InProgressTaskCard/inprogresstaskcard";
@@ -9,7 +9,8 @@ import EducationSection from "../../Components/EducationSection/EducationSection
 import Portflio from "../../Components/Portflio/Portflio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
-const Profile = props => {
+
+const Profile = (props) => {
   return (
     <div>
       <InsideNav></InsideNav>
@@ -76,7 +77,7 @@ const Profile = props => {
                     style={{
                       overflow: "auto",
                       height: "24rem",
-                      backgroundColor: "#F8F8F4"
+                      backgroundColor: "#F8F8F4",
                     }}
                   >
                     <InProgressTaskCard></InProgressTaskCard>
@@ -90,9 +91,9 @@ const Profile = props => {
     </div>
   );
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
-    currentUser: reduxState.Users.currentUser
+    currentUser: reduxState.Users.currentUser,
   };
   console.log(reduxState.Users.currentUser);
 };
