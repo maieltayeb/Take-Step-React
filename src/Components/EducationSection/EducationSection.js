@@ -83,7 +83,7 @@ const EducationSection = props => {
         </div>
       </div>
       {educations.length ? (
-        educations.map(edu => <EducationData key={edu.id} {...edu} edu={edu} />)
+        educations.map(edu => <EducationData key={edu._id} {...edu} edu={edu} />)
       ) : (
         <div className="ml-3 mt-3"  >Add Your Education Here..</div>
       )}
