@@ -100,7 +100,7 @@ const AddEducation = props => {
         >
           Add Education
         </ModalHeader>
-        <Form autoComplete="off" onSubmit={handleSubmit} onInvalid>
+        <Form autoComplete="off" onSubmit={handleSubmit} >
           <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
             <FormGroup>
               <Label className="lab-size" for="exampleEmail">
@@ -144,7 +144,7 @@ const AddEducation = props => {
                 value={values.degree}
                 name="degree"
                 onChange={handleInputChange}
-                required
+                
               />
             </FormGroup>
 
@@ -207,7 +207,7 @@ const AddEducation = props => {
                 width: "100px"
               
               }}
-              onInvalid
+              
               // onClick={handleSubmit}
             >
               Add
