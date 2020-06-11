@@ -17,7 +17,7 @@ const NotificationDropdown = props => {
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle style={{ background: "none", border: "none" }}>
-        <i class="fas fa-bell text-warning"></i>
+        <i className="fas fa-bell text-warning"></i>
       </DropdownToggle>
 
       <DropdownMenu

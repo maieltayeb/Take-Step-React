@@ -8,9 +8,7 @@
   z-index: 0;
   font-family: tahoma;
   margin-top: 30px;
-  /* margin-bottom: 22rem !important; */
-
-  /* min-width: fit-content; */
+  border-radius: 0px 0px 25px 25px;
   display: block;
 }
 .comment-container {
@@ -32,8 +30,8 @@
   background-color: #ebc010;
   border: 1px solid #ebc010;
   border-radius: 58px;
-  height: 48px;
-  width: 138px;
+  height: 48px !important;
+  width: 138px !important;
   font-size: 20px;
   font-family: tahoma;
 }

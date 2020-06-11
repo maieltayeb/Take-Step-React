@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
-// import profilephoto from "./assets/profilephoto.png";
-// import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 const PersonalInfo = props => {
+  // console.log("props", props);
+  let currentcountry = Object.values(props.currentUser.country);
+  // console.log(currentcountry[1]);
+
   return (
     <div>
       <Container>
@@ -13,29 +16,58 @@ const PersonalInfo = props => {
           <Row>
             <Col lg="8">
               <div className="first-profile-info">
-                <div class="upper-info">
+                <div className="upper-info">
                   <div className="profile-photo">
-                    <img src="./img/profilephoto.png" className="img" />
-                    <div class="edit-icon">
+                    <img
+                      src="/img/profilephoto.png"
+                      className="img"
+                      alt="personal pic"
+                    />
+                    <div className="edit-icon">
                       <PersonalInfoModal />
                     </div>
                   </div>
-
                   <div className="username-location">
-                    <span>Job title </span>
+                    {props.currentUser.companyName ? (
+                      <span>{props.currentUser.companyName} </span>
+                    ) : (
+                      props.currentUser.paymentData && (
+                        <span>company-Name </span>
+                      )
+                    )}
+                    <br />
+                    <span className="font-smaller">
+                      {props.currentUser.jobTitle ? (
+                        <span>{props.currentUser.jobTitle} </span>
+                      ) : (
+                        <span>job-Title </span>
+                      )}
+                    </span>
                     <br />
                     <span className="map-icon">
-                      <i class="fas fa-map-marker-alt"></i>
+                      <i className="fas fa-map-marker-alt"></i>
                     </span>
-                    <span className="location">Location</span>
+                    <span className="location">
+                      {currentcountry[1] ? (
+                        <span>{currentcountry[1]} </span>
+                      ) : (
+                        <span>country-Title </span>
+                      )}
+                    </span>
                   </div>
                 </div>
 
                 <div className="job">
-                  <p className="job-title">User Name</p>
+                  <p className="job-title">
+                    {props.currentUser.firstName}&nbsp;
+                    {props.currentUser.lastName}
+                  </p>
                   <p className="job-description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
+                    {props.currentUser.description ? (
+                      <span>{props.currentUser.description} </span>
+                    ) : (
+                      <span>Descripe yourself .......... </span>
+                    )}
                   </p>
                 </div>
               </div>
@@ -70,5 +102,10 @@ const PersonalInfo = props => {
     </div>
   );
 };
-
-export default PersonalInfo;
+const mapStateToProps = reduxState => {
+  console.log("test map state propes");
+  return {
+    currentUser: reduxState.Users.currentUser
+  };
+};
+export default connect(mapStateToProps)(PersonalInfo);

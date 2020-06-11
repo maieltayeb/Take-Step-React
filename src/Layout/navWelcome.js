@@ -9,14 +9,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
   Button,
-  Container,
-  Input
+  Container
 } from "reactstrap";
 
 const NavWelcome = props => {
@@ -60,7 +54,7 @@ const NavWelcome = props => {
               <NavItem className="ml-2 ">
                 <NavLink
                   style={{ cursor: "pointer", color: "black" }}
-                  to="logIn"
+                  to="/logIn"
                   tag={RRNavLink}
                 >
                   Sign In

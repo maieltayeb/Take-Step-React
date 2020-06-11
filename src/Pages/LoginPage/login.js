@@ -1,50 +1,84 @@
-import React, { useState, useEffect } from "react";
-import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
+import React, { useState } from "react";
+import { useDispatch, connect } from "react-redux";
+import { Button, FormGroup, Container } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import "./login.css";
-import InsideNav from "../../Layout/Navbar/insidenav";
-const Login = props => {
+import NavWelcome from "../../Layout/navWelcome";
+import { Link } from "react-router-dom";
+import { logInBussinessOwner } from "../../Redux/actions/businessOwnerActionCreator";
+import { logInVolunteers } from "../../Redux/actions/volunteerActionCreator";
+import { useHistory } from "react-router-dom";
+
+const Login = (props) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   // const [statePassword, setStatePassword] = useState("");
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
+  };
 
-    // setStateEmail({
-    //   [e.target.id]: e.target.value
-    // });
-    // setStatePassword({
-    //   [e.target.id]: e.target.value
-    // });
+  let currentuserJson = localStorage.getItem("user");
+
+  let currentUser = JSON.parse(currentuserJson);
+  console.log("currentUserBeforeHadelSubmit", currentUser);
+
+  const handleValidSubmit = async (event, values) => {
+    console.log("click login ", values);
+    event.preventDefault();
+    //console.log("state",state)
+
+    let bussinesslogin = props.users.filter(function (user) {
+      return user.email == state.email;
+    });
+    // debugger;
+    if (bussinesslogin.length == 0) {
+      let response = await dispatch(logInVolunteers(state));
+      currentUser = response;
+      console.log(currentUser);
+      // history.push(`/VolunteerProfile/${currentUser.id}`);
+    } else {
+      let response = await dispatch(logInBussinessOwner(state));
+      console.log("after promise");
+      currentUser = response;
+
+      console.log("currentuserAfterDispatch", currentUser, { response });
+    }
+    history.push(`/profile/${currentUser.id}`);
+
+    console.log("login", bussinesslogin);
+
+    // let currentUser = JSON.parse(props.currentUser);
+    //  history.push("/profile");
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(state.email);
-    console.log(state.password);
-  };
+
   return (
     <>
-      <InsideNav></InsideNav>
+      <NavWelcome></NavWelcome>
       <Container>
-        <Form
-          onSubmit={handleSubmit}
+        <AvForm
+          onValidSubmit={handleValidSubmit}
           className="border-warning  p-5"
           style={{
             width: "50%",
             margin: "110px auto",
             border: "1px solid",
-            borderRadius: "1.5rem"
+            borderRadius: "1.5rem",
           }}
         >
           <h3 className="text-center m-3 mb-5"> Login</h3>
           <FormGroup className="input-icons">
             <i class="fa fa-envelope icon text-warning"></i>
-            <Input
+            <AvField
+              errorMessage="Invalid email"
+              validate={{ email: true }}
               type="email"
               name="email"
               id="email"
@@ -56,7 +90,13 @@ const Login = props => {
           </FormGroup>{" "}
           <FormGroup className="input-icons">
             <i class="fas fa-lock icon text-warning"></i>
-            <Input
+            <AvField
+              errorMessage="Invalid password must be 4  numbers/charchters at least "
+              validate={{
+                required: { value: true },
+                pattern: { value: "^[A-Za-z0-9]+$" },
+                minLength: { value: 4 },
+              }}
               type="password"
               name="password"
               id="password"
@@ -71,25 +111,32 @@ const Login = props => {
             style={{
               margin: "20px auto",
               borderRadius: "1.5rem",
-              padding: ".7rem 5rem"
+              padding: ".7rem 5rem",
             }}
           >
             Login
           </Button>
-          <Button
-            className="d-block bg-dark border-dark"
+          <Link
+            to="/signUp"
+            className="btn d-block bg-dark border-dark text-white"
             style={{
-              margin: "20px auto",
+              margin: "20px 125px",
               borderRadius: "1.5rem",
-              padding: ".7rem 4.5rem"
+              padding: ".7rem 4.5rem",
             }}
           >
             Sign Up
-          </Button>
-        </Form>
+          </Link>
+        </AvForm>
       </Container>
     </>
   );
 };
+const mapStateToProps = (reduxState) => {
+  return {
+    users: reduxState.Users.users,
+    // currentUser: reduxState.Users.currentUser
+  };
+};
 
-export default Login;
+export default connect(mapStateToProps)(Login);

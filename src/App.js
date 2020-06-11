@@ -1,52 +1,53 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { useDispatch, connect } from "react-redux";
 import "./App.css";
-import ModalLink from "./Components/Modal/AddLink/AddLink-Modal";
-import AddSkill from "./Components/Modal/AddSkillModal/AddSkillModal";
-import AddEducation from "./Components/Modal/AddEducationModal/AddEducation";
-import ModalPost from "./Components/Modal/AddPostModel/modal";
-import ModalCreateTask from "./Components/Modal/CreatTaskModal/modal";
-import FeedbackModel from "./Components/Modal/AddFeedbackModel/AddFeedbackModal";
-import Post from "./Components/post/post";
-
-import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
-import VolunteerProfile from "./Pages/VolunteerProfile/volunteerprofile";
+// import BussinessOwnerProfile from "./Pages/BusinessOwnerProfile/bussinessowner";
+import Profile from "./Pages/Profile/profile";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import Login from "./Pages/LoginPage/login";
 import SignUp from "./Pages/SignUpPage/sighnup";
-import Portflio from "./Components/Portflio/Portflio";
-import OwnerProfileCard from "./Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
-import NotificationDropdown from "./Components/Dropdown/NotificationDropdown";
 import HomePage from "./Pages/HomePage/Home";
-import HomePageOwner from "./Pages/HomePage/Home";
-import HomePageVolunteer from "./Pages/HomePage/homeVolunterr";
 import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
-function App() {
+import {
+  getAllUsersBussinessOwner,
+  getAllCountries,
+  getTimeDurationTypes,
+  getAllJobs
+} from "./Redux/actions/businessOwnerActionCreator";
+// import { getAllVolunteers } from "./Redux/actions/volunteerActionCreator";
+function App(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUsersBussinessOwner());
+    dispatch(getAllCountries());
+    dispatch(getTimeDurationTypes());
+    dispatch(getAllJobs());
+  }, [dispatch]);
   return (
     <React.Fragment>
       <Switch>
         //anonymous user
         <Route path="/signUp" component={SignUp} />
         <Route path="/logIn" component={Login} />
-        <Route path="/wlcomePage" exact component={WelcomePage} />
-        {/* <Redirect from="/" exact to="/wlcomePage" /> */}
-        //business owner user
-        <Route path="/home" component={HomePageOwner} />
-        <Route path="/profile" component={BussinessOwnerProfile} />
+        <Route path="/welcomePage" exact component={WelcomePage} />
+        //profile
+        <Route path="/profile" component={Profile} />
         <Route path="/jobDetails" component={TaskSubmittedFrame} />
-        //volnteer user
-        {/* <Route path="/home" component={HomePageVolunteer} />
-        <Route path="/profile" component={VolunteerProfile} />
-        <Route path="/taskDetails" component={TaskDetails} /> */}
+        //home
+        <Route path="/home" component={HomePage} />
         // both users
-        <Redirect from="/" exact to="home" />
-        {/* <Redirect from="logOut" to="wlcomePage" /> */}
+        <Redirect from="/" exact to="welcomePage" />
       </Switch>
+      {/* <VolunteerProfile /> */}
     </React.Fragment>
   );
 }
-
-export default App;
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser
+  };
+};
+export default connect(mapStateToProps)(App);

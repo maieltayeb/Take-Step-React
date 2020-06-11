@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  getAllCountries,
-  getAllUsers
-} from "../../Redux/actions/businessOwnerActionCreator";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Container,
-  Col,
-  Row
-} from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
+import { Button, FormGroup, Input, Container, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./signup.css";
-import InsideNav from "../../Layout/Navbar/insidenav";
-import { Signup } from "../../Redux/actions/businessOwnerActionCreator";
+import NavWelcome from "../../Layout/navWelcome";
+import {
+  SignupBussinessOwner,
+  getAllUsersBussinessOwner
+} from "../../Redux/actions/businessOwnerActionCreator";
+import {
+  SignupVolunteers,
+  getAllVolunteers
+} from "../../Redux/actions/volunteerActionCreator";
+
 const SignUp = props => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -26,75 +23,67 @@ const SignUp = props => {
     password: "",
     firstName: "",
     lastName: "",
-    country: 0,
-    isBussines: false,
-    paymentData: {
-      cardNum: 0,
-      expireDate: new Date("July 21, 1983"),
-      phone: 0,
-      total: 0,
-      secretNum: 0
-    }
+    country: "5edab5034b7a063de0203607"
   });
-  useEffect(() => {
-    dispatch(getAllCountries());
-    dispatch(getAllUsers());
-  }, [dispatch]);
-  // console.log("props", props.mystate.countries);
-  const handleClick = e => {
-    // console.log(e.target.textContent);
-    if (e.target.textContent === "Bussiness Owner") {
-      setState(prevState => ({
-        ...prevState,
-        isBussines: true
-      }));
-      // console.log(state.isBussines);
-    } else {
-      setState(prevState => ({
-        ...prevState,
-        isBussines: false
-      }));
-      // console.log(state.isBussines);
-    }
-  };
-
+  const [stateStatus, setSatateStatus] = useState(false);
   const handleChange = e => {
     const { name, value } = e.target;
-    // let newState = { ...state };
-    // let allData = JSON.parse(JSON.stringify(newState));
-    // console.log("all", allData);
-
     setState(prevState => ({
       ...prevState,
       [name]: value
     }));
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(Signup(state));
-    // history.push("/logIn");
-    // console.log(state.email);
-    // console.log(state.password);
-    // console.log(state.firstName);
-    // console.log(state.lastName);
+  const handlePaymentChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => ({
+      ...prevState,
+      paymentData: {
+        ...prevState.paymentData,
+        [name]: value
+      }
+    }));
+  };
+  const handleClick = e => {
+    if (e.target.textContent === "Bussiness Owner") {
+      setSatateStatus(true);
+    } else {
+      setSatateStatus(false);
+    }
+  };
+  const handleValidSubmit = (event, values) => {
+    console.log("values", values);
+    event.preventDefault();
+    console.log("state", state);
+    if (stateStatus) {
+      dispatch(getAllUsersBussinessOwner());
+      dispatch(SignupBussinessOwner(state));
+    } else {
+      dispatch(SignupVolunteers(state));
+      dispatch(getAllVolunteers());
+    }
+
+    history.push("/logIn");
   };
   return (
     <>
-      <InsideNav></InsideNav>
+      <NavWelcome></NavWelcome>
       <Container>
-        <Form
-          onSubmit={handleSubmit}
+        <AvForm
+          onValidSubmit={handleValidSubmit}
           className="border-warning  p-5"
           style={{
-            marginLeft: "4rem ",
-            backgroundColor: "#F2F2F2",
-            padding: ".7rem 1rem"
+            width: "50%",
+            margin: "110px auto",
+            border: "1px solid",
+            borderRadius: "1.5rem"
           }}
         >
           <h3 className="text-center m-3 mb-5"> Sign Up</h3>
           <FormGroup className="input-icons">
             <i class="fa fa-envelope icon text-warning"></i>
-            <Input
+            <AvField
+              errorMessage="Invalid email"
+              validate={{ email: true }}
               onChange={handleChange}
               type="email"
               name="email"
@@ -108,7 +97,14 @@ const SignUp = props => {
             <Col md={6}>
               <FormGroup className="input-icons">
                 <i class="fas fa-user icon text-warning"></i>
-                <Input
+                <AvField
+                  errorMessage="Invalid First-name"
+                  validate={{
+                    required: { value: true },
+                    pattern: { value: "^[A-Za-z]+$" },
+                    minLength: { value: 2 },
+                    maxLength: { value: 16 }
+                  }}
                   onChange={handleChange}
                   type="text"
                   name="firstName"
@@ -120,7 +116,14 @@ const SignUp = props => {
             <Col md={6}>
               <FormGroup className="input-icons">
                 <i class="fas fa-user icon text-warning"></i>
-                <Input
+                <AvField
+                  errorMessage="Invalid Last-name"
+                  validate={{
+                    required: { value: true },
+                    pattern: { value: "^[A-Za-z]+$" },
+                    minLength: { value: 2 },
+                    maxLength: { value: 16 }
+                  }}
                   onChange={handleChange}
                   type="text"
                   name="lastName"
@@ -132,7 +135,14 @@ const SignUp = props => {
           </Row>
           <FormGroup className="input-icons">
             <i class="fas fa-lock icon text-warning"></i>
-            <Input
+            <AvField
+              errorMessage="Invalid password must be 4  numbers/charchters at least "
+              validate={{
+                required: { value: true },
+                pattern: { value: "^[A-Za-z0-9]+$" },
+                minLength: { value: 4 }
+              }}
+              ///^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
               onChange={handleChange}
               type="password"
               name="password"
@@ -149,10 +159,9 @@ const SignUp = props => {
                 id="exampleSelect"
                 onChange={handleChange}
               >
-                /////////////////////
                 {props.countries.map(item => (
-                  <option key={item.id} value={item.id}>
-                    {item.en}
+                  <option key={item.id} value={item._id}>
+                    {item.countryName}
                   </option>
                 ))}
               </Input>
@@ -181,7 +190,7 @@ const SignUp = props => {
           >
             Volunteer
           </Button>
-          {state.isBussines && (
+          {stateStatus && (
             <>
               <div style={{ display: "inline-block", "text-align": "center" }}>
                 <img width="20%" className="mr-3" src="./img/visa.png" />
@@ -190,8 +199,16 @@ const SignUp = props => {
               </div>
               <FormGroup className="input-icons">
                 <i class="far fa-credit-card icon text-primary"></i>
-                <Input
-                  onChange={handleChange}
+                <AvField
+                  errorMessage="Invalid  card num  must be 12 number "
+                  validate={{
+                    required: { value: true },
+
+                    minLength: { value: 12 },
+                    maxLength: { value: 12 }
+                  }}
+                  min="1"
+                  onChange={handlePaymentChange}
                   type="Number"
                   name="cardNum"
                   id="exampleEmail"
@@ -200,21 +217,19 @@ const SignUp = props => {
                   style={{ paddingLeft: "3rem" }}
                 />
               </FormGroup>
-              <FormGroup className="input-icons">
-                {/* <i class="fa fa-envelope icon text-warning"></i> */}
-                <Input
-                  onChange={handleChange}
-                  type="date"
-                  name="expireDate"
-                  id="exampleEmail"
-                  value="Expire-Date"
-                  className="input-field"
-                  // style={{ paddingLeft: "3rem" }}
-                />
-              </FormGroup>
+
               <FormGroup className="input-icons">
                 <i class="fa fa-envelope icon text-warning"></i>
-                <Input
+                <AvField
+                  errorMessage="Invalid secret num must be 3  numbers "
+                  validate={{
+                    required: { value: true },
+
+                    minLength: { value: 3 },
+                    maxLength: { value: 4 }
+                  }}
+                  min="0"
+                  onChange={handlePaymentChange}
                   type="Number"
                   name="secretNum"
                   id="exampleEmail"
@@ -223,28 +238,39 @@ const SignUp = props => {
                   style={{ paddingLeft: "3rem" }}
                 />
               </FormGroup>
-              <FormGroup className="input-icons">
-                <i class="fas fa-money-bill-wave icon text-success"></i>
 
-                <Input
-                  onChange={handleChange}
+              <FormGroup className="input-icons">
+                <i class="fas fa-phone-alt icon text-secondary"></i>
+
+                <AvField
+                  errorMessage="Invalid phone number must be 11 number "
+                  validate={{
+                    required: { value: true },
+
+                    minLength: { value: 11 },
+                    maxlength: { value: 13 }
+                  }}
+                  min="0"
+                  onChange={handlePaymentChange}
                   type="Number"
-                  // name="total"
-                  id="total"
-                  placeholder="Total"
+                  name="phone"
+                  id="phone"
+                  placeholder="Phone"
                   className="input-field"
                   style={{ paddingLeft: "3rem" }}
                 />
               </FormGroup>
+
               <FormGroup className="input-icons">
-                <i class="fas fa-phone-alt icon text-secondary"></i>
+                <i class="fas fa-money-bill-wave icon text-success"></i>
 
                 <Input
-                  onChange={handleChange}
+                  onChange={handlePaymentChange}
                   type="Number"
-                  // name="phone"
-                  id="phone"
-                  placeholder="Phone"
+                  name="total"
+                  min="1"
+                  id="total"
+                  placeholder="Total"
                   className="input-field"
                   style={{ paddingLeft: "3rem" }}
                 />
@@ -267,16 +293,14 @@ const SignUp = props => {
               Log in !
             </Link>
           </div>
-        </Form>
+        </AvForm>
       </Container>
     </>
   );
 };
 const mapStateToProps = reduxState => {
   return {
-    users: reduxState.bussinessOwnerUsers.users,
-    countries: reduxState.bussinessOwnerUsers.countries
-    // mystate: reduxState.bussinessOwnerUsers
+    countries: reduxState.Users.countries
   };
 };
 export default connect(mapStateToProps)(SignUp);

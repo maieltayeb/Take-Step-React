@@ -1,13 +1,19 @@
 import axios from "axios";
 import {
   Get_BussinessUsers,
-  post_Login,
-  post_SignUp,
+  post_SignUp_BussinessUsers,
+  post_Login_BussinessUsers,
+  Edit_BussinessUsers,
   Get_Countries,
+  Get_timeDurationTypes,
+  ADD_Job,
+  Get_Jobs,
+  Get_BussinessUsersById,
 } from "../actionTypes";
-export const getAllUsers = () => (dispatch) => {
+/////////////////////////get/////////////////////////////
+export const getAllUsersBussinessOwner = () => (dispatch) => {
   axios
-    .get("https://take-a-step-9ca1d.firebaseio.com/bussinessowner.json")
+    .get("http://localhost:4402/bussinessOwner/getAllBussinessUsers")
     .then((response) => {
       const users = response.data;
       const newUsers = [];
@@ -22,15 +28,34 @@ export const getAllUsers = () => (dispatch) => {
       // handle error dipatch();
     });
 };
+
 const getAllUsersSuccess = (newUsers) => {
   return { type: Get_BussinessUsers, payload: newUsers };
 };
-export const Signup = (newUser) => (dispatch) => {
+//////////////////////////////////////get user by id/////////////////////////////////
+export const getUserById = (id) => (dispatch) => {
   axios
-    .post(
-      "https://take-a-step-9ca1d.firebaseio.com/bussinessowner.json",
-      newUser
-    )
+    .get(`http://localhost:4402/bussinessOwner/${id}`)
+    .then((response) => {
+      const user = response.data;
+      // console.log("user", user);
+
+      dispatch(getUserByIdSuccess(user));
+      //   console.log("all user", newUsers);
+    })
+    .catch((err) => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getUserByIdSuccess = (user) => {
+  return { type: Get_BussinessUsersById, payload: user };
+};
+////////////////////////signup/////////////////////////////
+export const SignupBussinessOwner = (newUser) => (dispatch) => {
+  axios
+    .post("http://localhost:4402/bussinessOwner/register", newUser)
     .then((response) => {
       const { data } = response;
       newUser.id = data.name;
@@ -40,11 +65,32 @@ export const Signup = (newUser) => (dispatch) => {
 };
 
 const SignUpSuccess = (user) => {
-  return { type: post_SignUp, payload: user };
+  return { type: post_SignUp_BussinessUsers, payload: user };
 };
+///----------------------login--------------------------////////
+export const logInBussinessOwner = (currentUser) => (dispatch) => {
+  return axios
+    .post("http://localhost:4402/bussinessOwner/login", currentUser)
+    .then((response) => {
+      const { token, user } = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user.id));
+      // newUser.id = data.name;
+      console.log("datafrom database", user);
+      console.log("stopone");
+      if (response.status === 200) dispatch(loginSuccess(user));
+      return user;
+    })
+    .catch(console.log);
+};
+
+const loginSuccess = (user) => {
+  return { type: post_Login_BussinessUsers, payload: user };
+};
+///////////////////////getall countries***************//////////////////
 export const getAllCountries = () => (dispatch) => {
-  axios
-    .get("https://take-a-step-9ca1d.firebaseio.com/Countries.json")
+  return axios
+    .get("http://localhost:4402/country/getAllcountries")
     .then((response) => {
       const countries = response.data;
       const newCounties = [];
@@ -60,4 +106,84 @@ export const getAllCountries = () => (dispatch) => {
 };
 const getAllCountriesSuccess = (newCounties) => {
   return { type: Get_Countries, payload: newCounties };
+};
+/***********edit bussinessowner */
+export const editbussinessOwner = (id, newUser) => (dispatch) => {
+  return axios
+    .patch(`http://localhost:4402/bussinessOwner/Edit/${id}`, newUser, {
+      headers: { authorization: localStorage.getItem("token") },
+    })
+    .then((response) => {
+      const { data } = response;
+      localStorage.setItem("user", JSON.stringify(data));
+      console.log("userafter update", data);
+
+      if (response.status === 200) dispatch(EditSuccess(data));
+    })
+    .catch(console.log);
+};
+
+const EditSuccess = (user) => {
+  console.log({ user });
+  return { type: Edit_BussinessUsers, payload: user };
+};
+
+///////////////////////get all timeDurationTypes***************//////////////////
+export const getTimeDurationTypes = () => (dispatch) => {
+  return axios
+    .get("https://take-a-step-9ca1d.firebaseio.com/timeDurationType.json")
+    .then((response) => {
+      const timeDurationTypes = response.data;
+
+      const newtimeDurationTypes = [];
+      for (const key in timeDurationTypes) {
+        newtimeDurationTypes.push({ id: key, ...timeDurationTypes[key] });
+      }
+      dispatch(getAlltimeDurationTypesSuccess(newtimeDurationTypes));
+    })
+    .catch((err) => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getAlltimeDurationTypesSuccess = (newtimeDurationTypes) => {
+  return { type: Get_timeDurationTypes, payload: newtimeDurationTypes };
+};
+////////////////////////add job////////////////////////////////////
+export const addJob = (newJob) => (dispatch) => {
+  axios
+    .post("https://take-a-step-9ca1d.firebaseio.com/jobs.json", newJob)
+    .then((response) => {
+      const { data } = response;
+      newJob.id = data.name;
+      if (response.status === 200) dispatch(addJobSuccess(newJob));
+    })
+    .catch(console.log);
+};
+
+const addJobSuccess = (job) => {
+  return { type: ADD_Job, payload: job };
+};
+///////////////////////////////////get all jobs////////////////////
+export const getAllJobs = () => (dispatch) => {
+  return axios
+    .get("https://take-a-step-9ca1d.firebaseio.com/jobs.json")
+    .then((response) => {
+      const jobs = response.data;
+
+      const newJobs = [];
+      for (const key in jobs) {
+        newJobs.push({ id: key, ...jobs[key] });
+      }
+      dispatch(getAllJobsSuccess(newJobs));
+    })
+    .catch((err) => {
+      console.log(err);
+      // handle error dipatch();
+    });
+};
+
+const getAllJobsSuccess = (newJobs) => {
+  return { type: Get_Jobs, payload: newJobs };
 };

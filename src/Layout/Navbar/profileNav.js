@@ -8,17 +8,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
   Button,
-  Container,
-  Input,
+  Container
 } from "reactstrap";
 
-const NavProf = (props) => {
+const NavProf = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -30,7 +24,7 @@ const NavProf = (props) => {
           backgroundColor: "#e9ecef",
           position: "fixed",
           zIndex: "5",
-          width: "100%",
+          width: "100%"
         }}
         light
         expand="md"
@@ -75,7 +69,7 @@ const NavProf = (props) => {
                 color: "#fffff",
                 backgroundColor: "black",
                 padding: "4px 29px",
-                right: "5px",
+                right: "5px"
               }}
             >
               {" "}

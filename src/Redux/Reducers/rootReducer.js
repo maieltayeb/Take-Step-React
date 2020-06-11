@@ -1,5 +1,11 @@
 import { combineReducers } from "redux";
-import bussinessOwnerReducer from "./bussinessOwnerReducer";
+import usersReducer from "./usersReducer";
+import EducationReducer from "./EducationReducer";
+import SkillReducer from "./skillReducer";
+// import ownerInfoReducer from "./ownerInfoReducer";
+
 export default combineReducers({
-  bussinessOwnerUsers: bussinessOwnerReducer
+  Users: usersReducer,
+  educations: EducationReducer,
+  Skills: SkillReducer,
 });

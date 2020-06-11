@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
 import "./nav.css";
-
 import {
   Collapse,
   Navbar,
@@ -20,6 +19,13 @@ const InsideNav = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  let currentuserJson = localStorage.getItem("user");
+  // debugger;
+  let currentUser = JSON.parse(currentuserJson);
+
+  const handleClick = () => {
+    localStorage.clear();
+  };
 
   return (
     <div>
@@ -36,7 +42,7 @@ const InsideNav = props => {
         className="p-0 shadow"
       >
         <Container className="themed-container" fluid={true}>
-          <NavbarBrand href="/" style={{ "margin-left": "93px" }}>
+          <NavbarBrand href="/" style={{ marginLeft: "93px" }}>
             <img width="50%" src="/img/logo.png" />
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
@@ -56,7 +62,11 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer" }}
                   tag={RRNavLink}
-                  to="/home"
+                  to={{
+                    // "/home"
+                    pathname: "/home",
+                    search: `/${currentUser.id}`
+                  }}
                 >
                   Home
                 </NavLink>
@@ -76,7 +86,11 @@ const InsideNav = props => {
                   className="userLink"
                   // style={{ cursor: "pointer", color: "unset" }}
                   tag={RRNavLink}
-                  to="/profile"
+                  to={{
+                    // "/home"
+                    pathname: "/profile",
+                    search: `/${currentUser.id}`
+                  }}
                 >
                   My Profile
                 </NavLink>
@@ -94,7 +108,11 @@ const InsideNav = props => {
                 padding: "4px 29px"
               }}
             >
-              <RRNavLink className="userLink" to="wlcomePage">
+              <RRNavLink
+                onClick={handleClick}
+                className="userLink"
+                to="/welcomePage"
+              >
                 {" "}
                 Log Out
               </RRNavLink>

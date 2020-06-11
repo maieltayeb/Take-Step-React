@@ -1,34 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Input
+  Input,
 } from "reactstrap";
 import "./AddSkillModal.css";
-const AddSkill = props => {
-  const { buttonLabel, className } = props;
+import { useDispatch, useSelector, connect } from "react-redux";
+import {
+  DeletSkills,
+  getSkillsInSec,
+  AddSkills,
+} from "../../../Redux/actions/userSkillCreator";
 
+const AddSkill = (props) => {
+  const { className, state } = props;
+  console.log(state);
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+  const dispatch = useDispatch();
+  const userSkills = useSelector((state) => state.Skills);
+  const [newSkills, setNewSkill] = useState(userSkills);
+  console.log(newSkills);
+  useEffect(() => {
+    setNewSkill(userSkills);
+  }, [userSkills]);
+  const user = localStorage.getItem("user");
+  const volunteerId = JSON.parse(user).id;
 
+  console.log(newSkills);
+  // console.log(userId);
+  const changeHandler = (e) => {
+    const updatedUser = { ...newSkills };
+    updatedUser[e.target.name] = e.target.value;
+    setNewSkill(updatedUser);
+  };
+  const KeyUpHandler = (event) => {
+    const { key } = event;
+    if (key == "Enter") {
+      const skillName = event.target.value;
+      dispatch(AddSkills({ skillName, volunteerId }));
+      console.log(newSkills);
+    }
+    // setNewSkill(updatedSkill);
+  };
+  const deleteHandler = async (id) => {
+    dispatch(DeletSkills(volunteerId, id));
+  };
+  const submitHandler = async (e) => {
+    // e.preventDefault();
+    console.log("submitted");
+    //dispatch id , newUser using editOwnerUser
+    // dispatch(editOwnerUser(userId, newUser));
+    return false;
+  };
   return (
     <div>
       <i class="fas fa-plus" onClick={toggle}></i>
-      {/* <Button className="bg-dark rounded-circle w-2 h-2" onClick={toggle}>
-=======
-      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
->>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
-=======
-      <Button className="bg-skill rounded-circle w-2 h-2" onClick={toggle}>
->>>>>>> 43bde5a484c1324421e8b129b44b20dd97d956b1
-        <i class=" d-inline-block p-10 fas fa-pen text-warning"></i>
-      </Button> */}
-      {/* <div className="d-inline-block  bg-secondary"><span><i class=" d-inline-block p-10 fas fa-pen text-warning"></i></span></div> */}
       <Modal
+        onSubmit={(event) => event.preventDefault()}
         className="modalShapSkill"
         isOpen={modal}
         toggle={toggle}
@@ -48,9 +81,13 @@ const AddSkill = props => {
               {/* <Input placeholder="Skill (ex:Photoshop)" type="text" className=""  ></Input> */}
               <div class="input-group">
                 <Input
+                  name="skillName"
                   class="form-control py-2 border-right-0 border"
-                  type="search"
+                  type="text"
                   placeholder="Skill (ex:Photoshop)"
+                  onKeyUp={KeyUpHandler}
+                  value={newSkills.skillName}
+                  onChange={changeHandler}
                 >
                   <div class="input-group-append">
                     <div class="input-group-text">
@@ -64,36 +101,23 @@ const AddSkill = props => {
               </p>
             </form>
             <div class=" mt-2 d-inline">
-              <span class=" para mr-2 ">
-                Photoshop<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
-              <span class=" para mr-2 ">
-                Illustrator<i class="pl-2 fas fa-times"></i>
-              </span>
+              {state.length ? (
+                state.map((obj) => {
+                  return (
+                    <React.Fragment>
+                      <span class=" para mr-2 ">
+                        {obj.skillName}
+                        <i
+                          onClick={() => deleteHandler(obj._id)}
+                          class="pl-2 fas fa-times"
+                        ></i>
+                      </span>
+                    </React.Fragment>
+                  );
+                })
+              ) : (
+                <div>No item added yet </div>
+              )}
             </div>
           </div>
         </ModalBody>
@@ -107,7 +131,7 @@ const AddSkill = props => {
               borderRadius: "20px",
               border: "1px solid #EBC010",
               color: "black",
-              width: "100px"
+              width: "100px",
             }}
           >
             Cancel
@@ -115,12 +139,14 @@ const AddSkill = props => {
           <Button
             className="skill-button"
             color="secondary"
-            onClick={toggle}
+            onClick={submitHandler}
+            onKeyUp={(event) => event.preventDefault()}
+            onSubmit={(event) => event.preventDefault()}
             style={{
               backgroundColor: "#494848",
               borderRadius: "20px",
               color: "#EBC010",
-              width: "100px"
+              width: "100px",
             }}
           >
             Add
@@ -130,5 +156,9 @@ const AddSkill = props => {
     </div>
   );
 };
-
-export default AddSkill;
+const mapStateToProps = (state) => {
+  return {
+    state: state.Skills,
+  };
+};
+export default connect(mapStateToProps)(AddSkill);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect, useDispatch } from "react-redux";
 import {
   Button,
   Dropdown,
@@ -8,10 +9,23 @@ import {
   DropdownItem
 } from "reactstrap";
 import "./post.css";
+import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 const Post = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggle = () => setDropdownOpen(prevState => !prevState);
+  const dispatch = useDispatch();
+  var usersIds = [];
+  var len = props.jobs.length;
+  for (var i = 0; i < len; i++) {
+    usersIds.push(props.jobs[i].userId);
+  }
+  let users = usersIds.map(userId => {
+    dispatch(getUserById(userId));
+  });
+
+  // let values = Object.values(arr);
+  // console.log("users", users);
+  // console.log("users from redux", props.bussinessOwnerUsers);
 
   return (
     <>
@@ -25,7 +39,7 @@ const Post = props => {
                 src="./img/people.png"
               />
               <div className="username-post ml-3">
-                <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
+                <div className="mt-3 postOwnerNameStyle">aya</div>
                 <div className="ml-0 postOwnerNameStyle">
                   Front End Developer
                 </div>
@@ -238,4 +252,11 @@ const Post = props => {
     </>
   );
 };
-export default Post;
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser,
+    jobs: reduxState.Users.jobs,
+    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers
+  };
+};
+export default connect(mapStateToProps)(Post);

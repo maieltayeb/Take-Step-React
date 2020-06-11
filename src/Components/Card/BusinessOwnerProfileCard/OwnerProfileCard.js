@@ -1,5 +1,6 @@
 import React from "react";
 import "./OwnerProfileCard.css";
+import {connect} from 'react-redux';
 import {
   Card,
   CardImg,
@@ -10,6 +11,8 @@ import {
 } from "reactstrap";
 
 const OwnerProfileCard = props => {
+   const {users}=props
+   console.log("users",users)
   return (
     <Card className="owner-card-container owner-card-border">
       <Card className="owner-inner-card">
@@ -23,22 +26,25 @@ const OwnerProfileCard = props => {
         <CardBody>
           <CardTitle className="owner-card-upper-text">
             {" "}
-            <strong>username</strong>{" "}
+            <strong>{users.currentUser.firstName + " " +users.currentUser.lastName}</strong>{" "}
           </CardTitle>
           <CardSubtitle className="owner-card-upper-text">
-            Job Title
+          {users.firstName}
           </CardSubtitle>
         </CardBody>
       </Card>
+
       <CardBody className="owner-card-lower-text">
-        <CardSubtitle>Proposals</CardSubtitle>
-        <CardSubtitle>4</CardSubtitle>
-      </CardBody>
-      <CardBody className="owner-card-lower-text">
-        <CardSubtitle>All Tasks</CardSubtitle>
-        <CardSubtitle>10</CardSubtitle>
+        <CardSubtitle>All Jobs</CardSubtitle>
+        <CardSubtitle>{users.jobs.length}</CardSubtitle>
       </CardBody>
     </Card>
   );
 };
-export default OwnerProfileCard;
+ const mapStateToProps=state=>({
+   users:state.Users
+ })
+
+
+
+export default connect(mapStateToProps) (OwnerProfileCard);
