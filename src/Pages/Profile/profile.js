@@ -95,5 +95,6 @@ const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
   };
+  console.log(reduxState.Users.currentUser);
 };
 export default connect(mapStateToProps)(Profile);

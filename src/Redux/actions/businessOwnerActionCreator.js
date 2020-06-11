@@ -9,6 +9,10 @@ import {
   ADD_Job,
   Get_Jobs,
   Get_BussinessUsersById,
+<<<<<<< HEAD
+=======
+  GET_Error
+>>>>>>> 0b7edd91067b276024550c9881ec016697a78af9
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => (dispatch) => {
@@ -58,14 +62,21 @@ export const SignupBussinessOwner = (newUser) => (dispatch) => {
     .post("http://localhost:4402/bussinessOwner/register", newUser)
     .then((response) => {
       const { data } = response;
-      newUser.id = data.name;
-      if (response.status === 200) dispatch(SignUpSuccess(newUser));
+      console.log("data", data);
+      if (response.status === 200) dispatch(SignUpSuccess(data.user));
     })
-    .catch(console.log);
+    .catch(err => {
+      console.log(err.response.data.message);
+      // if (response.status === 422)
+      dispatch(SignUpFailed(err.response.data.message));
+    });
 };
 
 const SignUpSuccess = (user) => {
   return { type: post_SignUp_BussinessUsers, payload: user };
+};
+const SignUpFailed = errMsg => {
+  return { type: GET_Error, payload: errMsg };
 };
 ///----------------------login--------------------------////////
 export const logInBussinessOwner = (currentUser) => (dispatch) => {
@@ -115,7 +126,7 @@ export const editbussinessOwner = (id, newUser) => (dispatch) => {
     })
     .then((response) => {
       const { data } = response;
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data)); ///??
       console.log("userafter update", data);
 
       if (response.status === 200) dispatch(EditSuccess(data));

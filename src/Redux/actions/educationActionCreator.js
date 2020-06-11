@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { GET_EDU, REMOVE_EDU, ADD_EDUCATION } from "../actionTypes";
+
 export const getAllEducation = newEducations => {
   return { type: GET_EDU, payload: newEducations };
 };

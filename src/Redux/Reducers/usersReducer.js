@@ -11,7 +11,8 @@ import {
   post_Login_VolunteerUsers,
   Edit_BussinessUsers,
   Edit_VolunteerUsers,
-  ADD_Job
+  ADD_Job,
+  GET_Error
 } from "../actionTypes";
 const initialState = {
   users: [],
@@ -19,7 +20,8 @@ const initialState = {
   jobs: [],
   countries: [],
   timeDurationTypes: [],
-  bussinessOwnerUsers: []
+  bussinessOwnerUsers: [],
+  errorMessg: ""
   //   token: "jksjlkjl"
 };
 export default (state = initialState, action) => {
@@ -70,6 +72,10 @@ export default (state = initialState, action) => {
     case ADD_Job:
       newState = { ...state };
       newState.jobs = [...state.jobs, action.payload];
+      break;
+    case GET_Error:
+      newState = { ...state };
+      newState.errorMessg = action.payload;
       break;
     default:
       newState = state;

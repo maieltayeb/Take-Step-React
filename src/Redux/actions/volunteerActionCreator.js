@@ -34,8 +34,8 @@ export const SignupVolunteers = (newUser) => (dispatch) => {
     .post("http://localhost:4402/volunteer/register", newUser)
     .then((response) => {
       const { data } = response;
-      newUser.id = data.name;
-      if (response.status === 200) dispatch(SignUpSuccess(newUser));
+    
+      if (response.status === 200) dispatch(SignUpSuccess(data.user));
     })
     .catch(console.log);
 };
