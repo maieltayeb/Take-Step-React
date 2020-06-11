@@ -32,35 +32,22 @@ const SkillSection = (props) => {
       <div className="skillSection-container-body">
         <div className="skillSection-container-body-info">
           <div className="skillSection-container-body-info-title">
-            Information technology Instituit
+            Your skills
           </div>
           <div className="skillSection-devs">
-            {state.map((obj) => {
-              return (
-                <React.Fragment>
-                  <span className="dev">{obj.skillName}</span>
-                </React.Fragment>
-              );
-            })}
+            {state.length ? (
+              state.map((obj) => {
+                return (
+                  <React.Fragment>
+                    <span className="dev">{obj.skillName}</span>
+                  </React.Fragment>
+                );
+              })
+            ) : (
+              <div>No item added yet </div>
+            )}
           </div>
-          {/* <div className="skillSection-container-body-info-title">
-        Information technology Instituit
-      </div>
-      <div className="skillSection-devs">
-        <span className="dev">skill name</span>
-        <span className="dev">skill name</span>
-        <span className="dev">skill name</span>
-      </div> */}
         </div>
-        {/* <div className="body-space"></div>
-    <div className="skillSection-container-body-icon">
-      <div className="skillSection-container-body-icon-edit">
-        <i class="fas fa-pencil-alt"></i>
-      </div>
-      <div className="skillSection-container-body-icon-delete">
-        <i class="fas fa-trash-alt"></i>
-      </div>
-    </div> */}
       </div>
     </div>
   );

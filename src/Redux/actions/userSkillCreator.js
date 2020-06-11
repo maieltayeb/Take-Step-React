@@ -40,8 +40,6 @@ export const getUserSkills = (id) => (dispatch) => {
 
     .then((res) => {
       const userAllSkills = res.data;
-      // const currentUser = [];
-      // currentUser.push({ ...OwnerUser });
       console.log(userAllSkills);
       dispatch(getUserAllSkills(userAllSkills));
     })
@@ -60,8 +58,7 @@ export const AddSkills = (skillsAdded) => (dispatch) => {
     })
     .then((res) => {
       const addSkill = res.data;
-      // const currentUser = [];
-      // currentUser.push({ ...OwnerUser });
+
       console.log(addSkill.newSkill);
       dispatch(AddSkillToUser(addSkill.newSkill));
     })
@@ -93,23 +90,3 @@ export const DeletSkills = (volunteerId, skillId) => (dispatch) => {
 const DeleteSkill = (id) => {
   return { type: DELETE_SKILL, payload: id };
 };
-// export const editSkills = (id, newUser) => (dispatch) => {
-//   axios
-//     .patch(
-//       `https://take-a-step-9ca1d.firebaseio.com/bussinessowner/${id}.json`,
-//       newUser
-//     )
-//     .then((res) => {
-//       const { data } = res;
-//       console.log(data);
-
-//       dispatch(editOwnerUserSuccess(data));
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-// const editOwnerUserSuccess = (newUser) => {
-//   return { type: EDIT_OwnerUser, payload: newUser };
-// };

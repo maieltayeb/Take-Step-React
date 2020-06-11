@@ -39,13 +39,14 @@ const AddSkill = (props) => {
     setNewSkill(updatedUser);
   };
   const KeyUpHandler = (event) => {
+    debugger;
     const { key } = event;
     if (key == "Enter") {
       const skillName = event.target.value;
       dispatch(AddSkills({ skillName, volunteerId }));
       console.log(newSkills);
+      newSkills.skillName = "";
     }
-    // setNewSkill(updatedSkill);
   };
   const deleteHandler = async (id) => {
     dispatch(DeletSkills(volunteerId, id));
@@ -59,7 +60,11 @@ const AddSkill = (props) => {
   };
   return (
     <div>
-      <i class="fas fa-plus" onClick={toggle}></i>
+      {state.length ? (
+        <i class="fas fa-pencil-alt" onClick={toggle}></i>
+      ) : (
+        <i class="fas fa-plus" onClick={toggle}></i>
+      )}
       <Modal
         onSubmit={(event) => event.preventDefault()}
         className="modalShapSkill"
@@ -101,23 +106,19 @@ const AddSkill = (props) => {
               </p>
             </form>
             <div class=" mt-2 d-inline">
-              {state.length ? (
-                state.map((obj) => {
-                  return (
-                    <React.Fragment>
-                      <span class=" para mr-2 ">
-                        {obj.skillName}
-                        <i
-                          onClick={() => deleteHandler(obj._id)}
-                          class="pl-2 fas fa-times"
-                        ></i>
-                      </span>
-                    </React.Fragment>
-                  );
-                })
-              ) : (
-                <div>No item added yet </div>
-              )}
+              {state.map((obj) => {
+                return (
+                  <React.Fragment>
+                    <span class=" para mr-2 ">
+                      {obj.skillName}
+                      <i
+                        onClick={() => deleteHandler(obj._id)}
+                        class="pl-2 fas fa-times"
+                      ></i>
+                    </span>
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </ModalBody>
@@ -139,9 +140,8 @@ const AddSkill = (props) => {
           <Button
             className="skill-button"
             color="secondary"
-            onClick={submitHandler}
-            onKeyUp={(event) => event.preventDefault()}
-            onSubmit={(event) => event.preventDefault()}
+            // onClick={submitHandler}
+            onClick={toggle}
             style={{
               backgroundColor: "#494848",
               borderRadius: "20px",
