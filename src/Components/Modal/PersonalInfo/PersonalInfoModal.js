@@ -25,7 +25,7 @@ const PersonalInfoModal = props => {
     // this.setState({
     //   pictures: this.state.pictures.concat(picture)
     // });
-    console.log(picture);
+    console.log(picture[0].name);
   };
   const imageUploadHandler = e => {
     e.preventDefault();
@@ -96,7 +96,7 @@ const PersonalInfoModal = props => {
         <Form onSubmit={submitHandler} onSubmit={imageUploadHandler}>
           <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
             <div>
-              {/* <img
+              <img
                 src="/img/profilephoto.png"
                 style={{
                   width: "20%",
@@ -111,7 +111,7 @@ const PersonalInfoModal = props => {
                   marginLeft: "55%",
                   color: "#ebc010"
                 }}
-              ></i> */}
+              ></i>
               <div className="App">
                 <div
                   style={{
