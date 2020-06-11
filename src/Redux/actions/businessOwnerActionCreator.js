@@ -9,10 +9,7 @@ import {
   ADD_Job,
   Get_Jobs,
   Get_BussinessUsersById,
-<<<<<<< HEAD
-=======
-  GET_Error
->>>>>>> 0b7edd91067b276024550c9881ec016697a78af9
+  GET_Error,
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => (dispatch) => {
@@ -65,7 +62,7 @@ export const SignupBussinessOwner = (newUser) => (dispatch) => {
       console.log("data", data);
       if (response.status === 200) dispatch(SignUpSuccess(data.user));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err.response.data.message);
       // if (response.status === 422)
       dispatch(SignUpFailed(err.response.data.message));
@@ -75,7 +72,7 @@ export const SignupBussinessOwner = (newUser) => (dispatch) => {
 const SignUpSuccess = (user) => {
   return { type: post_SignUp_BussinessUsers, payload: user };
 };
-const SignUpFailed = errMsg => {
+const SignUpFailed = (errMsg) => {
   return { type: GET_Error, payload: errMsg };
 };
 ///----------------------login--------------------------////////
