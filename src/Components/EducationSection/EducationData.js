@@ -6,23 +6,27 @@ import { deleteEducation } from "../../Redux/actions/educationActionCreator";
 import "./EducationData.css";
 import { connect } from "react-redux";
 const EducationData = props => {
-  const { edu,users,educations } = props;
+  const { edu, users, educations } = props;
   const { _id } = edu;
-  const volunteerId=users.currentUser.id
+  const volunteerId = users.currentUser.id;
   // console.log("users",props.edu._id)
-  console.log("userId",volunteerId)
-  console.log("EduId",_id)
+  console.log("userId", volunteerId);
+  console.log("EduId", _id);
   const dispatch = useDispatch();
   const handleDelete = event => {
-    if (window.confirm("Are You Sure To Delete This")){
+    if (window.confirm("Are You Sure To Delete This")) {
       event.stopPropagation();
       const token = localStorage.getItem("token");
       // axios.delete(`https://take-a-step-9ca1d.firebaseio.com/educationSection/${id}.json`)
-      axios.delete(`http://localhost:4402/volunteer/deleteEducations/${volunteerId}/${_id}`,{
-            headers:{
-                'authorization':token
+      axios
+        .delete(
+          `http://localhost:4402/volunteer/deleteEducations/${volunteerId}/${_id}`,
+          {
+            headers: {
+              authorization: token
             }
-          })
+          }
+        )
         .then(response => {
           if (response.status === 200) dispatch(deleteEducation(_id));
         })
@@ -66,8 +70,7 @@ const EducationData = props => {
         <div className="body-space"></div>
         <div className="EducationSection-container-body-icon">
           <div className="EducationSection-container-body-icon-edit">
-          <EditEducation eduId={_id} />
-
+            <EditEducation eduId={_id} />
           </div>
           <div className="EducationSection-container-body-icon-delete">
             <i
@@ -84,8 +87,7 @@ const EducationData = props => {
 const mapStateToProps = state => {
   return {
     educations: state.educations,
-    users:state.Users
-
+    users: state.Users
   };
 };
-export default connect(mapStateToProps) (EducationData);
+export default connect(mapStateToProps)(EducationData);

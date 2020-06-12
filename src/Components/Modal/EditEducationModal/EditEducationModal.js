@@ -31,10 +31,6 @@ const EditEducation = props => {
   );
 
   const dispatch = useDispatch();
-  // const userId = props.match.params.id;
-  // useEffect(() => {
-  //   setState(state);
-  // }, [props.educations]);
 
   const changeHandler = e => {
     const { name, value } = e.target;
@@ -43,13 +39,18 @@ const EditEducation = props => {
       [name]: value
     }));
   };
+  const user = localStorage.getItem("user");
+  const volunteerId = JSON.parse(user).id;
+  console.log("halaaaa", selectedEducation._id);
   const submitHandler = async e => {
     e.preventDefault();
     console.log("submitted");
 
-    await dispatch(editEducation(selectedEducation.id, selectedEducation));
+    await dispatch(
+      editEducation(volunteerId, selectedEducation._id, selectedEducation)
+    );
+    console.log("alaaa", selectedEducation);
   };
-  // const educations = useSelector(state => state.educations);
 
   return (
     <div>
@@ -72,7 +73,7 @@ const EditEducation = props => {
           toggle={toggle}
           style={{ paddingLeft: "310px" }}
         >
-          Add Education
+          Edit Education
         </ModalHeader>
 
         <Form onSubmit={submitHandler}>
@@ -83,11 +84,31 @@ const EditEducation = props => {
               </Label>
               <Input
                 className="input-border"
-                type="university"
-                name="university"
+                type="select"
                 placeholder="Ex: oxford university"
-                name="university"
-              ></Input>
+                value={selectedEducation.facultyName}
+                name="facultyName"
+                onChange={changeHandler}
+              >
+                <option>Harvard University</option>
+                <option>Yale University</option>
+                <option>Northwestern University</option>
+                <option>Tsinghua University</option>
+
+                <option>Monash University</option>
+                <option>Al-Azhar University</option>
+                <option>Massachusetts Institute of Technology (MIT)</option>
+                <option>Stanford University</option>
+
+                <option>University of Oxford</option>
+                <option>EPFL</option>
+                <option>The University of Tokyo</option>
+                <option>Duke University</option>
+                <option>Cornell University</option>
+                <option>University of British Columbia</option>
+                <option>UCL</option>
+                <option>The University of Tokyo</option>
+              </Input>
             </FormGroup>
             <FormGroup>
               <Label for="examplePassword">Degree</Label>
@@ -95,19 +116,14 @@ const EditEducation = props => {
                 className="input-border"
                 type="degree"
                 name="degree"
-                // placeholder="Ex: Bachelor's"
                 value={selectedEducation.degree}
                 onChange={changeHandler}
-                // value={newUser.degree}
-                // onChange={changeHandler}
-                // value={newUser.degree}
-                // onChange={changeHandler}
               />
             </FormGroup>
 
             <FormGroup>
               <Label for="exampleDate">Graduation Date</Label>
-              <Input
+              {/* <Input
                 className="input-border"
                 type="date"
                 name="graduationYear"
@@ -115,7 +131,7 @@ const EditEducation = props => {
                 placeholder="date placeholder"
                 value={selectedEducation.graduationYear}
                 onChange={changeHandler}
-              />
+              /> */}
             </FormGroup>
 
             <FormGroup>
