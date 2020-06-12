@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { getAllComments } from "../../Redux/actions/commentActionCreator";
+import { addComments } from "../../Redux/actions/commentActionCreator";
+import { useDispatch } from "react-redux";
 
 import {
   Button,
@@ -11,14 +16,70 @@ import {
 import "./post.css";
 
 const Post = props => {
+  const { comments, currentUser } = props;
+
+  const initialFieldValues = {
+    // comment:[{body:""}  ]
+    body: ""
+  };
+  let [values, setValues] = useState(initialFieldValues);
+  const handleInputChange = e => {
+    var { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
+  const dispatch = useDispatch();
+
+  console.log("comments from props", comments);
+  useEffect(() => {
+    // const id=users.currentUser.id
+    // const token = localStorage.getItem("token");
+    axios
+      .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
+      .then(response => {
+        const comments = response.data;
+        console.log("halaaaaaaaaaaaaa", comments);
+
+        const newComment = [];
+        for (const key in comments) {
+          newComment.push({ id: key, ...comments[key] });
+        }
+        console.log("newcomment", newComment);
+        dispatch(getAllComments(newComment));
+        newComment.map(comment => {
+          console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
+        });
+        // console.log("newcomment body", newComment[0].body);
+      })
+      .catch(console.log);
+  }, [dispatch]);
+
+  const handleKeyUp = async event => {
+    const { key } = event;
+    const newComment = {
+      body: values.body
+    };
+    if (key === "Enter") {
+      const response = await axios.post(
+        "https://take-a-step-9ca1d.firebaseio.com/comment.json",
+        newComment
+      );
+      const { data } = response;
+      if (response.status === 200) props.dispatch(addComments(newComment));
+      setValues({ body: "" });
+    }
+  };
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
- 
+
   return (
     <>
       <div className="postContainer shadow">
         <div className=" pl-5 pt-3 pr-5 clearfix">
-          {/* <div className=" float-right post-ortions">...</div> */}
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
               <img
@@ -114,6 +175,10 @@ const Post = props => {
               <Input
                 placeholder="Add your comment"
                 className="mt-3 commentArea"
+                name="body"
+                value={values.body}
+                onChange={handleInputChange}
+                onKeyUp={handleKeyUp}
                 style={{
                   width: " 474px",
                   border: " 1px solid #ebc010",
@@ -122,122 +187,39 @@ const Post = props => {
               ></Input>
             </div>
           </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
+          {/* <!----> */}
+
+          {comments.length ? (
+            comments.map(comment => (
+              <div className="clearfix d-flex">
+                <div className=" float-left ">
+                  <img
+                    className="post-img mt-2 rounded-circle"
+                    src="./img/people.png"
+                  />
+                </div>
+                <div className=" ml-2 float-left ">
+                  <div className="p-2 mt-2 commentbody">
+                    <p className=" m-1">
+                      {currentUser.firstName + " " + currentUser.lastName}
+                    </p>
+                    <p className=" m-1 small">{comment.body} </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
+            ))
+          ) : (
+            <div className="ml-3 mt-3">Add Your Education Here..</div>
+          )}
         </div>
       </div>
     </>
   );
 };
-
-export default Post;
+const mapStateToProps = reduxState => {
+  return {
+    comments: reduxState.Users.comments,
+    currentUser: reduxState.Users.currentUser
+  };
+};
+export default connect(mapStateToProps)(Post);

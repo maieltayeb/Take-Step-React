@@ -30,11 +30,16 @@ export const EDIT_SKILL = "EDIT_SKILL";
 export const DELETE_SKILL = "DELETE_SKILL";
 
 /////////Malak End SKILLS//////
-////comments
+
 ////////////////////////education///////////////
 
 export const ADD_EDUCATION = "ADD_EDUCATION";
 export const REMOVE_EDU = "REMOVE_EDU";
 export const GET_EDU = "GET_EDU";
 export const EDIT_EDUCATION = "EDIT_EDUCATION";
-////////////////////////////////////////////////
+
+///////////////////////Comments/////////////////////////
+export const ADD_COMMENT = "ADD_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const GET_COMMENT = "GET_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";

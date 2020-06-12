@@ -12,6 +12,8 @@ import {
   Edit_BussinessUsers,
   Edit_VolunteerUsers,
   ADD_Job,
+  GET_COMMENT,
+  ADD_COMMENT,
   GET_Error
 } from "../actionTypes";
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   countries: [],
   timeDurationTypes: [],
   bussinessOwnerUsers: [],
+  comments: [],
   errorMessg: ""
   //   token: "jksjlkjl"
 };
@@ -76,6 +79,18 @@ export default (state = initialState, action) => {
     case GET_Error:
       newState = { ...state };
       newState.errorMessg = action.payload;
+      break;
+    case GET_COMMENT:
+      newState = { ...state };
+      newState.comments = action.payload;
+      console.log("aya", state.comments);
+      state = newState;
+      console.log("aya after", state.comments);
+      break;
+    case ADD_COMMENT:
+      newState = { ...state };
+      newState.comments = [...state.comments, action.payload];
+      state = newState;
       break;
     default:
       newState = state;
