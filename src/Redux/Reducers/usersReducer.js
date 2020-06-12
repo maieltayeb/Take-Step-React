@@ -22,21 +22,24 @@ const initialState = {
   timeDurationTypes: [],
   bussinessOwnerUsers: [],
   errorMessg: ""
-  //   token: "jksjlkjl"
+
 };
 export default (state = initialState, action) => {
   let newState;
-  //   console.log(action.type);
+
   switch (action.type) {
+
+    case Get_BussinessUsersById:
+      newState = { ...state };
+      newState.bussinessOwnerUsers = [...state.bussinessOwnerUsers ,action.payload];
+      break;
+
     case Get_BussinessUsers:
     case Get_VolunteerUsers:
       newState = { ...state };
       newState.users = action.payload;
       break;
-    case Get_BussinessUsersById:
-      newState = { ...state };
-      newState.bussinessOwnerUsers = action.payload;
-      break;
+   
     case Get_Countries:
       newState = { ...state };
       newState.countries = action.payload;

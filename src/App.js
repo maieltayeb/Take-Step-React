@@ -11,6 +11,7 @@ import HomePage from "./Pages/HomePage/Home";
 import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
+
 import {
   getAllUsersBussinessOwner,
   getAllCountries,
@@ -38,6 +39,8 @@ function App(props) {
         <Route path="/jobDetails" component={TaskSubmittedFrame} />
         //home
         <Route path="/home" component={HomePage} />
+        <Route path="/taskDetails" component={TaskDetails} />
+        
         // both users
         <Redirect from="/" exact to="welcomePage" />
       </Switch>

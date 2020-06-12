@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
 import {
   Button,
   Dropdown,
@@ -9,14 +9,64 @@ import {
   DropdownItem
 } from "reactstrap";
 import "./post.css";
-
+import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
+import TaskDetails from './../../Pages/Task-Details/Task-Details';
 const Post = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
+  const dispatch = useDispatch();
+const [arrayOfUserswhohaveJobsState,setStatearrayOfUserswhohaveJobs]=useState([])
+//const [usersIdswhohaveJobsState,setStateusersIdswhohaveJobs]=useState([])
+/*********** array of  users who have jobs********* */
+
+
+
+
+  var usersIdswhohaveJobs = [];
+
+
+ for (var i = 0; i < props.jobs.length; i++) {
+  usersIdswhohaveJobs.push(props.jobs[i].userId) 
+}
+var response;
+ useEffect(()=>{
  
+  async function getUsers(){
+for(let j=0;j<usersIdswhohaveJobs.length;j++){
+ response=await dispatch(getUserById(usersIdswhohaveJobs[j]))
+ setStatearrayOfUserswhohaveJobs(prevState => ([
+    ...prevState,
+    response
+  ]
+  ));
+}  }
+getUsers();
+ },[response,dispatch])
+
+
+
+ let userJob= props.jobs.filter((job)=>{
+    for(let i=0;i<usersIdswhohaveJobs.length;i++){
+
+      if( job.userId==usersIdswhohaveJobs[i]){
+        return job
+      }
+    }
+    
+  })
+  console.log("props",props.jobs)
+ 
+  console.log("usersJobsArray",userJob)
+ console.log("arrayOfUserswhohaveJobs",arrayOfUserswhohaveJobsState);
+   console.log("usersIdswhohaveJobsState", usersIdswhohaveJobs );
+   console.log("users from redux", props.bussinessOwnerUsers);
+
   return (
     <>
+    
       <div className="postContainer shadow">
+        {arrayOfUserswhohaveJobsState.map((user)=>( 
+          <>  
         <div className=" pl-5 pt-3 pr-5 clearfix">
           {/* <div className=" float-right post-ortions">...</div> */}
           <div style={{ display: "flex", "justify-content": "space-between" }}>
@@ -26,12 +76,14 @@ const Post = props => {
                 src="./img/people.png"
               />
               <div className="username-post ml-3">
-                <div className="mt-3 postOwnerNameStyle">aya</div>
+        <div className="mt-3 postOwnerNameStyle">{user.firstName}{user.lastName}</div>
                 <div className="ml-0 postOwnerNameStyle">
-                  Front End Developer
+               {user.jobTitle}
                 </div>
               </div>
-            </div>
+              </div>
+
+              
             <Dropdown
               isOpen={dropdownOpen}
               toggle={toggle}
@@ -46,31 +98,41 @@ const Post = props => {
               </DropdownMenu>
             </Dropdown>
           </div>
+
+
         </div>
+        
         <div
           className=" ml-5  clearfix mt-3 d-flex"
           style={{ justifyContent: "space-between" }}
-        >
+            >
           <div className=" float-left">
             <span className=" font-weight-bold">Time : </span>
-            <span className=""> 3 Days</span>
+        <span className="">Days</span>
           </div>
           <div className=" ml-5 float-left">
             <span className="font-weight-bold ">Proposals :</span>
-            <span className=""> 4</span>
+       <span className="">4</span>
           </div>
           <Button className=" applyBtn float-right">Apply</Button>
         </div>
         <div className="postBody pt-3 pr-5 pl-5  m-0">
           <p className="text-justify">
-            {" "}
+             {" "}
             is simply dummy text of the printing and typesetting industry. Lorem
             Ipsum has been the industry's standard dummy text ever since the
             1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. ….more
+            it to make a type specimen book. ….more 
+            {/* {userJob.description} */}
           </p>
         </div>
-        <div className=" reactToPost clearfix">
+      
+       
+
+
+     
+       
+        <div className=" reactToPost clearfix">   
           <div className=" ml-5 float-left">
             <span className="mt-2 mr-2">4</span>
             <span>
@@ -136,108 +198,19 @@ const Post = props => {
               </div>
             </div>
           </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img
-                className="post-img mt-2 rounded-circle"
-                src="./img/people.png"
-              />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
+         
         </div>
+        </> 
+       ))} 
       </div>
-    </>
+     </>
   );
 };
-
-export default Post;
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser,
+    jobs: reduxState.Users.jobs,
+    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers
+  };
+};
+export default connect(mapStateToProps)(Post);

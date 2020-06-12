@@ -35,14 +35,14 @@ const getAllUsersSuccess = (newUsers) => {
 };
 //////////////////////////////////////get user by id/////////////////////////////////
 export const getUserById = (id) => (dispatch) => {
-  axios
+ return axios
     .get(`http://localhost:4402/bussinessOwner/${id}`)
     .then((response) => {
       const user = response.data;
       
 
       dispatch(getUserByIdSuccess(user));
-    
+    return user;
     })
     .catch((err) => {
       console.log(err);
