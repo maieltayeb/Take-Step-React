@@ -1,5 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+
+
+import axios from "axios";
+import { getAllComments } from "../../Redux/actions/commentActionCreator";
+import { addComments } from "../../Redux/actions/commentActionCreator";
+
 import {
   Button,
   Dropdown,
@@ -15,19 +21,78 @@ const Post = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
   const dispatch = useDispatch();
+
+
+
+
+/********************comment part************************************************* */
+  const { comments, currentUser } = props;
+
+  const initialFieldValues = {
+    // comment:[{body:""}  ]
+    body: ""
+  };
+  let [values, setValues] = useState(initialFieldValues);
+  const handleInputChange = e => {
+    var { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
+ 
+
+  console.log("comments from props", comments);
+  useEffect(() => {
+    // const id=users.currentUser.id
+    // const token = localStorage.getItem("token");
+    axios
+      .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
+      .then(response => {
+        const comments = response.data;
+        console.log("halaaaaaaaaaaaaa", comments);
+
+        const newComment = [];
+        for (const key in comments) {
+          newComment.push({ id: key, ...comments[key] });
+        }
+        console.log("newcomment", newComment);
+        dispatch(getAllComments(newComment));
+        newComment.map(comment => {
+          console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
+        });
+        // console.log("newcomment body", newComment[0].body);
+      })
+      .catch(console.log);
+  }, [dispatch]);
+
+  const handleKeyUp = async event => {
+    const { key } = event;
+    const newComment = {
+      body: values.body
+    };
+    if (key === "Enter") {
+      const response = await axios.post(
+        "https://take-a-step-9ca1d.firebaseio.com/comment.json",
+        newComment
+      );
+      const { data } = response;
+      if (response.status === 200) props.dispatch(addComments(newComment));
+      setValues({ body: "" });
+    }
+  };
+
+/********************comment part************************************************* */
+
+/**********************job part******************* */
 const [arrayOfUserswhohaveJobsState,setStatearrayOfUserswhohaveJobs]=useState([])
-//const [usersIdswhohaveJobsState,setStateusersIdswhohaveJobs]=useState([])
-/*********** array of  users who have jobs********* */
-
-
-
 
   var usersIdswhohaveJobs = [];
-
-
  for (var i = 0; i < props.jobs.length; i++) {
   usersIdswhohaveJobs.push(props.jobs[i].userId) 
 }
+
 var response;
  useEffect(()=>{
  
@@ -42,9 +107,6 @@ for(let j=0;j<usersIdswhohaveJobs.length;j++){
 }  }
 getUsers();
  },[response,dispatch])
-
-
-
  let userJob= props.jobs.filter((job)=>{
     for(let i=0;i<usersIdswhohaveJobs.length;i++){
 
@@ -55,12 +117,11 @@ getUsers();
     
   })
   console.log("props",props.jobs)
- 
   console.log("usersJobsArray",userJob)
- console.log("arrayOfUserswhohaveJobs",arrayOfUserswhohaveJobsState);
+  console.log("arrayOfUserswhohaveJobs",arrayOfUserswhohaveJobsState);
    console.log("usersIdswhohaveJobsState", usersIdswhohaveJobs );
    console.log("users from redux", props.bussinessOwnerUsers);
-
+/**********************job part******************* *************************************/
   return (
     <>
     
@@ -68,7 +129,6 @@ getUsers();
         {arrayOfUserswhohaveJobsState.map((user)=>( 
           <>  
         <div className=" pl-5 pt-3 pr-5 clearfix">
-          {/* <div className=" float-right post-ortions">...</div> */}
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
               <img
@@ -176,6 +236,10 @@ getUsers();
               <Input
                 placeholder="Add your comment"
                 className="mt-3 commentArea"
+                name="body"
+                value={values.body}
+                onChange={handleInputChange}
+                onKeyUp={handleKeyUp}
                 style={{
                   width: " 474px",
                   border: " 1px solid #ebc010",
@@ -199,6 +263,30 @@ getUsers();
             </div>
           </div>
          
+          {/* <!----> */}
+
+          {comments.length ? (
+            comments.map(comment => (
+              <div className="clearfix d-flex">
+                <div className=" float-left ">
+                  <img
+                    className="post-img mt-2 rounded-circle"
+                    src="./img/people.png"
+                  />
+                </div>
+                <div className=" ml-2 float-left ">
+                  <div className="p-2 mt-2 commentbody">
+                    <p className=" m-1">
+                      {currentUser.firstName + " " + currentUser.lastName}
+                    </p>
+                    <p className=" m-1 small">{comment.body} </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="ml-3 mt-3">Add Your Education Here..</div>
+          )}
         </div>
         </> 
        ))} 
@@ -210,7 +298,9 @@ const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
-    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers
+    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
+    comments: reduxState.Users.comments,
+  
   };
 };
 export default connect(mapStateToProps)(Post);

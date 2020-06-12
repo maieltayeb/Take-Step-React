@@ -43,10 +43,15 @@ export const addEducation = education => {
 // };
 /////----------------------------------------------------------//////
 export const editEducation = (volunteerId, eduId,newUser) => dispatch => {
+  const token = localStorage.getItem("token");
   axios
     .patch(
       `http://localhost:4402/volunteer/EditEducation/${volunteerId}/${eduId}`,
-      newUser
+      newUser,{
+        headers:{
+            'authorization':token
+        }
+      }
     )
     .then(res => {
 
