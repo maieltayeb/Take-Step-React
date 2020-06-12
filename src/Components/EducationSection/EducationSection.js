@@ -50,6 +50,7 @@ const EducationSection = props => {
     // GetAllEducation()
 
     const id=users.currentUser.id
+    console.log("id from section",id)
     const token = localStorage.getItem("token");
     Axios.get(`http://localhost:4402/volunteer/getEduWithVol/${id}`,{
       headers:{
