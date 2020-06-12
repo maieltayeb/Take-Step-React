@@ -35,6 +35,7 @@ export default (state = initialState, action) => {
     case Get_BussinessUsersById:
       newState = { ...state };
       newState.bussinessOwnerUsers = [...state.bussinessOwnerUsers ,action.payload];
+      console.log("newstats///////////",newState);
       break;
 
     case Get_BussinessUsers:

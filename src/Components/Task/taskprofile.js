@@ -15,9 +15,7 @@ const TaskProfile = props => {
     <>
       <div className="profile-postContainer m-4 rounded">
         <div className=" pl-5 p-3  clearfix">
-          {/* <p className="ml-0 mt-3  profile-postOwnerNameStyle float-left">
-            Front End Developer
-          </p> */}
+        
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>
               <img className="post-img  rounded-circle" src="/img/people.png" />
@@ -63,19 +61,13 @@ const TaskProfile = props => {
           </p>
         </div>
         <div className=" profile-reactToPost clearfix">
-          <div className=" ml-5 float-left">
-            <span className="mt-2 mr-2">4</span>
-            <span>
-              <i className=" mb-3 fas fa-thumbs-up"></i>
-            </span>
-            {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
-          </div>
+         
           <div className=" ml-5 float-left">
             <span className="mt-2 mr-2">5</span>
             <span>
               <i className=" mb-3 fas fa-comment-alt"></i>
             </span>
-            {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+        
           </div>
         </div>
         <div className="profile-postCommentBody shadow-sm p-4 mb-4 bg-white">
@@ -85,14 +77,14 @@ const TaskProfile = props => {
               <span>
                 <i className=" ml-3  mb-3 fas fa-thumbs-up"></i>
               </span>
-              {/* <img className="mb-3" src="./img/like.png"/> */}
+          
             </div>
             <div className=" ml-4 float-left">
               <span>Comment</span>
               <span>
                 <i className=" ml-3  mb-3 fas fa-comment-alt"></i>
               </span>
-              {/* <img className="mb-2 d-inline"  src="./img/comment.png"/> */}
+            
             </div>
           </div>
           <div className="clearfix d-flex">

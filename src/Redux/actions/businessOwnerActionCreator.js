@@ -42,7 +42,7 @@ export const getUserById = (id) => (dispatch) => {
       
 
       dispatch(getUserByIdSuccess(user));
-    return user;
+    //return user;
     })
     .catch((err) => {
       console.log(err);
