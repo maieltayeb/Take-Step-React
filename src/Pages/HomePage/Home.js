@@ -46,9 +46,10 @@ const HomePageOwner = props => {
           <Col xs="6">
             {props.currentUser.paymentData && <CreateTask />}
 
-            {props.jobs.map(item => (
+             {/* {props.jobs.map(item => (  */}
               <Post></Post>
-            ))}
+              
+        {/* //  ))}    */}
             {/* <Post></Post>  */}
           </Col>
           <Col
