@@ -60,17 +60,21 @@ export const editEducation = (volunteerId, eduId,newUser) => dispatch => {
       //   ...data,
       //   id: data.name
       // };
-      // console.log("user//////////////////////////////", user, data);
-      dispatch(editEducationSuccess(data));
+
+      console.log("user//",res.data.updatedEducation._id);
+       const user=res.data.updatedEducation;
+      dispatch(editEducationSuccess(res.data.updatedEducation));
+     
     })
     .catch(err => {
       console.log(err);
     });
 };
 
+
 const editEducationSuccess = User => {
+  console.log("user",User)
   return { type: EDIT_EDUCATION, payload: User };
 };
-
 
 
