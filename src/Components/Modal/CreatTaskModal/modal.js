@@ -23,7 +23,7 @@ const ModalCreateTask = props => {
     jobTitle: "",
     proposals: 0,
     timeDurationNumber: 0,
-    timeDurationType: "-M9KPxn7IdfbVJRO2I0p",
+    timeDurationType: "Days",
     description: "",
     userId: props.currentUser.id
   });
@@ -71,12 +71,13 @@ const ModalCreateTask = props => {
             />
             <a>
               {props.currentUser.firstName}
+              &nbsp;&nbsp;
               {props.currentUser.lastName}
             </a>
           </div>
           <div style={{ marginLeft: "60px", marginTop: "20px" }}>
             <Form style={{ width: "100%" }} onSubmit={handleSubmit} id="form">
-              <FormGroup row>
+              {/* <FormGroup row>
                 <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
                 <Col sm={10}>
                   <Input
@@ -86,7 +87,7 @@ const ModalCreateTask = props => {
                     onChange={handleChange}
                   />
                 </Col>
-              </FormGroup>
+              </FormGroup> */}
 
               <FormGroup row>
                 <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
@@ -120,7 +121,7 @@ const ModalCreateTask = props => {
                     onChange={handleChange}
                   >
                     {props.timeDurationTypes.map(item => (
-                      <option key={item.id} value={item.id}>
+                      <option key={item.id} value={item.durationType}>
                         {item.durationType}
                       </option>
                     ))}

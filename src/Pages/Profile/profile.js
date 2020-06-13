@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Toast, ToastBody, ToastHeader, Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import InProgressTaskCard from "../../Components/Card/InProgressTaskCard/inprogresstaskcard";
@@ -30,7 +30,6 @@ const Profile = (props) => {
                       My Jobs
                     </ToastHeader>
                     <ToastBody className="p-0">
-                      <TaskProfile></TaskProfile>
                       <TaskProfile></TaskProfile>
                     </ToastBody>
                   </Toast>
@@ -95,6 +94,5 @@ const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
   };
-  console.log(reduxState.Users.currentUser);
 };
 export default connect(mapStateToProps)(Profile);

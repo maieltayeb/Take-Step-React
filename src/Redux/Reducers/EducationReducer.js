@@ -20,8 +20,10 @@ const EducationReducer = (state = initialState, action) => {
       case EDIT_EDUCATION:
         // newState = state.map(edu => edu.id === action.payload.id);
         newState = state.map(edu =>
-          edu.id === action.payload.id ? action.payload : edu
+          edu.id === action.payload ? action.payload : edu
         );
+        console.log("action.payload",action.payload)
+
         break;
 
     default:
