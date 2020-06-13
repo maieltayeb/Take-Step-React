@@ -71,9 +71,9 @@ const ModalCreateTask = props => {
             />
             <a>
               {props.currentUser.firstName}
+              &nbsp;&nbsp;
               {props.currentUser.lastName}
             </a>
-           
           </div>
           <div style={{ marginLeft: "60px", marginTop: "20px" }}>
             <Form style={{ width: "100%" }} onSubmit={handleSubmit} id="form">

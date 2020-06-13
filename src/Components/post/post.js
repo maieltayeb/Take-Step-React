@@ -4,38 +4,37 @@ import { connect, useDispatch } from "react-redux";
 import axios from "axios";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
-
 import {
   Button,
   Dropdown,
   Input,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
+  DropdownItem
 } from "reactstrap";
 import "./post.css";
 import Job from "./job";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 import TaskDetails from "./../../Pages/Task-Details/Task-Details";
-const Post = (props) => {
+const Post = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
   const dispatch = useDispatch();
 
   /********************comment part************************************************* */
-  const { comments, currentUser ,jobs, bussinessOwnerUsers} = props;
+  const { comments, currentUser, jobs, bussinessOwnerUsers } = props;
 
   const initialFieldValues = {
     // comment:[{body:""}  ]
-    body: "",
+    body: ""
   };
   let [values, setValues] = useState(initialFieldValues);
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     var { name, value } = e.target;
 
     setValues({
       ...values,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -45,7 +44,7 @@ const Post = (props) => {
     // const token = localStorage.getItem("token");
     axios
       .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
-      .then((response) => {
+      .then(response => {
         const comments = response.data;
         console.log("halaaaaaaaaaaaaa", comments);
 
@@ -55,7 +54,7 @@ const Post = (props) => {
         }
         console.log("newcomment", newComment);
         dispatch(getAllComments(newComment));
-        newComment.map((comment) => {
+        newComment.map(comment => {
           console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
         });
         // console.log("newcomment body", newComment[0].body);
@@ -63,10 +62,10 @@ const Post = (props) => {
       .catch(console.log);
   }, [dispatch]);
 
-  const handleKeyUp = async (event) => {
+  const handleKeyUp = async event => {
     const { key } = event;
     const newComment = {
-      body: values.body,
+      body: values.body
     };
     if (key === "Enter") {
       const response = await axios.post(
@@ -84,96 +83,66 @@ const Post = (props) => {
   /**********************job part******************* */
   const [
     arrayOfUserswhohaveJobsState,
-    setStatearrayOfUserswhohaveJobs,
+    setStatearrayOfUserswhohaveJobs
   ] = useState([]);
 
- 
-
   useEffect(() => {
-  
-
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
- 
-   
+
     userIds.forEach(userId => dispatch(getUserById(userId)));
+  }, [jobs, dispatch]);
 
-     
-    
-   
-  }, [jobs,dispatch]);
-
-
-  
   return (
-    
     <>
-      
-        {(jobs.slice(0).reverse()).map((job) => {
+      {jobs
+        .slice(0)
+        .reverse()
+        .map(job => {
           const user = bussinessOwnerUsers.find(u => u.id === job.userId);
           return (
-          <>
-           <div className="postContainer shadow">
-              <Job user={user} job={job}></Job>
-            
-            <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
-              <div className=" reactToPost ml-2 mb-0 clearfix">
-                <div className=" ml-3 float-left">
-                  <span>Like</span>
-                  <span>
-                    <i class=" ml-3  mb-3 fas fa-thumbs-up"></i>
-                  </span>
-               
-                </div>
-                <div className=" ml-4 float-left">
-                  <span>Comment</span>
-                  <span>
-                    <i class=" ml-3  mb-3 fas fa-comment-alt"></i>
-                  </span>
-              
-                </div>
-              </div>
-              <div className="clearfix comment-container">
-                <div className=" float-left ">
-                  <img
-                    className="mt-3 post-img rounded-circle"
-                    src="./img/people.png"
-                  />
-                </div>
-                <div className=" ml-2 float-left ">
-                  <Input
-                    placeholder="Add your comment"
-                    className="mt-3 commentArea"
-                    name="body"
-                    value={values.body}
-                    onChange={handleInputChange}
-                    onKeyUp={handleKeyUp}
-                    style={{
-                      width: " 474px",
-                      border: " 1px solid #ebc010",
-                      "border-radius": " 50px",
-                    }}
-                  ></Input>
-                </div>
-              </div>
-              <div className="clearfix d-flex">
-                <div className=" float-left ">
-                  <img
-                    className="post-img mt-2 rounded-circle"
-                    src="./img/people.png"
-                  />
-                </div>
-                <div className=" ml-2 float-left ">
-                  <div className="p-2 mt-2 commentbody">
-                    <p className=" m-1">Aya Rabea</p>
-                    <p className=" m-1 small">My comment here...</p>
+            <>
+              <div className="postContainer shadow">
+                <Job user={user} job={job}></Job>
+
+                <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
+                  <div className=" reactToPost ml-2 mb-0 clearfix">
+                    <div className=" ml-3 float-left">
+                      <span>Like</span>
+                      <span>
+                        <i class=" ml-3  mb-3 fas fa-thumbs-up"></i>
+                      </span>
+                    </div>
+                    <div className=" ml-4 float-left">
+                      <span>Comment</span>
+                      <span>
+                        <i class=" ml-3  mb-3 fas fa-comment-alt"></i>
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-
-              {comments.length ? (
-                comments.map((comment) => (
+                  <div className="clearfix comment-container">
+                    <div className=" float-left ">
+                      <img
+                        className="mt-3 post-img rounded-circle"
+                        src="./img/people.png"
+                      />
+                    </div>
+                    <div className=" ml-2 float-left ">
+                      <Input
+                        placeholder="Add your comment"
+                        className="mt-3 commentArea"
+                        name="body"
+                        value={values.body}
+                        onChange={handleInputChange}
+                        onKeyUp={handleKeyUp}
+                        style={{
+                          width: " 474px",
+                          border: " 1px solid #ebc010",
+                          "border-radius": " 50px"
+                        }}
+                      ></Input>
+                    </div>
+                  </div>
                   <div className="clearfix d-flex">
                     <div className=" float-left ">
                       <img
@@ -183,33 +152,50 @@ const Post = (props) => {
                     </div>
                     <div className=" ml-2 float-left ">
                       <div className="p-2 mt-2 commentbody">
-                        <p className=" m-1">
-                          {currentUser.firstName + " " + currentUser.lastName}
-                        </p>
-                        <p className=" m-1 small">{comment.body} </p>
+                        <p className=" m-1">Aya Rabea</p>
+                        <p className=" m-1 small">My comment here...</p>
                       </div>
                     </div>
                   </div>
-                ))
-              ) : (
-                <div className="ml-3 mt-3">Add Your Education Here..</div>
-              )}
-             </div>
 
-             </div>
-             </>)
-              }
-               )}
-     
+                  {comments.length ? (
+                    comments.map(comment => (
+                      <div className="clearfix d-flex">
+                        <div className=" float-left ">
+                          <img
+                            className="post-img mt-2 rounded-circle"
+                            src="./img/people.png"
+                          />
+                        </div>
+                        <div className=" ml-2 float-left ">
+                          <div className="p-2 mt-2 commentbody">
+                            <p className=" m-1">
+                              {currentUser.firstName +
+                                " " +
+                                currentUser.lastName}
+                            </p>
+                            <p className=" m-1 small">{comment.body} </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="ml-3 mt-3">Add Your Education Here..</div>
+                  )}
+                </div>
+              </div>
+            </>
+          );
+        })}
     </>
   );
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
-    comments: reduxState.Users.comments,
+    comments: reduxState.Users.comments
   };
 };
 export default connect(mapStateToProps)(Post);
