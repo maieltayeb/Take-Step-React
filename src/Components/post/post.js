@@ -107,17 +107,17 @@ const Post = props => {
 
                 <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
                   <div className=" reactToPost ml-2 mb-0 clearfix">
-                    <div className=" ml-3 float-left">
+                    {/* <div className=" ml-3 float-left">
                       <span>Like</span>
                       <span>
                         <i class=" ml-3  mb-3 fas fa-thumbs-up"></i>
                       </span>
-                    </div>
-                    <div className=" ml-4 float-left">
-                      <span>Comment</span>
+                    </div> */}
+                    <div className="float-left">
                       <span>
-                        <i class=" ml-3  mb-3 fas fa-comment-alt"></i>
+                        <i class=" m-1  mr-2 fas fa-comment-alt"></i>
                       </span>
+                      <span>Comment</span>
                     </div>
                   </div>
                   <div className="clearfix comment-container">

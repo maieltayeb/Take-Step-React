@@ -14,6 +14,7 @@ import {
   ADD_Job,
   GET_COMMENT,
   ADD_COMMENT,
+  ADD_Task,
   GET_Error
 } from "../actionTypes";
 const initialState = {
@@ -24,18 +25,20 @@ const initialState = {
   timeDurationTypes: [],
   bussinessOwnerUsers: [],
   comments: [],
+  tasks: [],
   errorMessg: ""
-
 };
 export default (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
-
     case Get_BussinessUsersById:
       newState = { ...state };
-      newState.bussinessOwnerUsers = [...state.bussinessOwnerUsers ,action.payload];
-      console.log("newstats///////////",newState);
+      newState.bussinessOwnerUsers = [
+        ...state.bussinessOwnerUsers,
+        action.payload
+      ];
+      console.log("newstats///////////", newState);
       break;
 
     case Get_BussinessUsers:
@@ -43,7 +46,7 @@ export default (state = initialState, action) => {
       newState = { ...state };
       newState.users = action.payload;
       break;
-   
+
     case Get_Countries:
       newState = { ...state };
       newState.countries = action.payload;
@@ -79,6 +82,10 @@ export default (state = initialState, action) => {
     case ADD_Job:
       newState = { ...state };
       newState.jobs = [...state.jobs, action.payload];
+      break;
+    case ADD_Task:
+      newState = { ...state };
+      newState.tasks = [...state.tasks, action.payload];
       break;
     case GET_Error:
       newState = { ...state };
