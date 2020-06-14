@@ -42,25 +42,27 @@ export const addEducation = education => {
 //   return { type: EDIT_OwnerUser, payload: newUser };
 // };
 /////----------------------------------------------------------//////
-export const editEducation = (volunteerId, eduId,newUser) => dispatch => {
+export const editEducation = (volunteerId, eduId, newUser) => dispatch => {
   const token = localStorage.getItem("token");
   axios
     .patch(
       `http://localhost:4402/volunteer/EditEducation/${volunteerId}/${eduId}`,
-      newUser,{
-        headers:{
-            'authorization':token
+      newUser,
+      {
+        headers: {
+          authorization: token
         }
       }
     )
     .then(res => {
-
       const { data } = res;
       // const user = {
       //   ...data,
       //   id: data.name
       // };
-      // console.log("user//////////////////////////////", user, data);
+
+      // console.log("user//",res.data.updatedEducation._id);
+      //  const user=res.data.updatedEducation;
       dispatch(editEducationSuccess(data));
     })
     .catch(err => {
@@ -69,8 +71,6 @@ export const editEducation = (volunteerId, eduId,newUser) => dispatch => {
 };
 
 const editEducationSuccess = User => {
+  console.log("user", User);
   return { type: EDIT_EDUCATION, payload: User };
 };
-
-
-

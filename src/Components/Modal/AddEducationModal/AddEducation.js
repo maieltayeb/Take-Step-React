@@ -17,8 +17,9 @@ import {
 import "./AddEducation.css";
 
 const AddEducation = props => {
-  const{users}=props
+  const{users,educations}=props
   const CurrentVolunteerId=users.currentUser.id;
+  // const id=educations._id;
   console.log("currentVolunteerId",CurrentVolunteerId)
   const initialFieldValues = {
     volunteerId:"",
@@ -40,7 +41,7 @@ const AddEducation = props => {
   // const {id}=props.match.params.id
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log("kkkkkkkkkkkk");
+    // console.log("kkkkkkkkkkkk");
      console.log("currentVolunteerId",CurrentVolunteerId)
     const newEdu = {
       volunteerId:CurrentVolunteerId,
@@ -59,10 +60,12 @@ const AddEducation = props => {
       }
   });
     const { data } = response;
-    console.log(response)
-    newEdu.id = data.name;
+    console.log("response afer addd",response)
+    // newEdu.id = data.id;
+    // console.log("new eduId",newEdu.id)
     if (response.status === 200) {
-      props.dispatch(addEducation(newEdu));
+      console.log("respone",response.data.newEducation)
+      props.dispatch(addEducation(response.data.newEducation));
       // toggle();
       setValues({
         facultyName: "",
@@ -73,7 +76,10 @@ const AddEducation = props => {
     }
   };
 
-  const { buttonLabel, className } = props;
+
+
+//////////////////////////////////////////////////////
+  const { buttonLabel, className} = props;
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -103,18 +109,20 @@ const AddEducation = props => {
         <Form autoComplete="off" onSubmit={handleSubmit} >
           <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
             <FormGroup>
-              <Label className="lab-size" for="exampleEmail">
+              <Label className="lab-size" for="eduFaculty">
                 University
               </Label>
               <Input
                 className="input-border"
                 type="select"
                 // name="university"
-                placeholder="Ex: oxford university"
+                id="eduFaculty"
+                // placeholder="Ex: oxford university"
                 value={values.facultyName}
                 name="facultyName"
                 onChange={handleInputChange}
               >
+                {/* <option></option> */}
                 <option>Harvard University</option>
                 <option>Yale University</option>
                 <option>Northwestern University</option>
@@ -143,8 +151,7 @@ const AddEducation = props => {
                 placeholder="Ex: Bachelor's"
                 value={values.degree}
                 name="degree"
-                onChange={handleInputChange}
-                
+                onChange={handleInputChange} 
               />
             </FormGroup>
 
@@ -175,6 +182,7 @@ const AddEducation = props => {
                 name="grade"
                 onChange={handleInputChange}
               >
+                <option></option>
                 <option>Excellent</option>
                 <option>Very good</option>
                 <option>Good</option>
@@ -220,7 +228,9 @@ const AddEducation = props => {
 };
 const mapStateToProps = state => {
   return {
-    users:state.Users
+    users:state.Users,
+    educations:state.educations
+
   };
 };
 const mapDispatchToProps = dispatch => {

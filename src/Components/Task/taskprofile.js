@@ -1,118 +1,86 @@
-import React, { useState } from "react";
-import {
-  Input,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import React, { useState, useEffect } from "react";
+import { Input } from "reactstrap";
 import "./taskprofile.css";
+import JobProfile from "./jobProfile";
+import { connect } from "react-redux";
 const TaskProfile = props => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { jobs } = props;
+  const [jobsCurrentUserState, setStateJobsCurrentUser] = useState([]);
 
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  useEffect(() => {
+    let jobsCurrentUser = jobs.filter(
+      job => job.userId === props.currentUser.id
+    );
+    setStateJobsCurrentUser(jobsCurrentUser);
+  }, [jobs]);
+  // console.log(jobsCurrentUserState, "jobs");
+
   return (
     <>
-      <div className="profile-postContainer m-4 rounded">
-        <div className=" pl-5 p-3  clearfix">
-        
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>
-              <img className="post-img  rounded-circle" src="/img/people.png" />
-              <div className="username-post ml-3">
-                <div className="mt-3 postOwnerNameStyle">Aya Rabea</div>
-                <div className="ml-0 postOwnerNameStyle">
-                  Front End Developer
+      {jobsCurrentUserState.length ? (
+        jobsCurrentUserState.map(item => (
+          <div className="profile-postContainer m-4 rounded">
+            <JobProfile job={item}></JobProfile>
+
+            <div className="profile-postCommentBody shadow-sm p-4 mb-4 bg-white">
+              <div className=" profile-reactToPost ml-2 clearfix">
+                {/* <div className=" ml-3 float-left">
+                  <span>Like</span>
+                  <span>
+                    <i className=" ml-3  mb-3 fas fa-thumbs-up"></i>
+                  </span>
+                </div> */}
+                <div className="float-left">
+                  <span>
+                    <i class=" m-1  mr-2 fas fa-comment-alt"></i>
+                  </span>
+                  <span>Comment</span>
+                </div>
+              </div>
+              <div className="clearfix d-flex">
+                <div className=" float-left ">
+                  <img className=" img rounded-circle" src="/img/people.png" />
+                </div>
+                <div className=" ml-2 float-left ">
+                  <Input
+                    placeholder="Add your comment"
+                    className="mt-3 profile-commentArea"
+                    style={{
+                      width: "550px",
+                      border: " 1px solid #ebc010",
+                      borderRadius: "50px"
+                    }}
+                  ></Input>
+                </div>
+              </div>
+              <div className="clearfix d-flex">
+                <div className=" float-left ">
+                  <img
+                    className="img mt-2 rounded-circle"
+                    src="/img/people.png"
+                  />
+                </div>
+                <div className=" ml-2 float-left ">
+                  <div className="p-2 mt-2 profile-commentbody">
+                    <p className=" m-1">Aya Rabea</p>
+                    <p className=" m-1 small">My comment here...</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <Dropdown
-              isOpen={dropdownOpen}
-              toggle={toggle}
-              style={{ display: "flex", justifyContent: "flex-end" }}
-            >
-              <DropdownToggle style={{ background: "none", border: "none" }}>
-                <div className="post-ortions">...</div>
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
           </div>
-        </div>
-        <div className=" ml-5  clearfix">
-          <div className=" float-left">
-            <span className=" font-weight-bold">Time : </span>
-            <span className=""> 3 Days</span>
-          </div>
-          <div className=" ml-5 float-left">
-            <span className="font-weight-bold ">Proposals :</span>
-            <span className=""> 4</span>
-          </div>
-        </div>
-        <div className="profile-postBody">
-          <p className="p-5 m-0  text-justify">
-            {" "}
-            is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. ….more
-          </p>
-        </div>
-        <div className=" profile-reactToPost clearfix">
-         
-          <div className=" ml-5 float-left">
-            <span className="mt-2 mr-2">5</span>
-            <span>
-              <i className=" mb-3 fas fa-comment-alt"></i>
-            </span>
-        
-          </div>
-        </div>
-        <div className="profile-postCommentBody shadow-sm p-4 mb-4 bg-white">
-          <div className=" profile-reactToPost ml-2 clearfix">
-            <div className=" ml-3 float-left">
-              <span>Like</span>
-              <span>
-                <i className=" ml-3  mb-3 fas fa-thumbs-up"></i>
-              </span>
-          
-            </div>
-            <div className=" ml-4 float-left">
-              <span>Comment</span>
-              <span>
-                <i className=" ml-3  mb-3 fas fa-comment-alt"></i>
-              </span>
-            
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img className=" img rounded-circle" src="/img/people.png" />
-            </div>
-            <div className=" ml-2 float-left ">
-              <Input
-                placeholder="Add your comment"
-                className="mt-3 profile-commentArea"
-              ></Input>
-            </div>
-          </div>
-          <div className="clearfix d-flex">
-            <div className=" float-left ">
-              <img className="img mt-2 rounded-circle" src="/img/people.png" />
-            </div>
-            <div className=" ml-2 float-left ">
-              <div className="p-2 mt-2 profile-commentbody">
-                <p className=" m-1">Aya Rabea</p>
-                <p className=" m-1 small">My comment here...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        ))
+      ) : (
+        <div className="profile-postCommentBody  p-4 mb-4">No Jobs to show</div>
+      )}
     </>
   );
 };
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser,
+    jobs: reduxState.Users.jobs
+  };
+};
 
-export default TaskProfile;
+export default connect(mapStateToProps)(TaskProfile);

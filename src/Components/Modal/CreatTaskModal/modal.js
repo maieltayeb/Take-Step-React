@@ -25,7 +25,8 @@ const ModalCreateTask = props => {
     timeDurationNumber: 0,
     timeDurationType: "Days",
     description: "",
-    userId: props.currentUser.id
+    userId: props.currentUser.id,
+    tasks: []
   });
   const handleChange = e => {
     const { name, value } = e.target;
@@ -71,9 +72,9 @@ const ModalCreateTask = props => {
             />
             <a>
               {props.currentUser.firstName}
+              &nbsp;&nbsp;
               {props.currentUser.lastName}
             </a>
-           
           </div>
           <div style={{ marginLeft: "60px", marginTop: "20px" }}>
             <Form style={{ width: "100%" }} onSubmit={handleSubmit} id="form">

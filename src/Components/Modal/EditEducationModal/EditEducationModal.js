@@ -27,12 +27,14 @@ const EditEducation = props => {
   // console.log("education from edit", educations[0].degree);
   const toggle = () => setModal(!modal);
   const [selectedEducation, setSelectedEducation] = useState(
+    
     educations.find(education => education._id === eduId)
   );
 
   const dispatch = useDispatch();
 
   const changeHandler = e => {
+
     const { name, value } = e.target;
     setSelectedEducation(prevState => ({
       ...prevState,
@@ -41,16 +43,18 @@ const EditEducation = props => {
   };
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
-  console.log("halaaaa", selectedEducation._id);
+  // console.log("here",selectedEducation)
   const submitHandler = async e => {
     e.preventDefault();
     console.log("submitted");
 
     await dispatch(
       editEducation(volunteerId, selectedEducation._id, selectedEducation)
+      
     );
-    console.log("alaaa", selectedEducation);
+    console.log("alaaa", selectedEducation.facultyName);
   };
+  console.log("halaaaa", selectedEducation._id);
 
   return (
     <div>
@@ -59,7 +63,6 @@ const EditEducation = props => {
         onClick={toggle}
         style={{ cursor: "pointer" }}
       ></i>
-
       <Modal
         style={{ width: "720px" }}
         className="modal-structure"
@@ -79,22 +82,22 @@ const EditEducation = props => {
         <Form onSubmit={submitHandler}>
           <ModalBody style={{ width: "720px", backgroundColor: "#f2f2f2" }}>
             <FormGroup>
-              <Label className="lab-size" for="exampleEmail">
+              <Label for="eduFaculty" className="lab-size" >
                 University
               </Label>
               <Input
                 className="input-border"
                 type="select"
-                placeholder="Ex: oxford university"
+                id="eduFaculty"
                 value={selectedEducation.facultyName}
                 name="facultyName"
                 onChange={changeHandler}
               >
+                {/* <option></option> */}
                 <option>Harvard University</option>
                 <option>Yale University</option>
                 <option>Northwestern University</option>
                 <option>Tsinghua University</option>
-
                 <option>Monash University</option>
                 <option>Al-Azhar University</option>
                 <option>Massachusetts Institute of Technology (MIT)</option>
@@ -123,7 +126,7 @@ const EditEducation = props => {
 
             <FormGroup>
               <Label for="exampleDate">Graduation Date</Label>
-              {/* <Input
+              <Input
                 className="input-border"
                 type="date"
                 name="graduationYear"
@@ -131,7 +134,7 @@ const EditEducation = props => {
                 placeholder="date placeholder"
                 value={selectedEducation.graduationYear}
                 onChange={changeHandler}
-              /> */}
+              />
             </FormGroup>
 
             <FormGroup>
@@ -144,6 +147,7 @@ const EditEducation = props => {
                 value={selectedEducation.grade}
                 onChange={changeHandler}
               >
+                <option></option>
                 <option>Excellent</option>
                 <option>Very good</option>
                 <option>Good</option>

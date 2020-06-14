@@ -12,11 +12,11 @@ import { withRouter } from "react-router-dom";
 const EducationSection = props => {
   // const { edus } = props;
   console.log(props.educations);
-  const { educations,users} = props;
+  const { educations, users } = props;
   const dispatch = useDispatch();
   useEffect(() => {
     // Axios.get("https://take-a-step-9ca1d.firebaseio.com/educationSection.json")
-    
+
     //  const GetAllEducation = async function() {
     //   const token = localStorage.getItem("token");
     //   const { data } = await Axios.get(`http://localhost:4402/volunteer/getEdu/${id}`,{
@@ -37,35 +37,36 @@ const EducationSection = props => {
     //   //  }S
     //   //  console.log("arraaaay of education:",myEducations)
     //   //  }
-    
-  
-  
+
     //   }
     //   console.log("newEdu",myEducations)
 
     //   return data;
 
     // };
-    
+
     // GetAllEducation()
 
-    const id=users.currentUser.id
-    console.log("id from section",id)
+    const user = localStorage.getItem("user");
+    const id = JSON.parse(user).id;
+
+    // const id=users.currentUser.id
+    console.log("id from section", id);
     const token = localStorage.getItem("token");
-    Axios.get(`http://localhost:4402/volunteer/getEduWithVol/${id}`,{
-      headers:{
-          'authorization':token
+    Axios.get(`http://localhost:4402/volunteer/getEduWithVol/${id}`, {
+      headers: {
+        authorization: token
       }
     })
       .then(response => {
         const educations = response.data;
-        console.log("educations",educations)
+        console.log("educations", educations);
         const newEducations = [];
         for (const key in educations) {
-          newEducations.push({ id: key, ...educations[key] });
+          newEducations.push({ _id: key, ...educations[key] });
         }
         dispatch(getAllEducation(newEducations));
-        console.log("educations from react",newEducations);
+        console.log("educations from react", newEducations);
       })
       .catch(console.log);
   }, [dispatch]);
@@ -84,9 +85,11 @@ const EducationSection = props => {
         </div>
       </div>
       {educations.length ? (
-        educations.map(edu => <EducationData key={edu._id} {...edu} edu={edu} />)
+        educations.map(edu => (
+          <EducationData key={edu._id} {...edu} edu={edu} />
+        ))
       ) : (
-        <div className="ml-3 mt-3"  >Add Your Education Here..</div>
+        <div className="ml-3 mt-3">Add Your Education Here..</div>
       )}
       {/* <EducationData /> */}
     </div>
@@ -95,9 +98,8 @@ const EducationSection = props => {
 const mapStateToProps = state => {
   return {
     educations: state.educations,
-    users:state.Users
-
+    users: state.Users
   };
 };
 
-export default  connect(mapStateToProps) (withRouter(EducationSection));
+export default connect(mapStateToProps)(withRouter(EducationSection));
