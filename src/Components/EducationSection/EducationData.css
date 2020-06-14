@@ -2,8 +2,8 @@
   width: 60%;
   background-color: #f8f8f4;
   margin-left: 20px;
-  /* height: auto; */
-  min-height:200px ;
+  height: auto;
+  min-height: 200px;
   max-height: fit-content;
 }
 /*****************top*****************************/
@@ -14,9 +14,9 @@
   text-align: left;
   display: flex;
 }
-.space {
+/* .space {
   width: 77%;
-}
+} */
 .EducationSection-container-top-h6 {
   margin-right: 10px;
   margin-left: 4px;
@@ -32,17 +32,18 @@
   padding: 10px;
   display: flex;
   height: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 50px;
   padding-bottom: 30px;
 }
-
 .EducationSection-container-body-img {
   width: 20%;
+  margin-left: 35px;
+  margin-top: 5px;
 }
-.body-space {
+/* .body-space {
   width: 37%;
-}
+} */
 /* .EducationSection-container-body-info{
        
        } */
@@ -51,18 +52,23 @@
 }
 
 .EducationSection-container-body-icon {
-  display: flex;
+  margin-right: 30px;
   color: #ebc010;
 }
 .EducationSection-container-body-icon-edit {
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 /************************bottom***********************************/
-.post-bottom {
+/* .post-bottom {
   padding: 10px;
   display: flex;
 }
 .post-bottom-camera {
   margin-left: 20px;
   margin-right: 10px;
+} */
+.EducationSection-container-body-info {
+  margin-left: -2%;
+  word-wrap: break-word;
+  /* padding: 10px; */
 }

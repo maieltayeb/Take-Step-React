@@ -39,11 +39,14 @@ const EducationData = props => {
       <div className="EducationSection-container-body">
         <div className="EducationSection-container-body-img">
           <img
-            src="/img/itilogo.png"
-            style={{ "border-radius": "50%", width: "80%" }}
+            src="/img/university.jpg"
+            style={{ "border-radius": "50%", width: "60px", height: "60px" }}
           />
         </div>
-        <div className="EducationSection-container-body-info">
+        <div
+          className="EducationSection-container-body-info"
+          style={{ width: "60%" }}
+        >
           <div className="EducationSection-container-body-info-title">
             {props.facultyName}
           </div>
