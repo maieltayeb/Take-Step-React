@@ -80,7 +80,7 @@ class SubscribeCard extends Component {
           </div>
           <div className="subscribeCard-bottom">
             <button className={btnClasses.join(" ")}>
-              Select plan &#8594;
+            <a style={{textDecoration:"none",color:"#000000"}} href="/signUp"> Select plan &#8594;</a> 
             </button>
           </div>
      

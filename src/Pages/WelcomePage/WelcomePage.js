@@ -40,7 +40,10 @@ class WelcomePage extends Component {
           >
             <OurCategoeyCard name={"Web Development"}  nameTwo={"Mobile Development"}
              description={"Find Web Developers on Take Step ,the leading freelancing website for short-term"}
-              descriptionTwo={"Find Mob Developers on Take Step ,the leading freelancing website for short-term"}/>
+              descriptionTwo={"Find Mob Developers on Take Step ,the leading freelancing website for short-term"}
+              srcc={"/img/computerweb.png "}
+              srccc={"/img/mobile.png"}
+              />
           </Row>
           <Row
             style={{
@@ -51,6 +54,8 @@ class WelcomePage extends Component {
             className="mb-5"
           >
             <OurCategoeyCard name={"Web & Mobile Design"} nameTwo={"QA & Testing"} 
+                      srcc={"/img/mobandcomp.png"}
+                      srccc={"/img/setting.png"}
             descriptionTwo={"Find Testers on Take Step ,the leading freelancing website for short-term"}
              description={"Find Web Designers on Take Step ,the leading freelancing website for short-term"} />
           </Row>
