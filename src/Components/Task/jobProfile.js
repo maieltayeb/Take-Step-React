@@ -74,7 +74,7 @@ const JobProfile = props => {
       </div>
 
       <div className=" reactToPost clearfix">
-        <div className=" ml-5 float-left">
+        <div className=" ml-4 float-left">
           <span className="mt-2 mr-2">5</span>
           <span>
             <i class=" mb-3 fas fa-comment-alt"></i>
