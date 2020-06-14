@@ -16,10 +16,9 @@ const OurCategoeyCard = (props) => {
         <Card className=" cardCategory" style={{ "border-bottom-right-radius": "3.25rem"}} >
           <img  className="imgcardCategory " width="100%" src="/img/ux.jpg" alt="Card image cap" />
           <CardBody>
-          <CardTitle>Card title</CardTitle> 
+  <CardTitle style={{"fontFamily":"bold"}}>{props.name}</CardTitle> 
             <CardText className="text-center m-0">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+             {props.description}
             </CardText>
           </CardBody>
         </Card>
@@ -31,10 +30,9 @@ const OurCategoeyCard = (props) => {
         <Card className=" cardCategory" style={{ "border-bottom-left-radius": "3.25rem"}} >
           <img  className="imgcardCategory " width="100%" src="/img/ux.jpg" alt="Card image cap" />
           <CardBody>
-          <CardTitle>Card title</CardTitle> 
+  <CardTitle style={{"fontFamily":"bold"}}>{props.nameTwo}</CardTitle> 
             <CardText className="text-center m-0">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            {props.descriptionTwo}
             </CardText>
           </CardBody>
         </Card>

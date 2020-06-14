@@ -8,9 +8,10 @@ const Header = (props) => {
         <Container fluid>
           <h1 className="display-4">Take your step</h1>
           <p className="leead1">
-            This is a modified jumbotron that occupies the
+          Take Step connects volunteers  and agencies 
+           
             <br />
-            entire horizontal space of its parent.
+            to businesses    seeking specialized talent with little cost.
           </p>
           <button outline className="secondary">
             Get started

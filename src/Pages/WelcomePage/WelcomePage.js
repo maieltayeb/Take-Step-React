@@ -38,7 +38,9 @@ class WelcomePage extends Component {
               "justify-content": "center"
             }}
           >
-            <OurCategoeyCard />
+            <OurCategoeyCard name={"Web Development"}  nameTwo={"Mobile Development"}
+             description={"Find Web Developers on Take Step ,the leading freelancing website for short-term"}
+              descriptionTwo={"Find Mob Developers on Take Step ,the leading freelancing website for short-term"}/>
           </Row>
           <Row
             style={{
@@ -48,7 +50,9 @@ class WelcomePage extends Component {
             }}
             className="mb-5"
           >
-            <OurCategoeyCard />
+            <OurCategoeyCard name={"Web & Mobile Design"} nameTwo={"QA & Testing"} 
+            descriptionTwo={"Find Testers on Take Step ,the leading freelancing website for short-term"}
+             description={"Find Web Designers on Take Step ,the leading freelancing website for short-term"} />
           </Row>
         </Container>
 
@@ -81,10 +85,12 @@ class WelcomePage extends Component {
                   Start your plan
                 </h1>
                 <p className="lead text-center text-dark">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy
-                  <br /> eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam
+                   Choose the offering that works best for you,
+                you can select among our Subscriptions plans 
+                  <br /> 
+                  Free , Plus and Premium as shown below .
+                
+      
                 </p>
               </Container>
             </Jumbotron>
