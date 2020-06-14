@@ -14,9 +14,9 @@ const OurCategoeyCard = (props) => {
     "padding-bottom": "9px",backgroundColor:"#494848","padding-right": "8px",
     "padding-left": "8px"}}>
         <Card className=" cardCategory" style={{ "border-bottom-right-radius": "3.25rem"}} >
-          <img  className="imgcardCategory " width="100%" src="/img/ux.jpg" alt="Card image cap" />
+          <img  className="imgcardCategory " width="100%" src={props.srcc} alt="Card image cap" />
           <CardBody>
-  <CardTitle style={{"fontFamily":"bold"}}>{props.name}</CardTitle> 
+  <CardTitle style={{"fontFamily":"bold"}}><b>{props.name}</b></CardTitle> 
             <CardText className="text-center m-0">
              {props.description}
             </CardText>
@@ -28,9 +28,9 @@ const OurCategoeyCard = (props) => {
     "padding-bottom": "9px",backgroundColor:"#494848","padding-right": "8px",
     "padding-left": "8px"}}>
         <Card className=" cardCategory" style={{ "border-bottom-left-radius": "3.25rem"}} >
-          <img  className="imgcardCategory " width="100%" src="/img/ux.jpg" alt="Card image cap" />
+          <img  className="imgcardCategory " width="100%" src={props.srccc} alt="Card image cap" />
           <CardBody>
-  <CardTitle style={{"fontFamily":"bold"}}>{props.nameTwo}</CardTitle> 
+  <CardTitle style={{"fontFamily":"bold"}}><b>{props.nameTwo}</b></CardTitle> 
             <CardText className="text-center m-0">
             {props.descriptionTwo}
             </CardText>
