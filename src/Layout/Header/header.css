@@ -46,9 +46,12 @@
   width: 500px; */
   /* position: absolute; */
   z-index: 2;
-  background-image: url("/img/header-photo.png");
+
+  background-image: url("/img/img-header.png");
+
   margin-right: 100px;
   background-size: cover;
+  background-position: center;
 }
 .display-4 {
   font-size: 40 px;
