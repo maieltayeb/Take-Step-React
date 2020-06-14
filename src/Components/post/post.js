@@ -143,7 +143,7 @@ const Post = props => {
                       ></Input>
                     </div>
                   </div>
-                  <div className="clearfix d-flex">
+                  {/* <div className="clearfix d-flex">
                     <div className=" float-left ">
                       <img
                         className="post-img mt-2 rounded-circle"
@@ -156,7 +156,7 @@ const Post = props => {
                         <p className=" m-1 small">My comment here...</p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {comments.length ? (
                     comments.map(comment => (
