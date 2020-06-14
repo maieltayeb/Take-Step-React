@@ -13,9 +13,10 @@ const HowITWork = (props) => {
               <p className="m-0 text-light"> How it work ?</p>
             </div>
             <p className="Ques-ans text-center mt-5">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt
-              <br /> ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            Just create your account , chosse what you want to be  <br /> 
+            Volunteer or bussiness-owner and become one of our community
+             
+             
             </p>
           </Container>
         </Jumbotron>

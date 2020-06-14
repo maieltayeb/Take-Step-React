@@ -9,36 +9,43 @@ class SubscribeCardsSection extends Component {
         type: "Free",
         Price: "0.00",
         advatages: [
-          "Untill 10 FreeTask ",
-          "Proposals Filtering",
-          "enjoy with Free Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try"
+          "Create Untill 5 Tasks Free",
+          "Filter Volunteer Proposals",
+         
+       
+          "Assign Tasks to Volunteer",
+          "Rate  Volunteer Proposals",
+          "Show B-Owners  Profiles",
+          "Show Volunteer  Profiles",
         ]
       },
       {
         type: "Plus",
-        Price: "199.00",
+        Price: "99.00",
         advatages: [
-          "Untill 50 FreeTask ",
-          "Proposals Filtering",
-          "enjoy with Plus Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try"
+          "Create Untill 20 Tasks Free",
+         
+          "Filter Volunteer Proposals",
+         
+       
+          "Assign Tasks to Volunteer",
+          "Rate  Volunteer Proposals",
+          "Show B-Owners  Profiles",
+          "Show Volunteer  Profiles",
         ]
       },
       {
         type: "Premium",
-        Price: "500.00",
+        Price: "199.00",
         advatages: [
-          "Untill 100 FreeTask ",
-          "Proposals Filtering",
-          "enjoy with Pre Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try",
-          "enjoy with Free Try"
+          "Create Untill 50 Tasks Free",
+          "Filter Volunteer Proposals",
+         
+       
+          "Assign Tasks to Volunteer",
+          "Rate  Volunteer Proposals",
+          "Show B-Owners  Profiles",
+          "Show Volunteer  Profiles",
         ]
       }
     ]
@@ -47,15 +54,15 @@ class SubscribeCardsSection extends Component {
     return (
       <>
         <div className="containerdiv"> 
-        {this.state.SubscribeTypes.map(subCard => {
-          return (
+        {/* {this.state.SubscribeTypes.map(subCard => {
+          return ( */}
             <SubscribeCard
-              type={subCard.type}
-              price={subCard.Price}
-              advatages={subCard.advatages}
+              // type={subCard.type}
+              // price={subCard.Price}
+              // advatages={subCard.advatages}
             />
-          );
-        })}
+          {/* );
+        })} */}
         </div> 
       </>
     );

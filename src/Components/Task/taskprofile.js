@@ -24,17 +24,17 @@ const TaskProfile = props => {
 
             <div className="profile-postCommentBody shadow-sm p-4 mb-4 bg-white">
               <div className=" profile-reactToPost ml-2 clearfix">
-                <div className=" ml-3 float-left">
+                {/* <div className=" ml-3 float-left">
                   <span>Like</span>
                   <span>
                     <i className=" ml-3  mb-3 fas fa-thumbs-up"></i>
                   </span>
-                </div>
-                <div className=" ml-4 float-left">
-                  <span>Comment</span>
+                </div> */}
+                <div className="float-left">
                   <span>
-                    <i className=" ml-3  mb-3 fas fa-comment-alt"></i>
+                    <i class=" m-1  mr-2 fas fa-comment-alt"></i>
                   </span>
+                  <span>Comment</span>
                 </div>
               </div>
               <div className="clearfix d-flex">

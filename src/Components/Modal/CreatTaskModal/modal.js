@@ -25,7 +25,8 @@ const ModalCreateTask = props => {
     timeDurationNumber: 0,
     timeDurationType: "Days",
     description: "",
-    userId: props.currentUser.id
+    userId: props.currentUser.id,
+    tasks: []
   });
   const handleChange = e => {
     const { name, value } = e.target;
