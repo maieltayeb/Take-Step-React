@@ -32,11 +32,10 @@ const SignUp = props => {
     password: "",
     firstName: "",
     lastName: "",
-    country: "5edab5034b7a063de0203607",
-   
+    country: "5edab5034b7a063de0203607"
   });
   const [stateStatus, setSatateStatus] = useState(false);
-  const [stateError,setStateError]=useState(false)
+  const [stateError, setStateError] = useState(false);
   const handleChange = e => {
     const { name, value } = e.target;
     setState(prevState => ({
@@ -59,44 +58,47 @@ const SignUp = props => {
   const handleClick = e => {
     if (e.target.textContent === "Bussiness Owner") {
       setSatateStatus(true);
+      setState(prevState => ({
+        ...prevState,
+        paymentData: {
+          ...prevState.paymentData,
+          cardNum: 58888888886569,
+          secretNum: 546,
+          phone: "01222222222",
+          total: 800
+        }
+      }));
     } else {
       setSatateStatus(false);
     }
   };
-let response;
+  let response;
 
-/*******handel submit*************** */
-   const handleValidSubmit = async (event, values) => {
+  /*******handel submit*************** */
+  const handleValidSubmit = async (event, values) => {
     console.log("values", values);
     event.preventDefault();
     console.log("state", state);
     debugger;
     if (stateStatus) {
       dispatch(getAllUsersBussinessOwner());
-    response= await dispatch(SignupBussinessOwner(state));
-   
-      if (response !=" email already exist!" ) {
+      response = await dispatch(SignupBussinessOwner(state));
+
+      if (response != " email already exist!") {
         history.push("/logIn");
-      }else if(response==" email already exist!" ){
-      
-       
-          
-        setStateError(true)
+      } else if (response == " email already exist!") {
+        setStateError(true);
       }
-     
     } else if (!stateStatus) {
       dispatch(getAllVolunteers());
-      response= await  dispatch(SignupVolunteers(state));
-      if (response !=" email already exist!" ) {
+      response = await dispatch(SignupVolunteers(state));
+      if (response != " email already exist!") {
         history.push("/logIn");
-      }else if(response==" email already exist!" ){
-      
-        setStateError(true)
-
-      } 
+      } else if (response == " email already exist!") {
+        setStateError(true);
+      }
     }
   };
-
 
   return (
     <>
@@ -129,7 +131,7 @@ let response;
               className="input-field"
               style={{ paddingLeft: "3rem" }}
             />
-            {stateError&& (
+            {stateError && (
               <Alert color="danger">this email Already exist !!</Alert>
             )}
           </FormGroup>{" "}
@@ -182,7 +184,6 @@ let response;
                 pattern: { value: "^[A-Za-z0-9]+$" },
                 minLength: { value: 4 }
               }}
-           
               onChange={handleChange}
               type="password"
               name="password"
@@ -240,15 +241,16 @@ let response;
               <FormGroup className="input-icons">
                 <i class="far fa-credit-card icon text-primary"></i>
                 <AvField
-                  errorMessage="Invalid  card num  must be 12 number "
-                  validate={{
-                    required: { value: true },
+                  // errorMessage="Invalid  card num  must be 12 number "
+                  // validate={{
+                  //   required: { value: true },
 
-                    minLength: { value: 12 },
-                    maxLength: { value: 12 }
-                  }}
+                  //   minLength: { value: 12 },
+                  //   maxLength: { value: 12 }
+                  // }}
                   min="1"
-                  onChange={handlePaymentChange}
+                  // onChange={handlePaymentChange}
+                  disabled
                   type="Number"
                   name="cardNum"
                   id="exampleEmail"
@@ -260,17 +262,18 @@ let response;
 
               <FormGroup className="input-icons">
                 <i class="fas fa-key icon text-warning"></i>
-            
-                <AvField
-                  errorMessage="Invalid secret num must be 3  numbers "
-                  validate={{
-                    required: { value: true },
 
-                    minLength: { value: 3 },
-                    maxLength: { value: 4 }
-                  }}
+                <AvField
+                  // errorMessage="Invalid secret num must be 3  numbers "
+                  // validate={{
+                  //   required: { value: true },
+
+                  //   minLength: { value: 3 },
+                  //   maxLength: { value: 4 }
+                  // }}
                   min="0"
-                  onChange={handlePaymentChange}
+                  // onChange={handlePaymentChange}
+                  disabled
                   type="Number"
                   name="secretNum"
                   id="exampleEmail"
@@ -284,15 +287,16 @@ let response;
                 <i class="fas fa-phone-alt icon text-secondary"></i>
 
                 <AvField
-                  errorMessage="Invalid phone number must be 11 number "
-                  validate={{
-                    required: { value: true },
+                  // errorMessage="Invalid phone number must be 11 number "
+                  // validate={{
+                  //   required: { value: true },
 
-                    minLength: { value: 11 },
-                    maxlength: { value: 13 }
-                  }}
+                  //   minLength: { value: 11 },
+                  //   maxlength: { value: 13 }
+                  // }}
+                  disabled
                   min="0"
-                  onChange={handlePaymentChange}
+                  // onChange={handlePaymentChange}
                   type="Number"
                   name="phone"
                   id="phone"
@@ -306,7 +310,8 @@ let response;
                 <i class="fas fa-money-bill-wave icon text-success"></i>
 
                 <Input
-                  onChange={handlePaymentChange}
+                  // onChange={handlePaymentChange}
+                  disabled
                   type="Number"
                   name="total"
                   min="1"

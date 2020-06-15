@@ -14,7 +14,6 @@ import {
   ADD_Job,
   GET_COMMENT,
   ADD_COMMENT,
-  ADD_Task,
   GET_Error
 } from "../actionTypes";
 const initialState = {
@@ -25,7 +24,7 @@ const initialState = {
   timeDurationTypes: [],
   bussinessOwnerUsers: [],
   comments: [],
-  tasks: [],
+
   errorMessg: ""
 };
 export default (state = initialState, action) => {
@@ -82,10 +81,6 @@ export default (state = initialState, action) => {
     case ADD_Job:
       newState = { ...state };
       newState.jobs = [...state.jobs, action.payload];
-      break;
-    case ADD_Task:
-      newState = { ...state };
-      newState.tasks = [...state.tasks, action.payload];
       break;
     case GET_Error:
       newState = { ...state };

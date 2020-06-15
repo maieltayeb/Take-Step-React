@@ -11,15 +11,10 @@ import {
 } from "reactstrap";
 import "./post.css";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
-import { addTask } from "../../Redux/actions/volunteerActionCreator";
+
 const Job = props => {
   const { currentUser, jobs, bussinessOwnerUsers } = props;
-  const [setTask, setStateTask] = useState({
-    userId: currentUser.id,
-    status: "in progress",
-    link: "",
-    imgUrl: ""
-  });
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
   const dispatch = useDispatch();
@@ -28,10 +23,7 @@ const Job = props => {
     userIds = [...new Set(userIds)];
     userIds.forEach(userId => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
-  const handleClick = () => {
-    dispatch(addTask(setTask));
-  };
-  //  const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+
   return (
     <>
       <div className=" pl-5 pt-3 pr-5 clearfix">
@@ -81,9 +73,7 @@ const Job = props => {
           <span className="font-weight-bold ">Proposals :</span>
           <span className="">&nbsp;{props.job && props.job.proposals}</span>
         </div>
-        <Button className=" applyBtn float-right" onClick={handleClick}>
-          Apply
-        </Button>
+        <Button className=" applyBtn float-right">Apply</Button>
       </div>
       <div className="postBody pt-3 pr-5 pl-5  m-0">
         <p className="text-justify">{props.job && props.job.description}</p>

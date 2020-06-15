@@ -20,7 +20,6 @@ const ModalCreateTask = props => {
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
   const [state, setState] = useState({
-    jobTitle: "",
     proposals: 0,
     timeDurationNumber: 0,
     timeDurationType: "Days",

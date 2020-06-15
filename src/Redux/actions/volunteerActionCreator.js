@@ -4,8 +4,8 @@ import {
   post_SignUp_VolunteerUsers,
   Get_VolunteerUsers,
   GET_Error,
-  Edit_VolunteerUsers,
-  ADD_Task
+  Edit_VolunteerUsers
+  // ADD_Task
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllVolunteers = () => dispatch => {
@@ -97,17 +97,17 @@ const EditSuccess = user => {
   return { type: Edit_VolunteerUsers, payload: user };
 };
 /////////////////////////////////////apply task/////////////////////////////////////
-export const addTask = newTask => dispatch => {
-  axios
-    .post("https://take-a-step-9ca1d.firebaseio.com/tasks.json", newTask)
-    .then(response => {
-      const { data } = response;
-      newTask.id = data.name;
-      if (response.status === 200) dispatch(addTaskSuccess(newTask));
-    })
-    .catch(console.log);
-};
+// export const addTask = newTask => dispatch => {
+//   axios
+//     .post("https://take-a-step-9ca1d.firebaseio.com/tasks.json", newTask)
+//     .then(response => {
+//       const { data } = response;
+//       newTask.id = data.name;
+//       if (response.status === 200) dispatch(addTaskSuccess(newTask));
+//     })
+//     .catch(console.log);
+// };
 
-const addTaskSuccess = task => {
-  return { type: ADD_Task, payload: task };
-};
+// const addTaskSuccess = task => {
+//   return { type: ADD_Task, payload: task };
+// };
