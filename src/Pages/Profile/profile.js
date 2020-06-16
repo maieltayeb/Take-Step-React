@@ -9,11 +9,12 @@ import EducationSection from "../../Components/EducationSection/EducationSection
 import Portflio from "../../Components/Portflio/Portflio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
-
+import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
 const Profile = props => {
   return (
     <div>
-      <InsideNav></InsideNav>
+      {/* <InsideNav></InsideNav> */}
+      <ProfileNavbar></ProfileNavbar>
       {/* <NavProf></NavProf> */}
       <PersonalInfo></PersonalInfo>
       <Container>
