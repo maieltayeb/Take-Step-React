@@ -22,14 +22,9 @@ const InProgressTaskCard = (props) => {
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   useEffect(() => {
-    if (state.timeDurationNumber) {
-      state.status = "inprogress";
-      dispatch(AddTasksToVol(volunteerId, state));
-    }
-
     dispatch(getTasksByVolId(volunteerId));
     console.log(state);
-  }, [dispatch]);
+  }, []);
 
   return (
     <div>
