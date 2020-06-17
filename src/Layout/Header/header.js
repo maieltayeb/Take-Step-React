@@ -8,10 +8,9 @@ const Header = (props) => {
         <Container fluid>
           <h1 className="display-4">Take your step</h1>
           <p className="leead1">
-          Take Step connects volunteers  and agencies 
-           
+            Take Step connects volunteers and agencies
             <br />
-            to businesses    seeking specialized talent with little cost.
+            to businesses seeking specialized talent with little cost.
           </p>
           <button outline className="secondary">
             Get started

@@ -22,14 +22,15 @@ export const DELETE_OwnerUser = "DELETE_OwnerUser";
 /////////Malak Start SKILLS//////
 export const ADD_SKILL = "ADD_SKILL";
 export const ADD_SKILL__SEC_UPDATE = " ADD_SKILL__SEC_UPDATE";
-
 export const GET_SKILL_BY_ID = " GET_SKILL_BY_ID";
 export const GET_SKILL_USER_SKILLS = "GET_SKILL_USER_SKILLS";
 export const GET_Array_OF_SKILLS = "GET_Array_OF_SKILLS";
-
 export const EDIT_SKILL = "EDIT_SKILL";
 export const DELETE_SKILL = "DELETE_SKILL";
 
+export const GET_TASK_BY_ID = "GET_TASK_BY_ID";
+export const ADD_NEW_TASK = "ADD_NEW_TASK";
+export const GET_VOL_TASKS = "GET_VOL_TASKS";
 /////////Malak End SKILLS//////
 
 ////////////////////////education///////////////

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
 import {
@@ -7,31 +7,38 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from "reactstrap";
 import "./post.css";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 import { addTask } from "../../Redux/actions/volunteerActionCreator";
-const Job = props => {
+import { getTaskById } from "./../../Redux/actions/InprogressActionCreator";
+const Job = (props) => {
   const { currentUser, jobs, bussinessOwnerUsers } = props;
   const [setTask, setStateTask] = useState({
     userId: currentUser.id,
     status: "in progress",
     link: "",
-    imgUrl: ""
+    imgUrl: "",
   });
+  const [applyButton, setStateApplyButton] = useState(props.job.enabled);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
   const dispatch = useDispatch();
   useEffect(() => {
-    let userIds = jobs.map(job => job.userId);
+    let userIds = jobs.map((job) => job.userId);
     userIds = [...new Set(userIds)];
-    userIds.forEach(userId => dispatch(getUserById(userId)));
+    userIds.forEach((userId) => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
-  const handleClick = () => {
-    dispatch(addTask(setTask));
+  const handleClick = (taskID) => {
+    // debugger;
+    // dispatch(addTask(setTask));
+    // props.job.enabled = false;
+    // e.target.Style.backgroundColor = "#6c757d";
+    setStateApplyButton(!applyButton);
+    dispatch(getTaskById(taskID));
   };
-  //  const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+
   return (
     <>
       <div className=" pl-5 pt-3 pr-5 clearfix">
@@ -71,7 +78,7 @@ const Job = props => {
         style={{ justifyContent: "space-between" }}
       >
         <div className=" float-left">
-          <span className=" font-weight-bold">Time : </span>
+          <span className=" font-weight-bold">Deadline : </span>
           <span className="">
             {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
             {props.job && props.job.timeDurationType}
@@ -81,9 +88,23 @@ const Job = props => {
           <span className="font-weight-bold ">Proposals :</span>
           <span className="">&nbsp;{props.job && props.job.proposals}</span>
         </div>
-        <Button className=" applyBtn float-right" onClick={handleClick}>
-          Apply
-        </Button>
+        {!applyButton ? (
+          <Button
+            style={{ backgroundColor: "#6c757d" }}
+            disabled
+            className=" applyBtn float-right"
+            onClick={() => handleClick(props.job.id)}
+          >
+            Applied
+          </Button>
+        ) : (
+          <Button
+            className=" applyBtn float-right"
+            onClick={() => handleClick(props.job.id)}
+          >
+            Apply
+          </Button>
+        )}
       </div>
       <div className="postBody pt-3 pr-5 pl-5  m-0">
         <p className="text-justify">{props.job && props.job.description}</p>
@@ -109,11 +130,11 @@ const Job = props => {
   );
 };
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
-    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers
+    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
   };
 };
 export default connect(mapStateToProps)(Job);

@@ -10,12 +10,12 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
 } from "reactstrap";
 import { addJob } from "../../../Redux/actions/businessOwnerActionCreator";
 import "./modal.css";
 
-const ModalCreateTask = props => {
+const ModalCreateTask = (props) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
@@ -23,21 +23,22 @@ const ModalCreateTask = props => {
     jobTitle: "",
     proposals: 0,
     timeDurationNumber: 0,
-    timeDurationType: "Days",
+    // timeDurationType: "Days",
     description: "",
     userId: props.currentUser.id,
-    tasks: []
+    enabled: true,
+    tasks: [],
   });
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
   console.log("type", props.timeDurationTypes);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
     dispatch(addJob(state));
@@ -67,7 +68,7 @@ const ModalCreateTask = props => {
               style={{
                 width: "10%",
                 borderRadius: "50%",
-                marginRight: "20px"
+                marginRight: "20px",
               }}
             />
             <a>
@@ -91,6 +92,15 @@ const ModalCreateTask = props => {
               </FormGroup> */}
 
               <FormGroup row>
+                <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+                <Col sm={10}>
+                  <Input
+                    type="text"
+                    name="jobTitle"
+                    id="jobTitle"
+                    onChange={handleChange}
+                  />
+                </Col>
                 <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
                 <Col sm={4}>
                   <Input
@@ -103,19 +113,20 @@ const ModalCreateTask = props => {
                     onChange={handleChange}
                   />
                 </Col>
-                <Label for="Time">Task Duration:</Label>
-                <Col sm={2}>
+                <Label for="Time">Task Deadline:</Label>
+                <Col sm={4}>
                   <Input
-                    type="number"
+                    // type="number"
                     name="timeDurationNumber"
                     id="Time"
+                    type="date"
                     // value="0"
-                    min="1"
+                    // min="1"
                     onChange={handleChange}
                   ></Input>
                 </Col>
                 <Col style={{ paddingRight: "28px" }}>
-                  <Input
+                  {/* <Input
                     type="select"
                     name="timeDurationType"
                     id="exampleSelect"
@@ -126,7 +137,7 @@ const ModalCreateTask = props => {
                         {item.durationType}
                       </option>
                     ))}
-                  </Input>
+                  </Input> */}
                 </Col>
               </FormGroup>
 
@@ -181,10 +192,10 @@ const ModalCreateTask = props => {
     </div>
   );
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
-    timeDurationTypes: reduxState.Users.timeDurationTypes
+    timeDurationTypes: reduxState.Users.timeDurationTypes,
   };
 };
 export default connect(mapStateToProps)(ModalCreateTask);
