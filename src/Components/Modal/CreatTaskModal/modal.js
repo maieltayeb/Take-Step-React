@@ -10,7 +10,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input,DropdownItem
 } from "reactstrap";
 import { addJob } from "../../../Redux/actions/businessOwnerActionCreator";
 import "./modal.css";
@@ -39,12 +39,13 @@ const ModalCreateTask = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
-    dispatch(addJob(state));
+    console.log("submitaddddddddddddddddd");
+     dispatch(addJob(state));
   };
   return (
     <div>
       <p onClick={toggle}> What's your Task ?</p>
+  
       <Modal
         className="modalShap"
         isOpen={modal}
