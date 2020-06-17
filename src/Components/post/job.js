@@ -15,12 +15,12 @@ import { addTask } from "../../Redux/actions/volunteerActionCreator";
 import { getTaskById } from "./../../Redux/actions/InprogressActionCreator";
 const Job = (props) => {
   const { currentUser, jobs, bussinessOwnerUsers } = props;
-  const [setTask, setStateTask] = useState({
-    userId: currentUser.id,
-    status: "in progress",
-    link: "",
-    imgUrl: "",
-  });
+  // const [setTask, setStateTask] = useState({
+  //   userId: currentUser.id,
+  //   status: "in progress",
+  //   link: "",
+  //   imgUrl: "",
+  // });
   const [applyButton, setStateApplyButton] = useState(props.job.enabled);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);

@@ -1,28 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-
 import axios from "axios";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
-import {
-  Button,
-  Dropdown,
-  Input,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import { Input } from "reactstrap";
 import "./post.css";
 import Job from "./job";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
-import TaskDetails from "./../../Pages/Task-Details/Task-Details";
-const Post = props => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-  const dispatch = useDispatch();
 
+const Post = props => {
+  const { search } = props;
+  let { comments, currentUser, jobs, bussinessOwnerUsers } = props;
+  const dispatch = useDispatch();
+  const [stateJobs, setStateJobs] = useState([]);
   /********************comment part************************************************* */
-  const { comments, currentUser, jobs, bussinessOwnerUsers } = props;
 
   const initialFieldValues = {
     // comment:[{body:""}  ]
@@ -81,21 +72,27 @@ const Post = props => {
   /********************comment part************************************************* */
 
   /**********************job part******************* */
-  const [
-    arrayOfUserswhohaveJobsState,
-    setStatearrayOfUserswhohaveJobs
-  ] = useState([]);
 
   useEffect(() => {
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
-
     userIds.forEach(userId => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
+  useEffect(() => {
+    setStateJobs(jobs);
+    if (search !== "") {
+      jobs = jobs.filter(job =>
+        job.description.toLowerCase().includes(search.toLowerCase())
+      );
+      setStateJobs(jobs);
+    }
+    console.log("jobs", jobs);
+  }, [search, jobs]);
+  console.log("statjobs", stateJobs);
 
   return (
     <>
-      {jobs
+      {stateJobs
         .slice(0)
         .reverse()
         .map(job => {

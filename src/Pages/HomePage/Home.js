@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import CreateTask from "./CreateTaskSection/createTask";
@@ -6,13 +6,15 @@ import Post from "./../../Components/post/post";
 import OwnerProfileCard from "./../../Components/Card/BusinessOwnerProfileCard/OwnerProfileCard";
 import Ads from "../../Components/ads/ads";
 import InsideNav from "./../../Layout/Navbar/insidenav";
-
 const HomePageOwner = props => {
   console.log(props.currentUser.paymentData);
-
+  const [stateSearch, setStateSearch] = useState("");
+  const handleChange = e => {
+    setStateSearch(e.target.value);
+  };
   return (
     <>
-      <InsideNav />
+      <InsideNav handleChange={handleChange} />
       <Container
         style={{
           maxWidth: "1500px",
@@ -46,10 +48,10 @@ const HomePageOwner = props => {
           <Col xs="6">
             {props.currentUser.paymentData && <CreateTask />}
 
-             {/* {props.jobs.map(item => (  */}
-              <Post></Post>
-              
-        {/* //  ))}    */}
+            {/* {props.jobs.map(item => (  */}
+            <Post search={stateSearch}></Post>
+
+            {/* //  ))}    */}
             {/* <Post></Post>  */}
           </Col>
           <Col
