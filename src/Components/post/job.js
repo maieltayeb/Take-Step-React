@@ -18,12 +18,7 @@ import {
 } from "./../../Redux/actions/InprogressActionCreator";
 const Job = (props) => {
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
-  // const [setTask, setStateTask] = useState({
-  //   userId: currentUser.id,
-  //   status: "in progress",
-  //   link: "",
-  //   imgUrl: "",
-  // });
+
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   const [applyButton, setStateApplyButton] = useState(props.job.enabled);
@@ -35,20 +30,13 @@ const Job = (props) => {
     userIds = [...new Set(userIds)];
     userIds.forEach((userId) => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
-  const handleClick = async (taskID) => {
-    console.log(taskID);
-    debugger;
-    // const id = JSON.parse(taskID);
-    setStateApplyButton(!applyButton);
-    if (taskID) {
-      await dispatch(getTaskById(taskID));
-      debugger;
 
-      console.log(props);
-    }
-    // if (inprogState.timeDurationNumber) {
-    //   inprogState.status = "inprogress";
-    await dispatch(AddTasksToVol(volunteerId, state));
+  const handleClick = (taskID) => {
+    console.log(taskID);
+
+    setStateApplyButton(!applyButton);
+
+    dispatch(AddTasksToVol(volunteerId, taskID));
     // }
   };
 
@@ -149,7 +137,7 @@ const mapStateToProps = (reduxState) => {
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
 
-    state: reduxState.Inprogress,
+    state: reduxState.Inprogress.newTask,
   };
 };
 export default connect(mapStateToProps)(Job);
