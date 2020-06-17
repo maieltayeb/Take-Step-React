@@ -22,18 +22,19 @@ import {
 import "./post.css";
 import { getUserById ,DeleteJob} from "../../Redux/actions/businessOwnerActionCreator";
 import { addTask } from "../../Redux/actions/volunteerActionCreator";
-import { getTaskById } from "./../../Redux/actions/InprogressActionCreator";
-import ModalEditJob from "./../../Components/Modal/EditJobModal/editjobModal";
+import {
+  getTaskById,
+  AddTasksToVol,
+} from "./../../Redux/actions/InprogressActionCreator";
 const Job = (props) => {
-  const { currentUser, jobs, bussinessOwnerUsers } = props;
+  const { currentUser, jobs, bussinessOwnerUsers, state } = props;
+  /********modal***** */
   const [modal, setModal] = useState(false);
   const togglemodal = () => setModal(!modal);
-  // const [setTask, setStateTask] = useState({
-  //   userId: currentUser.id,
-  //   status: "in progress",
-  //   link: "",
-  //   imgUrl: "",
-  // });
+/********modal***** */
+
+  const user = localStorage.getItem("user");
+  const volunteerId = JSON.parse(user).id;
   const [applyButton, setStateApplyButton] = useState(props.job.enabled);
   const [dropdownOpen, setDropdownOpen] = useState(false);
  
@@ -44,14 +45,16 @@ const Job = (props) => {
     userIds = [...new Set(userIds)];
     userIds.forEach((userId) => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
+
   const handleClick = (taskID) => {
-    // debugger;
-    // dispatch(addTask(setTask));
-    // props.job.enabled = false;
-    // e.target.Style.backgroundColor = "#6c757d";
+    console.log(taskID);
+
     setStateApplyButton(!applyButton);
-    dispatch(getTaskById(taskID));
+
+    dispatch(AddTasksToVol(volunteerId, taskID));
+    // }
   };
+  /************handel delete job**************** */
   const handelDeleteJob=(jobId)=>{
     if(currentUser.id===props.job.userId){
         dispatch(DeleteJob(props.job.id))
@@ -59,12 +62,17 @@ const Job = (props) => {
         alert("you can't delete this job")
       }
   }
+   /************handel delete job**************** */
+   /*************handel edit job************** */
   const handelEditJob=()=>{}
+
+   /*************handel modal  job************** */
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitEdit");
    // dispatch(EditJob(state));
   };
+   /*************handel modal change ************* */
   const handleChange = (e) => {
     // const { name, value } = e.target;
     // setState((prevState) => ({
@@ -321,6 +329,8 @@ const mapStateToProps = (reduxState) => {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
+
+    state: reduxState.Inprogress.newTask,
   };
 };
 export default connect(mapStateToProps)(Job);
