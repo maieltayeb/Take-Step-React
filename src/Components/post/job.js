@@ -175,18 +175,6 @@ const Job = props => {
                         onSubmit={handleSubmit}
                         id="form"
                       >
-                        {/* <FormGroup row>
-          <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
-          <Col sm={10}>
-            <Input
-              type="text"
-              name="jobTitle"
-              placeholder="write task title "
-              onChange={handleChange}
-            />
-          </Col>
-        </FormGroup> */}
-
                         <FormGroup row className="m-3">
                           <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
                           <Col sm={10} className="mb-3">
@@ -293,40 +281,39 @@ const Job = props => {
               </DropdownMenu>
             </Dropdown>
           </div>
-
-          <div
-            className=" ml-5  clearfix mt-3 d-flex"
-            style={{ justifyContent: "space-between" }}
-          >
-            <div className=" float-left">
-              <span className=" font-weight-bold">Deadline : </span>
-              <span className="">
-                {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
-                {props.job && props.job.timeDurationType}
-              </span>
-            </div>
-            <div className=" ml-5 float-left">
-              <span className="font-weight-bold ">Proposals :</span>
-              <span className="">&nbsp;{props.job && props.job.proposals}</span>
-            </div>
-            {!applyButton ? (
-              <Button
-                style={{ backgroundColor: "#6c757d" }}
-                disabled
-                className=" applyBtn float-right"
-                onClick={() => handleClick(props.job.id)}
-              >
-                Applied
-              </Button>
-            ) : (
-              <Button
-                className=" applyBtn float-right"
-                onClick={() => handleClick(props.job.id)}
-              >
-                Apply
-              </Button>
-            )}
+        </div>
+        <div
+          className=" ml-5  clearfix mt-3 d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className=" float-left">
+            <span className=" font-weight-bold">Deadline : </span>
+            <span className="">
+              {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
+              {props.job && props.job.timeDurationType}
+            </span>
           </div>
+          <div className=" ml-5 float-left">
+            <span className="font-weight-bold ">Proposals :</span>
+            <span className="">&nbsp;{props.job && props.job.proposals}</span>
+          </div>
+          {!applyButton ? (
+            <Button
+              style={{ backgroundColor: "#6c757d" }}
+              disabled
+              className=" applyBtn float-right"
+              onClick={() => handleClick(props.job.id)}
+            >
+              Applied
+            </Button>
+          ) : (
+            <Button
+              className=" applyBtn float-right"
+              onClick={() => handleClick(props.job.id)}
+            >
+              Apply
+            </Button>
+          )}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
