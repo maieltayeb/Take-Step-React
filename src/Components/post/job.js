@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
@@ -18,11 +20,13 @@ import {
 } from "./../../Redux/actions/InprogressActionCreator";
 const Job = (props) => {
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
-
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
-  const [applyButton, setStateApplyButton] = useState(props.job.enabled);
+  const data = [];
+  const [jobsIds, setJobsIds] = useState(data);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [applied, setApplied] = useState(true);
+
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,14 +34,30 @@ const Job = (props) => {
     userIds = [...new Set(userIds)];
     userIds.forEach((userId) => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
+  async function fetchInpogData() {
+    const inprogRes = await axios.get(
+      `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
+    );
+    const inprog = inprogRes.data;
+    if (inprog) {
+      const inprogArray = Object.keys(inprog).map((key) => ({
+        id: String(key),
+        details: inprog[key],
+      }));
+      const jobsId = inprogArray.map((arr) => arr.details.id);
+      setJobsIds(jobsId);
+      console.log("/////", inprogArray);
 
-  const handleClick = (taskID) => {
+      console.log("/////", jobsIds);
+    }
+  }
+  useEffect(() => {
+    fetchInpogData();
+  }, []);
+  const handleClick = async (taskID) => {
     console.log(taskID);
-
-    setStateApplyButton(!applyButton);
-
-    dispatch(AddTasksToVol(volunteerId, taskID));
-    // }
+    setApplied(!applied);
+    dispatch(AddTasksToVol(volunteerId, props.job));
   };
 
   return (
@@ -89,7 +109,7 @@ const Job = (props) => {
           <span className="font-weight-bold ">Proposals :</span>
           <span className="">&nbsp;{props.job && props.job.proposals}</span>
         </div>
-        {!applyButton ? (
+        {!applied || jobsIds.includes(props.job.id) ? (
           <Button
             style={{ backgroundColor: "#6c757d" }}
             disabled
