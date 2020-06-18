@@ -121,7 +121,7 @@ const Post = props => {
                     <div className=" float-left ">
                       <img
                         className="mt-3 post-img rounded-circle"
-                        src="./img/people.png"
+                        src="./img/developer.jpg"
                       />
                     </div>
                     <div className=" ml-2 float-left ">
@@ -161,7 +161,7 @@ const Post = props => {
                         <div className=" float-left ">
                           <img
                             className="post-img mt-2 rounded-circle"
-                            src="./img/people.png"
+                            src="./img/developer.jpg"
                           />
                         </div>
                         <div className=" ml-2 float-left ">
