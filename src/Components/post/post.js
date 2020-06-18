@@ -109,7 +109,7 @@ const Post = props => {
         .reverse()
         .map(job => {
           const user = bussinessOwnerUsers.find(u => u.id === job.userId);
-          debugger;
+          // debugger;
           let realComments = [];
           if (job.comments) {
             for (let i = 0; i < Object.keys(job.comments).length; i++) {

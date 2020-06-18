@@ -116,7 +116,7 @@ export default (state = initialState, action) => {
       console.log("aya after", state.comments);
       break;
       case ADD_COMMENT:
-        debugger;
+        // debugger;
         newState = {...state };
         newState.comments = [...state.comments, action.payload.newComment];
         newState.jobs = state.jobs.map(job => job.id === action.payload.jobId ?           
