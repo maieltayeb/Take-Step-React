@@ -54,7 +54,6 @@ const Job = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
-
   useEffect(() => {
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
@@ -106,73 +105,77 @@ const Job = props => {
       [name]: value
     }));
   };
-  return (
-    <>
-      <div className=" pl-5 pt-3 pr-5 clearfix">
-        <div style={{ display: "flex", "justify-content": "space-between" }}>
-          <div>
-            <img className="post-img  rounded-circle" src="./img/people.png" />
-            <div className="username-post ml-3">
-              <div className="mt-3 postOwnerNameStyle">
-                {props.user && props.user.firstName}
-                &nbsp;&nbsp;
-                {props.user && props.user.lastName}
-              </div>
-              <div className="ml-0 postOwnerNameStyle">
-                {props.user && props.user.jobTitle}
+  if (props.job.comments) {
+    return (
+      <>
+        <div className=" pl-5 pt-3 pr-5 clearfix">
+          <div style={{ display: "flex", "justify-content": "space-between" }}>
+            <div>
+              <img
+                className="post-img  rounded-circle"
+                src="./img/developer.jpg"
+              />
+              <div className="username-post ml-3">
+                <div className="mt-3 postOwnerNameStyle">
+                  {props.user && props.user.firstName}
+                  &nbsp;&nbsp;
+                  {props.user && props.user.lastName}
+                </div>
+                <div className="ml-0 postOwnerNameStyle">
+                  {props.user && props.user.jobTitle}
+                </div>
               </div>
             </div>
-          </div>
 
-          <Dropdown
-            isOpen={dropdownOpen}
-            toggle={toggle}
-            style={{ display: "flex", justifyContent: "flex-end" }}
-          >
-            <DropdownToggle style={{ background: "none", border: "none" }}>
-              <div className="post-ortions">...</div>
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={toggle}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <DropdownToggle style={{ background: "none", border: "none" }}>
+                <div className="post-ortions">...</div>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
 
-              <Modal
-                className="modalShap"
-                isOpen={modal}
-                toggle={togglemodal}
-                style={{ marginLeft: "320px" }}
-              >
-                <ModalHeader
-                  className="headerModal"
+                <Modal
+                  className="modalShap"
+                  isOpen={modal}
                   toggle={togglemodal}
-                  style={{ paddingLeft: "320px" }}
+                  style={{ marginLeft: "320px" }}
                 >
-                  Edit Job
-                </ModalHeader>
+                  <ModalHeader
+                    className="headerModal"
+                    toggle={togglemodal}
+                    style={{ paddingLeft: "320px" }}
+                  >
+                    Edit Job
+                  </ModalHeader>
 
-                <ModalBody className="bodyModal">
-                  <div>
-                    <img
-                      src="./img/profilephoto.png"
-                      alt="userimg"
-                      style={{
-                        width: "10%",
-                        borderRadius: "50%",
-                        marginRight: "20px"
-                      }}
-                    />
-                    <a>
-                      {props.currentUser.firstName}
-                      &nbsp;&nbsp;
-                      {props.currentUser.lastName}
-                    </a>
-                  </div>
-                  <div style={{ marginLeft: "60px", marginTop: "20px" }}>
-                    <Form
-                      style={{ width: "100%" }}
-                      onSubmit={handleSubmit}
-                      id="form"
-                    >
-                      {/* <FormGroup row>
+                  <ModalBody className="bodyModal">
+                    <div>
+                      <img
+                        src="./img/profilephoto.png"
+                        alt="userimg"
+                        style={{
+                          width: "10%",
+                          borderRadius: "50%",
+                          marginRight: "20px"
+                        }}
+                      />
+                      <a>
+                        {props.currentUser.firstName}
+                        &nbsp;&nbsp;
+                        {props.currentUser.lastName}
+                      </a>
+                    </div>
+                    <div style={{ marginLeft: "60px", marginTop: "20px" }}>
+                      <Form
+                        style={{ width: "100%" }}
+                        onSubmit={handleSubmit}
+                        id="form"
+                      >
+                        {/* <FormGroup row>
           <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
           <Col sm={10}>
             <Input
@@ -184,44 +187,44 @@ const Job = props => {
           </Col>
         </FormGroup> */}
 
-                      <FormGroup row className="m-3">
-                        <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                        <Col sm={10} className="mb-3">
-                          <Input
-                            type="text"
-                            name="jobTitle"
-                            id="jobTitle"
-                            onChange={handleChange}
-                            value={stateModal.jobTitle}
-                          />
-                        </Col>
-                        <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
-                        <Col sm={4}>
-                          <Input
-                            type="number"
-                            name="proposals"
-                            id="Proposals"
-                            placeholder="Proposals num "
-                            min="5"
-                            max="15"
-                            onChange={handleChange}
-                            value={stateModal.proposals}
-                          />
-                        </Col>
-                        <Label for="Time">Task Deadline:</Label>
-                        <Col sm={4}>
-                          <Input
-                            // type="number"
-                            name="timeDurationNumber"
-                            id="Time"
-                            type="date"
-                            // value="0"
-                            value={stateModal.timeDurationNumber}
-                            onChange={handleChange}
-                          ></Input>
-                        </Col>
-                        <Col style={{ paddingRight: "28px" }}>
-                          {/* <Input
+                        <FormGroup row className="m-3">
+                          <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+                          <Col sm={10} className="mb-3">
+                            <Input
+                              type="text"
+                              name="jobTitle"
+                              id="jobTitle"
+                              onChange={handleChange}
+                              value={stateModal.jobTitle}
+                            />
+                          </Col>
+                          <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
+                          <Col sm={4}>
+                            <Input
+                              type="number"
+                              name="proposals"
+                              id="Proposals"
+                              placeholder="Proposals num "
+                              min="5"
+                              max="15"
+                              onChange={handleChange}
+                              value={stateModal.proposals}
+                            />
+                          </Col>
+                          <Label for="Time">Task Deadline:</Label>
+                          <Col sm={4}>
+                            <Input
+                              // type="number"
+                              name="timeDurationNumber"
+                              id="Time"
+                              type="date"
+                              // value="0"
+                              value={stateModal.timeDurationNumber}
+                              onChange={handleChange}
+                            ></Input>
+                          </Col>
+                          <Col style={{ paddingRight: "28px" }}>
+                            {/* <Input
               type="select"
               name="timeDurationType"
               id="exampleSelect"
@@ -233,124 +236,468 @@ const Job = props => {
                 </option>
               ))}
             </Input> */}
-                        </Col>
-                      </FormGroup>
+                          </Col>
+                        </FormGroup>
 
-                      <FormGroup row>
-                        <Label for="Description">Description :</Label>
-                        <Col sm={10}>
-                          <Input
-                            type="textarea"
-                            name="description"
-                            id="Description"
-                            onChange={handleChange}
-                            value={stateModal.description}
-                          />
-                        </Col>
-                      </FormGroup>
-                      <FormGroup row>
-                        <Label for="exampleFile">File /Image :</Label>
-                        <Col sm={10}>
-                          <Input
-                            type="file"
-                            name="file"
-                            id="exampleFile"
-                            onChange={handleChange}
-                          />
-                        </Col>
-                      </FormGroup>
-                    </Form>
-                  </div>
-                </ModalBody>
-                <ModalFooter
-                  className=" bodyModal"
-                  style={{ backgroundColor: "white" }}
-                >
-                  <Button
-                    className=" mr-0 cancelModal"
-                    onClick={togglemodal}
-                    style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                        <FormGroup row>
+                          <Label for="Description">Description :</Label>
+                          <Col sm={10}>
+                            <Input
+                              type="textarea"
+                              name="description"
+                              id="Description"
+                              onChange={handleChange}
+                              value={stateModal.description}
+                            />
+                          </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                          <Label for="exampleFile">File /Image :</Label>
+                          <Col sm={10}>
+                            <Input
+                              type="file"
+                              name="file"
+                              id="exampleFile"
+                              onChange={handleChange}
+                            />
+                          </Col>
+                        </FormGroup>
+                      </Form>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter
+                    className=" bodyModal"
+                    style={{ backgroundColor: "white" }}
                   >
-                    Cancel
-                  </Button>
-                  <Button
-                    className=" ml-2 mr-1 addModal"
-                    onClick={togglemodal}
-                    type="submit"
-                    form="form"
-                    // onSubmit={handleSubmit}
-                    style={{ color: "#ebc010", backgroundColor: "#494848" }}
-                  >
-                    edit
-                  </Button>
-                </ModalFooter>
-              </Modal>
+                    <Button
+                      className=" mr-0 cancelModal"
+                      onClick={togglemodal}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className=" ml-2 mr-1 addModal"
+                      onClick={togglemodal}
+                      type="submit"
+                      form="form"
+                      // onSubmit={handleSubmit}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      edit
+                    </Button>
+                  </ModalFooter>
+                </Modal>
 
-              <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-      </div>
+                <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
 
-      <div
-        className=" ml-5  clearfix mt-3 d-flex"
-        style={{ justifyContent: "space-between" }}
-      >
-        <div className=" float-left">
-          <span className=" font-weight-bold">Deadline : </span>
-          <span className="">
-            {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
-            {props.job && props.job.timeDurationType}
-          </span>
-        </div>
-        <div className=" ml-5 float-left">
-          <span className="font-weight-bold ">Proposals :</span>
-          <span className="">&nbsp;{props.job && props.job.proposals}</span>
-        </div>
-        {!applyButton ? (
-          <Button
-            style={{ backgroundColor: "#6c757d" }}
-            disabled
-            className=" applyBtn float-right"
-            onClick={() => handleClick(props.job.id)}
+          <div
+            className=" ml-5  clearfix mt-3 d-flex"
+            style={{ justifyContent: "space-between" }}
           >
-            Applied
-          </Button>
-        ) : (
-          <Button
-            className=" applyBtn float-right"
-            onClick={() => handleClick(props.job.id)}
-          >
-            Apply
-          </Button>
-        )}
-      </div>
-      <div className=" postBody  pr-5 pl-5  m-0">
-        <span className=" font-weight-bold">job Title : </span>
-        <span className="">{props.job && props.job.jobTitle}</span>
-      </div>
-      <div className="postBody pt-3 pr-5 pl-5  m-0">
-        <p className="text-justify">{props.job && props.job.description}</p>
-      </div>
+            <div className=" float-left">
+              <span className=" font-weight-bold">Deadline : </span>
+              <span className="">
+                {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
+                {props.job && props.job.timeDurationType}
+              </span>
+            </div>
+            <div className=" ml-5 float-left">
+              <span className="font-weight-bold ">Proposals :</span>
+              <span className="">&nbsp;{props.job && props.job.proposals}</span>
+            </div>
+            {!applyButton ? (
+              <Button
+                style={{ backgroundColor: "#6c757d" }}
+                disabled
+                className=" applyBtn float-right"
+                onClick={() => handleClick(props.job.id)}
+              >
+                Applied
+              </Button>
+            ) : (
+              <Button
+                className=" applyBtn float-right"
+                onClick={() => handleClick(props.job.id)}
+              >
+                Apply
+              </Button>
+            )}
+          </div>
+        </div>
+        <div className=" postBody  pr-5 pl-5  m-0">
+          <span className=" font-weight-bold">job Title : </span>
+          <span className="">{props.job && props.job.jobTitle}</span>
+        </div>
+        <div className="postBody pt-3 pr-5 pl-5  m-0">
+          <p className="text-justify">{props.job && props.job.description}</p>
+        </div>
 
-      <div className=" reactToPost clearfix">
-        {/* <div className=" ml-5 float-left">
+        <div className=" reactToPost clearfix">
+          {/* <div className=" ml-5 float-left">
                 <span className="mt-2 mr-2">4</span>
                 <span>
                   <i class=" mb-3 fas fa-thumbs-up"></i>
                 </span>
                 {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
-        {/* </div>  */}
-        <div className=" ml-4 float-left">
-          <span className="mt-2 mr-2">5</span>
-          <span>
-            <i class=" mb-3 fas fa-comment-alt"></i>
-          </span>
-          {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+          {/* </div>  */}
+          <div className=" ml-4 float-left">
+            <span className="mt-2 mr-2">
+              {Object.keys(props.job.comments).length}
+            </span>
+            <span>
+              <i class=" mb-3 fas fa-comment-alt"></i>
+            </span>
+            {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    // return (
+    //   <>
+    //     <div className=" pl-5 pt-3 pr-5 clearfix">
+    //       <div style={{ display: "flex", "justify-content": "space-between" }}>
+    //         <div>
+    //           <img className="post-img  rounded-circle" src="./img/people.png" />
+    //           <div className="username-post ml-3">
+    //             <div className="mt-3 postOwnerNameStyle">
+    //               {props.user && props.user.firstName}
+    //               &nbsp;&nbsp;
+    //               {props.user && props.user.lastName}
+    //             </div>
+    //             <div className="ml-0 postOwnerNameStyle">
+    //               {props.user && props.user.jobTitle}
+    //             </div>
+    //           </div>
+    //         </div>
+
+    //         <Dropdown
+    //           isOpen={dropdownOpen}
+    //           toggle={toggle}
+    //           style={{ display: "flex", justifyContent: "flex-end" }}
+    //         >
+    //           <DropdownToggle style={{ background: "none", border: "none" }}>
+    //             <div className="post-ortions">...</div>
+    //           </DropdownToggle>
+    //           <DropdownMenu>
+    //             <DropdownItem>Edit</DropdownItem>
+    //             <DropdownItem>Delete</DropdownItem>
+    //           </DropdownMenu>
+    //         </Dropdown>
+    //       </div>
+    //     </div>
+
+    //     <div
+    //       className=" ml-5  clearfix mt-3 d-flex"
+    //       style={{ justifyContent: "space-between" }}
+    //     >
+    //       <div className=" float-left">
+    //         <span className=" font-weight-bold">Deadline : </span>
+    //         <span className="">
+    //           {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
+    //           {props.job && props.job.timeDurationType}
+    //         </span>
+    //       </div>
+    //       <div className=" ml-5 float-left">
+    //         <span className="font-weight-bold ">Proposals :</span>
+    //         <span className="">&nbsp;{props.job && props.job.proposals}</span>
+    //       </div>
+    //       {!applyButton ? (
+    //         <Button
+    //           style={{ backgroundColor: "#6c757d" }}
+    //           disabled
+    //           className=" applyBtn float-right"
+    //           onClick={() => handleClick(props.job.id)}
+    //         >
+    //           Applied
+    //         </Button>
+    //       ) : (
+    //         <Button
+    //           className=" applyBtn float-right"
+    //           onClick={() => handleClick(props.job.id)}
+    //         >
+    //           Apply
+    //         </Button>
+    //       )}
+    //     </div>
+    //     <div className="postBody pt-3 pr-5 pl-5  m-0">
+    //       <p className="text-justify">{props.job && props.job.description}</p>
+    //     </div>
+
+    //     <div className=" reactToPost clearfix">
+    //       {/* <div className=" ml-5 float-left">
+    //               <span className="mt-2 mr-2">4</span>
+    //               <span>
+    //                 <i class=" mb-3 fas fa-thumbs-up"></i>
+    //               </span>
+    //               {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
+    //       {/* </div>  */}
+    //       <div className=" ml-4 float-left">
+    //       <span className="mt-2 mr-2">0</span>
+    //         <span>
+    //           <i class=" mb-3 fas fa-comment-alt"></i>
+    //         </span>
+    //         {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+    //       </div>
+    //     </div>
+    //   </>
+    // );
+
+    /////////////////////////////////////////////////////
+    return (
+      <>
+        <div className=" pl-5 pt-3 pr-5 clearfix">
+          <div style={{ display: "flex", "justify-content": "space-between" }}>
+            <div>
+              <img
+                className="post-img  rounded-circle"
+                src="./img/people.png"
+              />
+              <div className="username-post ml-3">
+                <div className="mt-3 postOwnerNameStyle">
+                  {props.user && props.user.firstName}
+                  &nbsp;&nbsp;
+                  {props.user && props.user.lastName}
+                </div>
+                <div className="ml-0 postOwnerNameStyle">
+                  {props.user && props.user.jobTitle}
+                </div>
+              </div>
+            </div>
+
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={toggle}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <DropdownToggle style={{ background: "none", border: "none" }}>
+                <div className="post-ortions">...</div>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem onClick={togglemodal}> Edit </DropdownItem>
+
+                <Modal
+                  className="modalShap"
+                  isOpen={modal}
+                  toggle={togglemodal}
+                  style={{ marginLeft: "320px" }}
+                >
+                  <ModalHeader
+                    className="headerModal"
+                    toggle={togglemodal}
+                    style={{ paddingLeft: "320px" }}
+                  >
+                    Edit Job
+                  </ModalHeader>
+
+                  <ModalBody className="bodyModal">
+                    <div>
+                      <img
+                        src="./img/profilephoto.png"
+                        alt="userimg"
+                        style={{
+                          width: "10%",
+                          borderRadius: "50%",
+                          marginRight: "20px"
+                        }}
+                      />
+                      <a>
+                        {props.currentUser.firstName}
+                        &nbsp;&nbsp;
+                        {props.currentUser.lastName}
+                      </a>
+                    </div>
+                    <div style={{ marginLeft: "60px", marginTop: "20px" }}>
+                      <Form
+                        style={{ width: "100%" }}
+                        onSubmit={handleSubmit}
+                        id="form"
+                      >
+                        {/* <FormGroup row>
+        <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
+        <Col sm={10}>
+          <Input
+            type="text"
+            name="jobTitle"
+            placeholder="write task title "
+            onChange={handleChange}
+          />
+        </Col>
+      </FormGroup> */}
+
+                        <FormGroup row>
+                          {/* <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+        <Col sm={10}>
+          <Input
+            type="text"
+            name="jobTitle"
+            id="jobTitle"
+            onChange={handleChange}
+          />
+        </Col> */}
+                          <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
+                          <Col sm={4}>
+                            <Input
+                              type="number"
+                              name="proposals"
+                              id="Proposals"
+                              placeholder="Proposals num "
+                              min="5"
+                              max="15"
+                              onChange={handleChange}
+                              value={props.job.proposals}
+                            />
+                          </Col>
+                          <Label for="Time">Task Deadline:</Label>
+                          <Col sm={4}>
+                            <Input
+                              // type="number"
+                              name="timeDurationNumber"
+                              id="Time"
+                              type="date"
+                              // value="0"
+                              // min="1"
+                              value={props.job.timeDurationNumber}
+                              onChange={handleChange}
+                            ></Input>
+                          </Col>
+                          <Col style={{ paddingRight: "28px" }}>
+                            {/* <Input
+            type="select"
+            name="timeDurationType"
+            id="exampleSelect"
+            onChange={handleChange}
+          >
+            {props.timeDurationTypes.map(item => (
+              <option key={item.id} value={item.durationType}>
+                {item.durationType}
+              </option>
+            ))}
+          </Input> */}
+                          </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                          <Label for="Description">Description :</Label>
+                          <Col sm={10}>
+                            <Input
+                              type="textarea"
+                              name="description"
+                              id="Description"
+                              onChange={handleChange}
+                              value={props.job.description}
+                            />
+                          </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                          <Label for="exampleFile">File /Image :</Label>
+                          <Col sm={10}>
+                            <Input
+                              type="file"
+                              name="file"
+                              id="exampleFile"
+                              onChange={handleChange}
+                            />
+                          </Col>
+                        </FormGroup>
+                        <Button
+                          className=" mr-0 cancelModal"
+                          onClick={togglemodal}
+                          style={{
+                            color: "#ebc010",
+                            backgroundColor: "#494848"
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          className=" ml-2 mr-1 addModal"
+                          // onClick={toggle}
+                          type="submit"
+                          form="form"
+                          // onSubmit={handleSubmit}
+                          style={{
+                            color: "#ebc010",
+                            backgroundColor: "#494848"
+                          }}
+                        >
+                          edit
+                        </Button>
+                      </Form>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter
+                    className=" bodyModal"
+                    style={{ backgroundColor: "white" }}
+                  ></ModalFooter>
+                </Modal>
+
+                <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        </div>
+
+        <div
+          className=" ml-5  clearfix mt-3 d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className=" float-left">
+            <span className=" font-weight-bold">Deadline : </span>
+            <span className="">
+              {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
+              {props.job && props.job.timeDurationType}
+            </span>
+          </div>
+          <div className=" ml-5 float-left">
+            <span className="font-weight-bold ">Proposals :</span>
+            <span className="">&nbsp;{props.job && props.job.proposals}</span>
+          </div>
+          {!applyButton ? (
+            <Button
+              style={{ backgroundColor: "#6c757d" }}
+              disabled
+              className=" applyBtn float-right"
+              onClick={() => handleClick(props.job.id)}
+            >
+              Applied
+            </Button>
+          ) : (
+            <Button
+              className=" applyBtn float-right"
+              onClick={() => handleClick(props.job.id)}
+            >
+              Apply
+            </Button>
+          )}
+        </div>
+        <div className="postBody pt-3 pr-5 pl-5  m-0">
+          <p className="text-justify">{props.job && props.job.description}</p>
+        </div>
+
+        <div className=" reactToPost clearfix">
+          {/* <div className=" ml-5 float-left">
+              <span className="mt-2 mr-2">4</span>
+              <span>
+                <i class=" mb-3 fas fa-thumbs-up"></i>
+              </span>
+              {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
+          {/* </div>  */}
+          <div className=" ml-4 float-left">
+            <span className="mt-2 mr-2">0</span>
+            <span>
+              <i class=" mb-3 fas fa-comment-alt"></i>
+            </span>
+            {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+          </div>
+        </div>
+      </>
+    );
+  }
 };
 
 const mapStateToProps = reduxState => {
