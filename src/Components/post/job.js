@@ -90,7 +90,7 @@ const Job = (props) => {
       alert("you can't delete this job");
     }
   };
-  /************handel delete job**************** */
+
   /*************handel edit job************** */
   const handelEditJob = () => {};
 
@@ -116,7 +116,7 @@ const Job = (props) => {
             <div>
               <img
                 className="post-img  rounded-circle"
-                src="./img/people.png"
+                src="./img/developer.jpg"
               />
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">

@@ -68,14 +68,14 @@ const ModalLink = props => {
           <br />
           <label style={{ fontSize: "13px" }}>leave your comment:</label>
           <br />
-          <input
+          <textarea
             type="text"
             style={{
               width: "100%",
               border: "1px solid #EBC010",
               marginBottom: "20px"
             }}
-          ></input>
+          ></textarea>
         </ModalBody>
         <ModalFooter>
           <Button
