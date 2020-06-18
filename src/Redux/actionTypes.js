@@ -8,6 +8,7 @@ export const post_SignUp_VolunteerUsers = "post_SignUp_VolunteerUsers";
 export const post_Login_VolunteerUsers = "post_Login_VolunteerUsers";
 export const Get_VolunteerUsers = "Get_VolunteerUsers";
 export const Edit_VolunteerUsers = "Edit_VolunteerUsers";
+export const Get_VolunteerById = "Get_VolunteerById";
 export const Get_timeDurationTypes = "Get_timeDurationTypes";
 export const Get_Jobs = "Get_Jobs";
 export const ADD_Job = "ADD_Job";
