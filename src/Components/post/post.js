@@ -13,7 +13,15 @@ import { getAllVolunteers } from "./../../Redux/actions/volunteerActionCreator";
 
 const Post = props => {
   const { search } = props;
-  let { comments, currentUser, jobs, bussinessOwnerUsers,job, users,volunteerUsers } = props;
+  let {
+    comments,
+    currentUser,
+    jobs,
+    bussinessOwnerUsers,
+    job,
+    users,
+    volunteerUsers
+  } = props;
   const dispatch = useDispatch();
   const [stateJobs, setStateJobs] = useState([]);
   /********************comment part************************************************* */
@@ -25,7 +33,6 @@ const Post = props => {
     const volusers = dispatch(getAllVolunteers());
     console.log("voliuinteeeeeeeeeeeeeeeeer", volusers);
   }, [jobs, dispatch]);
-
 
   // const initialFieldValues = {
   //   // comment:[{body:""}  ]
@@ -117,22 +124,21 @@ const Post = props => {
               realComments.push(element);
             }
 
-          return (
-            <>
-              <div className="postContainer shadow">
-                <Job user={user} job={job}></Job>
-                <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
-                  <div className=" reactToPost ml-2 mb-0 clearfix">
-                    <div className="float-left">
-                      <span>
-                        <i class=" m-1  mr-2 fas fa-comment-alt"></i>
-                      </span>
-                      <span>Comment</span>
-                      
+            return (
+              <>
+                <div className="postContainer shadow">
+                  <Job user={user} job={job}></Job>
+                  <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
+                    <div className=" reactToPost ml-2 mb-0 clearfix">
+                      <div className="float-left">
+                        <span>
+                          <i class=" m-1  mr-2 fas fa-comment-alt"></i>
+                        </span>
+                        <span>Comment</span>
+                      </div>
                     </div>
-                  </div>
-                  <AddComment jobId={job.id} />
-                     {realComments.length ? (
+                    <AddComment jobId={job.id} />
+                    {realComments.length ? (
                       realComments.map(comment => {
                         // const userVol = volunteerUsers.find(
                         //   u => u.id === comment.userId
@@ -148,11 +154,11 @@ const Post = props => {
                     ) : (
                       <div className="ml-3 mt-3">{job.id}</div>
                     )}
+                  </div>
                 </div>
-              </div>
-            </>
-          );}
-          else {
+              </>
+            );
+          } else {
             const user = bussinessOwnerUsers.find(u => u.id === job.userId);
             return (
               <>
@@ -173,9 +179,7 @@ const Post = props => {
               </>
             );
           }
-        }
-        
-       )}
+        })}
     </>
   );
 };
@@ -187,11 +191,6 @@ const mapStateToProps = reduxState => {
     comments: reduxState.Users.comments,
     users: reduxState.Users,
     volunteerUsers: reduxState.Users.volunteerUsers
-
-
-
-
-
   };
 };
 export default connect(mapStateToProps)(Post);

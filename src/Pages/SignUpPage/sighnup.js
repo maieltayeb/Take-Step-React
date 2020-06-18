@@ -229,7 +229,7 @@ const SignUp = props => {
               padding: ".7rem 2rem"
             }}
           >
-            Developer
+            Software Intern
           </Button>
           {stateStatus && (
             <>
