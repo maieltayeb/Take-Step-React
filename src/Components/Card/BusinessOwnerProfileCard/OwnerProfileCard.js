@@ -23,7 +23,7 @@ const OwnerProfileCard = props => {
           top
           width="100%"
           className="mt-4 rounded-circle owner-card-img"
-          src="./img/people.png"
+          src="./img/developer.jpg"
           alt="Card image cap"
         />
         <CardBody>
