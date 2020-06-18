@@ -214,7 +214,7 @@ const mapStateToProps = (State) => {
     // timeDurationNumber: State.Inprogress.timeDurationNumber,
     // timeDurationType: State.Inprogress.timeDurationType,
     // jobTitle: State.Inprogress.jobTitle,
-    state: State.Inprogress,
+    state: State.Inprogress.appliedTasks,
   };
 };
 export default connect(mapStateToProps)(InProgressTaskCard);

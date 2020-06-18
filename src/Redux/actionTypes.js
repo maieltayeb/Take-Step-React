@@ -12,6 +12,8 @@ export const Get_VolunteerById = "Get_VolunteerById";
 export const Get_timeDurationTypes = "Get_timeDurationTypes";
 export const Get_Jobs = "Get_Jobs";
 export const ADD_Job = "ADD_Job";
+export const Delete_Job="Delete_Job";
+export const Edit_Job="Edit_Job";
 // export const ADD_Task = "ADD_Task";
 export const GET_Error = "GET_Error";
 /////business owner personal info
