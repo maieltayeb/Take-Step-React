@@ -651,8 +651,7 @@ style={{ marginLeft: "320px" }}
     </div>
   </>
 );
-
-          }
+  }
 };
 
 const mapStateToProps = (reduxState) => {
