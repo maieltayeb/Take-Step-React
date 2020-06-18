@@ -3,7 +3,6 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
 import {
- 
   Dropdown,
   DropdownToggle,
   DropdownMenu,
@@ -17,36 +16,52 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./post.css";
-import { getUserById ,DeleteJob} from "../../Redux/actions/businessOwnerActionCreator";
+import {
+  getUserById,
+  DeleteJob,
+  EditJob
+} from "../../Redux/actions/businessOwnerActionCreator";
 import { addTask } from "../../Redux/actions/volunteerActionCreator";
 import {
   getTaskById,
-  AddTasksToVol,
+  AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
-const Job = (props) => {
+
+const Job = props => {
+  const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
-  /********modal***** */
+  /******** edit modal***** */
   const [modal, setModal] = useState(false);
   const togglemodal = () => setModal(!modal);
-/********modal***** */
+  const [stateModal, setStateModal] = useState({
+    jobTitle: props.job.jobTitle,
+    proposals: props.job.proposals,
+    timeDurationNumber: props.job.timeDurationNumber,
+    // timeDurationType: "Days",
+    description: props.job.description,
+    userId: props.currentUser.id,
+    enabled: true,
+    tasks: []
+  });
+  /********modal***** */
 
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   const [applyButton, setStateApplyButton] = useState(props.job.enabled);
   const [dropdownOpen, setDropdownOpen] = useState(false);
- 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const dispatch = useDispatch();
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   useEffect(() => {
-    let userIds = jobs.map((job) => job.userId);
+    let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
-    userIds.forEach((userId) => dispatch(getUserById(userId)));
+    userIds.forEach(userId => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
 
-  const handleClick = (taskID) => {
+  const handleClick = taskID => {
     console.log(taskID);
 
     setStateApplyButton(!applyButton);
@@ -54,31 +69,42 @@ const Job = (props) => {
     dispatch(AddTasksToVol(volunteerId, taskID));
     // }
   };
-  /************handel delete job**************** */
-  const handelDeleteJob=(jobId)=>{
-    if(currentUser.id===props.job.userId){
-        dispatch(DeleteJob(props.job.id))
-      }else{
-        alert("you can't delete this job")
-      }
-  }
-   /************handel delete job**************** */
-   /*************handel edit job************** */
-  const handelEditJob=()=>{}
 
-   /*************handel modal  job************** */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitEdit");
-   // dispatch(EditJob(state));
+  /************handel delete job**************** */
+  const handelDeleteJob = () => {
+    if (currentUser.id === props.job.userId) {
+      dispatch(DeleteJob(props.job.id));
+    } else {
+      alert("you can't delete this job");
+    }
   };
-   /*************handel modal change ************* */
-  const handleChange = (e) => {
-    // const { name, value } = e.target;
-    // setState((prevState) => ({
-    //   ...prevState,
-    //   [name]: value,
-    // }));
+  /************handel delete job**************** */
+  /*************handel edit job************** */
+  const handelEditJob = () => {
+    if (currentUser.id === props.job.userId) {
+      togglemodal();
+    } else {
+      alert("you can't Edit this job");
+    }
+  };
+
+  /*************handel modal  job************** */
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("id", props.job.id);
+    if (currentUser.id === props.job.userId) {
+      dispatch(EditJob(stateModal, props.job.id));
+    } else {
+      alert("you can't Edit this job");
+    }
+  };
+  /*************handel modal change ************* */
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setStateModal(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
   return (
     <>
@@ -107,42 +133,46 @@ const Job = (props) => {
               <div className="post-ortions">...</div>
             </DropdownToggle>
             <DropdownMenu>
-            <DropdownItem  onClick={togglemodal}>   Edit </DropdownItem >
+              <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
 
-<Modal
-  className="modalShap"
-  isOpen={modal}
-  toggle={togglemodal}
-  style={{ marginLeft: "320px" }}
->
-  <ModalHeader
-    className="headerModal"
-    toggle={togglemodal}
-    style={{ paddingLeft: "320px" }}
-  >
-    Edit Job
-  </ModalHeader>
+              <Modal
+                className="modalShap"
+                isOpen={modal}
+                toggle={togglemodal}
+                style={{ marginLeft: "320px" }}
+              >
+                <ModalHeader
+                  className="headerModal"
+                  toggle={togglemodal}
+                  style={{ paddingLeft: "320px" }}
+                >
+                  Edit Job
+                </ModalHeader>
 
-  <ModalBody className="bodyModal">
-    <div>
-      <img
-        src="./img/profilephoto.png"
-        alt="userimg"
-        style={{
-          width: "10%",
-          borderRadius: "50%",
-          marginRight: "20px",
-        }}
-      />
-      <a>
-        {props.currentUser.firstName}
-        &nbsp;&nbsp;
-        {props.currentUser.lastName}
-      </a>
-    </div>
-    <div style={{ marginLeft: "60px", marginTop: "20px" }}>
-      <Form style={{ width: "100%" }} onSubmit={handleSubmit} id="form">
-        {/* <FormGroup row>
+                <ModalBody className="bodyModal">
+                  <div>
+                    <img
+                      src="./img/profilephoto.png"
+                      alt="userimg"
+                      style={{
+                        width: "10%",
+                        borderRadius: "50%",
+                        marginRight: "20px"
+                      }}
+                    />
+                    <a>
+                      {props.currentUser.firstName}
+                      &nbsp;&nbsp;
+                      {props.currentUser.lastName}
+                    </a>
+                  </div>
+                  <div style={{ marginLeft: "60px", marginTop: "20px" }}>
+                    <Form
+                      style={{ width: "100%" }}
+                      onSubmit={handleSubmit}
+                      id="form"
+                    >
+                      {/* <FormGroup row>
           <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
           <Col sm={10}>
             <Input
@@ -154,44 +184,44 @@ const Job = (props) => {
           </Col>
         </FormGroup> */}
 
-        <FormGroup row>
-          {/* <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-          <Col sm={10}>
-            <Input
-              type="text"
-              name="jobTitle"
-              id="jobTitle"
-              onChange={handleChange}
-            />
-          </Col> */}
-          <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
-          <Col sm={4}>
-            <Input
-              type="number"
-              name="proposals"
-              id="Proposals"
-              placeholder="Proposals num "
-              min="5"
-              max="15"
-              onChange={handleChange}
-            value={props.job.proposals}
-            />
-          </Col>
-          <Label for="Time">Task Deadline:</Label>
-          <Col sm={4}>
-            <Input
-              // type="number"
-              name="timeDurationNumber"
-              id="Time"
-              type="date"
-              // value="0"
-              // min="1"
-              value={props.job.timeDurationNumber}
-              onChange={handleChange}
-            ></Input>
-          </Col>
-          <Col style={{ paddingRight: "28px" }}>
-            {/* <Input
+                      <FormGroup row className="m-3">
+                        <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+                        <Col sm={10} className="mb-3">
+                          <Input
+                            type="text"
+                            name="jobTitle"
+                            id="jobTitle"
+                            onChange={handleChange}
+                            value={stateModal.jobTitle}
+                          />
+                        </Col>
+                        <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
+                        <Col sm={4}>
+                          <Input
+                            type="number"
+                            name="proposals"
+                            id="Proposals"
+                            placeholder="Proposals num "
+                            min="5"
+                            max="15"
+                            onChange={handleChange}
+                            value={stateModal.proposals}
+                          />
+                        </Col>
+                        <Label for="Time">Task Deadline:</Label>
+                        <Col sm={4}>
+                          <Input
+                            // type="number"
+                            name="timeDurationNumber"
+                            id="Time"
+                            type="date"
+                            // value="0"
+                            value={stateModal.timeDurationNumber}
+                            onChange={handleChange}
+                          ></Input>
+                        </Col>
+                        <Col style={{ paddingRight: "28px" }}>
+                          {/* <Input
               type="select"
               name="timeDurationType"
               id="exampleSelect"
@@ -203,64 +233,59 @@ const Job = (props) => {
                 </option>
               ))}
             </Input> */}
-          </Col>
-        </FormGroup>
+                        </Col>
+                      </FormGroup>
 
-        <FormGroup row>
-          <Label for="Description">Description :</Label>
-          <Col sm={10}>
-            <Input
-              type="textarea"
-              name="description"
-              id="Description"
-              onChange={handleChange}
-               value={props.job.description}
-            />
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="exampleFile">File /Image :</Label>
-          <Col sm={10}>
-            <Input
-              type="file"
-              name="file"
-              id="exampleFile"
-              onChange={handleChange}
-            />
-          </Col>
-        </FormGroup>
-        <Button
-      className=" mr-0 cancelModal"
-      onClick={togglemodal}
-      style={{ color: "#ebc010", backgroundColor: "#494848" }}
-    >
-      Cancel
-    </Button>
-    <Button
-      className=" ml-2 mr-1 addModal"
-      // onClick={toggle}
-      type="submit"
-      form="form"
-      // onSubmit={handleSubmit}
-      style={{ color: "#ebc010", backgroundColor: "#494848" }}
-    >
-      edit
-    </Button>
-      </Form>
-    </div>
-  </ModalBody>
-  <ModalFooter
-    className=" bodyModal"
-    style={{ backgroundColor: "white" }}
-  >
-    
-  </ModalFooter>
-</Modal>
+                      <FormGroup row>
+                        <Label for="Description">Description :</Label>
+                        <Col sm={10}>
+                          <Input
+                            type="textarea"
+                            name="description"
+                            id="Description"
+                            onChange={handleChange}
+                            value={stateModal.description}
+                          />
+                        </Col>
+                      </FormGroup>
+                      <FormGroup row>
+                        <Label for="exampleFile">File /Image :</Label>
+                        <Col sm={10}>
+                          <Input
+                            type="file"
+                            name="file"
+                            id="exampleFile"
+                            onChange={handleChange}
+                          />
+                        </Col>
+                      </FormGroup>
+                    </Form>
+                  </div>
+                </ModalBody>
+                <ModalFooter
+                  className=" bodyModal"
+                  style={{ backgroundColor: "white" }}
+                >
+                  <Button
+                    className=" mr-0 cancelModal"
+                    onClick={togglemodal}
+                    style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    className=" ml-2 mr-1 addModal"
+                    onClick={togglemodal}
+                    type="submit"
+                    form="form"
+                    // onSubmit={handleSubmit}
+                    style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                  >
+                    edit
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-               
-               
-             
-            
               <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -300,6 +325,10 @@ const Job = (props) => {
           </Button>
         )}
       </div>
+      <div className=" postBody  pr-5 pl-5  m-0">
+        <span className=" font-weight-bold">job Title : </span>
+        <span className="">{props.job && props.job.jobTitle}</span>
+      </div>
       <div className="postBody pt-3 pr-5 pl-5  m-0">
         <p className="text-justify">{props.job && props.job.description}</p>
       </div>
@@ -324,13 +353,13 @@ const Job = (props) => {
   );
 };
 
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
 
-    state: reduxState.Inprogress.newTask,
+    state: reduxState.Inprogress.newTask
   };
 };
 export default connect(mapStateToProps)(Job);

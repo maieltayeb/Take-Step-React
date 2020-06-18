@@ -11,7 +11,8 @@ import {
   post_Login_VolunteerUsers,
   Edit_BussinessUsers,
   Edit_VolunteerUsers,
-  ADD_Job,Delete_Job,
+  ADD_Job,
+  Delete_Job,
   GET_COMMENT,
   ADD_COMMENT,
   GET_Error,
@@ -83,16 +84,17 @@ export default (state = initialState, action) => {
       newState = { ...state };
       newState.jobs = [...state.jobs, action.payload];
       break;
-      case Delete_Job:
-       newState = { ...state };
-         
-       newState.jobs = newState.jobs.filter(job =>job.id !== action.payload);
-            break;
-        case Edit_Job:
-   
- 
-     
-            break;
+    case Delete_Job:
+      newState = { ...state };
+
+      newState.jobs = newState.jobs.filter(job => job.id !== action.payload);
+      break;
+    case Edit_Job:
+      newState = { ...state };
+      newState.jobs = newState.jobs.map(job =>
+        job.id === action.payload.jobId ? action.payload : job
+      );
+      break;
     case GET_Error:
       newState = { ...state };
       newState.errorMessg = action.payload;
