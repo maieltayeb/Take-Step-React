@@ -334,12 +334,12 @@ const Job = props => {
               Applied
             </Button>
           ) : (
-            <Button
+            !currentUser.paymentData&&( <Button
               className=" applyBtn float-right"
               onClick={() => handleClick(props.job.id)}
             >
               Apply
-            </Button>
+            </Button>)
           )}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
@@ -440,28 +440,17 @@ const Job = props => {
                         onSubmit={handleSubmit}
                         id="form"
                       >
-                        {/* <FormGroup row>
-        <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
-        <Col sm={10}>
-          <Input
-            type="text"
-            name="jobTitle"
-            placeholder="write task title "
-            onChange={handleChange}
-          />
-        </Col>
-      </FormGroup> */}
-
-                        <FormGroup row>
-                          {/* <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-        <Col sm={10}>
-          <Input
-            type="text"
-            name="jobTitle"
-            id="jobTitle"
-            onChange={handleChange}
-          />
-        </Col> */}
+                        <FormGroup row className="m-3">
+                          <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+                          <Col sm={10} className="mb-3">
+                            <Input
+                              type="text"
+                              name="jobTitle"
+                              id="jobTitle"
+                              onChange={handleChange}
+                              value={stateModal.jobTitle}
+                            />
+                          </Col>
                           <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
                           <Col sm={4}>
                             <Input
@@ -472,7 +461,7 @@ const Job = props => {
                               min="5"
                               max="15"
                               onChange={handleChange}
-                              value={props.job.proposals}
+                              value={stateModal.proposals}
                             />
                           </Col>
                           <Label for="Time">Task Deadline:</Label>
@@ -483,24 +472,23 @@ const Job = props => {
                               id="Time"
                               type="date"
                               // value="0"
-                              // min="1"
-                              value={props.job.timeDurationNumber}
+                              value={stateModal.timeDurationNumber}
                               onChange={handleChange}
                             ></Input>
                           </Col>
                           <Col style={{ paddingRight: "28px" }}>
                             {/* <Input
-            type="select"
-            name="timeDurationType"
-            id="exampleSelect"
-            onChange={handleChange}
-          >
-            {props.timeDurationTypes.map(item => (
-              <option key={item.id} value={item.durationType}>
-                {item.durationType}
-              </option>
-            ))}
-          </Input> */}
+              type="select"
+              name="timeDurationType"
+              id="exampleSelect"
+              onChange={handleChange}
+            >
+              {props.timeDurationTypes.map(item => (
+                <option key={item.id} value={item.durationType}>
+                  {item.durationType}
+                </option>
+              ))}
+            </Input> */}
                           </Col>
                         </FormGroup>
 
@@ -512,7 +500,7 @@ const Job = props => {
                               name="description"
                               id="Description"
                               onChange={handleChange}
-                              value={props.job.description}
+                              value={stateModal.description}
                             />
                           </Col>
                         </FormGroup>
@@ -527,36 +515,31 @@ const Job = props => {
                             />
                           </Col>
                         </FormGroup>
-                        <Button
-                          className=" mr-0 cancelModal"
-                          onClick={togglemodal}
-                          style={{
-                            color: "#ebc010",
-                            backgroundColor: "#494848"
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          className=" ml-2 mr-1 addModal"
-                          // onClick={toggle}
-                          type="submit"
-                          form="form"
-                          // onSubmit={handleSubmit}
-                          style={{
-                            color: "#ebc010",
-                            backgroundColor: "#494848"
-                          }}
-                        >
-                          edit
-                        </Button>
                       </Form>
                     </div>
                   </ModalBody>
                   <ModalFooter
                     className=" bodyModal"
                     style={{ backgroundColor: "white" }}
-                  ></ModalFooter>
+                  >
+                    <Button
+                      className=" mr-0 cancelModal"
+                      onClick={togglemodal}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className=" ml-2 mr-1 addModal"
+                      onClick={togglemodal}
+                      type="submit"
+                      form="form"
+                      // onSubmit={handleSubmit}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      edit
+                    </Button>
+                  </ModalFooter>
                 </Modal>
 
                 <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
@@ -591,13 +574,18 @@ const Job = props => {
               Applied
             </Button>
           ) : (
+           ! currentUser.paymentData&&(
             <Button
               className=" applyBtn float-right"
               onClick={() => handleClick(props.job.id)}
             >
               Apply
-            </Button>
+            </Button>)
           )}
+        </div>
+        <div className=" postBody  pr-5 pl-5  m-0">
+          <span className=" font-weight-bold">job Title : </span>
+          <span className="">{props.job && props.job.jobTitle}</span>
         </div>
         <div className="postBody pt-3 pr-5 pl-5  m-0">
           <p className="text-justify">{props.job && props.job.description}</p>
