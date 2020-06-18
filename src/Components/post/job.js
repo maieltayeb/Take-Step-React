@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
@@ -21,67 +23,114 @@ import {
 import "./post.css";
 import {
   getUserById,
-  DeleteJob
+  DeleteJob,
+  EditJob
 } from "../../Redux/actions/businessOwnerActionCreator";
 import { addTask } from "../../Redux/actions/volunteerActionCreator";
 import {
   getTaskById,
   AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
+
 const Job = props => {
-  const { currentUser, jobs, bussinessOwnerUsers, state, job } = props;
+  const dispatch = useDispatch();
+  const { currentUser, jobs, bussinessOwnerUsers, state } = props;
+  /******** edit modal***** */
+
   /********modal***** */
   const [modal, setModal] = useState(false);
   const togglemodal = () => setModal(!modal);
+  const [stateModal, setStateModal] = useState({
+    jobTitle: props.job.jobTitle,
+    proposals: props.job.proposals,
+    timeDurationNumber: props.job.timeDurationNumber,
+    // timeDurationType: "Days",
+    description: props.job.description,
+    userId: props.currentUser.id,
+    enabled: true,
+    tasks: []
+  });
   /********modal***** */
 
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
-  const [applyButton, setStateApplyButton] = useState(props.job.enabled);
+  const data = [];
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [applied, setApplied] = useState(true);
 
+  const [jobsIds, setJobsIds] = useState(data);
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  const dispatch = useDispatch();
+
+  async function fetchInpogData() {
+    // debugger;
+    const inprogRes = await axios.get(
+      `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
+    );
+    const inprog = inprogRes.data;
+    if (inprog) {
+      const inprogArray = Object.keys(inprog).map(key => ({
+        id: String(key),
+        details: inprog[key]
+      }));
+      const jobsId = inprogArray.map(arr => arr.details.id);
+      setJobsIds(jobsId);
+      console.log("/////", jobsIds);
+
+      console.log("/////", inprogArray);
+
+      console.log("/////", jobsIds);
+    }
+  }
   useEffect(() => {
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
     userIds.forEach(userId => dispatch(getUserById(userId)));
+    fetchInpogData();
   }, [jobs, dispatch]);
-
-  const handleClick = taskID => {
+  // useEffect(() => {
+  //   fetchInpogData();
+  // }, []);
+  const handleClick = async taskID => {
     console.log(taskID);
-
-    setStateApplyButton(!applyButton);
-
-    dispatch(AddTasksToVol(volunteerId, taskID));
-    // }
+    setApplied(false);
+    dispatch(AddTasksToVol(volunteerId, props.job));
   };
 
   /************handel delete job**************** */
-  const handelDeleteJob = jobId => {
+  const handelDeleteJob = () => {
     if (currentUser.id === props.job.userId) {
       dispatch(DeleteJob(props.job.id));
     } else {
       alert("you can't delete this job");
     }
   };
-  /************handel delete job**************** */
+
   /*************handel edit job************** */
-  const handelEditJob = () => {};
+  const handelEditJob = () => {
+    if (currentUser.id === props.job.userId) {
+      togglemodal();
+    } else {
+      alert("you can't Edit this job");
+    }
+  };
 
   /*************handel modal  job************** */
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitEdit");
-    // dispatch(EditJob(state));
+    console.log("id", props.job.id);
+    if (currentUser.id === props.job.userId) {
+      dispatch(EditJob(stateModal, props.job.id));
+    } else {
+      alert("you can't Edit this job");
+    }
   };
   /*************handel modal change ************* */
   const handleChange = e => {
-    // const { name, value } = e.target;
-    // setState((prevState) => ({
-    //   ...prevState,
-    //   [name]: value,
-    // }));
+    const { name, value } = e.target;
+    setStateModal(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
   if (props.job.comments) {
     return (
@@ -114,7 +163,7 @@ const Job = props => {
                 <div className="post-ortions">...</div>
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={togglemodal}> Edit </DropdownItem>
+                <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
 
                 <Modal
                   className="modalShap"
@@ -153,28 +202,17 @@ const Job = props => {
                         onSubmit={handleSubmit}
                         id="form"
                       >
-                        {/* <FormGroup row>
-          <Label for="jobTitle">Job Title &nbsp;&nbsp;&nbsp;:</Label>
-          <Col sm={10}>
-            <Input
-              type="text"
-              name="jobTitle"
-              placeholder="write task title "
-              onChange={handleChange}
-            />
-          </Col>
-        </FormGroup> */}
-
-                        <FormGroup row>
-                          {/* <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-          <Col sm={10}>
-            <Input
-              type="text"
-              name="jobTitle"
-              id="jobTitle"
-              onChange={handleChange}
-            />
-          </Col> */}
+                        <FormGroup row className="m-3">
+                          <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
+                          <Col sm={10} className="mb-3">
+                            <Input
+                              type="text"
+                              name="jobTitle"
+                              id="jobTitle"
+                              onChange={handleChange}
+                              value={stateModal.jobTitle}
+                            />
+                          </Col>
                           <Label for="Proposals">Proposals &nbsp;&nbsp;:</Label>
                           <Col sm={4}>
                             <Input
@@ -185,7 +223,7 @@ const Job = props => {
                               min="5"
                               max="15"
                               onChange={handleChange}
-                              value={props.job.proposals}
+                              value={stateModal.proposals}
                             />
                           </Col>
                           <Label for="Time">Task Deadline:</Label>
@@ -196,8 +234,7 @@ const Job = props => {
                               id="Time"
                               type="date"
                               // value="0"
-                              // min="1"
-                              value={props.job.timeDurationNumber}
+                              value={stateModal.timeDurationNumber}
                               onChange={handleChange}
                             ></Input>
                           </Col>
@@ -225,7 +262,7 @@ const Job = props => {
                               name="description"
                               id="Description"
                               onChange={handleChange}
-                              value={props.job.description}
+                              value={stateModal.description}
                             />
                           </Col>
                         </FormGroup>
@@ -240,36 +277,31 @@ const Job = props => {
                             />
                           </Col>
                         </FormGroup>
-                        <Button
-                          className=" mr-0 cancelModal"
-                          onClick={togglemodal}
-                          style={{
-                            color: "#ebc010",
-                            backgroundColor: "#494848"
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          className=" ml-2 mr-1 addModal"
-                          // onClick={toggle}
-                          type="submit"
-                          form="form"
-                          // onSubmit={handleSubmit}
-                          style={{
-                            color: "#ebc010",
-                            backgroundColor: "#494848"
-                          }}
-                        >
-                          edit
-                        </Button>
                       </Form>
                     </div>
                   </ModalBody>
                   <ModalFooter
                     className=" bodyModal"
                     style={{ backgroundColor: "white" }}
-                  ></ModalFooter>
+                  >
+                    <Button
+                      className=" mr-0 cancelModal"
+                      onClick={togglemodal}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className=" ml-2 mr-1 addModal"
+                      onClick={togglemodal}
+                      type="submit"
+                      form="form"
+                      // onSubmit={handleSubmit}
+                      style={{ color: "#ebc010", backgroundColor: "#494848" }}
+                    >
+                      edit
+                    </Button>
+                  </ModalFooter>
                 </Modal>
 
                 <DropdownItem onClick={handelDeleteJob}>Delete</DropdownItem>
@@ -277,7 +309,6 @@ const Job = props => {
             </Dropdown>
           </div>
         </div>
-
         <div
           className=" ml-5  clearfix mt-3 d-flex"
           style={{ justifyContent: "space-between" }}
@@ -293,7 +324,7 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applyButton ? (
+          {!applied || jobsIds.includes(props.job.id) ? (
             <Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
@@ -310,6 +341,10 @@ const Job = props => {
               Apply
             </Button>
           )}
+        </div>
+        <div className=" postBody  pr-5 pl-5  m-0">
+          <span className=" font-weight-bold">job Title : </span>
+          <span className="">{props.job && props.job.jobTitle}</span>
         </div>
         <div className="postBody pt-3 pr-5 pl-5  m-0">
           <p className="text-justify">{props.job && props.job.description}</p>
@@ -336,97 +371,6 @@ const Job = props => {
       </>
     );
   } else {
-    // return (
-    //   <>
-    //     <div className=" pl-5 pt-3 pr-5 clearfix">
-    //       <div style={{ display: "flex", "justify-content": "space-between" }}>
-    //         <div>
-    //           <img className="post-img  rounded-circle" src="./img/people.png" />
-    //           <div className="username-post ml-3">
-    //             <div className="mt-3 postOwnerNameStyle">
-    //               {props.user && props.user.firstName}
-    //               &nbsp;&nbsp;
-    //               {props.user && props.user.lastName}
-    //             </div>
-    //             <div className="ml-0 postOwnerNameStyle">
-    //               {props.user && props.user.jobTitle}
-    //             </div>
-    //           </div>
-    //         </div>
-
-    //         <Dropdown
-    //           isOpen={dropdownOpen}
-    //           toggle={toggle}
-    //           style={{ display: "flex", justifyContent: "flex-end" }}
-    //         >
-    //           <DropdownToggle style={{ background: "none", border: "none" }}>
-    //             <div className="post-ortions">...</div>
-    //           </DropdownToggle>
-    //           <DropdownMenu>
-    //             <DropdownItem>Edit</DropdownItem>
-    //             <DropdownItem>Delete</DropdownItem>
-    //           </DropdownMenu>
-    //         </Dropdown>
-    //       </div>
-    //     </div>
-
-    //     <div
-    //       className=" ml-5  clearfix mt-3 d-flex"
-    //       style={{ justifyContent: "space-between" }}
-    //     >
-    //       <div className=" float-left">
-    //         <span className=" font-weight-bold">Deadline : </span>
-    //         <span className="">
-    //           {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
-    //           {props.job && props.job.timeDurationType}
-    //         </span>
-    //       </div>
-    //       <div className=" ml-5 float-left">
-    //         <span className="font-weight-bold ">Proposals :</span>
-    //         <span className="">&nbsp;{props.job && props.job.proposals}</span>
-    //       </div>
-    //       {!applyButton ? (
-    //         <Button
-    //           style={{ backgroundColor: "#6c757d" }}
-    //           disabled
-    //           className=" applyBtn float-right"
-    //           onClick={() => handleClick(props.job.id)}
-    //         >
-    //           Applied
-    //         </Button>
-    //       ) : (
-    //         <Button
-    //           className=" applyBtn float-right"
-    //           onClick={() => handleClick(props.job.id)}
-    //         >
-    //           Apply
-    //         </Button>
-    //       )}
-    //     </div>
-    //     <div className="postBody pt-3 pr-5 pl-5  m-0">
-    //       <p className="text-justify">{props.job && props.job.description}</p>
-    //     </div>
-
-    //     <div className=" reactToPost clearfix">
-    //       {/* <div className=" ml-5 float-left">
-    //               <span className="mt-2 mr-2">4</span>
-    //               <span>
-    //                 <i class=" mb-3 fas fa-thumbs-up"></i>
-    //               </span>
-    //               {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
-    //       {/* </div>  */}
-    //       <div className=" ml-4 float-left">
-    //       <span className="mt-2 mr-2">0</span>
-    //         <span>
-    //           <i class=" mb-3 fas fa-comment-alt"></i>
-    //         </span>
-    //         {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
-    //       </div>
-    //     </div>
-    //   </>
-    // );
-
-    /////////////////////////////////////////////////////
     return (
       <>
         <div className=" pl-5 pt-3 pr-5 clearfix">
@@ -636,7 +580,8 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applyButton ? (
+          {/* //////////////////////////////////// */}
+          {!applied || jobsIds.includes(props.job.id) ? (
             <Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
