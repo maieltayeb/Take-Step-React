@@ -120,10 +120,11 @@ export default (state = initialState, action) => {
       case ADD_COMMENT:
         // debugger;
         newState = {...state };
+        console.log("newState:",newState)
         newState.comments = [...state.comments, action.payload.newComment];
         newState.jobs = state.jobs.map(job => job.id === action.payload.jobId ?           
              {...job,comments: { ...job.comments,
-             [action.payload.jobId]: action.payload.newComment
+             [action.payload.newComment.id]: action.payload.newComment
             }}
             : job      
         );

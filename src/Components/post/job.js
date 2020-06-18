@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
 import { addComments } from "../../Redux/actions/commentActionCreator";
@@ -34,6 +36,8 @@ const Job = props => {
   const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
   /******** edit modal***** */
+
+  /********modal***** */
   const [modal, setModal] = useState(false);
   const togglemodal = () => setModal(!modal);
   const [stateModal, setStateModal] = useState({
@@ -50,23 +54,46 @@ const Job = props => {
 
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
-  const [applyButton, setStateApplyButton] = useState(props.job.enabled);
+  const data = [];
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [applied, setApplied] = useState(true);
 
+  const [jobsIds, setJobsIds] = useState(data);
   const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  async function fetchInpogData() {
+    // debugger;
+    const inprogRes = await axios.get(
+      `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
+    );
+    const inprog = inprogRes.data;
+    if (inprog) {
+      const inprogArray = Object.keys(inprog).map(key => ({
+        id: String(key),
+        details: inprog[key]
+      }));
+      const jobsId = inprogArray.map(arr => arr.details.id);
+      setJobsIds(jobsId);
+      console.log("/////", jobsIds);
+
+      console.log("/////", inprogArray);
+
+      console.log("/////", jobsIds);
+    }
+  }
   useEffect(() => {
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
     userIds.forEach(userId => dispatch(getUserById(userId)));
+    fetchInpogData();
   }, [jobs, dispatch]);
-
-  const handleClick = taskID => {
+  // useEffect(() => {
+  //   fetchInpogData();
+  // }, []);
+  const handleClick = async taskID => {
     console.log(taskID);
-
-    setStateApplyButton(!applyButton);
-
-    dispatch(AddTasksToVol(volunteerId, taskID));
-    // }
+    setApplied(false);
+    dispatch(AddTasksToVol(volunteerId, props.job));
   };
 
   /************handel delete job**************** */
@@ -77,7 +104,7 @@ const Job = props => {
       alert("you can't delete this job");
     }
   };
-  /************handel delete job**************** */
+
   /*************handel edit job************** */
   const handelEditJob = () => {
     if (currentUser.id === props.job.userId) {
@@ -297,7 +324,7 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applyButton ? (
+          {!applied || jobsIds.includes(props.job.id) ? (
             <Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
@@ -344,97 +371,6 @@ const Job = props => {
       </>
     );
   } else {
-    // return (
-    //   <>
-    //     <div className=" pl-5 pt-3 pr-5 clearfix">
-    //       <div style={{ display: "flex", "justify-content": "space-between" }}>
-    //         <div>
-    //           <img className="post-img  rounded-circle" src="./img/people.png" />
-    //           <div className="username-post ml-3">
-    //             <div className="mt-3 postOwnerNameStyle">
-    //               {props.user && props.user.firstName}
-    //               &nbsp;&nbsp;
-    //               {props.user && props.user.lastName}
-    //             </div>
-    //             <div className="ml-0 postOwnerNameStyle">
-    //               {props.user && props.user.jobTitle}
-    //             </div>
-    //           </div>
-    //         </div>
-
-    //         <Dropdown
-    //           isOpen={dropdownOpen}
-    //           toggle={toggle}
-    //           style={{ display: "flex", justifyContent: "flex-end" }}
-    //         >
-    //           <DropdownToggle style={{ background: "none", border: "none" }}>
-    //             <div className="post-ortions">...</div>
-    //           </DropdownToggle>
-    //           <DropdownMenu>
-    //             <DropdownItem>Edit</DropdownItem>
-    //             <DropdownItem>Delete</DropdownItem>
-    //           </DropdownMenu>
-    //         </Dropdown>
-    //       </div>
-    //     </div>
-
-    //     <div
-    //       className=" ml-5  clearfix mt-3 d-flex"
-    //       style={{ justifyContent: "space-between" }}
-    //     >
-    //       <div className=" float-left">
-    //         <span className=" font-weight-bold">Deadline : </span>
-    //         <span className="">
-    //           {props.job && props.job.timeDurationNumber}&nbsp;&nbsp;
-    //           {props.job && props.job.timeDurationType}
-    //         </span>
-    //       </div>
-    //       <div className=" ml-5 float-left">
-    //         <span className="font-weight-bold ">Proposals :</span>
-    //         <span className="">&nbsp;{props.job && props.job.proposals}</span>
-    //       </div>
-    //       {!applyButton ? (
-    //         <Button
-    //           style={{ backgroundColor: "#6c757d" }}
-    //           disabled
-    //           className=" applyBtn float-right"
-    //           onClick={() => handleClick(props.job.id)}
-    //         >
-    //           Applied
-    //         </Button>
-    //       ) : (
-    //         <Button
-    //           className=" applyBtn float-right"
-    //           onClick={() => handleClick(props.job.id)}
-    //         >
-    //           Apply
-    //         </Button>
-    //       )}
-    //     </div>
-    //     <div className="postBody pt-3 pr-5 pl-5  m-0">
-    //       <p className="text-justify">{props.job && props.job.description}</p>
-    //     </div>
-
-    //     <div className=" reactToPost clearfix">
-    //       {/* <div className=" ml-5 float-left">
-    //               <span className="mt-2 mr-2">4</span>
-    //               <span>
-    //                 <i class=" mb-3 fas fa-thumbs-up"></i>
-    //               </span>
-    //               {/* <img  className="mb-3" src="./img/smallLike.png"/> */}
-    //       {/* </div>  */}
-    //       <div className=" ml-4 float-left">
-    //       <span className="mt-2 mr-2">0</span>
-    //         <span>
-    //           <i class=" mb-3 fas fa-comment-alt"></i>
-    //         </span>
-    //         {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
-    //       </div>
-    //     </div>
-    //   </>
-    // );
-
-    /////////////////////////////////////////////////////
     return (
       <>
         <div className=" pl-5 pt-3 pr-5 clearfix">
@@ -644,7 +580,8 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applyButton ? (
+          {/* //////////////////////////////////// */}
+          {!applied || jobsIds.includes(props.job.id) ? (
             <Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
