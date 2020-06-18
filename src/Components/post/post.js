@@ -6,68 +6,80 @@ import { addComments } from "../../Redux/actions/commentActionCreator";
 import { Input } from "reactstrap";
 import "./post.css";
 import Job from "./job";
+import AddComment from "./addComment";
+import Comment from "./comment";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
+import { getAllVolunteers } from "./../../Redux/actions/volunteerActionCreator";
 
 const Post = props => {
   const { search } = props;
-  let { comments, currentUser, jobs, bussinessOwnerUsers } = props;
+  let { comments, currentUser, jobs, bussinessOwnerUsers,job, users,volunteerUsers } = props;
   const dispatch = useDispatch();
   const [stateJobs, setStateJobs] = useState([]);
   /********************comment part************************************************* */
-
-  const initialFieldValues = {
-    // comment:[{body:""}  ]
-    body: ""
-  };
-  let [values, setValues] = useState(initialFieldValues);
-  const handleInputChange = e => {
-    var { name, value } = e.target;
-
-    setValues({
-      ...values,
-      [name]: value
-    });
-  };
-
-  console.log("comments from props", comments);
   useEffect(() => {
-    // const id=users.currentUser.id
-    // const token = localStorage.getItem("token");
-    axios
-      .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
-      .then(response => {
-        const comments = response.data;
-        console.log("halaaaaaaaaaaaaa", comments);
+    let userIds = jobs.map(job => job.userId);
+    userIds = [...new Set(userIds)];
 
-        const newComment = [];
-        for (const key in comments) {
-          newComment.push({ id: key, ...comments[key] });
-        }
-        console.log("newcomment", newComment);
-        dispatch(getAllComments(newComment));
-        newComment.map(comment => {
-          console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
-        });
-        // console.log("newcomment body", newComment[0].body);
-      })
-      .catch(console.log);
-  }, [dispatch]);
+    userIds.forEach(userId => dispatch(getUserById(userId)));
+    const volusers = dispatch(getAllVolunteers());
+    console.log("voliuinteeeeeeeeeeeeeeeeer", volusers);
+  }, [jobs, dispatch]);
 
-  const handleKeyUp = async event => {
-    const { key } = event;
-    const newComment = {
-      body: values.body
-    };
-    if (key === "Enter") {
-      const response = await axios.post(
-        "https://take-a-step-9ca1d.firebaseio.com/comment.json",
-        newComment
-      );
-      const { data } = response;
-      if (response.status === 200) props.dispatch(addComments(newComment));
-      setValues({ body: "" });
-    }
-  };
+
+  // const initialFieldValues = {
+  //   // comment:[{body:""}  ]
+  //   body: ""
+  // };
+  // let [values, setValues] = useState(initialFieldValues);
+  // const handleInputChange = e => {
+  //   var { name, value } = e.target;
+
+  //   setValues({
+  //     ...values,
+  //     [name]: value
+  //   });
+  // };
+
+  // console.log("comments from props", comments);
+  // useEffect(() => {
+  //   // const id=users.currentUser.id
+  //   // const token = localStorage.getItem("token");
+  //   axios
+  //     .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
+  //     .then(response => {
+  //       const comments = response.data;
+  //       console.log("halaaaaaaaaaaaaa", comments);
+
+  //       const newComment = [];
+  //       for (const key in comments) {
+  //         newComment.push({ id: key, ...comments[key] });
+  //       }
+  //       console.log("newcomment", newComment);
+  //       dispatch(getAllComments(newComment));
+  //       newComment.map(comment => {
+  //         console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
+  //       });
+  //       // console.log("newcomment body", newComment[0].body);
+  //     })
+  //     .catch(console.log);
+  // }, [dispatch]);
+
+  // const handleKeyUp = async event => {
+  //   const { key } = event;
+  //   const newComment = {
+  //     body: values.body
+  //   };
+  //   if (key === "Enter") {
+  //     const response = await axios.post(
+  //       "https://take-a-step-9ca1d.firebaseio.com/comment.json",
+  //       newComment
+  //     );
+  //     const { data } = response;
+  //     if (response.status === 200) props.dispatch(addComments(newComment));
+  //     setValues({ body: "" });
+  //   }
+  // };
 
   /********************comment part************************************************* */
 
@@ -97,93 +109,73 @@ const Post = props => {
         .reverse()
         .map(job => {
           const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+          debugger;
+          let realComments = [];
+          if (job.comments) {
+            for (let i = 0; i < Object.keys(job.comments).length; i++) {
+              const element = job.comments[Object.keys(job.comments)[i]];
+              realComments.push(element);
+            }
+
           return (
             <>
               <div className="postContainer shadow">
                 <Job user={user} job={job}></Job>
-
                 <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
                   <div className=" reactToPost ml-2 mb-0 clearfix">
-                    {/* <div className=" ml-3 float-left">
-                      <span>Like</span>
-                      <span>
-                        <i class=" ml-3  mb-3 fas fa-thumbs-up"></i>
-                      </span>
-                    </div> */}
                     <div className="float-left">
                       <span>
                         <i class=" m-1  mr-2 fas fa-comment-alt"></i>
                       </span>
                       <span>Comment</span>
+                      
                     </div>
                   </div>
-                  <div className="clearfix comment-container">
-                    <div className=" float-left ">
-                      <img
-                        className="mt-3 post-img rounded-circle"
-                        src="./img/people.png"
-                      />
-                    </div>
-                    <div className=" ml-2 float-left ">
-                      <Input
-                        placeholder="Add your comment"
-                        className="mt-3 commentArea"
-                        name="body"
-                        value={values.body}
-                        onChange={handleInputChange}
-                        onKeyUp={handleKeyUp}
-                        style={{
-                          width: " 474px",
-                          border: " 1px solid #ebc010",
-                          "border-radius": " 50px"
-                        }}
-                      ></Input>
-                    </div>
-                  </div>
-                  {/* <div className="clearfix d-flex">
-                    <div className=" float-left ">
-                      <img
-                        className="post-img mt-2 rounded-circle"
-                        src="./img/people.png"
-                      />
-                    </div>
-                    <div className=" ml-2 float-left ">
-                      <div className="p-2 mt-2 commentbody">
-                        <p className=" m-1">Aya Rabea</p>
-                        <p className=" m-1 small">My comment here...</p>
-                      </div>
-                    </div>
-                  </div> */}
-
-                  {comments.length ? (
-                    comments.map(comment => (
-                      <div className="clearfix d-flex">
-                        <div className=" float-left ">
-                          <img
-                            className="post-img mt-2 rounded-circle"
-                            src="./img/people.png"
+                  <AddComment jobId={job.id} />
+                     {realComments.length ? (
+                      realComments.map(comment => {
+                        // const userVol = volunteerUsers.find(
+                        //   u => u.id === comment.userId
+                        // );
+                        return (
+                          <Comment
+                            key={Comment.id}
+                            comment={comment}
+                            jobId={job.id}
                           />
-                        </div>
-                        <div className=" ml-2 float-left ">
-                          <div className="p-2 mt-2 commentbody">
-                            <p className=" m-1">
-                              {currentUser.firstName +
-                                " " +
-                                currentUser.lastName}
-                            </p>
-                            <p className=" m-1 small">{comment.body} </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="ml-3 mt-3">Add Your Education Here..</div>
-                  )}
+                        );
+                      })
+                    ) : (
+                      <div className="ml-3 mt-3">{job.id}</div>
+                    )}
                 </div>
               </div>
             </>
-          );
-        })}
+          );}
+          else {
+            const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+            return (
+              <>
+                <div className="postContainer shadow">
+                  <Job user={user} job={job} key={job.id}></Job>
+                  <div className="postCommentBody shadow-sm p-4 mb-8 bg-white">
+                    <div className=" reactToPost ml-2 mb-0 clearfix">
+                      <div className="float-left">
+                        <span>
+                          <i class=" m-1  mr-2 fas fa-comment-alt"></i>
+                        </span>
+                        <span>Comment</span>
+                      </div>
+                    </div>
+                    <AddComment jobId={job.id} />
+                  </div>
+                </div>
+              </>
+            );
+          }
+        }
+        
+       )}
     </>
   );
 };
@@ -192,7 +184,14 @@ const mapStateToProps = reduxState => {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
-    comments: reduxState.Users.comments
+    comments: reduxState.Users.comments,
+    users: reduxState.Users,
+    volunteerUsers: reduxState.Users.volunteerUsers
+
+
+
+
+
   };
 };
 export default connect(mapStateToProps)(Post);

@@ -6,6 +6,7 @@ import {
   Get_BussinessUsers,
   Get_VolunteerUsers,
   Get_BussinessUsersById,
+  Get_VolunteerById,
   Get_Jobs,
   post_Login_BussinessUsers,
   post_Login_VolunteerUsers,
@@ -24,7 +25,8 @@ const initialState = {
   timeDurationTypes: [],
   bussinessOwnerUsers: [],
   comments: [],
-
+  volunteerUsers: [],
+  volunteerUsersById: [],
   errorMessg: ""
 };
 export default (state = initialState, action) => {
@@ -37,14 +39,23 @@ export default (state = initialState, action) => {
         ...state.bussinessOwnerUsers,
         action.payload
       ];
-      console.log("newstats///////////", newState);
       break;
-
-    case Get_BussinessUsers:
-    case Get_VolunteerUsers:
+      case Get_VolunteerById:
+      newState = { ...state };
+      newState.volunteerUsersById = [
+        ...state.volunteerUsersById,
+        action.payload
+      ];
+      break;
+     case Get_BussinessUsers:
+    // case Get_VolunteerUsers:
       newState = { ...state };
       newState.users = action.payload;
       break;
+      case Get_VolunteerUsers:
+        newState = { ...state };
+        newState.volunteerUsers = action.payload;
+        break;
 
     case Get_Countries:
       newState = { ...state };
@@ -93,11 +104,19 @@ export default (state = initialState, action) => {
       state = newState;
       console.log("aya after", state.comments);
       break;
-    case ADD_COMMENT:
-      newState = { ...state };
-      newState.comments = [...state.comments, action.payload];
-      state = newState;
-      break;
+      case ADD_COMMENT:
+        debugger;
+        newState = {...state };
+        newState.comments = [...state.comments, action.payload.newComment];
+        newState.jobs = state.jobs.map(job => job.id === action.payload.jobId ?           
+             {...job,comments: { ...job.comments,
+             [action.payload.jobId]: action.payload.newComment
+            }}
+            : job      
+        );
+        state = newState;
+        console.log("state",state)
+        break;
     default:
       newState = state;
       break;
