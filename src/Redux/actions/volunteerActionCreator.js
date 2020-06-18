@@ -5,6 +5,7 @@ import {
   Get_VolunteerUsers,
   GET_Error,
   Edit_VolunteerUsers,
+  Get_VolunteerById
   // ADD_Task
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
@@ -111,3 +112,22 @@ const EditSuccess = (user) => {
 // const addTaskSuccess = task => {
 //   return { type: ADD_Task, payload: task };
 // };
+//////----------------------Get volunteer by id---------------------////////
+export const getVolunteerById = id => dispatch => {
+  return axios
+    .get(`http://localhost:4402/volunteer/${id}`)
+    .then(response => {
+      const user = response.data;
+      console.log("userrrrrrrrrrrr vol", user);
+      dispatch(getVolunteerByIdSuccess(user));
+      //return user;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+const getVolunteerByIdSuccess = user => {
+  return { type: Get_VolunteerById, payload: user };
+};
+/////////----------------------------------------------------------/////////////

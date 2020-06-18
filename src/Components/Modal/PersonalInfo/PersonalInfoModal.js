@@ -13,10 +13,10 @@ import {
   ModalFooter,
   Input,
   FormGroup,
-  Col,
+  Col
 } from "reactstrap";
 
-const PersonalInfoModal = (props) => {
+const PersonalInfoModal = props => {
   const { className } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -40,7 +40,7 @@ const PersonalInfoModal = (props) => {
     countryName: props.currentUser.country.countryName,
     jobTitle: props.currentUser.jobTitle,
     email: props.currentUser.email,
-    countryId: props.currentUser.country._id,
+    countryId: props.currentUser.country._id
   });
   const dispatch = useDispatch();
   // const userId = props.match.params.id;
@@ -48,18 +48,18 @@ const PersonalInfoModal = (props) => {
     setState(state);
   }, [props.currentUser]);
 
-  const changeHandler = (e) => {
+  const changeHandler = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
-  const submitHandler = async (e) => {
+  const submitHandler = async e => {
     e.preventDefault();
     console.log("submitted");
-    let bussinesslogin = props.users.filter(function (user) {
+    let bussinesslogin = props.users.filter(function(user) {
       return user.email == props.currentUser.email;
     });
     //  debugger;
@@ -88,7 +88,7 @@ const PersonalInfoModal = (props) => {
             paddingLeft: "210px",
             backgroundColor: "#494848",
             color: "#ebc010",
-            paddingLeft: "320px",
+            paddingLeft: "320px"
           }}
         >
           Edit Info
@@ -102,7 +102,7 @@ const PersonalInfoModal = (props) => {
                 style={{
                   width: "20%",
                   borderRadius: "50%",
-                  marginLeft: "40%",
+                  marginLeft: "40%"
                 }}
               />
               <i
@@ -110,7 +110,7 @@ const PersonalInfoModal = (props) => {
                 style={{
                   display: "block",
                   marginLeft: "55%",
-                  color: "#ebc010",
+                  color: "#ebc010"
                 }}
               ></i>
               <div className="App">
@@ -118,7 +118,7 @@ const PersonalInfoModal = (props) => {
                   style={{
                     width: "40%",
                     borderRadius: "50%",
-                    margin: "auto",
+                    margin: "auto"
                   }}
                 >
                   {/* <ImageUploader
@@ -152,7 +152,7 @@ const PersonalInfoModal = (props) => {
               style={{
                 width: "100%",
                 border: "1px solid #EBC010",
-                marginBottom: "20px",
+                marginBottom: "20px"
               }}
             ></input>
 
@@ -166,7 +166,7 @@ const PersonalInfoModal = (props) => {
               style={{
                 width: "100%",
                 border: "1px solid #EBC010",
-                marginBottom: "20px",
+                marginBottom: "20px"
               }}
             ></input>
             {props.currentUser.paymentData && (
@@ -181,7 +181,7 @@ const PersonalInfoModal = (props) => {
                   style={{
                     width: "100%",
                     border: "1px solid #EBC010",
-                    marginBottom: "20px",
+                    marginBottom: "20px"
                   }}
                 ></input>
               </>
@@ -196,7 +196,7 @@ const PersonalInfoModal = (props) => {
               style={{
                 width: "100%",
                 border: "1px solid #EBC010",
-                marginBottom: "20px",
+                marginBottom: "20px"
               }}
             ></input>
             <label style={{ fontSize: "13px" }}>Location</label>
@@ -209,11 +209,11 @@ const PersonalInfoModal = (props) => {
                   id="exampleSelect"
                   onChange={changeHandler}
                   style={{
-                    border: "1px solid #EBC010",
+                    border: "1px solid #EBC010"
                   }}
                 >
                   {props.countries.map(
-                    (item) =>
+                    item =>
                       item.countryName == state.countryName && (
                         <option defaultValue key={item._id} value={item._id}>
                           {item.countryName}
@@ -221,7 +221,7 @@ const PersonalInfoModal = (props) => {
                       )
                   )}
                   {props.countries.map(
-                    (item) =>
+                    item =>
                       item.countryName !== state.countryName && (
                         <option key={item._id} value={item._id}>
                           {item.countryName}
@@ -254,7 +254,7 @@ const PersonalInfoModal = (props) => {
                 width: "100%",
                 maxHeight: "100px",
                 border: "1px solid #EBC010",
-                marginBottom: "40px",
+                marginBottom: "40px"
               }}
             ></textarea>
           </ModalBody>
@@ -267,7 +267,7 @@ const PersonalInfoModal = (props) => {
                 borderRadius: "20px",
                 border: "1px solid #EBC010",
                 color: "#494848",
-                width: "100px",
+                width: "100px"
               }}
             >
               Cancel
@@ -280,7 +280,7 @@ const PersonalInfoModal = (props) => {
                 backgroundColor: "#494848",
                 borderRadius: "20px",
                 color: "#EBC010",
-                width: "100px",
+                width: "100px"
               }}
             >
               Add
@@ -291,11 +291,11 @@ const PersonalInfoModal = (props) => {
     </div>
   );
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     users: reduxState.Users.users,
     currentUser: reduxState.Users.currentUser,
-    countries: reduxState.Users.countries,
+    countries: reduxState.Users.countries
   };
 };
 

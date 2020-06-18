@@ -7,9 +7,11 @@ import {
   Get_Countries,
   Get_timeDurationTypes,
   ADD_Job,
-  Get_Jobs,
+  Get_Jobs,Delete_Job,
   Get_BussinessUsersById,
   GET_Error,
+  Edit_Job
+  
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
 export const getAllUsersBussinessOwner = () => (dispatch) => {
@@ -181,6 +183,43 @@ export const addJob = (newJob) => (dispatch) => {
 
 const addJobSuccess = (job) => {
   return { type: ADD_Job, payload: job };
+};
+
+
+////////////////////////delete job////////////////////////////////////
+export const DeleteJob = (jobId) => (dispatch) => {
+  axios
+    .delete(`https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}.json`)
+    .then((response) => {
+     console.log("response delete job******************",response);
+      if (response.status === 200) dispatch(DeleteJobSuccess(jobId));
+    })
+    .catch(console.log);
+};
+
+const DeleteJobSuccess = (jobId) => {
+  return { type: Delete_Job, payload: jobId };
+};
+
+////////////////////////edit job////////////////////////////////////
+
+
+
+
+
+//////////////////////////////////
+export const EditJob = (newjob,jobId) => (dispatch) => {
+ return axios
+    .patch(`https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}.json`,newjob)
+    .then((response) => {
+      if (response.status === 200) dispatch(EditJobSuccess(jobId));
+      console.log("response edit job******************",response);
+    })
+    .catch(console.log);
+};
+
+const EditJobSuccess = (jobId) => {
+  return { type: Edit_Job, payload: jobId };
 };
 ///////////////////////////////////get all jobs////////////////////
 export const getAllJobs = () => (dispatch) => {
