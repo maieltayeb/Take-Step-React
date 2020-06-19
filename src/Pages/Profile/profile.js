@@ -6,11 +6,11 @@ import TaskProfile from "../../Components/Task/taskprofile";
 import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
 import InsideNav from "../../Layout/Navbar/insidenav";
 import EducationSection from "../../Components/EducationSection/EducationSection";
-import Portflio from "../../Components/Portflio/Portflio";
+import Portflio from "../../Components/Portflio/portfolio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
-const Profile = props => {
+const Profile = (props) => {
   return (
     <div>
       {/* <InsideNav></InsideNav> */}
@@ -77,7 +77,7 @@ const Profile = props => {
                     style={{
                       overflow: "auto",
                       height: "24rem",
-                      backgroundColor: "#F8F8F4"
+                      backgroundColor: "#F8F8F4",
                     }}
                   >
                     <InProgressTaskCard></InProgressTaskCard>
@@ -91,9 +91,9 @@ const Profile = props => {
     </div>
   );
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
-    currentUser: reduxState.Users.currentUser
+    currentUser: reduxState.Users.currentUser,
   };
 };
 export default connect(mapStateToProps)(Profile);

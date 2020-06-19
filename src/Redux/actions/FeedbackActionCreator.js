@@ -15,12 +15,13 @@ const AddFeed = (review) => {
   return { type: ADD_FEEDBACK, payload: review };
 };
 
-export const getFeedbacksById = (id) => (dispatch) => {
-  const feedData = axios.get(
+export const getFeedbacksById = (id) => async (dispatch) => {
+  debugger;
+  const feedData = await axios.get(
     `https://take-a-step-9ca1d.firebaseio.com/Feedback/${id}.json`
   );
 
-  const feedbackArray = feedData.response;
+  const feedbackArray = feedData.data;
 
   console.log(feedbackArray);
   dispatch(getUserFeedbacks(feedbackArray));
