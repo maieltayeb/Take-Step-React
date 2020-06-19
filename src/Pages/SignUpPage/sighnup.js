@@ -56,7 +56,7 @@ const SignUp = props => {
 
   /*******handel click*************** */
   const handleClick = e => {
-    if (e.target.textContent === "Bussiness Owner") {
+    if (e.target.textContent === "Software Intern") {
       setSatateStatus(true);
       setState(prevState => ({
         ...prevState,

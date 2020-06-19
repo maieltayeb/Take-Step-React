@@ -1,13 +1,7 @@
 import axios from "axios";
 import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS,ADD_SUBMITTASK_LINK,GET_ALLSUBMITTED_TASKS } from "../actionTypes";
 
-export const AddTasksToVol = (volunteerId, taskId) => async (dispatch) => {
-  // debugger;
-  // console.log("///////", newTask);
-  const response = await axios.get(
-    `https://take-a-step-9ca1d.firebaseio.com/jobs/${taskId}.json`
-  );
-  const newTask = response.data;
+export const AddTasksToVol = (volunteerId, newTask) => async (dispatch) => {
   newTask.status = "inprogress";
 
   console.log(newTask);
@@ -25,7 +19,6 @@ const AddTask = (task) => {
 };
 
 export const getTasksByVolId = (id) => (dispatch) => {
-  // debugger;
   axios
     .get(`https://take-a-step-9ca1d.firebaseio.com/Inprogress/${id}.json`)
     .then((response) => {

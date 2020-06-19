@@ -3,12 +3,11 @@ import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS ,ADD_SUBMITTASK_LINK,GET_AL
 
 const initialState = {
   appliedTasks: [],
-  newTask: null,
-  submittedTaskLinks:[]
+  newTask: "",
 };
 
 const InprogReducer = (state = initialState, action) => {
-  let newState;
+  let newState = state;
   switch (action.type) {
     case GET_TASK_BY_ID:
       // debugger;
@@ -28,37 +27,27 @@ const InprogReducer = (state = initialState, action) => {
       };
       // newState = [...state, action.payload];
       console.log(newState);
+      // newState = [...state, action.payload];
+      console.log(newState);
       break;
     case GET_VOL_TASKS:
       // debugger;
-      // newState = Object.keys(action.payload).map((key) => ({
-      //   inprogTaskId: String(key),
-      //   details: action.payload[key],
-      // }));
-      // console.log(newState);
-      newState = {
-        ...state,
-        appliedTasks: Object.keys(action.payload).map((key) => ({
-          inprogTaskId: String(key),
-          details: action.payload[key],
-        })),
-      };
-      console.log(action.payload);
-      break;
-////////////upload task///////////
-     case ADD_SUBMITTASK_LINK:
-      newState = { ...state };
-      newState.submittedTaskLinks = [...state.submittedTaskLinks, action.payload];
-      console.log("state",newState)
-      break;
-      case GET_ALLSUBMITTED_TASKS:
-        // newState = action.payload;
-        newState = { ...state };
-        newState.submittedTaskLinks = action.payload;
-  
-      break;
-     default:
-      newState = state;
+      if ((state.appliedTasks != [] && state.newTask != "") || action.payload) {
+        newState = {
+          ...state,
+          appliedTasks: Object.keys(action.payload).map((key) => ({
+            inprogTaskId: String(key),
+            details: action.payload[key],
+          })),
+        };
+        console.log(action.payload);
+        console.log(newState);
+      } else {
+        newState = {
+          appliedTasks: [],
+          newTask: "",
+        };
+      }
       break;
   }
   return newState;
