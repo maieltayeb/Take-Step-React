@@ -1,9 +1,10 @@
 import * as actionTypes from "../actionTypes";
-import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS } from "../actionTypes";
+import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS ,ADD_SUBMITTASK_LINK,GET_ALLSUBMITTED_TASKS} from "../actionTypes";
 
 const initialState = {
   appliedTasks: [],
   newTask: null,
+  submittedTaskLinks:[]
 };
 
 const InprogReducer = (state = initialState, action) => {
@@ -44,9 +45,19 @@ const InprogReducer = (state = initialState, action) => {
       };
       console.log(action.payload);
       break;
-    // debugger;
-
-    default:
+////////////upload task///////////
+     case ADD_SUBMITTASK_LINK:
+      newState = { ...state };
+      newState.submittedTaskLinks = [...state.submittedTaskLinks, action.payload];
+      console.log("state",newState)
+      break;
+      case GET_ALLSUBMITTED_TASKS:
+        // newState = action.payload;
+        newState = { ...state };
+        newState.submittedTaskLinks = action.payload;
+  
+      break;
+     default:
       newState = state;
       break;
   }

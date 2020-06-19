@@ -1,21 +1,79 @@
 import React, { useState } from "react";
+import { connect, useDispatch} from "react-redux";
+import {addSubmitTaskLink} from "../../../Redux/actions/InprogressActionCreator";
+import axios from "axios";
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Form,
   Col
 } from "reactstrap";
 
 const ModalLink = props => {
-  const { buttonLabel, className } = props;
-
+  const { buttonLabel, className,state,jobId,currentUser,bussinessOwnerId,jobTitle} = props;
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
+  console.log("Hii",bussinessOwnerId);
+  /////////////////////////////////////////////////
+  const initialFieldValues = {
+    bussinessOwnerId:bussinessOwnerId,
+    jobId:jobId,
+    jobTitle:jobTitle,
+    volunteerId:currentUser.id,
+    taskLink:"",
+    VolunteerComment:""
+  };
+  let [values, setValues] = useState(initialFieldValues);
+  const handleInputChange =  e => {
+    var { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };  
+console.log("id",jobId)
+const handleSubmit = async e => {
+  e.preventDefault();
+  const newLink = {
+    bussinessOwnerId:bussinessOwnerId,
+    volunteerId:currentUser.id,
+    jobId:jobId,
+    jobTitle:jobTitle,
+    taskLink:values.taskLink,
+    VolunteerComment:values.VolunteerComment
+  };
+  console.log("newLink",newLink)
+const response = await axios.post("http://localhost:4402/bussinessOwner/addSubmitTasks",newLink,{
+  // headers:{
+  //     'authorization':token
+  // }
+});
+const { data } = response;
+console.log("response",response)
+if (response.status === 200) {
+  console.log("respone",response.data.newLink)
+  props.dispatch(addSubmitTaskLink(response.data.newLink));
+  setValues({
+    taskLink:"",
+    VolunteerComment:""
+  });
+}
+}
+
+
+
+
+
+
+
+
+
 
   return (
+    // state.map(ele=>ele.details.id)
     <div>
       <Button
         onClick={toggle}
@@ -54,6 +112,7 @@ const ModalLink = props => {
             <span aria-hidden="true">x</span>
           </button>
         </div> */}
+        <Form autoComplete="off" onSubmit={handleSubmit} >
         <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
           <label style={{ fontSize: "13px" }}>add your link:</label>
           <br />
@@ -62,8 +121,12 @@ const ModalLink = props => {
             style={{
               width: "100%",
               border: "1px solid #EBC010",
-              marginBottom: "20px"
+              marginBottom: "20px",
+             
             }}
+            name="taskLink"
+            value={values.taskLink}
+            onChange={handleInputChange}
           ></input>
           <br />
           <label style={{ fontSize: "13px" }}>leave your comment:</label>
@@ -75,8 +138,12 @@ const ModalLink = props => {
               border: "1px solid #EBC010",
               marginBottom: "20px"
             }}
+            name="VolunteerComment"
+            value={values.VolunteerComment}
+            onChange={handleInputChange}
           ></textarea>
         </ModalBody>
+
         <ModalFooter>
           <Button
             color="primary"
@@ -92,6 +159,7 @@ const ModalLink = props => {
             Cancel
           </Button>{" "}
           <Button
+            type="submit"
             color="secondary"
             onClick={toggle}
             style={{
@@ -104,9 +172,15 @@ const ModalLink = props => {
             Add
           </Button>
         </ModalFooter>
+        </Form>
       </Modal>
     </div>
   );
 };
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser
+  }
+}
 
-export default ModalLink;
+export default connect(mapStateToProps)(ModalLink);

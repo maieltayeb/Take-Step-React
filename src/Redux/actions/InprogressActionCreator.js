@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS } from "../actionTypes";
+import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS,ADD_SUBMITTASK_LINK,GET_ALLSUBMITTED_TASKS } from "../actionTypes";
 
 export const AddTasksToVol = (volunteerId, taskId) => async (dispatch) => {
   // debugger;
@@ -41,3 +41,14 @@ export const getTasksByVolId = (id) => (dispatch) => {
 const getVolTasks = (task) => {
   return { type: GET_VOL_TASKS, payload: task };
 };
+
+///////////////////////Upload Link here///////////////////////////////
+export const addSubmitTaskLink = task => {
+  return { type: ADD_SUBMITTASK_LINK, payload: task };
+};
+/////////////////////Get finished submitted tasks ///////////////////////////
+  export const getAllSubmitTasks = task => {
+  return { type: GET_ALLSUBMITTED_TASKS, payload: task };
+
+};
+//------------------------------------------------------------------------///

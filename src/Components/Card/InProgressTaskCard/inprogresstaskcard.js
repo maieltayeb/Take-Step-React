@@ -16,15 +16,17 @@ import CountDown from "./CountDown";
 const InProgressTaskCard = (props) => {
   const data = [];
   const { state } = props;
-  console.log(props);
+  // console.log(props);
   const [inprogState, setState] = useState(data);
   const dispatch = useDispatch();
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   useEffect(() => {
+    // debugger;
     dispatch(getTasksByVolId(volunteerId));
     console.log(state);
   }, []);
+  // console.log(state);
 
   return (
     <div>
@@ -48,7 +50,7 @@ const InProgressTaskCard = (props) => {
                                 </NavLink>
                               </ToastHeader>
                             </Col>
-                            <ModalLink></ModalLink>
+                            <ModalLink state={state} jobId={d.details.id} bussinessOwnerId={d.details.userId} jobTitle={d.details.jobTitle}></ModalLink>
                           </Row>
                           {/* <ToastBody className=" bg-success m-3  rounded">
                       <Row>
