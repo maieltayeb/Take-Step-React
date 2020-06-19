@@ -16,34 +16,6 @@ class Portflio extends Component {
     activeCards: [],
   };
 
-  //   const { feedback } = props;
-  //   const [rating, setRating] = useState(null);
-  //   const [index, setIndex] = useState(0);
-  //   const [activeCards, setActiveCards] = useState([]);
-
-  //   fetchData = async () => {
-  //     const user = localStorage.getItem("user");
-  //     const volunteerId = JSON.parse(user).id;
-  //     debugger;
-  //     const arr = [];
-  //     const feedData = await axios.get(
-  //       `https://take-a-step-9ca1d.firebaseio.com/Feedback/${volunteerId}.json`
-  //     );
-
-  //     const feedbackArray = Object.keys(feedData.data).map((key) => ({
-  //       id: String(key),
-  //       details: feedData.data[key],
-  //     }));
-  //     this.setState({ AllData: feedbackArray });
-  //     console.log(feedbackArray[0]);
-  //     const d = feedbackArray[0];
-  //     arr.push(feedbackArray[0]);
-  //     arr.push(feedbackArray[1]);
-
-  //     this.setState({ activeCards: arr });
-  //     // setActiveCards(activeCards.push(feedbackArray[1]));
-  //     console.log(this.state.activeCards);
-  //   };
   async componentDidMount() {
     const user = localStorage.getItem("user");
     const volunteerId = JSON.parse(user).id;
@@ -111,7 +83,9 @@ class Portflio extends Component {
 
     console.log(this.state.activeCards);
   };
-
+  handleClick = (link) => {
+    window.open(link);
+  };
   render() {
     return (
       <div className="Portflio-container">
@@ -139,6 +113,7 @@ class Portflio extends Component {
                     />
                   </div>
                   <div
+                    onClick={() => this.handleClick(d.details.link)}
                     className="Portflio-item-title"
                     style={{ textDecoration: "underline", cursor: "pointer" }}
                   >
