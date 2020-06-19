@@ -1,38 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+// import React, from "react";
 import "./Portflio.css";
 
-const Portflio = props => {
+import { FaStar } from "react-icons/fa";
+
+const Portflio = (props) => {
+  const [rating, setRating] = useState(null);
+
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    arrow: true,
+    slidesToScroll: 1,
+    className: "slides",
+  };
+  const data = [
+    { title: "bla bla", rateValue: 3, img: "/img/watch.jpg" },
+    { title: "TAsssk", rateValue: 4, img: "/img/watch.jpg" },
+  ];
   return (
     <div className="Portflio-container">
       <div className="Portflio-items">
-        <div className="Portflio-item">
-          <div>
-            <img
-              className="Portflio-item-img"
-              top
-              width="100%"
-              src="/img/watch.jpg"
-              alt="Card image cap"
-            />
-          </div>
-          <div className="Portflio-item-title">Card title</div>
-          <div>
-            <i
-              className="fas fa-star feedback-icon"
-              style={{ marginLeft: "80px" }}
-            ></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-          </div>
-        </div>
+        <slider {...settings} />
+        {data.map((d) => {
+          return (
+            <div className="Portflio-item">
+              <div>
+                <img
+                  className="Portflio-item-img"
+                  top
+                  width="100%"
+                  src={d.img}
+                  alt="Card image cap"
+                />
+              </div>
+              <div className="Portflio-item-title">{d.title}</div>
+              <div style={{ marginLeft: "80px" }}>
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  // const val = ;
+                  return (
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={d.rateValue}
+                        onClick={() => setRating(ratingValue)}
+                      />
+                      <FaStar
+                        className="star"
+                        size={20}
+                        color={
+                          ratingValue <= d.rateValue ? "#ebc010" : "#888888"
+                        }
+                      />
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
 
-        <div className="Portflio-item">
+        {/* <div className="Portflio-item">
           <img
             className="Portflio-item-img"
             style={{
-              borderRadius: " 50% 0"
+              borderRadius: " 50% 0",
             }}
             top
             width="100%"
@@ -41,17 +78,29 @@ const Portflio = props => {
           />
 
           <div className="Portflio-item-title">Card title</div>
-          <div>
-            <i
-              className="fas fa-star feedback-icon"
-              style={{ marginLeft: "80px" }}
-            ></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
+          <div style={{ marginLeft: "80px" }}>
+            {[...Array(5)].map((star, i) => {
+              const ratingValue = i + 1;
+              const val = 4;
+              return (
+                <label>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value={val}
+                    onClick={() => setRating(ratingValue)}
+                  />
+                  <FaStar
+                    className="star"
+                    size={20}
+                    color={ratingValue <= val ? "#ebc010" : "#888888"}
+                  />
+                </label>
+              );
+            })}
           </div>
-        </div>
+        </div> */}
+        <slider />
       </div>
       <div className="Portflio-title">
         {" "}
