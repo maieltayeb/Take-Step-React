@@ -10,12 +10,13 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,DropdownItem
+  Input,
+  DropdownItem
 } from "reactstrap";
 import { addJob } from "../../../Redux/actions/businessOwnerActionCreator";
 import "./modal.css";
 
-const ModalCreateTask = (props) => {
+const ModalCreateTask = props => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
@@ -26,26 +27,26 @@ const ModalCreateTask = (props) => {
     description: "",
     userId: props.currentUser.id,
     enabled: true,
-    tasks: [],
+    tasks: []
   });
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
   console.log("type", props.timeDurationTypes);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     console.log("submitaddddddddddddddddd");
-     dispatch(addJob(state));
+    dispatch(addJob(state));
   };
   return (
     <div>
       <p onClick={toggle}> What's your Task ?</p>
-  
+
       <Modal
         className="modalShap"
         isOpen={modal}
@@ -68,7 +69,7 @@ const ModalCreateTask = (props) => {
               style={{
                 width: "10%",
                 borderRadius: "50%",
-                marginRight: "20px",
+                marginRight: "20px"
               }}
             />
             <a>
@@ -93,7 +94,7 @@ const ModalCreateTask = (props) => {
 
               <FormGroup row>
                 <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                <Col sm={10}>
+                <Col sm={10} className="m-3">
                   <Input
                     type="text"
                     name="jobTitle"
@@ -192,10 +193,10 @@ const ModalCreateTask = (props) => {
     </div>
   );
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
-    timeDurationTypes: reduxState.Users.timeDurationTypes,
+    timeDurationTypes: reduxState.Users.timeDurationTypes
   };
 };
 export default connect(mapStateToProps)(ModalCreateTask);
