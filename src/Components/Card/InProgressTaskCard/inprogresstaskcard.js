@@ -6,14 +6,13 @@ import ModalLink from "../../Modal/AddLink/AddLink-Modal";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import {
   AddTasksToVol,
   getTasksByVolId,
 } from "../../../Redux/actions/InprogressActionCreator";
 import CountDown from "./CountDown";
 
-const InProgressTaskCard = (props) => {
+  const InProgressTaskCard = (props) => {
   const data = [];
   const { state } = props;
   // console.log(props);
@@ -24,9 +23,7 @@ const InProgressTaskCard = (props) => {
   useEffect(() => {
     // debugger;
     dispatch(getTasksByVolId(volunteerId));
-    console.log(state);
   }, []);
-  // console.log(state);
 
   return (
     <div>
@@ -50,7 +47,9 @@ const InProgressTaskCard = (props) => {
                                 </NavLink>
                               </ToastHeader>
                             </Col>
-                            <ModalLink state={state} jobId={d.details.id} bussinessOwnerId={d.details.userId} jobTitle={d.details.jobTitle}></ModalLink>
+                            <ModalLink state={state} 
+                             inProgressTaskId={d.inprogTaskId} jobId={d.details.id}
+                              bussinessOwnerId={d.details.userId} jobTitle={d.details.jobTitle} ></ModalLink>
                           </Row>
                           {/* <ToastBody className=" bg-success m-3  rounded">
                       <Row>

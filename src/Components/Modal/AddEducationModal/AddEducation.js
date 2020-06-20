@@ -38,11 +38,8 @@ const AddEducation = props => {
     });
   };
 
-  // const {id}=props.match.params.id
   const handleSubmit = async e => {
     e.preventDefault();
-    // console.log("kkkkkkkkkkkk");
-     console.log("currentVolunteerId",CurrentVolunteerId)
     const newEdu = {
       volunteerId:CurrentVolunteerId,
       facultyName: values.facultyName,
@@ -50,10 +47,7 @@ const AddEducation = props => {
       graduationYear: values.graduationYear,
       grade: values.grade
     };
-    console.log(newEdu);
     const token = localStorage.getItem("token");
-    // const response = await axios.post(
-    //   "https://take-a-step-9ca1d.firebaseio.com/educationSection.json"
     const response = await axios.post("http://localhost:4402/volunteer/add-education",newEdu,{
       headers:{
           'authorization':token

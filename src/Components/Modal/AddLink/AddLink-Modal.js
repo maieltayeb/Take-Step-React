@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect, useDispatch} from "react-redux";
-import {addSubmitTaskLink} from "../../../Redux/actions/InprogressActionCreator";
+import {addSubmitTaskLink,deleteJobFromProgress} from "../../../Redux/actions/InprogressActionCreator";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import axios from "axios";
 import {
   Button,
@@ -13,10 +14,12 @@ import {
 } from "reactstrap";
 
 const ModalLink = props => {
-  const { buttonLabel, className,state,jobId,currentUser,bussinessOwnerId,jobTitle} = props;
+  const { buttonLabel, className,state,jobId,currentUser,bussinessOwnerId,jobTitle,inProgressTaskId} = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  console.log("Hii",bussinessOwnerId);
+  // const progressTaskId=state.
+  // console.log("Hii",inProgressTaskId,currentUser.id);
+  const volunteerId=currentUser.id
   /////////////////////////////////////////////////
   const initialFieldValues = {
     bussinessOwnerId:bussinessOwnerId,
@@ -46,11 +49,8 @@ const handleSubmit = async e => {
     VolunteerComment:values.VolunteerComment
   };
   console.log("newLink",newLink)
-const response = await axios.post("http://localhost:4402/bussinessOwner/addSubmitTasks",newLink,{
-  // headers:{
-  //     'authorization':token
-  // }
-});
+  const response = await axios.post(`https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}/tasks.json`,newLink
+);
 const { data } = response;
 console.log("response",response)
 if (response.status === 200) {
@@ -60,17 +60,26 @@ if (response.status === 200) {
     taskLink:"",
     VolunteerComment:""
   });
+
+//----------------------------------------delete it from prog-----------------------------------------------//
+    const resDelete = await axios.delete(`https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}/${inProgressTaskId}.json`)
+      console.log("delete ", resDelete);
+      if  (resDelete.status === 200){
+        props.dispatch(deleteJobFromProgress(volunteerId,inProgressTaskId))
+      };
+
+//---------------------------------------------------------------------------------------//
+
 }
 }
 
-
-
-
-
-
-
-
-
+const handleCancel = async e => {
+  e.preventDefault();
+  setValues({
+    taskLink:"",
+    VolunteerComment:""
+  })
+}
 
   return (
     // state.map(ele=>ele.details.id)
@@ -101,37 +110,27 @@ if (response.status === 200) {
         >
           Add Link
         </ModalHeader>
-        {/* <div style={{ height: "50px", backgroundColor: "#494848" }}>
-          <p
-            className=" text-center"
-            style={{ color: "#EBC010", paddingTop: "12px" }}
-          >
-            add link
-          </p>
-          <button type="button" className="close" autoCorrect="close">
-            <span aria-hidden="true">x</span>
-          </button>
-        </div> */}
-        <Form autoComplete="off" onSubmit={handleSubmit} >
+        <AvForm autoComplete="off" onSubmit={handleSubmit} onReset={handleCancel}>
         <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
           <label style={{ fontSize: "13px" }}>add your link:</label>
           <br />
-          <input
+          <AvField
             type="text"
             style={{
               width: "100%",
               border: "1px solid #EBC010",
               marginBottom: "20px",
-             
             }}
             name="taskLink"
             value={values.taskLink}
             onChange={handleInputChange}
-          ></input>
+            type="url" pattern="https?://.+" required
+            errorMessage=" you should enter right link : for example http://www.github.com "
+          />
           <br />
           <label style={{ fontSize: "13px" }}>leave your comment:</label>
           <br />
-          <textarea
+          <AvField
             type="text"
             style={{
               width: "100%",
@@ -141,9 +140,8 @@ if (response.status === 200) {
             name="VolunteerComment"
             value={values.VolunteerComment}
             onChange={handleInputChange}
-          ></textarea>
+          />
         </ModalBody>
-
         <ModalFooter>
           <Button
             color="primary"
@@ -155,13 +153,15 @@ if (response.status === 200) {
               color: "#494848",
               width: "100px"
             }}
+            type="reset"
+
           >
             Cancel
           </Button>{" "}
           <Button
-            type="submit"
             color="secondary"
             onClick={toggle}
+            type="submit"
             style={{
               backgroundColor: "#494848",
               borderRadius: "20px",
@@ -172,14 +172,14 @@ if (response.status === 200) {
             Add
           </Button>
         </ModalFooter>
-        </Form>
+        </AvForm>
       </Modal>
     </div>
   );
 };
 const mapStateToProps = reduxState => {
   return {
-    currentUser: reduxState.Users.currentUser
+    currentUser: reduxState.Users.currentUser,
   }
 }
 

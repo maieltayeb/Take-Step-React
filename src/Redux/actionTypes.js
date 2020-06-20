@@ -51,3 +51,6 @@ export const EDIT_COMMENT = "EDIT_COMMENT";
 /////////////////upload task part//////////////////////////
 export const ADD_SUBMITTASK_LINK ="ADD_SUBMITTASK_LINK";
 export const GET_ALLSUBMITTED_TASKS ="GET_ALLSUBMITTED_TASKS";
+////////////when upload task delete it from my progress//////////////
+export const DELET_TASKFROM_PROGRESS="DELET_TASKFROM_PROGRESS";
+

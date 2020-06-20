@@ -29,8 +29,6 @@ const AddComment = props => {
     job,
     jobId
   } = props;
-
-  console.log("idddddddddddddddddddddddddd", jobId);
   const initialFieldValues = {
     body: "",
     jobId: jobId,
@@ -45,52 +43,18 @@ const AddComment = props => {
       [name]: value
     });
   };
-
-  console.log("comments from props", comments);
-  //   useEffect(() => {
-  //     // const id=users.currentUser.id
-  //     // const token = localStorage.getItem("token");
-  //     axios
-  //       .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
-  //       .then(response => {
-  //         const comments = response.data;
-  //         console.log(
-  //           "response",
-  //           comments.map(id => response.data.name)
-  //         );
-  //         const newComment = [];
-  //         for (const key in comments) {
-  //           newComment.push({ id: key, ...comments[key] });
-  //           console.log(
-  //             "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-  //             newComment.id
-  //           );
-  //         }
-
-  //         dispatch(getAllComments(newComment));
-  //         newComment.map(comment => {});
-  //         // console.log("newcomment body", newComment[0].body);
-  //       })
-  //       .catch(console.log);
-  //   }, [dispatch]);
-
   const handleKeyUp = async event => {
-    // debugger;
     const { key } = event;
     const newComment = {
       body: values.body,
       jobId: jobId,
       userId: currentUser.id
     };
-    if (key === "Enter") {
-      // debugger;
+    if (key === "Enter"&&values.body!=="") {
       const response = await axios.post(
         "https://take-a-step-9ca1d.firebaseio.com/comment.json",
         newComment
       );
-
-      // const { data } = response;
-      
       if (response.status === 200) {
         console.log("new", newComment.jobId);
        const response= await axios.post(
@@ -104,10 +68,6 @@ const AddComment = props => {
       }
     }
   };
-
-  /********************comment part************************************************* */
-
-  /**********************job part******************* */
 
   return (
     <>

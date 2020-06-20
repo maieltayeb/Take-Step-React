@@ -34,60 +34,6 @@ const Post = props => {
     console.log("voliuinteeeeeeeeeeeeeeeeer", volusers);
   }, [jobs, dispatch]);
 
-  // const initialFieldValues = {
-  //   // comment:[{body:""}  ]
-  //   body: ""
-  // };
-  // let [values, setValues] = useState(initialFieldValues);
-  // const handleInputChange = e => {
-  //   var { name, value } = e.target;
-
-  //   setValues({
-  //     ...values,
-  //     [name]: value
-  //   });
-  // };
-
-  // console.log("comments from props", comments);
-  // useEffect(() => {
-  //   // const id=users.currentUser.id
-  //   // const token = localStorage.getItem("token");
-  //   axios
-  //     .get(`https://take-a-step-9ca1d.firebaseio.com/comment.json`)
-  //     .then(response => {
-  //       const comments = response.data;
-  //       console.log("halaaaaaaaaaaaaa", comments);
-
-  //       const newComment = [];
-  //       for (const key in comments) {
-  //         newComment.push({ id: key, ...comments[key] });
-  //       }
-  //       console.log("newcomment", newComment);
-  //       dispatch(getAllComments(newComment));
-  //       newComment.map(comment => {
-  //         console.log("comment body heeeeeeeeeeeeeeeeeee", comment.body);
-  //       });
-  //       // console.log("newcomment body", newComment[0].body);
-  //     })
-  //     .catch(console.log);
-  // }, [dispatch]);
-
-  // const handleKeyUp = async event => {
-  //   const { key } = event;
-  //   const newComment = {
-  //     body: values.body
-  //   };
-  //   if (key === "Enter") {
-  //     const response = await axios.post(
-  //       "https://take-a-step-9ca1d.firebaseio.com/comment.json",
-  //       newComment
-  //     );
-  //     const { data } = response;
-  //     if (response.status === 200) props.dispatch(addComments(newComment));
-  //     setValues({ body: "" });
-  //   }
-  // };
-
   /********************comment part************************************************* */
 
   /**********************job part******************* */
@@ -116,14 +62,12 @@ const Post = props => {
         .reverse()
         .map(job => {
           const user = bussinessOwnerUsers.find(u => u.id === job.userId);
-          // debugger;
           let realComments = [];
           if (job.comments) {
             for (let i = 0; i < Object.keys(job.comments).length; i++) {
               const element = job.comments[Object.keys(job.comments)[i]];
               realComments.push(element);
             }
-
             return (
               <>
                 <div className="postContainer shadow">

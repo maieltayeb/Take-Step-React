@@ -62,7 +62,6 @@ const Job = props => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   async function fetchInpogData() {
-    // debugger;
     const inprogRes = await axios.get(
       `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
     );
@@ -140,7 +139,7 @@ const Job = props => {
             <div>
               <img
                 className="post-img  rounded-circle"
-                src="./img/developer.jpg"
+                src="./img/people.png"
               />
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
@@ -153,7 +152,6 @@ const Job = props => {
                 </div>
               </div>
             </div>
-
             <Dropdown
               isOpen={dropdownOpen}
               toggle={toggle}
@@ -604,14 +602,13 @@ const Job = props => {
             <span>
               <i class=" mb-3 fas fa-comment-alt"></i>
             </span>
-            {/* <img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
+            {/*<img className=" d-inline mb-2"  src="./img/smallcomment.png"/> */}
           </div>
         </div>
       </>
     );
   }
 };
-
 const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
