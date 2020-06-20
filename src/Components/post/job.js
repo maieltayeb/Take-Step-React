@@ -31,7 +31,7 @@ import {
   getTaskById,
   AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
-import profilePic from "../../profileImage/profilephoto.png";
+// import profilePic from "../../profileImage/profilephoto.png";
 
 const Job = props => {
   const dispatch = useDispatch();

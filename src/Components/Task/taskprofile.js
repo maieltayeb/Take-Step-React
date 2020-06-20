@@ -3,8 +3,10 @@ import { Input } from "reactstrap";
 import "./taskprofile.css";
 import JobProfile from "./jobProfile";
 import { connect } from "react-redux";
+import profilePic from "../../profileImage/profilephoto.png";
+
 const TaskProfile = props => {
-  const { jobs } = props;
+  const { jobs, currentUser } = props;
   const [jobsCurrentUserState, setStateJobsCurrentUser] = useState([]);
 
   useEffect(() => {
@@ -39,7 +41,23 @@ const TaskProfile = props => {
               </div>
               <div className="clearfix d-flex">
                 <div className=" float-left ">
-                  <img className=" img rounded-circle" src="/img/people.png" />
+                  {currentUser.imgUrl ? (
+                    <img
+                      src={"http://localhost:4402/" + currentUser.imgUrl}
+                      className="post-img  rounded-circle"
+                      alt="server pic"
+                      style={{ marginTop: "10px" }}
+                    />
+                  ) : (
+                    <img
+                      src={profilePic}
+                      // src={profilePic}
+                      className=" img rounded-circle"
+                      alt="personal pic"
+                      style={{ marginTop: "10px" }}
+                    />
+                  )}
+                  {/* <img className=" img rounded-circle" src="/img/people.png" /> */}
                 </div>
                 <div className=" ml-2 float-left ">
                   <Input

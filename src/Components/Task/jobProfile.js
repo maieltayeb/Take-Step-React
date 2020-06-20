@@ -21,6 +21,7 @@ import {
   Input
 } from "reactstrap";
 import "./taskprofile.css";
+import profilePic from "../../profileImage/profilephoto.png";
 import {
   getUserById,
   DeleteJob,
@@ -78,12 +79,30 @@ const JobProfile = props => {
       <div className=" pl-5 pt-3 pr-5 clearfix">
         <div style={{ display: "flex", "justify-content": "space-between" }}>
           <div>
-            <img className="post-img  rounded-circle" src="./img/people.png" />
+            {currentUser.imgUrl ? (
+              <img
+                src={"http://localhost:4402/" + currentUser.imgUrl}
+                className="post-img  rounded-circle"
+                alt="server pic"
+                style={{ marginBottom: "20px" }}
+              />
+            ) : (
+              <img
+                src={profilePic}
+                // src={profilePic}
+                className="post-img  rounded-circle"
+                alt="personal pic"
+                style={{ marginBottom: "15px" }}
+              />
+            )}
+            {/* <img className="post-img  rounded-circle" src="./img/people.png" /> */}
             <div className="username-post ml-3">
               <div className="mt-3 postOwnerNameStyle">
-                {currentUser && currentUser.firstName}
-                &nbsp;&nbsp;
-                {currentUser && currentUser.lastName}
+                <b>
+                  {currentUser && currentUser.firstName}
+                  &nbsp;&nbsp;
+                  {currentUser && currentUser.lastName}
+                </b>
               </div>
               <div className="ml-0 postOwnerNameStyle">
                 {currentUser && currentUser.jobTitle}
