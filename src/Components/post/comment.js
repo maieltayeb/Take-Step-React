@@ -18,6 +18,8 @@ import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 import { getVolunteerById } from "../../Redux/actions/volunteerActionCreator";
 import TaskDetails from "./../../Pages/Task-Details/Task-Details";
 import AddComment from "./addComment";
+import profilePic from "../../profileImage/profilephoto.png";
+
 const Comment = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -75,6 +77,19 @@ const Comment = props => {
             className="post-img mt-2 rounded-circle"
             src="./img/people.png"
           />
+          {/* {user.imgUrl ? (
+            <img
+              src={"http://localhost:4402/" + user.imgUrl}
+              className="mt-3 post-img rounded-circle"
+              alt="personal pic"
+            />
+          ) : (
+            <img
+              src={profilePic}
+              className="mt-3 post-img rounded-circle"
+              alt="personal pic"
+            />
+          )} */}
         </div>
         <div className=" ml-2 float-left ">
           <div className="p-2 mt-2 commentbody">

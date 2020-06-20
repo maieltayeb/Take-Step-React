@@ -78,7 +78,7 @@ const AddComment = props => {
             className="mt-3 post-img rounded-circle"
             src="./img/people.png"
           /> */}
-          {props.currentUser.imgUrl ? (
+          {currentUser.imgUrl ? (
             <img
               src={"http://localhost:4402/" + currentUser.imgUrl}
               className="mt-3 post-img rounded-circle"
