@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import { Col, Row } from "reactstrap";
 
-const CountDown = (props) => {
+const CountDown = props => {
   const timerComponents = [];
+  // const [timesUp, setTimesUp] = useState(timerComponents);
+  // useEffect(() => {
+  //   setTimesUp(timerComponents);
+  // }, [timesUp]);
+  // // console.log(timesUp);
+
   const { date } = props;
   //   const [intervalsState, setTimeinterval] = useState(data);
   //   console.log(intervalsState);
@@ -21,7 +27,7 @@ const CountDown = (props) => {
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
           minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
         };
       }
 
@@ -38,7 +44,7 @@ const CountDown = (props) => {
 
     // var timerComponents = [];
 
-    Object.keys(timeLeft).forEach((interval) => {
+    Object.keys(timeLeft).forEach(interval => {
       if (!timeLeft[interval]) {
         return;
       }
@@ -66,6 +72,7 @@ const CountDown = (props) => {
         <Col>Rest Of Time </Col>
         <Col>
           {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+          {/* && call fn to puch the id of the missed task in db (arr of the task title by their ids) */}
           {/* {d.timeDurationType} */}
           <img
             className=" ml-3"

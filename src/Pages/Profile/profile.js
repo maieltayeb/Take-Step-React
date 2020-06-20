@@ -6,7 +6,7 @@ import TaskProfile from "../../Components/Task/taskprofile";
 import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
 import InsideNav from "../../Layout/Navbar/insidenav";
 import EducationSection from "../../Components/EducationSection/EducationSection";
-import Portflio from "../../Components/Portflio/Portflio";
+import Portflio from "../../Components/Portflio/portfolio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
@@ -48,6 +48,8 @@ const Profile = props => {
               <EducationSection></EducationSection>
               {/* <Skills></Skills> */}
               <SkillSection></SkillSection>
+              {/* <Portflio></Portflio> */}
+
               <div className="d-inline-block p-3 my-2 rounded ">
                 <Toast style={{ maxWidth: "837px" }}>
                   <ToastHeader
@@ -55,10 +57,6 @@ const Profile = props => {
                     style={{ backgroundColor: "#494848" }}
                   >
                     Portflio
-                    {/* <i
-                  class="fas fa-angle-down"
-                  style={{ fontSize: "25px" }}
-                ></i>{" "} */}
                   </ToastHeader>
                   <ToastBody style={{ backgroundColor: "#f8f8f4" }}>
                     <Portflio></Portflio>

@@ -12,8 +12,8 @@ export const Get_VolunteerById = "Get_VolunteerById";
 export const Get_timeDurationTypes = "Get_timeDurationTypes";
 export const Get_Jobs = "Get_Jobs";
 export const ADD_Job = "ADD_Job";
-export const Delete_Job="Delete_Job";
-export const Edit_Job="Edit_Job";
+export const Delete_Job = "Delete_Job";
+export const Edit_Job = "Edit_Job";
 // export const ADD_Task = "ADD_Task";
 export const GET_Error = "GET_Error";
 /////business owner personal info
@@ -34,6 +34,9 @@ export const DELETE_SKILL = "DELETE_SKILL";
 export const GET_TASK_BY_ID = "GET_TASK_BY_ID";
 export const ADD_NEW_TASK = "ADD_NEW_TASK";
 export const GET_VOL_TASKS = "GET_VOL_TASKS";
+
+export const ADD_FEEDBACK = "ADD_FEEDBACK";
+export const GET_FEEDBACK = "GET_FEEDBACK";
 /////////Malak End SKILLS//////
 
 ////////////////////////education///////////////

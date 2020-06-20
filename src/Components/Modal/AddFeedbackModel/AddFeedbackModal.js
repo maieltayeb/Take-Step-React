@@ -7,21 +7,45 @@ import {
   ModalFooter,
   Form,
   Label,
-  Input
+  Input,
 } from "reactstrap";
 import "./AddFeedbackModal.css";
 import "../../ProjectLink/project-Link-Component.css";
-const FeedbackModel = props => {
+import SatrsRating from "./rating";
+import { FaStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { AddFeedback } from "./../../../Redux/actions/FeedbackActionCreator";
+
+const FeedbackModel = (props) => {
   const { buttonLabel, modalShap } = props;
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
 
+  const dispatch = useDispatch();
+  const handleRating = (ratingValue) => {
+    setRating(ratingValue);
+  };
+  const handleChange = (e) => {
+    setComment(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const feedbackObj = {
+      rating,
+      comment,
+      taskTitle: "Guestbook",
+      link: "https://github.com/Malkibrahim",
+    };
+    dispatch(AddFeedback("5eebaf148193a93194ceb722", feedbackObj));
+    setModal(false);
+  };
   return (
     <div>
-      {/* <Button  style={{marginLeft:"6px",
-       backgroundColor:"#0E0D0D",borderRadius:"58px",height:"48px",width:"138px",fontSize:"20px",fontFamily:"tahoma"}}  >Create Post</Button> */}
       <div className="feedback-button" onClick={toggle}>
         <p className="feedback-button-p">Feedback</p>
       </div>
@@ -40,19 +64,42 @@ const FeedbackModel = props => {
         </ModalHeader>
         <ModalBody className="feedback-bodyModal">
           <Form>
+            {/* <SatrsRating /> */}
             <Label>Rate Task :</Label>
             <br />
-            <i
-              className="fas fa-star feedback-icon"
-              style={{ marginLeft: "80px" }}
-            ></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
-            <i className="fas fa-star feedback-icon"></i>
+            <div style={{ marginLeft: "80px" }}>
+              {[...Array(5)].map((star, i) => {
+                const ratingValue = i + 1;
+                return (
+                  <label>
+                    <input
+                      type="radio"
+                      name="rating"
+                      value={ratingValue}
+                      onClick={() => handleRating(ratingValue)}
+                    />
+                    <FaStar
+                      className="star"
+                      size={30}
+                      color={
+                        ratingValue <= (hover || rating) ? "#ebc010" : "#888888"
+                      }
+                      onMouseEnter={() => setHover(ratingValue)}
+                      onMouseLeave={() => setHover(null)}
+                    />
+                  </label>
+                );
+              })}
+            </div>
             <br /> <br />
             <Label>Comment :</Label>
-            <Input type="textarea" placeholder="write your feedback" Rows="4" />
+            <Input
+              type="textarea"
+              onChange={(e) => handleChange(e)}
+              placeholder="write your feedback"
+              Rows="4"
+              value={comment}
+            />
           </Form>
         </ModalBody>
         <ModalFooter>
@@ -64,7 +111,7 @@ const FeedbackModel = props => {
               borderRadius: "20px",
               border: "1px solid #EBC010",
               color: "black",
-              width: "100px"
+              width: "100px",
             }}
           >
             Cancel
@@ -72,14 +119,15 @@ const FeedbackModel = props => {
           <Button
             color="secondary"
             onClick={toggle}
+            onClick={(e) => handleSubmit(e)}
             style={{
               backgroundColor: "#494848",
               borderRadius: "20px",
               color: "#EBC010",
-              width: "100px"
+              width: "100px",
             }}
           >
-            Add
+            Send
           </Button>
         </ModalFooter>
       </Modal>
