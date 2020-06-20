@@ -9,21 +9,24 @@ import { useDispatch } from "react-redux";
 
 import {
   AddTasksToVol,
-  getTasksByVolId,
+  getTasksByVolId
 } from "../../../Redux/actions/InprogressActionCreator";
 import CountDown from "./CountDown";
 
-const InProgressTaskCard = (props) => {
+const InProgressTaskCard = props => {
   const data = [];
   const { state } = props;
   console.log(props);
   const [inprogState, setState] = useState(data);
+
   const dispatch = useDispatch();
+
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
+
   useEffect(() => {
     dispatch(getTasksByVolId(volunteerId));
-    console.log(state);
+    //console.log(state);
   }, []);
 
   return (
@@ -36,7 +39,7 @@ const InProgressTaskCard = (props) => {
               <ToastBody>
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   {state.length ? (
-                    state.map((d) => {
+                    state.map(d => {
                       return (
                         <Toast>
                           <Row className="p-2">
@@ -160,44 +163,6 @@ const InProgressTaskCard = (props) => {
                       </Row>
                     </ToastBody>
                   </Toast>
-
-                  <Toast>
-                    <ToastHeader>
-                      <NavLink to="/taskDetails">Task Title</NavLink>
-                    </ToastHeader>
-                    <ToastBody outline color="danger" className=" m-3">
-                      <Row>
-                        {" "}
-                        <Col className="text-danger">
-                          <img
-                            className=" mr-3"
-                            src="/img/warning.png"
-                            style={{ width: "8%" }}
-                          />
-                          you didnt upload this task
-                        </Col>
-                      </Row>
-                    </ToastBody>
-                  </Toast>
-
-                  <Toast>
-                    <ToastHeader>
-                      <NavLink to="/taskDetails">Task Title</NavLink>
-                    </ToastHeader>
-                    <ToastBody outline color="danger" className=" m-3">
-                      <Row>
-                        {" "}
-                        <Col className="text-danger">
-                          <img
-                            className=" mr-3"
-                            src="/img/warning.png"
-                            style={{ width: "8%" }}
-                          />
-                          you didnt upload this task
-                        </Col>
-                      </Row>
-                    </ToastBody>
-                  </Toast>
                 </div>
               </ToastBody>
             </Toast>
@@ -207,14 +172,15 @@ const InProgressTaskCard = (props) => {
     </div>
   );
 };
-const mapStateToProps = (State) => {
-  // console.log(state.Inprogress);
+const mapStateToProps = State => {
+  // console.log(State.Inprogress);
   // debugger;
   return {
     // timeDurationNumber: State.Inprogress.timeDurationNumber,
     // timeDurationType: State.Inprogress.timeDurationType,
     // jobTitle: State.Inprogress.jobTitle,
     state: State.Inprogress.appliedTasks,
+    timesUpState: State.timesUp
   };
 };
 export default connect(mapStateToProps)(InProgressTaskCard);

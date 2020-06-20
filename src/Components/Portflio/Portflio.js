@@ -3,7 +3,7 @@ import "./Portflio.css";
 
 const Portflio = props => {
   return (
-    <div className="Portflio-container">
+    <div className="Portflio-container w-75">
       <div className="Portflio-items">
         <div className="Portflio-item">
           <div>
