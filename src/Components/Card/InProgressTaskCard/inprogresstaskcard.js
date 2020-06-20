@@ -53,30 +53,8 @@ const InProgressTaskCard = props => {
                             </Col>
                             <ModalLink></ModalLink>
                           </Row>
-                          {/* <ToastBody className=" bg-success m-3  rounded">
-                      <Row>
-                        {" "}
-                        <Col>Done</Col>
-                        <Col>
-                          0 days
-                          <img className="w-25 ml-3" src="/img/ok.png" />
-                        </Col>
-                      </Row>
-                    </ToastBody> */}
-                          <ToastBody className=" bg-warning m-3  rounded">
-                            {/* <Row>
-                              {" "}
-                              <Col>Rest Of Time </Col>
-                              <Col>
-                                {d.details.timeDurationNumber}
 
-                                <img
-                                  className=" ml-3"
-                                  src="/img/sand watch.png"
-                                  style={{ width: "18%" }}
-                                />
-                              </Col>
-                            </Row> */}
+                          <ToastBody className=" bg-warning m-3  rounded">
                             <CountDown date={d.details.timeDurationNumber} />
                           </ToastBody>
                           <ToastBody className=" bg-danger m-3 rounded">
@@ -98,41 +76,6 @@ const InProgressTaskCard = props => {
                   ) : (
                     <div></div>
                   )}
-                  {/* <Toast>
-                    <Row className="p-2">
-                      <Col sm={9}>
-                        {" "}
-                        <ToastHeader className="p-1">
-                          <NavLink to="/taskDetails">Task Title</NavLink>
-                        </ToastHeader>
-                      </Col>
-                      <ModalLink></ModalLink>
-                    </Row>
-                    <ToastBody className=" bg-warning m-3  rounded">
-                      <Row>
-                        {" "}
-                        <Col>Rest Of Time</Col>
-                        <Col>
-                          5 days
-                          <img
-                            className=" ml-3"
-                            src="/img/sand watch.png"
-                            style={{ width: "18%" }}
-                          />
-                        </Col>
-                      </Row>
-                    </ToastBody>
-                    <ToastBody className=" bg-danger m-3  rounded">
-                      <Row>
-                        {" "}
-                        <Col>DeadLine</Col>
-                        <Col>
-                          27/5{" "}
-                          <img className="w-25 ml-4" src="/img/schedule.png" />
-                        </Col>
-                      </Row>
-                    </ToastBody>
-                  </Toast> */}
                 </div>
               </ToastBody>
             </Toast>
@@ -173,12 +116,7 @@ const InProgressTaskCard = props => {
   );
 };
 const mapStateToProps = State => {
-  // console.log(State.Inprogress);
-  // debugger;
   return {
-    // timeDurationNumber: State.Inprogress.timeDurationNumber,
-    // timeDurationType: State.Inprogress.timeDurationType,
-    // jobTitle: State.Inprogress.jobTitle,
     state: State.Inprogress.appliedTasks,
     timesUpState: State.timesUp
   };

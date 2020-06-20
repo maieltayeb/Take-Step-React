@@ -41,3 +41,11 @@
   color: #ebc010;
   margin-left: 5px;
 }
+/* /////////////////Malak////// */
+input[type="radio"] {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: 200ms;
+}

@@ -25,6 +25,10 @@ body {
   display: flex;
   justify-content: center;
 }
+/* //////malak//// */
+.owner-card-upper-text:hover {
+  color: rgb(4, 4, 155);
+}
 .owner-card-lower-text {
   display: flex;
   /* direction: row; */

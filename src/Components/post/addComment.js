@@ -83,7 +83,7 @@ const AddComment = props => {
       userId: currentUser.id
     };
     if (key === "Enter") {
-      debugger;
+      // debugger;
       const response = await axios.post(
         "https://take-a-step-9ca1d.firebaseio.com/comment.json",
         newComment
@@ -93,11 +93,12 @@ const AddComment = props => {
       
       if (response.status === 200) {
         console.log("new", newComment.jobId);
-        await axios.post(
+       const response= await axios.post(
           `https://take-a-step-9ca1d.firebaseio.com/jobs/${newComment.jobId}/comments.json`,
           newComment
         );
         console.log("hiiComment", newComment);
+        newComment.id=response.data.name
         props.dispatch(addComments(newComment, jobId));
         setValues({ body: "" });
       }

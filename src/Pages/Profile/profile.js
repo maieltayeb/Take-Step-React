@@ -6,7 +6,7 @@ import TaskProfile from "../../Components/Task/taskprofile";
 import SubmittedTask from "../HomePage/SubmittedTaskSection/submittedTask";
 import InsideNav from "../../Layout/Navbar/insidenav";
 import EducationSection from "../../Components/EducationSection/EducationSection";
-import Portflio from "../../Components/Portflio/Portflio";
+import Portflio from "../../Components/Portflio/portfolio";
 import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
