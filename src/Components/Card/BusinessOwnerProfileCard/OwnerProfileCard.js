@@ -38,6 +38,7 @@ const OwnerProfileCard = (props) => {
             onClick={() => {
               hanldeClick();
             }}
+            style={{ cursor: "pointer" }}
             className="owner-card-upper-text"
           >
             {" "}
