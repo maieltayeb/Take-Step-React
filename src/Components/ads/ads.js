@@ -5,6 +5,7 @@ const Ads = () => {
     <div
       className="ads-container"
       style={{ marginTop: "50px", marginLeft: "50px" }}
+      style={{ position: "fixed" }}
     >
       <div className="image-socialmedia" style={{ marginBottom: "60px" }}>
         <img
