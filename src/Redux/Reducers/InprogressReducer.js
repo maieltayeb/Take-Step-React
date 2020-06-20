@@ -34,13 +34,22 @@ const InprogReducer = (state = initialState, action) => {
       console.log(newState);
       break;
     case GET_VOL_TASKS:
-      newState = {
-        ...state,
-        appliedTasks: Object.keys(action.payload).map(key => ({
-          inprogTaskId: String(key),
-          details: action.payload[key]
-        }))
-      };
+      if ((state.appliedTasks != [] && state.newTask != "") || action.payload) {
+        newState = {
+          ...state,
+          appliedTasks: Object.keys(action.payload).map(key => ({
+            inprogTaskId: String(key),
+            details: action.payload[key]
+          }))
+        };
+        console.log(action.payload);
+        console.log(newState);
+      } else {
+        newState = {
+          appliedTasks: [],
+          newTask: ""
+        };
+      }
       break;
     ////////////upload task///////////
     case ADD_SUBMITTASK_LINK:
