@@ -1,27 +1,50 @@
-import React from "react";
+
 import ProjectLink from "../ProjectLink/project-Link-Component";
-const TaskSubmit = () => {
+import { connect, useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import InsideNav from "../../Layout/Navbar/insidenav";
+import "../../Pages/TaskSubmit/task-submitted-frame.css";
+
+const TaskSubmit = (props) => {
+
+
+const { job } = props.location.state;
+
   return (
     <div>
-      <div className="poject-title ">
-        <div className="project-title-container">
-          <p className="project-title-container-p">Project-Title</p>
+       <InsideNav />
+      <div className="container-submit-task " style={{paddingBottom:"20px"}}>
+        <div className="task-submitted-title ">
+          <p className="task-submitted-title-p">Tasks Submited</p>
+        </div>
+
+        <div className="poject-title ">
+        <div className="project-title-container" >
+          {job.jobTitle}
         </div>
         <div className="project-description">
           <p className="project-description-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
+           {job.description}
           </p>
         </div>
-        <ProjectLink />
-        <ProjectLink />
-        <ProjectLink />
-        <ProjectLink />
+
+        <ProjectLink tasks={job.tasks}/>
+      
+      </div>
       </div>
     </div>
+    
+   
   );
 };
+const mapStateToProps = reduxState => {
+  return {
+    currentUser: reduxState.Users.currentUser,
+    jobs: reduxState.Users.jobs,
+   
+    bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
 
-export default TaskSubmit;
+    state: reduxState.Inprogress.newTask
+  };
+};
+export default connect(mapStateToProps)(TaskSubmit);

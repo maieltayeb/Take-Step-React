@@ -19,9 +19,13 @@
   width: 800px;
 }
 .project-title-container {
-  width: 120px;
-  height: 40px;
-  background-color: #464642;
+  /* width: 120px;
+  height: 40px; */
+  display: inline-block;
+  color: #ffffff;
+  padding: 10px 15px 10px 15px;
+background-color: #464642;
+ 
 
   margin: 30px;
   border-radius: 20px;

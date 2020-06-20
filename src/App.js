@@ -11,7 +11,7 @@ import HomePage from "./Pages/HomePage/Home";
 import TaskDetails from "./Pages/Task-Details/Task-Details";
 import TaskSubmittedFrame from "./Pages/TaskSubmit/task-submitted-frame";
 import ProjectLink from "./Components/ProjectLink/project-Link-Component";
-
+import TaskSubmit from "./Components/Task-submitted/Task-submitted";
 import {
   getAllUsersBussinessOwner,
   getAllCountries,
@@ -36,7 +36,8 @@ function App(props) {
         <Route path="/welcomePage" exact component={WelcomePage} />
         //profile
         <Route path="/profile" component={Profile} />
-        <Route path="/jobDetails" component={TaskSubmittedFrame} />
+        {/* <Route path="/jobDetails" component={TaskSubmittedFrame} /> */}
+        <Route path="/jobDetails" render={props => <TaskSubmit {...props}></TaskSubmit>} />
         //home
         <Route path="/home" component={HomePage} />
         <Route path="/taskDetails" component={TaskDetails} />

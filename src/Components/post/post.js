@@ -47,7 +47,7 @@ const Post = props => {
     setStateJobs(jobs);
     if (search !== "") {
       jobs = jobs.filter(job =>
-        job.description.toLowerCase().includes(search.toLowerCase())
+        job.jobTitle.toLowerCase().includes(search.toLowerCase())
       );
       setStateJobs(jobs);
     }

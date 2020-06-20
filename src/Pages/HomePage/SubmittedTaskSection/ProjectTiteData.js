@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink ,Link} from "react-router-dom";
 import "./submittedTask.css";
 const ProjectTitleData =props=> {
 const{jobTitle,item}=props
@@ -9,7 +9,17 @@ if(item.tasks){
         <>
       {
           <div className="SubmittedTask-container-body-pro">
-            <NavLink to="/jobDetails">{item.jobTitle}</NavLink>
+     
+            <Link item={item}
+              to={{
+                // "/home"
+                pathname: "/jobDetails",
+                search: `/${item.id}`,
+                state: {
+                  job: item
+                }
+              }}
+            >{item.jobTitle}</Link>
           </div>
       }
   
