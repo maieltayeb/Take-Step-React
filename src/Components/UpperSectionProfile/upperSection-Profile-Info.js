@@ -10,7 +10,6 @@ const PersonalInfo = props => {
   // console.log("props", props);
   let currentcountry = Object.values(props.currentUser.country);
   // console.log(currentcountry[1]);
-  let userProfilePhoto = `http://localhost:4402/" ${props.currentUser.imgUrl}`;
   return (
     <div>
       <Container>

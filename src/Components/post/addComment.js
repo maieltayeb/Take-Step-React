@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import "./post.css";
 import Job from "./job";
+import profilePic from "../../profileImage/profilephoto.png";
 
 const AddComment = props => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -50,19 +51,19 @@ const AddComment = props => {
       jobId: jobId,
       userId: currentUser.id
     };
-    if (key === "Enter"&&values.body!=="") {
+    if (key === "Enter" && values.body !== "") {
       const response = await axios.post(
         "https://take-a-step-9ca1d.firebaseio.com/comment.json",
         newComment
       );
       if (response.status === 200) {
         console.log("new", newComment.jobId);
-       const response= await axios.post(
+        const response = await axios.post(
           `https://take-a-step-9ca1d.firebaseio.com/jobs/${newComment.jobId}/comments.json`,
           newComment
         );
         console.log("hiiComment", newComment);
-        newComment.id=response.data.name
+        newComment.id = response.data.name;
         props.dispatch(addComments(newComment, jobId));
         setValues({ body: "" });
       }
@@ -73,10 +74,23 @@ const AddComment = props => {
     <>
       <div className="clearfix comment-container">
         <div className=" float-left ">
-          <img
+          {/* <img
             className="mt-3 post-img rounded-circle"
             src="./img/people.png"
-          />
+          /> */}
+          {props.currentUser.imgUrl ? (
+            <img
+              src={"http://localhost:4402/" + currentUser.imgUrl}
+              className="mt-3 post-img rounded-circle"
+              alt="personal pic"
+            />
+          ) : (
+            <img
+              src={profilePic}
+              className="mt-3 post-img rounded-circle"
+              alt="personal pic"
+            />
+          )}
         </div>
         <div className=" ml-2 float-left ">
           <Input
