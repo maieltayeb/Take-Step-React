@@ -7,9 +7,9 @@ import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 // import profilePic from "profilephoto.png";
 import profilePic from "../../profileImage/profilephoto.png";
 const PersonalInfo = props => {
-  // console.log("props", props);
+  console.log("current user", props.currentUser);
   let currentcountry = Object.values(props.currentUser.country);
-  // console.log(currentcountry[1]);
+  //  console.log(currentcountry[1]);
   return (
     <div>
       <Container>
@@ -34,6 +34,7 @@ const PersonalInfo = props => {
                         alt="personal pic"
                       />
                     )}
+                    {/* <img src={profilePic} className="img" alt="personal pic" /> */}
 
                     <div className="edit-icon">
                       <PersonalInfoModal />

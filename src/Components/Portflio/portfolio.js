@@ -48,37 +48,56 @@ class Portflio extends Component {
   //     console.log(activeCards);
   //   }, []);
   handleNext = () => {
-    debugger;
-    const arr = [];
+    // debugger;
+    let arr = [];
     let index;
     if (this.state.index < this.state.AllData.length - 1) {
-      index = this.state.index + 1;
-      this.setState({ index });
-      this.setState({ activeCards: [] });
-      arr.push(this.state.AllData[index]);
       index = this.state.index + 2;
-
       this.setState({ index });
-      arr.push(this.state.AllData[index]);
-      this.setState({ activeCards: arr });
+      arr = this.state.AllData.slice(index, index + 2);
+      console.log(arr);
+      if (arr.length) {
+        this.setState({ activeCards: arr });
+      }
+      // index = this.state.index + 1;
+      // this.setState({ index });
+      // this.setState({ activeCards: [] });
+      // arr.push(this.state.AllData[index]);
+      // index = this.state.index + 2;
+
+      // this.setState({ index });
+      // arr.push(this.state.AllData[index]);
+      // if (arr.length) {
+      //   this.setState({ activeCards: arr });
+      // }
     }
 
     console.log(this.state.activeCards);
   };
   handlePrev = () => {
     debugger;
-    const arr = [];
+    let arr = [];
     let index;
     if (this.state.index > 0) {
-      index = this.state.index - 1;
-      this.setState({ index });
-      this.setState({ activeCards: [] });
-      arr.push(this.state.AllData[index]);
       index = this.state.index - 2;
-
       this.setState({ index });
-      arr.push(this.state.AllData[index]);
-      this.setState({ activeCards: arr });
+      arr = this.state.AllData.slice(index, index + 2);
+      console.log(arr);
+      if (arr.length) {
+        this.setState({ activeCards: arr });
+      }
+      // index = this.state.index - 1;
+      // this.setState({ index });
+      // this.setState({ activeCards: [] });
+      // arr.push(this.state.AllData[index]);
+      // index = this.state.index - 2;
+
+      // this.setState({ index });
+      // arr.push(this.state.AllData[index]);
+      // arr.push(this.state.AllData[index]);
+      // if (arr.length) {
+      //   this.setState({ activeCards: arr });
+      // }
     }
 
     console.log(this.state.activeCards);
@@ -89,7 +108,7 @@ class Portflio extends Component {
   render() {
     return (
       <div className="Portflio-container">
-        <div className="Portflio-items">
+        <div className="Portflio-items body-port-space">
           {this.state.AllData.length ? (
             <i
               onClick={() => this.handlePrev()}
