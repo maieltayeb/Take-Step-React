@@ -3,7 +3,7 @@ import { useDispatch, connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { editbussinessOwner } from "../../../Redux/actions/businessOwnerActionCreator";
 import { volunteeredit } from "../../../Redux/actions/volunteerActionCreator";
-// import ImageUploader from "react-images-upload";
+import ImageUploader from "react-images-upload";
 import {
   Button,
   Modal,
@@ -17,36 +17,27 @@ import {
 } from "reactstrap";
 
 const PersonalInfoModal = props => {
-  const { className } = props;
+  const { className, currentUser } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  // const onDrop = picture => {
-  //   // this.setState({
-  //   //   pictures: this.state.pictures.concat(picture)
-  //   // });
-  //   console.log(picture[0].name);
-  // };
-  // const imageUploadHandler = e => {
-  //   e.preventDefault();
-  //   console.log("uploaded!");
-  // };
+  const [state, setState] = useState({ ...currentUser });
 
-  const [state, setState] = useState({
-    firstName: props.currentUser.firstName,
-    lastName: props.currentUser.lastName,
-    companyName: props.currentUser.companyName,
-    description: props.currentUser.description,
-    countryName: props.currentUser.country.countryName,
-    jobTitle: props.currentUser.jobTitle,
-    email: props.currentUser.email,
-    countryId: props.currentUser.country._id
-  });
   const dispatch = useDispatch();
-  // const userId = props.match.params.id;
+
   useEffect(() => {
-    setState(state);
-  }, [props.currentUser]);
+    setState(prevState => ({
+      ...prevState
+    }));
+  }, [currentUser]);
+
+  const onDrop = picture => {
+    setState(prevState => ({
+      ...prevState,
+      imgUrl: picture[0]
+    }));
+    console.log(picture[0]);
+  };
 
   const changeHandler = e => {
     const { name, value } = e.target;
@@ -58,15 +49,36 @@ const PersonalInfoModal = props => {
 
   const submitHandler = async e => {
     e.preventDefault();
+    const {
+      imgUrl,
+      firstName,
+      lastName,
+      description,
+      countryName,
+      jobTitle,
+      email,
+      country,
+      companyName
+    } = state;
     console.log("submitted");
+    const form = new FormData();
+    form.append("imgUrl", imgUrl);
+    form.append("firstName", firstName);
+    form.append("lastName", lastName);
+    form.append("companyName", companyName);
+    form.append("description", description);
+    form.append("countryName", countryName);
+    form.append("jobTitle", jobTitle);
+    form.append("email", email);
+    form.append("countryId", country._id);
     let bussinesslogin = props.users.filter(function(user) {
       return user.email == props.currentUser.email;
     });
     //  debugger;
     if (bussinesslogin.length == 0) {
-      await dispatch(volunteeredit(props.currentUser.id, state));
+      await dispatch(volunteeredit(props.currentUser.id, form));
     } else {
-      await dispatch(editbussinessOwner(props.currentUser.id, state));
+      await dispatch(editbussinessOwner(props.currentUser.id, form));
     }
 
     console.log(state);
@@ -97,7 +109,7 @@ const PersonalInfoModal = props => {
           {/* onSubmit={imageUploadHandler} */}
           <ModalBody style={{ backgroundColor: "#f2f2f2" }}>
             <div>
-              <img
+              {/* <img
                 src="/img/profilephoto.png"
                 style={{
                   width: "20%",
@@ -112,7 +124,7 @@ const PersonalInfoModal = props => {
                   marginLeft: "55%",
                   color: "#ebc010"
                 }}
-              ></i>
+              ></i> */}
               <div className="App">
                 <div
                   style={{
@@ -121,7 +133,7 @@ const PersonalInfoModal = props => {
                     margin: "auto"
                   }}
                 >
-                  {/* <ImageUploader
+                  <ImageUploader
                     withIcon={false}
                     withPreview={true}
                     label=""
@@ -133,12 +145,12 @@ const PersonalInfoModal = props => {
                       ".png",
                       ".jpeg",
                       ".gif",
-                      ".svg",
+                      ".svg"
                     ]}
                     singleImage={true}
                     maxFileSize={1048576}
                     fileSizeError=" file size is too big"
-                  /> */}
+                  />
                 </div>
               </div>
             </div>

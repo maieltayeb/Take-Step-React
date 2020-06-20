@@ -4,11 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Spinner } from "reactstrap";
 import "./upperSection-Profile-Info.css";
 import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
+// import profilePic from "profilephoto.png";
+import profilePic from "../../profileImage/profilephoto.png";
 const PersonalInfo = props => {
   // console.log("props", props);
   let currentcountry = Object.values(props.currentUser.country);
   // console.log(currentcountry[1]);
-
+  let userProfilePhoto = `http://localhost:4402/" ${props.currentUser.imgUrl}`;
   return (
     <div>
       <Container>
@@ -18,11 +20,23 @@ const PersonalInfo = props => {
               <div className="first-profile-info">
                 <div className="upper-info">
                   <div className="profile-photo">
-                    <img
-                      src="/img/profilephoto.png"
-                      className="img"
-                      alt="personal pic"
-                    />
+                    {props.currentUser.imgUrl ? (
+                      <img
+                        src={
+                          "http://localhost:4402/" + props.currentUser.imgUrl
+                        }
+                        className="img"
+                        alt="personal pic"
+                      />
+                    ) : (
+                      <img
+                        src={profilePic}
+                        // src={profilePic}
+                        className="img"
+                        alt="personal pic"
+                      />
+                    )}
+
                     <div className="edit-icon">
                       <PersonalInfoModal />
                     </div>

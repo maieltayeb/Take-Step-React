@@ -122,9 +122,13 @@ const getAllCountriesSuccess = newCounties => {
 };
 /***********edit bussinessowner */
 export const editbussinessOwner = (id, newUser) => dispatch => {
+  const headers = {
+    authorization: localStorage.getItem("token"),
+    "Content-Type": "form-data"
+  };
   return axios
     .patch(`http://localhost:4402/bussinessOwner/Edit/${id}`, newUser, {
-      headers: { authorization: localStorage.getItem("token") }
+      headers: headers
     })
     .then(response => {
       const { data } = response;
