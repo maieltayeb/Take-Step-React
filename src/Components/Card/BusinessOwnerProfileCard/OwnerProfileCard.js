@@ -1,18 +1,25 @@
 import React from "react";
 import "./OwnerProfileCard.css";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import {
   Card,
   CardImg,
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
+  CardSubtitle,
 } from "reactstrap";
 
-const OwnerProfileCard = props => {
+const OwnerProfileCard = (props) => {
+  const user = localStorage.getItem("user");
+  const volunteerId = JSON.parse(user).id;
   const { users } = props;
   console.log("users", users);
+  const hanldeClick = () => {
+    console.log(props);
+    props.history.push(`/profile/${volunteerId}`);
+  };
   return (
     <Card
       className="owner-card-container owner-card-border"
@@ -27,7 +34,12 @@ const OwnerProfileCard = props => {
           alt="Card image cap"
         />
         <CardBody>
-          <CardTitle className="owner-card-upper-text">
+          <CardTitle
+            onClick={() => {
+              hanldeClick();
+            }}
+            className="owner-card-upper-text"
+          >
             {" "}
             <strong>
               {users.currentUser.firstName + " " + users.currentUser.lastName}
@@ -45,8 +57,8 @@ const OwnerProfileCard = props => {
     </Card>
   );
 };
-const mapStateToProps = state => ({
-  users: state.Users
+const mapStateToProps = (state) => ({
+  users: state.Users,
 });
 
-export default connect(mapStateToProps)(OwnerProfileCard);
+export default withRouter(connect(mapStateToProps)(OwnerProfileCard));

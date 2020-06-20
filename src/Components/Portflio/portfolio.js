@@ -93,7 +93,7 @@ class Portflio extends Component {
           {this.state.AllData.length ? (
             <i
               onClick={() => this.handlePrev()}
-              style={{ marginTop: "20%", color: "#888888" }}
+              style={{ marginTop: "20%", color: "#888888", cursor: "pointer" }}
               class="fas fa-chevron-left fa-2x"
             ></i>
           ) : (
@@ -119,7 +119,7 @@ class Portflio extends Component {
                   >
                     {d.details.taskTitle}
                   </div>
-                  <div style={{ marginLeft: "80px" }}>
+                  <div style={{ marginLeft: "80px", cursor: "pointer" }}>
                     {[...Array(5)].map((star, i) => {
                       const ratingValue = i + 1;
                       return (
@@ -152,7 +152,7 @@ class Portflio extends Component {
           {this.state.AllData.length ? (
             <i
               onClick={() => this.handleNext()}
-              style={{ marginTop: "20%", color: "#888888" }}
+              style={{ marginTop: "20%", color: "#888888", cursor: "pointer" }}
               class="fas fa-chevron-right fa-2x"
             ></i>
           ) : (
