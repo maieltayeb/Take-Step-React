@@ -31,7 +31,6 @@ const PersonalInfo = props => {
                     ) : (
                       <img
                         src={profilePic}
-                        // src={profilePic}
                         className="img"
                         alt="personal pic"
                       />

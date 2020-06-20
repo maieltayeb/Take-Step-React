@@ -31,10 +31,12 @@ import {
   getTaskById,
   AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
+import profilePic from "../../profileImage/profilephoto.png";
 
 const Job = props => {
   const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
+
   /******** edit modal***** */
 
   /********modal***** */
@@ -137,6 +139,20 @@ const Job = props => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
+              {/* {props.user.imgUrl ? (
+                <img
+                  // src={"http://localhost:4402/" + props.user.imgUrl}
+                  className="post-img  rounded-circle"
+                  alt="server pic"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  // src={profilePic}
+                  className="post-img  rounded-circle"
+                  alt="personal pic"
+                />
+              )} */}
               <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
@@ -332,12 +348,14 @@ const Job = props => {
               Applied
             </Button>
           ) : (
-            !currentUser.paymentData&&( <Button
-              className=" applyBtn float-right"
-              onClick={() => handleClick(props.job.id)}
-            >
-              Apply
-            </Button>)
+            !currentUser.paymentData && (
+              <Button
+                className=" applyBtn float-right"
+                onClick={() => handleClick(props.job.id)}
+              >
+                Apply
+              </Button>
+            )
           )}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
@@ -572,13 +590,14 @@ const Job = props => {
               Applied
             </Button>
           ) : (
-           ! currentUser.paymentData&&(
-            <Button
-              className=" applyBtn float-right"
-              onClick={() => handleClick(props.job.id)}
-            >
-              Apply
-            </Button>)
+            !currentUser.paymentData && (
+              <Button
+                className=" applyBtn float-right"
+                onClick={() => handleClick(props.job.id)}
+              >
+                Apply
+              </Button>
+            )
           )}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">

@@ -2,16 +2,19 @@ import React from "react";
 import "./OwnerProfileCard.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+
+import profilePic from "../../../profileImage/profilephoto.png";
+
 import {
   Card,
   CardImg,
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
+  CardSubtitle
 } from "reactstrap";
 
-const OwnerProfileCard = (props) => {
+const OwnerProfileCard = props => {
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   const { users } = props;
@@ -26,13 +29,32 @@ const OwnerProfileCard = (props) => {
       style={{ marginTop: "30px" }}
     >
       <Card className="owner-inner-card">
-        <CardImg
+        {users.currentUser.imgUrl ? (
+          <CardImg
+            top
+            width="100%"
+            className="mt-4 rounded-circle owner-card-img"
+            src={"http://localhost:4402/" + users.currentUser.imgUrl}
+            //src="./img/developer.jpg"
+            alt="Card image cap"
+          />
+        ) : (
+          <CardImg
+            top
+            width="100%"
+            className="mt-4 rounded-circle owner-card-img"
+            src={profilePic}
+            //src="./img/developer.jpg"
+            alt="Card image cap"
+          />
+        )}
+        {/* <CardImg
           top
           width="100%"
           className="mt-4 rounded-circle owner-card-img"
           src="./img/developer.jpg"
           alt="Card image cap"
-        />
+        /> */}
         <CardBody>
           <CardTitle
             onClick={() => {
@@ -58,8 +80,8 @@ const OwnerProfileCard = (props) => {
     </Card>
   );
 };
-const mapStateToProps = (state) => ({
-  users: state.Users,
+const mapStateToProps = state => ({
+  users: state.Users
 });
 
 export default withRouter(connect(mapStateToProps)(OwnerProfileCard));
