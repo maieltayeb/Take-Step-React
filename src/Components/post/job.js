@@ -36,6 +36,7 @@ import profilePic from "../../profileImage/profilephoto.png";
 const Job = props => {
   const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
+  // console.log("currentUser", currentUser);
 
   /******** edit modal***** */
 
@@ -141,7 +142,7 @@ const Job = props => {
             <div>
               {/* {props.user.imgUrl ? (
                 <img
-                  // src={"http://localhost:4402/" + props.user.imgUrl}
+                  src={"http://localhost:4402/" +props.user.imgUrl}
                   className="post-img  rounded-circle"
                   alt="server pic"
                 />
@@ -195,6 +196,28 @@ const Job = props => {
 
                   <ModalBody className="bodyModal">
                     <div>
+                      {/* {currentUser.imgUrl ? (
+                        <img
+                          src={"http://localhost:4402/" + currentUser.imgUrl}
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={profilePic}
+                          // src={profilePic}
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      )} */}
                       <img
                         src="./img/profilephoto.png"
                         alt="userimg"

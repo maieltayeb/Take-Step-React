@@ -11,7 +11,7 @@ import Comment from "./comment";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 import { getAllVolunteers } from "./../../Redux/actions/volunteerActionCreator";
 
-const Post = (props) => {
+const Post = props => {
   const { search } = props;
   let {
     comments,
@@ -20,16 +20,16 @@ const Post = (props) => {
     bussinessOwnerUsers,
     job,
     users,
-    volunteerUsers,
+    volunteerUsers
   } = props;
   const dispatch = useDispatch();
   const [stateJobs, setStateJobs] = useState([]);
   /********************comment part************************************************* */
   useEffect(() => {
-    let userIds = jobs.map((job) => job.userId);
+    let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
 
-    userIds.forEach((userId) => dispatch(getUserById(userId)));
+    userIds.forEach(userId => dispatch(getUserById(userId)));
     const volusers = dispatch(getAllVolunteers());
     console.log("voliuinteeeeeeeeeeeeeeeeer", volusers);
   }, [jobs, dispatch]);
@@ -39,14 +39,14 @@ const Post = (props) => {
   /**********************job part******************* */
 
   useEffect(() => {
-    let userIds = jobs.map((job) => job.userId);
+    let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
-    userIds.forEach((userId) => dispatch(getUserById(userId)));
+    userIds.forEach(userId => dispatch(getUserById(userId)));
   }, [jobs, dispatch]);
   useEffect(() => {
     setStateJobs(jobs);
     if (search !== "") {
-      jobs = jobs.filter((job) =>
+      jobs = jobs.filter(job =>
         job.description.toLowerCase().includes(search.toLowerCase())
       );
       setStateJobs(jobs);
@@ -60,11 +60,9 @@ const Post = (props) => {
       {stateJobs
         .slice(0)
         .reverse()
-        .map((job) => {
-          const user = bussinessOwnerUsers.find(
-            (u) => u.user.id === job.userId
-          );
-          console.log("**************", user);
+        .map(job => {
+          const user = bussinessOwnerUsers.find(u => u.user.id === job.userId);
+          // console.log("**************", user);
           let realComments = [];
           if (job.comments) {
             for (let i = 0; i < Object.keys(job.comments).length; i++) {
@@ -86,7 +84,7 @@ const Post = (props) => {
                     </div>
                     <AddComment jobId={job.id} />
                     {realComments.length ? (
-                      realComments.map((comment) => {
+                      realComments.map(comment => {
                         // const userVol = volunteerUsers.find(
                         //   u => u.id === comment.userId
                         // );
@@ -106,7 +104,7 @@ const Post = (props) => {
               </>
             );
           } else {
-            const user = bussinessOwnerUsers.find((u) => u.id === job.userId);
+            const user = bussinessOwnerUsers.find(u => u.id === job.userId);
             return (
               <>
                 <div className="postContainer shadow">
@@ -130,14 +128,14 @@ const Post = (props) => {
     </>
   );
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
     comments: reduxState.Users.comments,
     users: reduxState.Users,
-    volunteerUsers: reduxState.Users.volunteerUsers,
+    volunteerUsers: reduxState.Users.volunteerUsers
   };
 };
 export default connect(mapStateToProps)(Post);

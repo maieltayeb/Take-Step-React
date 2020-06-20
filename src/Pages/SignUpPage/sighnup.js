@@ -218,7 +218,7 @@ const SignUp = props => {
               padding: ".7rem 1rem"
             }}
           >
-            Volunteer Coach
+            Software Intern
           </Button>
           <Button
             onClick={handleClick}
@@ -229,7 +229,7 @@ const SignUp = props => {
               padding: ".7rem 2rem"
             }}
           >
-            Software Intern
+            Volunteer Coach
           </Button>
           {stateStatus && (
             <>

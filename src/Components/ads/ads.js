@@ -9,24 +9,24 @@ const Ads = () => {
     >
       <div className="image-socialmedia" style={{ marginBottom: "60px" }}>
         <img
-          src="./img/social-media.png"
-          style={{ width: "9rem", height: "9rem", marginLeft: "50px" }}
+          src="./img/ad1.jpg"
+          style={{ width: "10rem", marginLeft: "50px" }}
         />
         <p
           style={{ color: "#ebc010", textAlign: "center", paddingTop: "22px" }}
         >
-          Read More >>
+          Read More..
         </p>
       </div>
       <div className="image-web-image" style={{ marginBottom: "60px" }}>
         <img
-          src="./img/web.png"
-          style={{ width: "9rem", height: "9rem", marginLeft: "50px" }}
+          src="./img/ad3.jpg"
+          style={{ width: "10rem", marginLeft: "50px" }}
         />
         <p
           style={{ color: "#ebc010", textAlign: "center", paddingTop: "22px" }}
         >
-          Read More >>
+          Read More..
         </p>
       </div>
     </div>
