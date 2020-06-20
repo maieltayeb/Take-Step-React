@@ -1,6 +1,5 @@
 import axios from "axios";
-import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS } from "../actionTypes";
-
+import { GET_TASK_BY_ID, ADD_NEW_TASK, GET_VOL_TASKS,ADD_SUBMITTASK_LINK,GET_ALLSUBMITTED_TASKS,DELET_TASKFROM_PROGRESS } from "../actionTypes";
 export const AddTasksToVol = (volunteerId, newTask) => async (dispatch) => {
   newTask.status = "inprogress";
 
@@ -34,3 +33,18 @@ export const getTasksByVolId = (id) => (dispatch) => {
 const getVolTasks = (task) => {
   return { type: GET_VOL_TASKS, payload: task };
 };
+
+///////////////////////Upload Link here to backend///////////////////////////////
+export const addSubmitTaskLink = task => {
+  return { type: ADD_SUBMITTASK_LINK, payload: task };
+};
+/////////////////////Get finished submitted tasks ///////////////////////////
+  export const getAllSubmitTasks = task => {
+  return { type: GET_ALLSUBMITTED_TASKS, payload: task };
+
+};
+//----------------------------delete task from progress--------------------------------------------///
+export const deleteJobFromProgress= (volunteerId,inProgressTaskId) => {
+  return { type: DELET_TASKFROM_PROGRESS, payload:{volunteerId,inProgressTaskId} }
+}
+//-------------------------------------------------------------------------------------------------///

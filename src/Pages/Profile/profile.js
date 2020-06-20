@@ -11,6 +11,7 @@ import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
 const Profile = props => {
+  console.log("currentTasks",props.currentTasks)
   return (
     <div>
       {/* <InsideNav></InsideNav> */}
@@ -78,7 +79,7 @@ const Profile = props => {
                       backgroundColor: "#F8F8F4"
                     }}
                   >
-                    <InProgressTaskCard></InProgressTaskCard>
+                    <InProgressTaskCard ></InProgressTaskCard>
                   </ToastBody>
                 </Toast>
               </div>
@@ -91,7 +92,8 @@ const Profile = props => {
 };
 const mapStateToProps = reduxState => {
   return {
-    currentUser: reduxState.Users.currentUser
+    currentUser: reduxState.Users.currentUser,
+    currentTasks:reduxState
   };
 };
 export default connect(mapStateToProps)(Profile);
