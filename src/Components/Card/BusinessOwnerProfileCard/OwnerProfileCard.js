@@ -11,16 +11,16 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
+  CardSubtitle,
 } from "reactstrap";
 
-const OwnerProfileCard = props => {
+const OwnerProfileCard = (props) => {
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   const { users } = props;
-  console.log("users", users);
+  // console.log("users", users);
   const hanldeClick = () => {
-    console.log(props);
+    // console.log(props);
     props.history.push(`/profile/${volunteerId}`);
   };
   return (
@@ -82,8 +82,8 @@ const OwnerProfileCard = props => {
     </div>
   );
 };
-const mapStateToProps = state => ({
-  users: state.Users
+const mapStateToProps = (state) => ({
+  users: state.Users,
 });
 
 export default withRouter(connect(mapStateToProps)(OwnerProfileCard));
