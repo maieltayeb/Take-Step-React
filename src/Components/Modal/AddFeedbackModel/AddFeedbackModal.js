@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { AddFeedback } from "./../../../Redux/actions/FeedbackActionCreator";
 
 const FeedbackModel = (props) => {
-  const { buttonLabel, modalShap } = props;
+  const { buttonLabel, modalShap, task } = props;
 
   const [modal, setModal] = useState(false);
 
@@ -38,10 +38,10 @@ const FeedbackModel = (props) => {
     const feedbackObj = {
       rating,
       comment,
-      taskTitle: "Guestbook",
-      link: "https://github.com/Malkibrahim",
+      taskTitle: task.jobTitle,
+      link: task.taskLink,
     };
-    dispatch(AddFeedback("5eebaf148193a93194ceb722", feedbackObj));
+    dispatch(AddFeedback(task.volunteerId, feedbackObj));
     setModal(false);
   };
   return (

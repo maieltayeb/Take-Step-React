@@ -20,7 +20,7 @@ class Portflio extends Component {
     const user = localStorage.getItem("user");
     const volunteerId = JSON.parse(user).id;
     debugger;
-    const arr = [];
+    let arr = [];
     const feedData = await axios.get(
       `https://take-a-step-9ca1d.firebaseio.com/Feedback/${volunteerId}.json`
     );
@@ -30,23 +30,14 @@ class Portflio extends Component {
         details: feedData.data[key],
       }));
       this.setState({ AllData: feedbackArray });
-      console.log(feedbackArray[0]);
-      const d = feedbackArray[0];
-      arr.push(feedbackArray[0]);
-      arr.push(feedbackArray[1]);
+
+      arr = this.state.AllData.slice(0, 2);
 
       this.setState({ activeCards: arr });
-      // setActiveCards(activeCards.push(feedbackArray[1]));
       console.log(this.state.activeCards);
     }
   }
 
-  //   console.log("/////////////////", feedback);
-  //   useEffect(() => {
-  //     setActiveCards(activeCards.push(feedback[0]));
-  //     setActiveCards(activeCards.push(feedback[1]));
-  //     console.log(activeCards);
-  //   }, []);
   handleNext = () => {
     // debugger;
     let arr = [];
@@ -59,17 +50,6 @@ class Portflio extends Component {
       if (arr.length) {
         this.setState({ activeCards: arr });
       }
-      // index = this.state.index + 1;
-      // this.setState({ index });
-      // this.setState({ activeCards: [] });
-      // arr.push(this.state.AllData[index]);
-      // index = this.state.index + 2;
-
-      // this.setState({ index });
-      // arr.push(this.state.AllData[index]);
-      // if (arr.length) {
-      //   this.setState({ activeCards: arr });
-      // }
     }
 
     console.log(this.state.activeCards);
