@@ -43,16 +43,16 @@ const SignUp = props => {
       [name]: value
     }));
   };
-  const handlePaymentChange = e => {
-    const { name, value } = e.target;
-    setState(prevState => ({
-      ...prevState,
-      paymentData: {
-        ...prevState.paymentData,
-        [name]: value
-      }
-    }));
-  };
+  // const handlePaymentChange = e => {
+  //   const { name, value } = e.target;
+  //   setState(prevState => ({
+  //     ...prevState,
+  //     paymentData: {
+  //       ...prevState.paymentData,
+  //       [name]: value
+  //     }
+  //   }));
+  // };
 
   /*******handel click*************** */
   const handleClick = e => {
