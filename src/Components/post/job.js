@@ -362,14 +362,14 @@ const Job = props => {
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
           {!applied || jobsIds.includes(props.job.id) ? (
-            <Button
+           !currentUser.paymentData && (  <Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
               className=" applyBtn float-right"
               onClick={() => handleClick(props.job.id)}
             >
               Applied
-            </Button>
+            </Button>)
           ) : (
             !currentUser.paymentData && (
               <Button
@@ -604,14 +604,14 @@ const Job = props => {
           </div>
           {/* //////////////////////////////////// */}
           {!applied || jobsIds.includes(props.job.id) ? (
-            <Button
+             !currentUser.paymentData && (<Button
               style={{ backgroundColor: "#6c757d" }}
               disabled
               className=" applyBtn float-right"
               onClick={() => handleClick(props.job.id)}
             >
               Applied
-            </Button>
+            </Button>)
           ) : (
             !currentUser.paymentData && (
               <Button
