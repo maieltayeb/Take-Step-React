@@ -13,7 +13,7 @@ class Portflio extends Component {
     AllData: [],
     rating: 0,
     index: 0,
-    activeCards: [],
+    activeCards: []
   };
 
   async componentDidMount() {
@@ -25,9 +25,9 @@ class Portflio extends Component {
       `https://take-a-step-9ca1d.firebaseio.com/Feedback/${volunteerId}.json`
     );
     if (feedData.data) {
-      const feedbackArray = Object.keys(feedData.data).map((key) => ({
+      const feedbackArray = Object.keys(feedData.data).map(key => ({
         id: String(key),
-        details: feedData.data[key],
+        details: feedData.data[key]
       }));
       this.setState({ AllData: feedbackArray });
 
@@ -82,7 +82,7 @@ class Portflio extends Component {
 
     console.log(this.state.activeCards);
   };
-  handleClick = (link) => {
+  handleClick = link => {
     window.open(link);
   };
   render() {
@@ -99,7 +99,7 @@ class Portflio extends Component {
             <div></div>
           )}
           {this.state.AllData.length ? (
-            this.state.activeCards.map((d) => {
+            this.state.activeCards.map(d => {
               return (
                 <div className="Portflio-item">
                   <div>
@@ -170,9 +170,9 @@ class Portflio extends Component {
     );
   }
 }
-const mapStateToProps = (State) => {
+const mapStateToProps = State => {
   return {
-    feedback: State.Feedback,
+    feedback: State.Feedback
   };
 };
 export default connect(mapStateToProps)(Portflio);
