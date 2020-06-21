@@ -52,9 +52,9 @@ const OwnerProfileCard = props => {
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   const { users } = props;
-  console.log("users", users);
+  // console.log("users", users);
   const hanldeClick = () => {
-    console.log(props);
+    // console.log(props);
     props.history.push(`/profile/${volunteerId}`);
   };
   return (
