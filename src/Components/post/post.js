@@ -61,9 +61,7 @@ const Post = (props) => {
         .slice(0)
         .reverse()
         .map((job) => {
-          const user = bussinessOwnerUsers.find(
-            (u) => u.user.id === job.userId
-          );
+          const user = bussinessOwnerUsers.find((u) => u.id === job.userId);
           // console.log("**************", user);
           let realComments = [];
           if (job.comments) {
