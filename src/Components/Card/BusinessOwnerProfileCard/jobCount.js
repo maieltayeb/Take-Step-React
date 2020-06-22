@@ -31,7 +31,7 @@ const JobCount = props => {
   //   //   : console.log("hhhh", inprog.details.userId);
   //   // console.log("hala", inprog.details.userId);
   // });
-  console.log("hala", state);
+  // console.log("hala", state);
   // useEffect(() => {
   // let jobsCurrentUser = jobs.filter(
   //   jobs.map(job => {

@@ -7,7 +7,7 @@ import OwnerProfileCard from "./../../Components/Card/BusinessOwnerProfileCard/O
 import Ads from "../../Components/ads/ads";
 import InsideNav from "./../../Layout/Navbar/insidenav";
 const HomePageOwner = props => {
-  console.log(props.currentUser.paymentData);
+  // console.log(props.currentUser.paymentData);
   const [stateSearch, setStateSearch] = useState("");
   const handleChange = e => {
     setStateSearch(e.target.value);

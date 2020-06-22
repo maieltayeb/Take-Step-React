@@ -10,7 +10,7 @@ const Portflio = props => {
             <img
               className="Portflio-item-img"
               top
-              width="100%"
+              // width="100%"
               src="/img/watch.jpg"
               alt="Card image cap"
             />
@@ -35,7 +35,7 @@ const Portflio = props => {
               borderRadius: " 50% 0"
             }}
             top
-            width="100%"
+            // width="100%"
             src="/img/watch.jpg"
             alt="Card image cap"
           />

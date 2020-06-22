@@ -32,7 +32,7 @@ const OwnerProfileCard = props => {
   //   //   : console.log("hhhh", inprog.details.userId);
   //   // console.log("hala", inprog.details.userId);
   // });
-  console.log("hala", state);
+  // console.log("hala", state);
   // useEffect(() => {
   // let jobsCurrentUser = jobs.filter(
   //   jobs.map(job => {
@@ -54,7 +54,7 @@ const OwnerProfileCard = props => {
   const { users } = props;
   // console.log("users", users);
   const hanldeClick = () => {
-    // console.log(props);
+    console.log(props);
     props.history.push(`/profile/${volunteerId}`);
   };
   return (
@@ -129,5 +129,3 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(connect(mapStateToProps)(OwnerProfileCard));
-
-// if(arrayOwnerUserJob.length > 0)
