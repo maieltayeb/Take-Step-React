@@ -3,13 +3,13 @@
 
   width: 31rem;
   /* width: 665px; */
-  margin: auto;
+  /* margin: auto; */
   border: 1px solid #f8f8f4;
-  min-height: 150px;
+  /* min-height: 150px; */
 }
 .Portflio-items {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 .Portflio-item {
   margin: 30px;
