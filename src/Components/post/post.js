@@ -11,7 +11,7 @@ import Comment from "./comment";
 import { getUserById } from "../../Redux/actions/businessOwnerActionCreator";
 import { getAllVolunteers } from "./../../Redux/actions/volunteerActionCreator";
 
-const Post = props => {
+const Post = (props) => {
   const { search } = props;
   let {
     comments,
@@ -20,7 +20,7 @@ const Post = props => {
     bussinessOwnerUsers,
     job,
     users,
-    volunteerUsers
+    volunteerUsers,
   } = props;
   const dispatch = useDispatch();
   const [stateJobs, setStateJobs] = useState([]);
@@ -46,7 +46,7 @@ const Post = props => {
   useEffect(() => {
     setStateJobs(jobs);
     if (search !== "") {
-      jobs = jobs.filter(job =>
+      jobs = jobs.filter((job) =>
         job.jobTitle.toLowerCase().includes(search.toLowerCase())
       );
       setStateJobs(jobs);
@@ -60,8 +60,8 @@ const Post = props => {
       {stateJobs
         .slice(0)
         .reverse()
-        .map(job => {
-          const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+        .map((job) => {
+          const user = bussinessOwnerUsers.find((u) => u.id === job.userId);
           // console.log("**************", user);
           let realComments = [];
           if (job.comments) {
@@ -84,7 +84,7 @@ const Post = props => {
                     </div>
                     <AddComment jobId={job.id} />
                     {realComments.length ? (
-                      realComments.map(comment => {
+                      realComments.map((comment) => {
                         // const userVol = volunteerUsers.find(
                         //   u => u.id === comment.userId
                         // );
@@ -104,7 +104,7 @@ const Post = props => {
               </>
             );
           } else {
-            const user = bussinessOwnerUsers.find(u => u.id === job.userId);
+            const user = bussinessOwnerUsers.find((u) => u.id === job.userId);
             return (
               <>
                 <div className="postContainer shadow">
@@ -128,14 +128,14 @@ const Post = props => {
     </>
   );
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
     comments: reduxState.Users.comments,
     users: reduxState.Users,
-    volunteerUsers: reduxState.Users.volunteerUsers
+    volunteerUsers: reduxState.Users.volunteerUsers,
   };
 };
 export default connect(mapStateToProps)(Post);

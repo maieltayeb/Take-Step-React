@@ -25,17 +25,18 @@ class ApplyButton extends Component {
       )
       .then((res) => {
         const inprog = res.data;
+        console.log(inprog);
         if (inprog) {
           const inprogArray = Object.keys(inprog).map((key) => ({
             id: String(key),
             details: inprog[key],
           }));
           const jobIds = inprogArray.map((arr) => arr.details.id);
-          console.log(jobIds);
+          // console.log(jobIds);
           this.setState({ jobIds });
           // console.log("/////", this.state.jobIds);
 
-          // console.log("Array os ids", inprogArray);
+          console.log("Array os ids", inprogArray);
 
           // console.log("/////////////");
         }
@@ -46,7 +47,7 @@ class ApplyButton extends Component {
     await this.fetchInpogData();
   }
   handleClick = async (taskID) => {
-    console.log(taskID);
+    // console.log(taskID);
     this.setState({ applied: false });
     // window.location.reload(true);
     this.props.job.status = "inprogress";
@@ -56,19 +57,22 @@ class ApplyButton extends Component {
       `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${this.props.volunteerId}.json`,
       this.props.job
     );
-    this.props.job.id = taskRes.data.name;
+    const newTask = { ...this.props.job, id: taskRes.data.name };
+    // this.props.job.id = taskRes.data.name;
 
-    console.log(this.props.job);
-    this.props.addTask(this.props.job);
+    console.log(newTask);
+    this.props.addTask(newTask);
     await this.fetchInpogData();
     // if () {
     //   this.setState({ include: true });
     // }
+    // console.log("Array os ids", inprogArray);
+    // console.log("/////", this.state.jobIds);
   };
   render() {
     const { job, currentUser, handleClick, applied, jobs } = this.props;
 
-    // console.log(this.state.jobIds);
+    console.log(this.state.jobIds, job.id, this.state.jobIds.includes(job.id));
     return !this.state.applied || this.state.jobIds.includes(job.id) ? (
       <Button
         style={{ backgroundColor: "#6c757d" }}

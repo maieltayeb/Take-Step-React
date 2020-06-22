@@ -58,7 +58,13 @@ const Profile = props => {
                   >
                     Portflio
                   </ToastHeader>
-                  <ToastBody style={{ backgroundColor: "#f8f8f4" }}>
+                  <ToastBody
+                    style={{
+                      backgroundColor: "#f8f8f4",
+                      display: "flex",
+                      "justify-content": "center"
+                    }}
+                  >
                     <Portflio></Portflio>
                   </ToastBody>
                 </Toast>

@@ -150,9 +150,10 @@ class Portflio extends Component {
               style={{
                 color: "black",
                 fontSize: "17px",
-                paddingTop: "50px",
-                width: "665px",
-                paddingLeft: "90px"
+                padding: " 30px 5px",
+                // width: "665px",
+                // paddingLeft: "90px"
+                "margin-left": "-77px"
               }}
             >
               {" "}

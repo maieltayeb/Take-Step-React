@@ -96,7 +96,7 @@ const InProgressTaskCard = (props) => {
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   <Toast>
                     <ToastHeader>
-                      <NavLink to="/taskDetails">Task Title</NavLink>
+                      <NavLink to="/taskDetails">Image Upload Node js</NavLink>
                     </ToastHeader>
                     <ToastBody outline color="danger" className=" m-3 ">
                       <Row>

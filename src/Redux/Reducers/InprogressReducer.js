@@ -53,7 +53,8 @@ const InprogReducer = (state = initialState, action) => {
       } else {
         newState = {
           appliedTasks: [],
-          newTask: ""
+          newTask: "",
+          submittedTaskLinks:[]
         };
       }
       break;

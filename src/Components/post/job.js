@@ -32,7 +32,7 @@ import {
   getTaskById,
   AddTasksToVol,
 } from "./../../Redux/actions/InprogressActionCreator";
-// import profilePic from "../../profileImage/profilephoto.png";
+import profilePic from "../../profileImage/profilephoto.png";
 
 const Job = (props) => {
   const dispatch = useDispatch();
@@ -65,25 +65,6 @@ const Job = (props) => {
   const [jobsIds, setJobsIds] = useState(data);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-  // async function fetchInpogData() {
-  //   const inprogRes = await axios.get(
-  //     `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
-  //   );
-  //   const inprog = inprogRes.data;
-  //   if (inprog) {
-  //     const inprogArray = Object.keys(inprog).map(key => ({
-  //       id: String(key),
-  //       details: inprog[key]
-  //     }));
-  //     const jobsId = inprogArray.map(arr => arr.details.id);
-  //     setJobsIds(jobsId);
-  //     // console.log("/////", jobsIds);
-
-  //     // console.log("/////", inprogArray);
-
-  //     // console.log("/////", jobsIds);
-  //   }
-  // }
   useEffect(() => {
     let userIds = jobs.map((job) => job.userId);
     userIds = [...new Set(userIds)];
@@ -95,12 +76,6 @@ const Job = (props) => {
 
     // fetchInpogData();
   }, [jobs, dispatch]);
-
-  // const handleClick = async taskID => {
-  //   console.log(taskID);
-  //   setApplied(false);
-  //   dispatch(AddTasksToVol(volunteerId, props.job));
-  // };
 
   /************handel delete job**************** */
   const handelDeleteJob = () => {
@@ -144,9 +119,9 @@ const Job = (props) => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
-              {/* {props.user.imgUrl ? (
+              {props.user && props.user.imgUrl ? (
                 <img
-                  src={"http://localhost:4402/" +props.user.imgUrl}
+                  src={"http://localhost:4402/" + props.user.imgUrl}
                   className="post-img  rounded-circle"
                   alt="server pic"
                 />
@@ -157,11 +132,11 @@ const Job = (props) => {
                   className="post-img  rounded-circle"
                   alt="personal pic"
                 />
-              )} */}
-              <img
+              )}
+              {/* <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
-              />
+              /> */}
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
@@ -373,26 +348,6 @@ const Job = (props) => {
             currentUser={currentUser}
             job={props.job}
           />
-          {/* {!applied || jobsIds.includes(props.job.id)
-            ? !currentUser.paymentData && (
-                <Button
-                  style={{ backgroundColor: "#6c757d" }}
-                  disabled
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Applied
-                </Button>
-              )
-            : !currentUser.paymentData && (
-                <Button
-                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Apply
-                </Button>
-              )} */}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
@@ -624,26 +579,6 @@ const Job = (props) => {
             currentUser={currentUser}
             job={props.job}
           />
-          {/* {!applied || jobsIds.includes(props.job.id)
-            ? !currentUser.paymentData && (
-                <Button
-                  style={{ backgroundColor: "#6c757d",borderRadius:"35px" }}
-                  disabled
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Applied
-                </Button>
-              )
-            : !currentUser.paymentData && (
-                <Button
-                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Apply
-                </Button>
-              )} */}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
