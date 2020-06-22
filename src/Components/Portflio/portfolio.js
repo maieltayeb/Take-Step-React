@@ -19,7 +19,7 @@ class Portflio extends Component {
   async componentDidMount() {
     const user = localStorage.getItem("user");
     const volunteerId = JSON.parse(user).id;
-    debugger;
+    // debugger;
     let arr = [];
     const feedData = await axios.get(
       `https://take-a-step-9ca1d.firebaseio.com/Feedback/${volunteerId}.json`
