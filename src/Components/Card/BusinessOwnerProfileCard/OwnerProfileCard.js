@@ -71,7 +71,8 @@ const OwnerProfileCard = props => {
               {users.currentUser.imgUrl ? (
                 <CardImg
                   top
-                  width="100%"
+                  //width="70%"
+                  style={{width:"70%"}}
                   className="mt-4 rounded-circle owner-card-img"
                   src={"http://localhost:4402/" + users.currentUser.imgUrl}
                   //src="./img/developer.jpg"
@@ -80,10 +81,12 @@ const OwnerProfileCard = props => {
               ) : (
                 <CardImg
                   top
-                  width="100%"
+
+                 // width="70%"
                   className="mt-4 rounded-circle owner-card-img"
+                  style={{width:"70%"}}
                   src={profilePic}
-                  //src="./img/developer.jpg"
+                 // src="./img/developer.jpg"
                   alt="Card image cap"
                 />
               )}

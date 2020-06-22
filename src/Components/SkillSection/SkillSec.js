@@ -17,7 +17,7 @@ const SkillSection = (props) => {
   }, [dispatch]);
   // console.log(newSkill);
   return (
-    <div className="skillSection-container mt-4">
+    <div className="skillSection-container mt-4 rounded ">
       <div className="skillSection-container-top">
         <div className="skillSection-container-top-h6">
           <h6>Skills</h6>
