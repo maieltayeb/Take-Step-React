@@ -146,7 +146,18 @@ class Portflio extends Component {
               );
             })
           ) : (
-            <div> No Tasks or Feedbacks yet </div>
+            <div
+              style={{
+                color: "black",
+                fontSize: "17px",
+                paddingTop: "50px",
+                width: "665px",
+                paddingLeft: "90px"
+              }}
+            >
+              {" "}
+              No Tasks or Feedbacks yet{" "}
+            </div>
           )}
           {this.state.AllData.length ? (
             <i
