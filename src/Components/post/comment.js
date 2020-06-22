@@ -73,11 +73,11 @@ const Comment = props => {
     <>
       <div className="clearfix d-flex">
         <div className=" float-left ">
-          <img
+          {/* <img
             className="post-img mt-2 rounded-circle"
             src="./img/people.png"
-          />
-          {/* {user.imgUrl ? (
+          /> */}
+          {user && user.imgUrl ? (
             <img
               src={"http://localhost:4402/" + user.imgUrl}
               className="mt-3 post-img rounded-circle"
@@ -89,7 +89,7 @@ const Comment = props => {
               className="mt-3 post-img rounded-circle"
               alt="personal pic"
             />
-          )} */}
+          )}
         </div>
         <div className=" ml-2 float-left ">
           <div className="p-2 mt-2 commentbody">

@@ -157,10 +157,10 @@ const Job = props => {
                   alt="personal pic"
                 />
               )}
-              <img
+              {/* <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
-              />
+              /> */}
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
