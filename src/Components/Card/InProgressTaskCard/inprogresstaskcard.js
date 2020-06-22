@@ -51,9 +51,13 @@ const InProgressTaskCard = props => {
                                 </NavLink>
                               </ToastHeader>
                             </Col>
-                            <ModalLink state={state} 
-                             inProgressTaskId={d.inprogTaskId} jobId={d.details.id}
-                              bussinessOwnerId={d.details.userId} jobTitle={d.details.jobTitle} ></ModalLink>
+                            <ModalLink
+                              state={state}
+                              inProgressTaskId={d.inprogTaskId}
+                              jobId={d.details.id}
+                              bussinessOwnerId={d.details.userId}
+                              jobTitle={d.details.jobTitle}
+                            ></ModalLink>
                           </Row>
 
                           <ToastBody className=" bg-warning m-3  rounded">
@@ -92,7 +96,7 @@ const InProgressTaskCard = props => {
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   <Toast>
                     <ToastHeader>
-                      <NavLink to="/taskDetails">Task Title</NavLink>
+                      <NavLink to="/taskDetails">Image Upload Node js</NavLink>
                     </ToastHeader>
                     <ToastBody outline color="danger" className=" m-3 ">
                       <Row>

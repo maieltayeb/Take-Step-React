@@ -31,7 +31,7 @@ import {
   getTaskById,
   AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
-// import profilePic from "../../profileImage/profilephoto.png";
+import profilePic from "../../profileImage/profilephoto.png";
 
 const Job = props => {
   const dispatch = useDispatch();
@@ -143,9 +143,9 @@ const Job = props => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
-              {/* {props.user.imgUrl ? (
+              {props.user && props.user.imgUrl ? (
                 <img
-                  src={"http://localhost:4402/" +props.user.imgUrl}
+                  src={"http://localhost:4402/" + props.user.imgUrl}
                   className="post-img  rounded-circle"
                   alt="server pic"
                 />
@@ -156,7 +156,7 @@ const Job = props => {
                   className="post-img  rounded-circle"
                   alt="personal pic"
                 />
-              )} */}
+              )}
               <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
@@ -377,7 +377,11 @@ const Job = props => {
               )
             : !currentUser.paymentData && (
                 <Button
-                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
+                  style={{
+                    backgroundColor: "#ebc010",
+                    borderRadius: "35px",
+                    border: "none"
+                  }}
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
                 >
@@ -610,7 +614,7 @@ const Job = props => {
           {!applied || jobsIds.includes(props.job.id)
             ? !currentUser.paymentData && (
                 <Button
-                  style={{ backgroundColor: "#6c757d",borderRadius:"35px" }}
+                  style={{ backgroundColor: "#6c757d", borderRadius: "35px" }}
                   disabled
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
@@ -620,7 +624,11 @@ const Job = props => {
               )
             : !currentUser.paymentData && (
                 <Button
-                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
+                  style={{
+                    backgroundColor: "#ebc010",
+                    borderRadius: "35px",
+                    border: "none"
+                  }}
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
                 >
