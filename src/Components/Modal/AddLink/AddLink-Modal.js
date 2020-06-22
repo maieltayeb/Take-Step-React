@@ -52,10 +52,10 @@ const handleSubmit = async e => {
   const response = await axios.post(`https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}/tasks.json`,newLink
 );
 const { data } = response;
-console.log("response",response)
+// console.log("response",response)
 if (response.status === 200) {
-  console.log("respone",response.data.newLink)
-  props.dispatch(addSubmitTaskLink(response.data.newLink));
+  // console.log("resposne",newLink)
+  props.dispatch(addSubmitTaskLink(newLink));
   setValues({
     taskLink:"",
     VolunteerComment:""
