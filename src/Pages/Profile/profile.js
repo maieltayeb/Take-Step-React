@@ -50,7 +50,7 @@ const Profile = props => {
               <SkillSection></SkillSection>
               {/* <Portflio></Portflio> */}
 
-              <div className="d-inline-block p-3 my-2 rounded ">
+              <div className="skillSection-container rounded mt-4">
                 <Toast style={{ maxWidth: "837px" }}>
                   <ToastHeader
                     className="p-3 text-warning"
@@ -63,7 +63,7 @@ const Profile = props => {
                   </ToastBody>
                 </Toast>
               </div>
-              <div className="d-inline-block p-3 my-2 rounded ">
+              <div className="skillSection-container  rounded mt-4 mb-5">
                 <Toast style={{ maxWidth: "837px" }}>
                   <ToastHeader
                     className="p-3 text-warning"
@@ -75,7 +75,7 @@ const Profile = props => {
                     className="p-0"
                     style={{
                       overflow: "auto",
-                      height: "24rem",
+                      height: "17rem",
                       backgroundColor: "#F8F8F4"
                     }}
                   >

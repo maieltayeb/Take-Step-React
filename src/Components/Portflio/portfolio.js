@@ -19,7 +19,7 @@ class Portflio extends Component {
   async componentDidMount() {
     const user = localStorage.getItem("user");
     const volunteerId = JSON.parse(user).id;
-    debugger;
+    //debugger;
     let arr = [];
     const feedData = await axios.get(
       `https://take-a-step-9ca1d.firebaseio.com/Feedback/${volunteerId}.json`
@@ -55,7 +55,7 @@ class Portflio extends Component {
     console.log(this.state.activeCards);
   };
   handlePrev = () => {
-    debugger;
+   // debugger;
     let arr = [];
     let index;
     if (this.state.index > 0) {
@@ -101,7 +101,7 @@ class Portflio extends Component {
           {this.state.AllData.length ? (
             this.state.activeCards.map(d => {
               return (
-                <div className="Portflio-item">
+                <div className="Portflio-item ">
                   <div>
                     <img
                       className="Portflio-item-img"
@@ -118,7 +118,7 @@ class Portflio extends Component {
                   >
                     {d.details.taskTitle}
                   </div>
-                  <div style={{ marginLeft: "80px", cursor: "pointer" }}>
+                  <div style={{ cursor: "pointer" ,textAlign:"center"}}>
                     {[...Array(5)].map((star, i) => {
                       const ratingValue = i + 1;
                       return (

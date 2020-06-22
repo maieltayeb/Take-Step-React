@@ -377,6 +377,7 @@ const Job = props => {
               )
             : !currentUser.paymentData && (
                 <Button
+                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
                 >
@@ -609,7 +610,7 @@ const Job = props => {
           {!applied || jobsIds.includes(props.job.id)
             ? !currentUser.paymentData && (
                 <Button
-                  style={{ backgroundColor: "#6c757d" }}
+                  style={{ backgroundColor: "#6c757d",borderRadius:"35px" }}
                   disabled
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
@@ -619,6 +620,7 @@ const Job = props => {
               )
             : !currentUser.paymentData && (
                 <Button
+                style={{ backgroundColor: "#ebc010" ,borderRadius:"35px",border:"none"}}
                   className=" applyBtn float-right"
                   onClick={() => handleClick(props.job.id)}
                 >
