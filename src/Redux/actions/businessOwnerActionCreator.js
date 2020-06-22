@@ -11,13 +11,13 @@ import {
   Delete_Job,
   Get_BussinessUsersById,
   GET_Error,
-  Edit_Job
+  Edit_Job,
 } from "../actionTypes";
 /////////////////////////get/////////////////////////////
-export const getAllUsersBussinessOwner = () => dispatch => {
+export const getAllUsersBussinessOwner = () => (dispatch) => {
   axios
     .get("http://localhost:4402/bussinessOwner/getAllBussinessUsers")
-    .then(response => {
+    .then((response) => {
       const users = response.data;
       const newUsers = [];
       for (const key in users) {
@@ -25,43 +25,43 @@ export const getAllUsersBussinessOwner = () => dispatch => {
       }
       dispatch(getAllUsersSuccess(newUsers));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
 
-const getAllUsersSuccess = newUsers => {
+const getAllUsersSuccess = (newUsers) => {
   return { type: Get_BussinessUsers, payload: newUsers };
 };
 //////////////////////////////////////get user by id/////////////////////////////////
-export const getUserById = id => dispatch => {
+export const getUserById = (id) => (dispatch) => {
   return axios
     .get(`http://localhost:4402/bussinessOwner/${id}`)
-    .then(response => {
+    .then((response) => {
       const user = response.data;
 
       dispatch(getUserByIdSuccess(user));
       //return user;
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
 
-const getUserByIdSuccess = user => {
+const getUserByIdSuccess = (user) => {
   return { type: Get_BussinessUsersById, payload: user };
 };
 ////////////////////////signup/////////////////////////////
-export const SignupBussinessOwner = newUser => dispatch => {
+export const SignupBussinessOwner = (newUser) => (dispatch) => {
   return axios
     .post("http://localhost:4402/bussinessOwner/register", newUser)
-    .then(response => {
+    .then((response) => {
       const { data } = response;
       console.log("data", data);
       if (response.status === 200) dispatch(SignUpSuccess(data.user));
       return data.user;
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err.response.data.message);
 
       dispatch(SignUpFailed(err.response.data.message));
@@ -69,17 +69,17 @@ export const SignupBussinessOwner = newUser => dispatch => {
     });
 };
 
-const SignUpSuccess = user => {
+const SignUpSuccess = (user) => {
   return { type: post_SignUp_BussinessUsers, payload: user };
 };
-const SignUpFailed = errMsg => {
+const SignUpFailed = (errMsg) => {
   return { type: GET_Error, payload: errMsg };
 };
 ///----------------------login--------------------------////////
-export const logInBussinessOwner = currentUser => dispatch => {
+export const logInBussinessOwner = (currentUser) => (dispatch) => {
   return axios
     .post("http://localhost:4402/bussinessOwner/login", currentUser)
-    .then(response => {
+    .then((response) => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -89,23 +89,23 @@ export const logInBussinessOwner = currentUser => dispatch => {
       if (response.status === 200) dispatch(loginSuccess(user));
       return user;
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch(LoginFailed(err.response.data.message));
       return err.response.data.message;
     });
 };
-const LoginFailed = errMsg => {
+const LoginFailed = (errMsg) => {
   return { type: GET_Error, payload: errMsg };
 };
 
-const loginSuccess = user => {
+const loginSuccess = (user) => {
   return { type: post_Login_BussinessUsers, payload: user };
 };
 ///////////////////////getall countries***************//////////////////
-export const getAllCountries = () => dispatch => {
+export const getAllCountries = () => (dispatch) => {
   return axios
     .get("http://localhost:4402/country/getAllcountries")
-    .then(response => {
+    .then((response) => {
       const countries = response.data;
       const newCounties = [];
       for (const key in countries) {
@@ -113,24 +113,24 @@ export const getAllCountries = () => dispatch => {
       }
       dispatch(getAllCountriesSuccess(newCounties));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
-const getAllCountriesSuccess = newCounties => {
+const getAllCountriesSuccess = (newCounties) => {
   return { type: Get_Countries, payload: newCounties };
 };
 /***********edit bussinessowner */
-export const editbussinessOwner = (id, newUser) => dispatch => {
+export const editbussinessOwner = (id, newUser) => (dispatch) => {
   const headers = {
     authorization: localStorage.getItem("token"),
-    "Content-Type": "form-data"
+    "Content-Type": "form-data",
   };
   return axios
     .patch(`http://localhost:4402/bussinessOwner/Edit/${id}`, newUser, {
-      headers: headers
+      headers: headers,
     })
-    .then(response => {
+    .then((response) => {
       const { data } = response;
       localStorage.setItem("user", JSON.stringify(data)); ///??
       console.log("userafter update", data);
@@ -140,16 +140,16 @@ export const editbussinessOwner = (id, newUser) => dispatch => {
     .catch(console.log);
 };
 
-const EditSuccess = user => {
+const EditSuccess = (user) => {
   console.log({ user });
   return { type: Edit_BussinessUsers, payload: user };
 };
 
 ///////////////////////get all timeDurationTypes***************//////////////////
-export const getTimeDurationTypes = () => dispatch => {
+export const getTimeDurationTypes = () => (dispatch) => {
   return axios
     .get("https://take-a-step-9ca1d.firebaseio.com/timeDurationType.json")
-    .then(response => {
+    .then((response) => {
       const timeDurationTypes = response.data;
 
       const newtimeDurationTypes = [];
@@ -158,20 +158,20 @@ export const getTimeDurationTypes = () => dispatch => {
       }
       dispatch(getAlltimeDurationTypesSuccess(newtimeDurationTypes));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       // handle error dipatch();
     });
 };
 
-const getAlltimeDurationTypesSuccess = newtimeDurationTypes => {
+const getAlltimeDurationTypesSuccess = (newtimeDurationTypes) => {
   return { type: Get_timeDurationTypes, payload: newtimeDurationTypes };
 };
 ////////////////////////add job////////////////////////////////////
-export const addJob = newJob => dispatch => {
+export const addJob = (newJob) => (dispatch) => {
   axios
     .post("https://take-a-step-9ca1d.firebaseio.com/jobs.json", newJob)
-    .then(response => {
+    .then((response) => {
       const { data } = response;
       newJob.id = data.name;
       if (response.status === 200) dispatch(addJobSuccess(newJob));
@@ -179,35 +179,35 @@ export const addJob = newJob => dispatch => {
     .catch(console.log);
 };
 
-const addJobSuccess = job => {
+const addJobSuccess = (job) => {
   return { type: ADD_Job, payload: job };
 };
 
 ////////////////////////delete job////////////////////////////////////
-export const DeleteJob = jobId => dispatch => {
+export const DeleteJob = (jobId) => (dispatch) => {
   axios
     .delete(`https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}.json`)
-    .then(response => {
+    .then((response) => {
       console.log("response delete job******************", response);
       if (response.status === 200) dispatch(DeleteJobSuccess(jobId));
     })
     .catch(console.log);
 };
 
-const DeleteJobSuccess = jobId => {
+const DeleteJobSuccess = (jobId) => {
   return { type: Delete_Job, payload: jobId };
 };
 
 ////////////////////////edit job////////////////////////////////////
 
 //////////////////////////////////
-export const EditJob = (newjob, jobId) => dispatch => {
+export const EditJob = (newjob, jobId) => (dispatch) => {
   return axios
     .patch(
       `https://take-a-step-9ca1d.firebaseio.com/jobs/${jobId}.json`,
       newjob
     )
-    .then(response => {
+    .then((response) => {
       const { data } = response;
       console.log("response edit jcob******************", jobId);
       if (response.status === 200) dispatch(EditJobSuccess(data, jobId));
@@ -219,10 +219,10 @@ const EditJobSuccess = (newjob, jobId) => {
   return { type: Edit_Job, payload: { ...newjob, jobId } };
 };
 ///////////////////////////////////get all jobs////////////////////
-export const getAllJobs = () => dispatch => {
+export const getAllJobs = () => (dispatch) => {
   return axios
     .get("https://take-a-step-9ca1d.firebaseio.com/jobs.json")
-    .then(response => {
+    .then((response) => {
       const jobs = response.data;
 
       const newJobs = [];
@@ -231,12 +231,12 @@ export const getAllJobs = () => dispatch => {
       }
       dispatch(getAllJobsSuccess(newJobs));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       // handle error dipatch();
     });
 };
 
-const getAllJobsSuccess = newJobs => {
+const getAllJobsSuccess = (newJobs) => {
   return { type: Get_Jobs, payload: newJobs };
 };

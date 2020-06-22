@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ApplyButton from "./applyButton";
 
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
@@ -18,22 +19,22 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
 } from "reactstrap";
 import "./post.css";
 import {
   getUserById,
   DeleteJob,
-  EditJob
+  EditJob,
 } from "../../Redux/actions/businessOwnerActionCreator";
 import { addTask } from "../../Redux/actions/volunteerActionCreator";
 import {
   getTaskById,
-  AddTasksToVol
+  AddTasksToVol,
 } from "./../../Redux/actions/InprogressActionCreator";
 // import profilePic from "../../profileImage/profilephoto.png";
 
-const Job = props => {
+const Job = (props) => {
   const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
   // console.log("currentUser", currentUser);
@@ -51,7 +52,7 @@ const Job = props => {
     description: props.job.description,
     userId: props.currentUser.id,
     enabled: true,
-    tasks: []
+    tasks: [],
   });
   /********modal***** */
 
@@ -62,44 +63,44 @@ const Job = props => {
   const [applied, setApplied] = useState(true);
 
   const [jobsIds, setJobsIds] = useState(data);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-  async function fetchInpogData() {
-    const inprogRes = await axios.get(
-      `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
-    );
-    const inprog = inprogRes.data;
-    if (inprog) {
-      const inprogArray = Object.keys(inprog).map(key => ({
-        id: String(key),
-        details: inprog[key]
-      }));
-      const jobsId = inprogArray.map(arr => arr.details.id);
-      setJobsIds(jobsId);
-      // console.log("/////", jobsIds);
+  // async function fetchInpogData() {
+  //   const inprogRes = await axios.get(
+  //     `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
+  //   );
+  //   const inprog = inprogRes.data;
+  //   if (inprog) {
+  //     const inprogArray = Object.keys(inprog).map(key => ({
+  //       id: String(key),
+  //       details: inprog[key]
+  //     }));
+  //     const jobsId = inprogArray.map(arr => arr.details.id);
+  //     setJobsIds(jobsId);
+  //     // console.log("/////", jobsIds);
 
-      // console.log("/////", inprogArray);
+  //     // console.log("/////", inprogArray);
 
-      // console.log("/////", jobsIds);
-    }
-  }
+  //     // console.log("/////", jobsIds);
+  //   }
+  // }
   useEffect(() => {
-    let userIds = jobs.map(job => job.userId);
+    let userIds = jobs.map((job) => job.userId);
     userIds = [...new Set(userIds)];
-    userIds.forEach(userId => {
+    userIds.forEach((userId) => {
       if (userId) {
         dispatch(getUserById(userId));
       }
     });
 
-    fetchInpogData();
+    // fetchInpogData();
   }, [jobs, dispatch]);
 
-  const handleClick = async taskID => {
-    console.log(taskID);
-    setApplied(false);
-    dispatch(AddTasksToVol(volunteerId, props.job));
-  };
+  // const handleClick = async taskID => {
+  //   console.log(taskID);
+  //   setApplied(false);
+  //   dispatch(AddTasksToVol(volunteerId, props.job));
+  // };
 
   /************handel delete job**************** */
   const handelDeleteJob = () => {
@@ -120,7 +121,7 @@ const Job = props => {
   };
 
   /*************handel modal  job************** */
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("id", props.job.id);
     if (currentUser.id === props.job.userId) {
@@ -130,11 +131,11 @@ const Job = props => {
     }
   };
   /*************handel modal change ************* */
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setStateModal(prevState => ({
+    setStateModal((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
   if (props.job.comments) {
@@ -227,7 +228,7 @@ const Job = props => {
                         style={{
                           width: "10%",
                           borderRadius: "50%",
-                          marginRight: "20px"
+                          marginRight: "20px",
                         }}
                       />
                       <a>
@@ -364,7 +365,15 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applied || jobsIds.includes(props.job.id)
+          <ApplyButton
+            volunteerId={volunteerId}
+            jobs={jobs}
+            applied={applied}
+            // handleClick={handleClick}
+            currentUser={currentUser}
+            job={props.job}
+          />
+          {/* {!applied || jobsIds.includes(props.job.id)
             ? !currentUser.paymentData && (
                 <Button
                   style={{ backgroundColor: "#6c757d" }}
@@ -383,7 +392,7 @@ const Job = props => {
                 >
                   Apply
                 </Button>
-              )}
+              )} */}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
@@ -468,7 +477,7 @@ const Job = props => {
                         style={{
                           width: "10%",
                           borderRadius: "50%",
-                          marginRight: "20px"
+                          marginRight: "20px",
                         }}
                       />
                       <a>
@@ -607,7 +616,15 @@ const Job = props => {
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
           {/* //////////////////////////////////// */}
-          {!applied || jobsIds.includes(props.job.id)
+          <ApplyButton
+            volunteerId={volunteerId}
+            jobs={jobs}
+            applied={applied}
+            // handleClick={handleClick}
+            currentUser={currentUser}
+            job={props.job}
+          />
+          {/* {!applied || jobsIds.includes(props.job.id)
             ? !currentUser.paymentData && (
                 <Button
                   style={{ backgroundColor: "#6c757d",borderRadius:"35px" }}
@@ -626,7 +643,7 @@ const Job = props => {
                 >
                   Apply
                 </Button>
-              )}
+              )} */}
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
@@ -656,13 +673,13 @@ const Job = props => {
     );
   }
 };
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
 
-    state: reduxState.Inprogress.newTask
+    state: reduxState.Inprogress.newTask,
   };
 };
 export default connect(mapStateToProps)(Job);
