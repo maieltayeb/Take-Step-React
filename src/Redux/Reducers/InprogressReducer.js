@@ -5,13 +5,13 @@ import {
   GET_VOL_TASKS,
   ADD_SUBMITTASK_LINK,
   GET_ALLSUBMITTED_TASKS,
-  DELET_TASKFROM_PROGRESS,
+  DELET_TASKFROM_PROGRESS
 } from "../actionTypes";
 
 const initialState = {
   appliedTasks: [],
   newTask: null,
-  submittedTaskLinks: [],
+  submittedTaskLinks: []
 };
 const InprogReducer = (state = initialState, action) => {
   let newState;
@@ -26,30 +26,34 @@ const InprogReducer = (state = initialState, action) => {
           ...state.appliedTasks,
           {
             inprogTaskId: action.payload.id,
-            details: action.payload,
-          },
-        ],
+            details: action.payload
+          }
+        ]
       };
       // newState = [...state, action.payload];
       console.log(newState);
       break;
     case GET_VOL_TASKS:
+      // debugger;
       if (
-        (state.appliedTasks != null && state.newTask != null &&state.submittedTaskLinks!=null)  ||
-        action.payload 
+        (state.appliedTasks != null &&
+          state.newTask != null &&
+          state.submittedTaskLinks != null) ||
+        action.payload
       ) {
         newState = {
           ...state,
-          appliedTasks: Object.keys(action.payload).map((key) => ({
+          appliedTasks: Object.keys(action.payload).map(key => ({
             inprogTaskId: String(key),
-            details: action.payload[key],
-          })),
+            details: action.payload[key]
+          }))
         };
+        // console.log(action.payload);
+        // console.log(newState);
       } else {
         newState = {
           appliedTasks: [],
-          newTask: "",
-          submittedTaskLinks:[],
+          newTask: ""
         };
       }
       break;
@@ -59,7 +63,7 @@ const InprogReducer = (state = initialState, action) => {
       newState = { ...state };
       newState.submittedTaskLinks = [
         ...state.submittedTaskLinks,
-        action.payload,
+        action.payload
       ];
       // console.log("aya",action.payload)
       break;
@@ -70,7 +74,7 @@ const InprogReducer = (state = initialState, action) => {
     case DELET_TASKFROM_PROGRESS:
       newState = { ...state };
       let arr = [];
-      newState.appliedTasks.map((d) => {
+      newState.appliedTasks.map(d => {
         if (d.inprogTaskId !== action.payload.inProgressTaskId) {
           arr.push(d);
         } else {
