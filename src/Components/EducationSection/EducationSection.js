@@ -31,7 +31,7 @@ const EducationSection = props => {
       .catch(console.log);
   }, [dispatch]);
   return (
-    <div className="EducationSection-container mt-4">
+    <div className="EducationSection-container mt-4 rounded ">
       <div className="EducationSection-container-top">
         <div className="EducationSection-container-top-h6">
           <h6>Education</h6>

@@ -36,7 +36,9 @@ const InprogReducer = (state = initialState, action) => {
     case GET_VOL_TASKS:
       // debugger;
       if (
-        (state.appliedTasks != null && state.newTask != null) ||
+        (state.appliedTasks != null &&
+          state.newTask != null &&
+          state.submittedTaskLinks != null) ||
         action.payload
       ) {
         newState = {
@@ -57,11 +59,13 @@ const InprogReducer = (state = initialState, action) => {
       break;
     ////////////upload task///////////
     case ADD_SUBMITTASK_LINK:
+      debugger;
       newState = { ...state };
       newState.submittedTaskLinks = [
         ...state.submittedTaskLinks,
         action.payload
       ];
+      // console.log("aya",action.payload)
       break;
     case GET_ALLSUBMITTED_TASKS:
       newState = { ...state };
