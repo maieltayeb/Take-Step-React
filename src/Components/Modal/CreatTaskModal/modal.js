@@ -45,7 +45,10 @@ const ModalCreateTask = props => {
   };
   return (
     <div>
-      <p onClick={toggle}> What's your Task ?</p>
+      <p onClick={toggle} style={{ cursor: "pointer" }}>
+        {" "}
+        What's your Task ?
+      </p>
 
       <Modal
         className="modalShap"
