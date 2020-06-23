@@ -37,7 +37,7 @@
   /******************/
 
   height: 100%;
-  width: 100%;
+  width: 90%;
   /* height: 422px; */
   /* width: 263px;*/
 
@@ -47,7 +47,7 @@
   /* position: absolute; */
   z-index: 2;
 
-  background-image: url("/img/img-header.png");
+  background-image: url("/img/header-photo.png");
 
   margin-right: 100px;
   background-size: cover;

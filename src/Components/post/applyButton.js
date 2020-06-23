@@ -10,7 +10,7 @@ class ApplyButton extends Component {
   state = {
     jobIds: [],
     applied: true,
-    include: false,
+    include: false
   };
 
   fetchInpogData = async () => {
@@ -23,20 +23,20 @@ class ApplyButton extends Component {
       .get(
         `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
       )
-      .then((res) => {
+      .then(res => {
         const inprog = res.data;
-        console.log(inprog);
+        // console.log(inprog);
         if (inprog) {
-          const inprogArray = Object.keys(inprog).map((key) => ({
+          const inprogArray = Object.keys(inprog).map(key => ({
             id: String(key),
-            details: inprog[key],
+            details: inprog[key]
           }));
-          const jobIds = inprogArray.map((arr) => arr.details.id);
+          const jobIds = inprogArray.map(arr => arr.details.id);
           // console.log(jobIds);
           this.setState({ jobIds });
           // console.log("/////", this.state.jobIds);
 
-          console.log("Array os ids", inprogArray);
+          // console.log("Array os ids", inprogArray);
 
           // console.log("/////////////");
         }
@@ -46,7 +46,7 @@ class ApplyButton extends Component {
   async componentDidMount() {
     await this.fetchInpogData();
   }
-  handleClick = async (taskID) => {
+  handleClick = async taskID => {
     // console.log(taskID);
     this.setState({ applied: false });
     // window.location.reload(true);
@@ -72,13 +72,18 @@ class ApplyButton extends Component {
   render() {
     const { job, currentUser, handleClick, applied, jobs } = this.props;
 
-    console.log(this.state.jobIds, job.id, this.state.jobIds.includes(job.id));
+    // console.log(this.state.jobIds, job.id, this.state.jobIds.includes(job.id));
     return !this.state.applied || this.state.jobIds.includes(job.id) ? (
       <Button
         style={{ backgroundColor: "#6c757d" }}
         disabled
         className=" applyBtn float-right"
         onClick={() => this.handleClick(job.id)}
+        style={{
+          backgroundColor: "#6c757d",
+          borderRadius: "35px",
+          border: "none"
+        }}
       >
         Applied
       </Button>
@@ -87,6 +92,11 @@ class ApplyButton extends Component {
         <Button
           className=" applyBtn float-right"
           onClick={() => this.handleClick(job.id)}
+          style={{
+            backgroundColor: "#ebc010",
+            borderRadius: "35px",
+            border: "none"
+          }}
         >
           Apply
         </Button>
@@ -94,9 +104,9 @@ class ApplyButton extends Component {
     );
   }
 }
-const mapDispatchToprops = (dispatch) => {
+const mapDispatchToprops = dispatch => {
   return {
-    addTask: (job) => dispatch({ type: ADD_NEW_TASK, payload: job }),
+    addTask: job => dispatch({ type: ADD_NEW_TASK, payload: job })
   };
 };
 export default connect(null, mapDispatchToprops)(ApplyButton);

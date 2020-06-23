@@ -1,16 +1,16 @@
 import React from "react";
 import { Jumbotron, Container, Button } from "reactstrap";
 import "./header.css";
-const Header = (props) => {
+const Header = props => {
   return (
     <div>
       <Jumbotron fluid className="fluid1 mb-0">
         <Container fluid>
           <h1 className="display-4">Take your step</h1>
           <p className="leead1">
-            Take Step connects volunteers and agencies
+            Take Step connects Volunteers Coash and beginer
             <br />
-            to businesses seeking specialized talent with little cost.
+            developers to teach and guid them with little cost.
           </p>
           <button outline className="secondary">
             Get started

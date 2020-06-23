@@ -9,62 +9,57 @@ import { logInBussinessOwner } from "../../Redux/actions/businessOwnerActionCrea
 import { logInVolunteers } from "../../Redux/actions/volunteerActionCreator";
 import { useHistory } from "react-router-dom";
 
-const Login = (props) => {
+const Login = props => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [stateError,setStateError]=useState(false)
+  const [stateError, setStateError] = useState(false);
 
   const [state, setState] = useState({
     email: "",
-    password: "",
+    password: ""
   });
   // const [statePassword, setStatePassword] = useState("");
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
   let currentuserJson = localStorage.getItem("user");
 
   let currentUser = JSON.parse(currentuserJson);
-  console.log("currentUserBeforeHadelSubmit", currentUser);
-
+  // console.log("currentUserBeforeHadelSubmit", currentUser);
 
   let response;
   const handleValidSubmit = async (event, values) => {
-    console.log("click login ", values);
+    // console.log("click login ", values);
     event.preventDefault();
-   
 
-    let bussinesslogin = props.users.filter(function (user) {
-      return user.email == state.email;
-    });
     // debugger;
+    let bussinesslogin = props.users.filter(user => {
+      return user.email === state.email;
+    });
     if (bussinesslogin.length == 0) {
       let response = await dispatch(logInVolunteers(state));
-    
-      if(response=="wrong email or password"){
-        setStateError(true)
-      }else{
-      currentUser = response;
-      history.push(`/profile/${currentUser.id}`);
+
+      if (response == "wrong email or password") {
+        setStateError(true);
+      } else {
+        currentUser = response;
+        history.push(`/profile/${currentUser.id}`);
       }
-    
     } else {
       let response = await dispatch(logInBussinessOwner(state));
 
-      if(response=="wrong email or password"){
-        setStateError(true)
-      }else{
-      currentUser = response;
-      history.push(`/profile/${currentUser.id}`);
+      if (response == "wrong email or password") {
+        setStateError(true);
+      } else {
+        currentUser = response;
+        history.push(`/profile/${currentUser.id}`);
       }
-     
     }
- 
   };
 
   return (
@@ -78,7 +73,7 @@ const Login = (props) => {
             width: "50%",
             margin: "110px auto",
             border: "1px solid",
-            borderRadius: "1.5rem",
+            borderRadius: "1.5rem"
           }}
         >
           <h3 className="text-center m-3 mb-5"> Login</h3>
@@ -103,7 +98,7 @@ const Login = (props) => {
               validate={{
                 required: { value: true },
                 pattern: { value: "^[A-Za-z0-9]+$" },
-                minLength: { value: 4 },
+                minLength: { value: 4 }
               }}
               type="password"
               name="password"
@@ -114,7 +109,7 @@ const Login = (props) => {
             />
             <p className="m-3">Forgot your Password ?</p>
 
-            {stateError&& (
+            {stateError && (
               <Alert color="danger"> worng email or passwoed !!</Alert>
             )}
           </FormGroup>{" "}
@@ -123,7 +118,7 @@ const Login = (props) => {
             style={{
               margin: "20px auto",
               borderRadius: "1.5rem",
-              padding: ".7rem 5rem",
+              padding: ".7rem 5rem"
             }}
           >
             Login
@@ -134,7 +129,7 @@ const Login = (props) => {
             style={{
               margin: "20px 125px",
               borderRadius: "1.5rem",
-              padding: ".7rem 4.5rem",
+              padding: ".7rem 4.5rem"
             }}
           >
             Sign Up
@@ -144,9 +139,9 @@ const Login = (props) => {
     </>
   );
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
-    users: reduxState.Users.users,
+    users: reduxState.Users.users
     // currentUser: reduxState.Users.currentUser
   };
 };

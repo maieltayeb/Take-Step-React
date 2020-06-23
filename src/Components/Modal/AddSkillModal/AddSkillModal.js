@@ -5,26 +5,26 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Input,
+  Input
 } from "reactstrap";
 import "./AddSkillModal.css";
 import { useDispatch, useSelector, connect } from "react-redux";
 import {
   DeletSkills,
   getUserSkills,
-  AddSkills,
+  AddSkills
 } from "../../../Redux/actions/userSkillCreator";
 
-const AddSkill = (props) => {
+const AddSkill = props => {
   const { className, state } = props;
-  console.log(state);
+  // console.log(state);
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
-  const userSkills = useSelector((state) => state.Skills);
+  const userSkills = useSelector(state => state.Skills);
   const [newSkills, setNewSkill] = useState(userSkills);
-  console.log(newSkills);
+  // console.log(newSkills);
   const user = localStorage.getItem("user");
   const volunteerId = JSON.parse(user).id;
   useEffect(() => {
@@ -33,13 +33,13 @@ const AddSkill = (props) => {
     setNewSkill(userSkills);
   }, [dispatch]);
 
-  console.log(newSkills);
-  const changeHandler = (e) => {
+  // console.log(newSkills);
+  const changeHandler = e => {
     const updatedUser = { ...newSkills };
     updatedUser[e.target.name] = e.target.value;
     setNewSkill(updatedUser);
   };
-  const KeyUpHandler = (event) => {
+  const KeyUpHandler = event => {
     debugger;
     const { key } = event;
     if (key == "Enter") {
@@ -49,10 +49,10 @@ const AddSkill = (props) => {
       newSkills.skillName = "";
     }
   };
-  const deleteHandler = async (id) => {
+  const deleteHandler = async id => {
     dispatch(DeletSkills(volunteerId, id));
   };
-  const submitHandler = async (e) => {
+  const submitHandler = async e => {
     console.log("submitted");
     //dispatch id , newUser using editOwnerUser
     // dispatch(addSkillsInSec(userId, newUser));
@@ -66,7 +66,7 @@ const AddSkill = (props) => {
         <i class="fas fa-plus" onClick={toggle}></i>
       )}
       <Modal
-        onSubmit={(event) => event.preventDefault()}
+        onSubmit={event => event.preventDefault()}
         className="modalShapSkill"
         isOpen={modal}
         toggle={toggle}
@@ -106,7 +106,7 @@ const AddSkill = (props) => {
               </p>
             </form>
             <div class=" mt-2 d-inline">
-              {state.map((obj) => {
+              {state.map(obj => {
                 return (
                   <React.Fragment>
                     <span class=" para mr-2 ">
@@ -146,7 +146,7 @@ const AddSkill = (props) => {
               backgroundColor: "#494848",
               borderRadius: "20px",
               color: "#EBC010",
-              width: "100px",
+              width: "100px"
             }}
           >
             Ok
@@ -156,9 +156,9 @@ const AddSkill = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    state: state.Skills,
+    state: state.Skills
   };
 };
 export default connect(mapStateToProps)(AddSkill);

@@ -11,7 +11,7 @@ import SkillSection from "../../Components/SkillSection/SkillSec";
 import PersonalInfo from "../../Components/UpperSectionProfile/upperSection-Profile-Info";
 import ProfileNavbar from "../../Layout/Navbar/profileNavbar";
 const Profile = props => {
-  console.log("currentTasks", props.currentTasks);
+  // console.log("currentTasks", props.currentTasks);
   return (
     <div>
       {/* <InsideNav></InsideNav> */}
@@ -23,7 +23,10 @@ const Profile = props => {
           {props.currentUser.paymentData && (
             <>
               <Col>
-                <div className="d-inline-block rounded mt-4 ">
+                <div
+                  className="d-inline-block rounded mt-4 "
+                  style={{ width: "43rem" }}
+                >
                   <Toast style={{ maxWidth: "837px" }}>
                     <ToastHeader
                       className="p-3 text-warning"

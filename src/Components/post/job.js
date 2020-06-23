@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ApplyButton from "./applyButton";
 
 import { connect, useDispatch, useSelector } from "react-redux";
@@ -19,22 +18,22 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./post.css";
 import {
   getUserById,
   DeleteJob,
-  EditJob,
+  EditJob
 } from "../../Redux/actions/businessOwnerActionCreator";
-import { addTask } from "../../Redux/actions/volunteerActionCreator";
+
 import {
   getTaskById,
-  AddTasksToVol,
+  AddTasksToVol
 } from "./../../Redux/actions/InprogressActionCreator";
 import profilePic from "../../profileImage/profilephoto.png";
 
-const Job = (props) => {
+const Job = props => {
   const dispatch = useDispatch();
   const { currentUser, jobs, bussinessOwnerUsers, state } = props;
   // console.log("currentUser", currentUser);
@@ -52,7 +51,7 @@ const Job = (props) => {
     description: props.job.description,
     userId: props.currentUser.id,
     enabled: true,
-    tasks: [],
+    tasks: []
   });
   /********modal***** */
 
@@ -63,12 +62,12 @@ const Job = (props) => {
   const [applied, setApplied] = useState(true);
 
   const [jobsIds, setJobsIds] = useState(data);
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
 
   useEffect(() => {
-    let userIds = jobs.map((job) => job.userId);
+    let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
-    userIds.forEach((userId) => {
+    userIds.forEach(userId => {
       if (userId) {
         dispatch(getUserById(userId));
       }
@@ -96,7 +95,7 @@ const Job = (props) => {
   };
 
   /*************handel modal  job************** */
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     console.log("id", props.job.id);
     if (currentUser.id === props.job.userId) {
@@ -106,11 +105,11 @@ const Job = (props) => {
     }
   };
   /*************handel modal change ************* */
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setStateModal((prevState) => ({
+    setStateModal(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
   if (props.job.comments) {
@@ -133,6 +132,20 @@ const Job = (props) => {
                   alt="personal pic"
                 />
               )}
+              {/* {props.user && props.user.imgUrl ? (
+                <img
+                  src={"http://localhost:4402/" + props.user.imgUrl}
+                  className="post-img  rounded-circle"
+                  alt="server pic"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  // src={profilePic}
+                  className="post-img  rounded-circle"
+                  alt="personal pic"
+                />
+              )} */}
               {/* <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
@@ -197,15 +210,27 @@ const Job = (props) => {
                           }}
                         />
                       )} */}
-                      <img
-                        src="./img/profilephoto.png"
-                        alt="userimg"
-                        style={{
-                          width: "10%",
-                          borderRadius: "50%",
-                          marginRight: "20px",
-                        }}
-                      />
+                      {props.currentUser.imgUrl ? (
+                        <img
+                          src={
+                            "http://localhost:4402/" + props.currentUser.imgUrl
+                          }
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={profilePic}
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="personal pic"
+                        />
+                      )}
+
                       <a>
                         {props.currentUser.firstName}
                         &nbsp;&nbsp;
@@ -220,7 +245,7 @@ const Job = (props) => {
                       >
                         <FormGroup row className="m-3">
                           <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                          <Col sm={10} className="mb-3">
+                          <Col sm={10} className="mb-3 ml-2">
                             <Input
                               type="text"
                               name="jobTitle"
@@ -270,7 +295,7 @@ const Job = (props) => {
                           </Col>
                         </FormGroup>
 
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="Description">Description :</Label>
                           <Col sm={10}>
                             <Input
@@ -282,7 +307,7 @@ const Job = (props) => {
                             />
                           </Col>
                         </FormGroup>
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="exampleFile">File /Image :</Label>
                           <Col sm={10}>
                             <Input
@@ -383,10 +408,24 @@ const Job = (props) => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
-              <img
+              {props.user && props.user.imgUrl ? (
+                <img
+                  src={"http://localhost:4402/" + props.user.imgUrl}
+                  className="post-img  rounded-circle"
+                  alt="server pic"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  // src={profilePic}
+                  className="post-img  rounded-circle"
+                  alt="personal pic"
+                />
+              )}
+              {/* <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
-              />
+              /> */}
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
@@ -408,7 +447,7 @@ const Job = (props) => {
                 <div className="post-ortions">...</div>
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={togglemodal}> Edit </DropdownItem>
+                <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
 
                 <Modal
                   className="modalShap"
@@ -426,15 +465,36 @@ const Job = (props) => {
 
                   <ModalBody className="bodyModal">
                     <div>
-                      <img
+                      {props.currentUser.imgUrl ? (
+                        <img
+                          src={
+                            "http://localhost:4402/" + props.currentUser.imgUrl
+                          }
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={profilePic}
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="personal pic"
+                        />
+                      )}
+                      {/* <img
                         src="./img/profilephoto.png"
                         alt="userimg"
                         style={{
                           width: "10%",
                           borderRadius: "50%",
-                          marginRight: "20px",
+                          marginRight: "20px"
                         }}
-                      />
+                      /> */}
+
                       <a>
                         {props.currentUser.firstName}
                         &nbsp;&nbsp;
@@ -449,7 +509,7 @@ const Job = (props) => {
                       >
                         <FormGroup row className="m-3">
                           <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                          <Col sm={10} className="mb-3">
+                          <Col sm={10} className="mb-3  ml-2">
                             <Input
                               type="text"
                               name="jobTitle"
@@ -499,7 +559,7 @@ const Job = (props) => {
                           </Col>
                         </FormGroup>
 
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="Description">Description :</Label>
                           <Col sm={10}>
                             <Input
@@ -511,7 +571,7 @@ const Job = (props) => {
                             />
                           </Col>
                         </FormGroup>
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="exampleFile">File /Image :</Label>
                           <Col sm={10}>
                             <Input
@@ -608,13 +668,13 @@ const Job = (props) => {
     );
   }
 };
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
     jobs: reduxState.Users.jobs,
     bussinessOwnerUsers: reduxState.Users.bussinessOwnerUsers,
 
-    state: reduxState.Inprogress.newTask,
+    state: reduxState.Inprogress.newTask
   };
 };
 export default connect(mapStateToProps)(Job);

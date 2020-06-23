@@ -42,22 +42,22 @@ export default (state = initialState, action) => {
         action.payload
       ];
       break;
-      case Get_VolunteerById:
+    case Get_VolunteerById:
       newState = { ...state };
       newState.volunteerUsersById = [
         ...state.volunteerUsersById,
         action.payload
       ];
       break;
-     case Get_BussinessUsers:
-    // case Get_VolunteerUsers:
+    case Get_BussinessUsers:
+      // case Get_VolunteerUsers:
       newState = { ...state };
       newState.users = action.payload;
       break;
-      case Get_VolunteerUsers:
-        newState = { ...state };
-        newState.volunteerUsers = action.payload;
-        break;
+    case Get_VolunteerUsers:
+      newState = { ...state };
+      newState.volunteerUsers = action.payload;
+      break;
 
     case Get_Countries:
       newState = { ...state };
@@ -75,10 +75,13 @@ export default (state = initialState, action) => {
       //   console.log(newState.countries);
       break;
     case post_SignUp_BussinessUsers:
-    case post_SignUp_VolunteerUsers:
       newState = { ...state };
       newState.users = [...state.users, action.payload];
       //   console.log(newState.users);
+      break;
+    case post_SignUp_VolunteerUsers:
+      newState = { ...state };
+      newState.volunteerUsers = [...state.volunteerUsers, action.payload];
       break;
     case post_Login_BussinessUsers:
     case post_Login_VolunteerUsers:
@@ -117,20 +120,25 @@ export default (state = initialState, action) => {
       state = newState;
       console.log("aya after", state.comments);
       break;
-      case ADD_COMMENT:
-        // debugger;
-        newState = {...state };
-        console.log("newState:",newState)
-        newState.comments = [...state.comments, action.payload.newComment];
-        newState.jobs = state.jobs.map(job => job.id === action.payload.jobId ?           
-             {...job,comments: { ...job.comments,
-             [action.payload.newComment.id]: action.payload.newComment
-            }}
-            : job      
-        );
-        state = newState;
-        console.log("state",state)
-        break;
+    case ADD_COMMENT:
+      // debugger;
+      newState = { ...state };
+      console.log("newState:", newState);
+      newState.comments = [...state.comments, action.payload.newComment];
+      newState.jobs = state.jobs.map(job =>
+        job.id === action.payload.jobId
+          ? {
+              ...job,
+              comments: {
+                ...job.comments,
+                [action.payload.newComment.id]: action.payload.newComment
+              }
+            }
+          : job
+      );
+      state = newState;
+      console.log("state", state);
+      break;
     default:
       newState = state;
       break;
