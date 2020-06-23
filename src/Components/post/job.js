@@ -143,7 +143,7 @@ const Job = props => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
-              {props.user && props.user.imgUrl ? (
+              {/* {props.user && props.user.imgUrl ? (
                 <img
                   src={"http://localhost:4402/" + props.user.imgUrl}
                   className="post-img  rounded-circle"
@@ -156,11 +156,8 @@ const Job = props => {
                   className="post-img  rounded-circle"
                   alt="personal pic"
                 />
-              )}
-              {/* <img
-                className="post-img  rounded-circle"
-                src="./img/people.png"
-              /> */}
+              )} */}
+              <img className="post-img  rounded-circle" src="./img/ad2.jpg" />
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
