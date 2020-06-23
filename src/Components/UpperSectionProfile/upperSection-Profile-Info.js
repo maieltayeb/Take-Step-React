@@ -7,7 +7,7 @@ import PersonalInfoModal from "../Modal/PersonalInfo/PersonalInfoModal";
 // import profilePic from "profilephoto.png";
 import profilePic from "../../profileImage/profilephoto.png";
 const PersonalInfo = props => {
-  console.log("current user", props.currentUser);
+  // console.log("current user", props.currentUser);
   let currentcountry = Object.values(props.currentUser.country);
   //  console.log(currentcountry[1]);
   return (
@@ -116,7 +116,7 @@ const PersonalInfo = props => {
   );
 };
 const mapStateToProps = reduxState => {
-  console.log("test map state propes");
+  // console.log("test map state propes");
   return {
     currentUser: reduxState.Users.currentUser
   };

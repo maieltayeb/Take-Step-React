@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import ApplyButton from "./applyButton";
 
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getAllComments } from "../../Redux/actions/commentActionCreator";
@@ -26,7 +26,7 @@ import {
   DeleteJob,
   EditJob
 } from "../../Redux/actions/businessOwnerActionCreator";
-import { addTask } from "../../Redux/actions/volunteerActionCreator";
+
 import {
   getTaskById,
   AddTasksToVol
@@ -64,25 +64,6 @@ const Job = props => {
   const [jobsIds, setJobsIds] = useState(data);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
-  async function fetchInpogData() {
-    const inprogRes = await axios.get(
-      `https://take-a-step-9ca1d.firebaseio.com/Inprogress/${volunteerId}.json`
-    );
-    const inprog = inprogRes.data;
-    if (inprog) {
-      const inprogArray = Object.keys(inprog).map(key => ({
-        id: String(key),
-        details: inprog[key]
-      }));
-      const jobsId = inprogArray.map(arr => arr.details.id);
-      setJobsIds(jobsId);
-      // console.log("/////", jobsIds);
-
-      // console.log("/////", inprogArray);
-
-      // console.log("/////", jobsIds);
-    }
-  }
   useEffect(() => {
     let userIds = jobs.map(job => job.userId);
     userIds = [...new Set(userIds)];
@@ -92,14 +73,8 @@ const Job = props => {
       }
     });
 
-    fetchInpogData();
+    // fetchInpogData();
   }, [jobs, dispatch]);
-
-  const handleClick = async taskID => {
-    console.log(taskID);
-    setApplied(false);
-    dispatch(AddTasksToVol(volunteerId, props.job));
-  };
 
   /************handel delete job**************** */
   const handelDeleteJob = () => {
@@ -156,8 +131,25 @@ const Job = props => {
                   className="post-img  rounded-circle"
                   alt="personal pic"
                 />
+              )}
+              {/* {props.user && props.user.imgUrl ? (
+                <img
+                  src={"http://localhost:4402/" + props.user.imgUrl}
+                  className="post-img  rounded-circle"
+                  alt="server pic"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  // src={profilePic}
+                  className="post-img  rounded-circle"
+                  alt="personal pic"
+                />
               )} */}
-              <img className="post-img  rounded-circle" src="./img/ad2.jpg" />
+              {/* <img
+                className="post-img  rounded-circle"
+                src="./img/people.png"
+              /> */}
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
@@ -218,15 +210,27 @@ const Job = props => {
                           }}
                         />
                       )} */}
-                      <img
-                        src="./img/profilephoto.png"
-                        alt="userimg"
-                        style={{
-                          width: "10%",
-                          borderRadius: "50%",
-                          marginRight: "20px"
-                        }}
-                      />
+                      {props.currentUser.imgUrl ? (
+                        <img
+                          src={
+                            "http://localhost:4402/" + props.currentUser.imgUrl
+                          }
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={profilePic}
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="personal pic"
+                        />
+                      )}
+
                       <a>
                         {props.currentUser.firstName}
                         &nbsp;&nbsp;
@@ -241,7 +245,7 @@ const Job = props => {
                       >
                         <FormGroup row className="m-3">
                           <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                          <Col sm={10} className="mb-3">
+                          <Col sm={10} className="mb-3 ml-2">
                             <Input
                               type="text"
                               name="jobTitle"
@@ -291,7 +295,7 @@ const Job = props => {
                           </Col>
                         </FormGroup>
 
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="Description">Description :</Label>
                           <Col sm={10}>
                             <Input
@@ -303,7 +307,7 @@ const Job = props => {
                             />
                           </Col>
                         </FormGroup>
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="exampleFile">File /Image :</Label>
                           <Col sm={10}>
                             <Input
@@ -361,30 +365,14 @@ const Job = props => {
             <span className="font-weight-bold ">Proposals :</span>
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
-          {!applied || jobsIds.includes(props.job.id)
-            ? !currentUser.paymentData && (
-                <Button
-                  style={{ backgroundColor: "#6c757d" }}
-                  disabled
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Applied
-                </Button>
-              )
-            : !currentUser.paymentData && (
-                <Button
-                  style={{
-                    backgroundColor: "#ebc010",
-                    borderRadius: "35px",
-                    border: "none"
-                  }}
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Apply
-                </Button>
-              )}
+          <ApplyButton
+            volunteerId={volunteerId}
+            jobs={jobs}
+            applied={applied}
+            // handleClick={handleClick}
+            currentUser={currentUser}
+            job={props.job}
+          />
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>
@@ -420,10 +408,24 @@ const Job = props => {
         <div className=" pl-5 pt-3 pr-5 clearfix">
           <div style={{ display: "flex", "justify-content": "space-between" }}>
             <div>
-              <img
+              {props.user && props.user.imgUrl ? (
+                <img
+                  src={"http://localhost:4402/" + props.user.imgUrl}
+                  className="post-img  rounded-circle"
+                  alt="server pic"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  // src={profilePic}
+                  className="post-img  rounded-circle"
+                  alt="personal pic"
+                />
+              )}
+              {/* <img
                 className="post-img  rounded-circle"
                 src="./img/people.png"
-              />
+              /> */}
               <div className="username-post ml-3">
                 <div className="mt-3 postOwnerNameStyle">
                   {props.user && props.user.firstName}
@@ -445,7 +447,7 @@ const Job = props => {
                 <div className="post-ortions">...</div>
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={togglemodal}> Edit </DropdownItem>
+                <DropdownItem onClick={handelEditJob}> Edit </DropdownItem>
 
                 <Modal
                   className="modalShap"
@@ -463,7 +465,27 @@ const Job = props => {
 
                   <ModalBody className="bodyModal">
                     <div>
-                      <img
+                      {props.currentUser.imgUrl ? (
+                        <img
+                          src={
+                            "http://localhost:4402/" + props.currentUser.imgUrl
+                          }
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="userimg"
+                          style={{
+                            width: "10%",
+                            borderRadius: "50%",
+                            marginRight: "20px"
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={profilePic}
+                          className="mt-3 mr-3 post-img rounded-circle"
+                          alt="personal pic"
+                        />
+                      )}
+                      {/* <img
                         src="./img/profilephoto.png"
                         alt="userimg"
                         style={{
@@ -471,7 +493,8 @@ const Job = props => {
                           borderRadius: "50%",
                           marginRight: "20px"
                         }}
-                      />
+                      /> */}
+
                       <a>
                         {props.currentUser.firstName}
                         &nbsp;&nbsp;
@@ -486,7 +509,7 @@ const Job = props => {
                       >
                         <FormGroup row className="m-3">
                           <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                          <Col sm={10} className="mb-3">
+                          <Col sm={10} className="mb-3  ml-2">
                             <Input
                               type="text"
                               name="jobTitle"
@@ -536,7 +559,7 @@ const Job = props => {
                           </Col>
                         </FormGroup>
 
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="Description">Description :</Label>
                           <Col sm={10}>
                             <Input
@@ -548,7 +571,7 @@ const Job = props => {
                             />
                           </Col>
                         </FormGroup>
-                        <FormGroup row>
+                        <FormGroup row className="m-3">
                           <Label for="exampleFile">File /Image :</Label>
                           <Col sm={10}>
                             <Input
@@ -608,30 +631,14 @@ const Job = props => {
             <span className="">&nbsp;{props.job && props.job.proposals}</span>
           </div>
           {/* //////////////////////////////////// */}
-          {!applied || jobsIds.includes(props.job.id)
-            ? !currentUser.paymentData && (
-                <Button
-                  style={{ backgroundColor: "#6c757d", borderRadius: "35px" }}
-                  disabled
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Applied
-                </Button>
-              )
-            : !currentUser.paymentData && (
-                <Button
-                  style={{
-                    backgroundColor: "#ebc010",
-                    borderRadius: "35px",
-                    border: "none"
-                  }}
-                  className=" applyBtn float-right"
-                  onClick={() => handleClick(props.job.id)}
-                >
-                  Apply
-                </Button>
-              )}
+          <ApplyButton
+            volunteerId={volunteerId}
+            jobs={jobs}
+            applied={applied}
+            // handleClick={handleClick}
+            currentUser={currentUser}
+            job={props.job}
+          />
         </div>
         <div className=" postBody  pr-5 pl-5  m-0">
           <span className=" font-weight-bold">job Title : </span>

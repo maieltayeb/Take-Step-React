@@ -8,11 +8,11 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   AddTasksToVol,
-  getTasksByVolId
+  getTasksByVolId,
 } from "../../../Redux/actions/InprogressActionCreator";
 import CountDown from "./CountDown";
 
-const InProgressTaskCard = props => {
+const InProgressTaskCard = (props) => {
   const data = [];
   const { state } = props;
   // console.log(props);
@@ -39,7 +39,7 @@ const InProgressTaskCard = props => {
               <ToastBody>
                 <div className="p-1 my-2 rounded bg-docs-transparent-grid">
                   {state.length ? (
-                    state.map(d => {
+                    state.map((d) => {
                       return (
                         <Toast>
                           <Row className="p-2">
@@ -80,7 +80,7 @@ const InProgressTaskCard = props => {
                       );
                     })
                   ) : (
-                    <div></div>
+                    <div>No Tasks yet </div>
                   )}
                 </div>
               </ToastBody>
@@ -121,10 +121,10 @@ const InProgressTaskCard = props => {
     </div>
   );
 };
-const mapStateToProps = State => {
+const mapStateToProps = (State) => {
   return {
     state: State.Inprogress.appliedTasks,
-    timesUpState: State.timesUp
+    timesUpState: State.timesUp,
   };
 };
 export default connect(mapStateToProps)(InProgressTaskCard);

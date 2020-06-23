@@ -76,13 +76,13 @@ const SignUp = props => {
 
   /*******handel submit*************** */
   const handleValidSubmit = async (event, values) => {
-    console.log("values", values);
+    // console.log("values", values);
     event.preventDefault();
-    console.log("state", state);
-    debugger;
+    // console.log("state", state);
+    // debugger;
     if (stateStatus) {
-      dispatch(getAllUsersBussinessOwner());
-      response = await dispatch(SignupBussinessOwner(state));
+      dispatch(getAllVolunteers());
+      response = await dispatch(SignupVolunteers(state));
 
       if (response != " email already exist!") {
         history.push("/logIn");
@@ -90,8 +90,8 @@ const SignUp = props => {
         setStateError(true);
       }
     } else if (!stateStatus) {
-      dispatch(getAllVolunteers());
-      response = await dispatch(SignupVolunteers(state));
+      dispatch(getAllUsersBussinessOwner());
+      response = await dispatch(SignupBussinessOwner(state));
       if (response != " email already exist!") {
         history.push("/logIn");
       } else if (response == " email already exist!") {

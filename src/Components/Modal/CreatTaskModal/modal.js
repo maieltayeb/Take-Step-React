@@ -10,10 +10,10 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-  DropdownItem
+  Input
 } from "reactstrap";
 import { addJob } from "../../../Redux/actions/businessOwnerActionCreator";
+import profilePic from "../../../profileImage/profilephoto.png";
 import "./modal.css";
 
 const ModalCreateTask = props => {
@@ -36,16 +36,19 @@ const ModalCreateTask = props => {
       [name]: value
     }));
   };
-  console.log("type", props.timeDurationTypes);
+  // console.log("type", props.timeDurationTypes);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitaddddddddddddddddd");
+    // console.log("submitaddddddddddddddddd");
     dispatch(addJob(state));
   };
   return (
     <div>
-      <p onClick={toggle}> What's your Task ?</p>
+      <p onClick={toggle} style={{ cursor: "pointer" }}>
+        {" "}
+        What's your Task ?
+      </p>
 
       <Modal
         className="modalShap"
@@ -63,7 +66,7 @@ const ModalCreateTask = props => {
 
         <ModalBody className="bodyModal">
           <div>
-            <img
+            {/* <img
               src="./img/profilephoto.png"
               alt="userimg"
               style={{
@@ -71,7 +74,26 @@ const ModalCreateTask = props => {
                 borderRadius: "50%",
                 marginRight: "20px"
               }}
-            />
+            /> */}
+            {props.currentUser.imgUrl ? (
+              <img
+                src={"http://localhost:4402/" + props.currentUser.imgUrl}
+                className="mt-3 post-img rounded-circle"
+                alt="userimg"
+                style={{
+                  width: "10%",
+                  height: "10%",
+                  borderRadius: "50%",
+                  marginRight: "20px"
+                }}
+              />
+            ) : (
+              <img
+                src={profilePic}
+                className="mt-3 post-img rounded-circle"
+                alt="personal pic"
+              />
+            )}
             <a>
               {props.currentUser.firstName}
               &nbsp;&nbsp;
@@ -94,7 +116,7 @@ const ModalCreateTask = props => {
 
               <FormGroup row>
                 <Label for="jobTitle">Job title &nbsp;&nbsp;:</Label>
-                <Col sm={10} className="m-3">
+                <Col sm={10} className="mb-3">
                   <Input
                     type="text"
                     name="jobTitle"
@@ -196,7 +218,8 @@ const ModalCreateTask = props => {
 const mapStateToProps = reduxState => {
   return {
     currentUser: reduxState.Users.currentUser,
-    timeDurationTypes: reduxState.Users.timeDurationTypes
+    timeDurationTypes: reduxState.Users.timeDurationTypes,
+    users: reduxState.Users
   };
 };
 export default connect(mapStateToProps)(ModalCreateTask);

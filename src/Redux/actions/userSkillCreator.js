@@ -6,89 +6,89 @@ import {
   ADD_SKILL,
   ADD_SKILL__SEC_UPDATE,
   DELETE_SKILL,
-  EDIT_SKILL,
+  EDIT_SKILL
 } from "../actionTypes";
 
-export const getSkillById = (id) => (dispatch) => {
+export const getSkillById = id => dispatch => {
   axios
     .get(`http://localhost:4402/volunteer/getSkillById/${id}`, {
-      headers: { authorization: localStorage.getItem("token") },
+      headers: { authorization: localStorage.getItem("token") }
     })
-    .then((res) => {
+    .then(res => {
       const userSkill = res.data;
 
-      console.log(userSkill.skillName);
+      // console.log(userSkill.skillName);
       dispatch(getSkill(userSkill.skilName));
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+      // console.log(err);
     });
 };
 
-const getSkill = (skill) => {
+const getSkill = skill => {
   return { type: GET_SKILL_BY_ID, payload: skill };
 };
 
-export const getUserSkills = (id) => (dispatch) => {
+export const getUserSkills = id => dispatch => {
   axios
     .get(`http://localhost:4402/volunteer/getUserSkills/${id}`, {
-      headers: { authorization: localStorage.getItem("token") },
+      headers: { authorization: localStorage.getItem("token") }
     })
 
-    .then((res) => {
+    .then(res => {
       const userAllSkills = res.data;
       console.log(userAllSkills);
       dispatch(getUserAllSkills(userAllSkills));
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
 };
 
-const getUserAllSkills = (skills) => {
+const getUserAllSkills = skills => {
   return { type: GET_SKILL_USER_SKILLS, payload: skills };
 };
 
-export const AddSkills = (skillsAdded) => (dispatch) => {
+export const AddSkills = skillsAdded => dispatch => {
   axios
     .post(`http://localhost:4402/volunteer/addSkill`, skillsAdded, {
-      headers: { authorization: localStorage.getItem("token") },
+      headers: { authorization: localStorage.getItem("token") }
     })
-    .then((res) => {
+    .then(res => {
       const addSkill = res.data;
 
       console.log(addSkill.newSkill);
       dispatch(AddSkillToUser(addSkill.newSkill));
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
 };
 
-const AddSkillToUser = (skillAdded) => {
+const AddSkillToUser = skillAdded => {
   return { type: ADD_SKILL, payload: skillAdded };
 };
 ////////////////////////////////
-export const addSkillsInSec = (NewDataInSec) => {
+export const addSkillsInSec = NewDataInSec => {
   return { type: ADD_SKILL__SEC_UPDATE, payload: NewDataInSec };
 };
-export const DeletSkills = (volunteerId, skillId) => (dispatch) => {
+export const DeletSkills = (volunteerId, skillId) => dispatch => {
   axios
     .delete(
       `http://localhost:4402/volunteer/delete_skill/${volunteerId}/${skillId}`,
       {
-        headers: { authorization: localStorage.getItem("token") },
+        headers: { authorization: localStorage.getItem("token") }
       }
     )
-    .then((res) => {
-      console.log(res.data);
+    .then(res => {
+      // console.log(res.data);
       dispatch(DeleteSkill(skillId));
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
 };
 
-const DeleteSkill = (id) => {
+const DeleteSkill = id => {
   return { type: DELETE_SKILL, payload: id };
 };

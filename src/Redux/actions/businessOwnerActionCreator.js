@@ -63,7 +63,6 @@ export const SignupBussinessOwner = newUser => dispatch => {
     })
     .catch(err => {
       console.log(err.response.data.message);
-
       dispatch(SignUpFailed(err.response.data.message));
       return err.response.data.message;
     });
@@ -84,8 +83,8 @@ export const logInBussinessOwner = currentUser => dispatch => {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
-      console.log("datafrom database", user);
-      console.log("stopone");
+      // console.log("datafrom database", user);
+      // console.log("stopone");
       if (response.status === 200) dispatch(loginSuccess(user));
       return user;
     })
